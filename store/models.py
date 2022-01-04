@@ -15,22 +15,42 @@ class company(models.Model):
     #address
     #mobile number
 
+    
+    def __str__(self):
+        return self.company_name
+
 
 class company_goods(models.Model):
 
     company = models.ForeignKey(company , on_delete=models.CASCADE, related_name='event_ticket')
-    name = models.CharField(max_length=120, unique=True)
+    name = models.CharField(max_length=120, unique=False)
     pck_size = models.IntegerField()
     total_pck = models.IntegerField()
     bag_size = models.IntegerField()
     total_bag = models.IntegerField()
 
+    
+    def __str__(self):
+        return self.name
+
 
 class goods_company(models.Model):
-
+    
+    company_name = models.ForeignKey(company, on_delete=models.CASCADE, related_name='sfsf')
     company_goods = models.ForeignKey(company_goods , on_delete=models.CASCADE, related_name='sds')
-    company_name = models.CharField(max_length=120, unique=True)
+    goods_company_name = models.CharField(max_length=120, unique=False)
 
+    def __str__(self):
+        return self.goods_company_name
+
+
+
+class agent(models.Model):
+
+    name = models.CharField(max_length=120, unique=True)
+    taluka  = models.CharField(max_length=120, unique=False)
+    district = models.CharField(max_length=120, unique=False)
+    mobile_number =  models.IntegerField()
 
 
 class Brand(models.Model):

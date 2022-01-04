@@ -1,15 +1,6 @@
 from django.contrib import admin
 
-from .models import (
-    Supplier,
-    Buyer,
-    Season,
-    Drop,
-    Brand,
-    Order,
-    Delivery,
-    Brand_Product
-)
+from .models import *
 
 
 class SupplierAdmin(admin.ModelAdmin):
@@ -28,3 +19,4 @@ admin.site.register(Brand)
 admin.site.register(Order)
 admin.site.register(Delivery)
 admin.site.register(Brand_Product)
+admin.site.register(company_goods)
