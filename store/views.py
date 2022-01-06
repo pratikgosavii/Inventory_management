@@ -29,15 +29,16 @@ def numOfDays(date1):
 
     dt1 = dt1[0]
     
-    for i in dt1:
-        print(i)
+    dt1 = dt1.split('-')
+    
 
     year = int(dt1[0])
-    month = int(dt1[0])
-    day = int(dt1[0])
+    month = int(dt1[1])
+    day = int(dt1[2])
 
-    date1 = datetime(year, month, day, int(time1[0]), int(time1[1]), tzinfo=ist)
+    date1 = datetime(year,month, day , int(time1[0]), int(time1[1]), tzinfo=ist)
 
+    print('--------------')
     print(date1)
     return date1
 

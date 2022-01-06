@@ -31,5 +31,12 @@ class outward(models.Model):
     DC_number = models.CharField(max_length=566)
     DC_date = models.DateTimeField()
 
+class stock(models.Model):
+
+    company = models.ForeignKey(company , on_delete=models.CASCADE, related_name='fsdsdgv')
+    company_goods = models.ForeignKey(company_goods , on_delete=models.CASCADE, related_name='fsdsdd')
+    goods_company = models.ForeignKey(goods_company , on_delete=models.CASCADE, related_name='csdsvg')
+    total_bag = models.IntegerField()
+
     
 

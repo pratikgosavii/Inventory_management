@@ -8,7 +8,7 @@ urlpatterns = [
     path('get-company_goods-ajax/', get_company_goods_ajax, name="get_company_goods_ajax"),
     path('get-goods_company-ajax/', get_goods_company_ajax, name="get_goods_company_ajax"),
 
-    path('add-company/', add_company, name='add_compnay'),
+    path('add-company/', add_company, name='add_company'),
     path('update-company/<company_id>', update_company, name='update_company'),
     path('delete-company/<company_id>', delete_company, name='delete_company'),
     path('list-company/', list_company, name='list_company'),

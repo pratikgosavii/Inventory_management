@@ -64,3 +64,28 @@ class outward_Form(forms.ModelForm):
             
         }
 
+
+
+class goods_company_Form(forms.ModelForm):
+    class Meta:
+        model = stock
+        fields = '__all__'
+        widgets = {
+             'company': forms.Select(attrs={
+                'class': 'form-control', 'id': 'company'
+            }),
+
+            'company_goods': forms.Select(attrs={
+                'class': 'form-control', 'id': 'company_goods'
+            }),
+           
+            'goods_company_name': forms.TextInput(attrs={
+                'class': 'form-control', 'id': 'name'
+            }),
+
+            'total_bag': forms.NumberInput(attrs={
+                'class': 'form-control cal', 'id': 'total_bag'
+            }),
+           
+            
+        }

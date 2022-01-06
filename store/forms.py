@@ -30,14 +30,14 @@ class company_goods_Form(forms.ModelForm):
             'pck_size': forms.NumberInput(attrs={
                 'class': 'form-control', 'id': 'pck_size'
             }),
-             'total_pck': forms.NumberInput(attrs={
-                'class': 'form-control', 'id': 'total_pck'
+            'total_pck': forms.NumberInput(attrs={
+                'class': 'form-control ', 'id': 'total_pck', 'readonly': True
             }),
             'bag_size': forms.NumberInput(attrs={
-                'class': 'form-control', 'id': 'bag_size'
+                'class': 'form-control cal', 'id': 'bag_size'
             }),
             'total_bag': forms.NumberInput(attrs={
-                'class': 'form-control', 'id': 'total_bag'
+                'class': 'form-control cal', 'id': 'total_bag'
             }),
            
      
@@ -64,6 +64,7 @@ class goods_company_Form(forms.ModelForm):
            
             
         }
+
 
 
 

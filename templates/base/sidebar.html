@@ -5,12 +5,12 @@
                 <li class="active">
                     <a href="{% url 'dashboard' %}"><i class="menu-icon fa fa-laptop"></i>Dashboard </a>
                 </li>
-                <li class="menu-title">My Setting</li><!-- /.menu-title -->
+                <li class="menu-title">Setting</li><!-- /.menu-title -->
 
                 <li class="menu-item-has-children dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-building"></i>Company</a>
                     <ul class="sub-menu children dropdown-menu">
-                        <li><i class="fa fa-id-card-o"></i><a href="{% url 'add_compnay' %}">Add</a></li>
+                        <li><i class="fa fa-id-card-o"></i><a href="{% url 'add_company' %}">Add</a></li>
                         <li><i class="fa fa-th"></i><a href="{% url 'list_company' %}">View</a></li>
                     </ul>
                 </li>
@@ -39,7 +39,7 @@
                     </ul>
                 </li>
 
-                <li class="menu-title">My Store</li><!-- /.menu-title -->
+                <li class="menu-title">Transactions</li><!-- /.menu-title -->
                 <li class="menu-item-has-children dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-paper-plane"></i>Inward</a>
                     <ul class="sub-menu children dropdown-menu">
@@ -56,45 +56,15 @@
                     </ul>
                 </li>
 
+                <li class="menu-title">Stock</li><!-- /.menu-title -->
                 <li class="menu-item-has-children dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-archive"></i>Season</a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-archive"></i>Stock</a>
                     <ul class="sub-menu children dropdown-menu">
                         <li><i class="fa fa-id-card-o"></i><a href="{% url 'create-season' %}">Add</a></li>
-                        <li><i class="fa fa-th"></i><a href="{% url 'season-list' %}">View</a></li>
+                        <li><i class="fa fa-th"></i><a href="{% url 'list_stock' %}">View</a></li>
                     </ul>
                 </li>
 
-                <li class="menu-item-has-children dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-chevron-circle-down"></i>Drop</a>
-                    <ul class="sub-menu children dropdown-menu">
-                        <li><i class="fa fa-id-card-o"></i><a href="{% url 'create-drop' %}">Add</a></li>
-                        <li><i class="fa fa-th"></i><a href="{% url 'drop-list' %}">View</a></li>
-                    </ul>
-                </li>
-
-                <li class="menu-item-has-children dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-product-hunt"></i>Brands</a>
-                    <ul class="sub-menu children dropdown-menu">
-                        <li><i class="fa fa-id-card-o"></i><a href="{% url 'create-brand' %}">Add</a></li>
-                        <li><i class="fa fa-th"></i><a href="{% url 'brand-list' %}">View</a></li>
-                    </ul>
-                </li>
-
-                <li class="menu-item-has-children dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-cart-plus"></i>Order</a>
-                    <ul class="sub-menu children dropdown-menu">
-                        <li><i class="fa fa-id-card-o"></i><a href="{% url 'create-order' %}">Add</a></li>
-                        <li><i class="fa fa-th"></i><a href="{% url 'order-list' %}">View</a></li>
-                    </ul>
-                </li>
-
-                <li class="menu-item-has-children dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-truck"></i>Delivery</a>
-                    <ul class="sub-menu children dropdown-menu">
-                        <li><i class="fa fa-id-card-o"></i><a href="{% url 'create-delivery' %}">Add</a></li>
-                        <li><i class="fa fa-th"></i><a href="{% url 'delivery-list' %}">View</a></li>
-                    </ul>
-                </li>
             </ul>
         </div><!-- /.navbar-collapse -->
     </nav>

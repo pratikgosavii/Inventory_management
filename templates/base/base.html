@@ -318,13 +318,17 @@
             // Bar Chart #flotBarChart End
         });
 
-        function abc(){
+        {% comment %} function abc(){
             temp = "{% url 'add-product' %}";
     
             temp1 = temp + '?&brand_id=' + {{ brand_id }};
     
             window.location.replace(temp1);
-        }
+        } {% endcomment %}
+       
     </script>
+    {% block js %}
+    
+    {% endblock js %}
 </body>
 </html>

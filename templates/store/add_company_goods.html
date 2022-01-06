@@ -71,7 +71,7 @@
                                 {{ form.total_bag }}
                             </div>
                             <div class="form-group">
-                                <label for="name" class="control-label mb-1">Total Bags</label>
+                                <label for="name" class="control-label mb-1">Total Packet</label>
                                 {{ form.total_pck }}
                             </div>
                             
@@ -90,4 +90,20 @@
 
     </div><!--/.col-->
 </div>
+
+    {% block js %}
+
+        <script>
+
+            $('.cal').keyup(function(){
+                var textone;
+                var texttwo;
+            textone = parseFloat($('#bag_size').val());
+            texttwo = parseFloat($('#total_bag').val());
+            var result = textone + texttwo;
+            $('#total_pck').val(result.toFixed(2));
+        });
+        </script>
+
+    {% endblock js %}
 {% endblock content %}

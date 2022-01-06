@@ -52,6 +52,10 @@ class agent(models.Model):
     district = models.CharField(max_length=120, unique=False)
     mobile_number =  models.IntegerField()
 
+    def __str__(self):
+        return self.name
+
+
 
 class Brand(models.Model):
 
