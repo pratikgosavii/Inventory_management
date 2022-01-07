@@ -17,5 +17,7 @@ urlpatterns = [
     path('list-outward/', list_outward, name='list_outward'),
 
     path('list-stock/', list_stock, name='list_stock'),
+    
+    path('generate-report/', generate_report, name='generate_report'),
   
 ]

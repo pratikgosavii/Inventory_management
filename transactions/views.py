@@ -7,6 +7,14 @@ from django.shortcuts import render, redirect
 from .models import *
 from datetime import date
 from django.urls import reverse
+import csv
+
+from datetime import datetime
+import pytz
+
+import pytz
+IST = pytz.timezone('Asia/Kolkata')
+
 
 
 
@@ -21,6 +29,9 @@ def add_inward(request):
         DC_date = request.POST.get('DC_date')
 
         date_time = numOfDays(DC_date)
+        print('-----------------------------------------------date_time')
+        print(date_time.date())
+        print(date.today())
         updated_request = request.POST.copy()
         updated_request.update({'DC_date': date_time})
         forms = inward_Form(updated_request)
@@ -345,8 +356,74 @@ def list_stock(request):
 
     data = stock.objects.all()
 
+
     context = {
-        'data': data,
+        'data': data
     }
 
     return render(request, 'transactions/list_stock.html', context)
+
+
+
+def generate_report(request):
+
+    company_data = company.objects.all()
+    goods_data = company_goods.objects.all()
+    goods_company_data = goods_company.objects.all()
+
+    data1 = []
+    data2 = []
+
+    for i in company_data:
+        for j in goods_data:
+            for z in goods_company_data:
+
+                sample = inward.objects.filter(company = i, company_goods = j, goods_company = z, DC_date__date = datetime.now(IST))
+                inward_total = 0
+                outward_total = 0
+                print('sample')
+                print(sample)
+                for a in sample:
+
+                    inward_total = inward_total + a.bags
+                    print('--------------------------')
+                    print(a.DC_date)
+
+                sample = outward.objects.filter(company = i, company_goods = j, goods_company = z, DC_date__date = datetime.now(IST)) 
+                print('sample')
+                print(sample)
+
+                for a in sample:
+
+                    outward_total = outward_total + a.bags
+
+                stock_data = stock.objects.filter(company = i, company_goods = j, goods_company = z).first()
+                
+                data2.append(i)
+
+                data2.append(inward_total)
+                data2.append(outward_total)
+                if stock_data:
+
+                    data2.append(stock_data.total_bag)
+                else:
+                    data2.append('0')
+
+
+                data1.append(data2)
+
+                data2 = [] 
+
+    print(date.today())
+    
+    with open("output.csv",  'w', newline="") as f:
+        writer = csv.writer(f)
+        writer.writerows(data1)
+
+
+    context = {
+        'data2': data1
+    }
+
+    return render(request, 'transactions/report.html', context)
+

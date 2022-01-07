@@ -2,25 +2,6 @@
 
 {% block title %}Product List{% endblock title %}
 
-{% block head %}
-
-<style>
-    .btn_downlaod {
-      background-color: DodgerBlue;
-      border: none;
-      color: white;
-      padding: 12px 30px;
-      cursor: pointer;
-      font-size: 20px;
-    }
-    
-    /* Darker background on mouse-over */
-    .btn_downlaod:hover {
-      background-color: RoyalBlue;
-    }
-    </style>
-
-{% endblock %}
 
 {% block breadcrumbs %}
 <div class="breadcrumbs">
@@ -52,9 +33,6 @@
 {% block content %}
 
 
-
-<a href="{% url 'generate_report' %}"> <button class="btn_downlaod"><i class="fa fa-download"></i> Download</button> </a>
-
 <div class="row">
     <div class="col-xl-12">
         <div class="card">
@@ -68,25 +46,29 @@
                             <tr>
                                 <th class="serial">#</th>
                                 <th>Company Name</th>
-                                <th>Company Goods Name</th>
-                                <th>Goods Company Name</th>
-                                <th>Total Bags</th>
+                                <th>Total Inward </th>
+                                <th>TotalOutward </th>
+                                <th>Total Stock</th>
                                 
                             </tr>
                         </thead>
                         <tbody>
-                            {% if data %}
-                            {% for i in data %}
+                            {% if data2 %}
+                            {% for i in data2 %}
+                            
                             <tr>
                                 <td class="serial">{{ forloop.counter }}</td>
-                                <td>{{ i.company.company_name }}</td>
-                                <td>{{ i.company_goods.name }}</td>
-                                <td>{{ i.goods_company.goods_company_name }}</td>
-                                <td>{{ i.total_bag }}</td>
+                                <td>{{ i.0 }}</td>
+                                <td>{{ i.1 }}</td>
+                                <td>{{ i.2 }}</td>
+                                <td>{{ i.3 }}</td>
+                                
+                               
                               
                                
                                
                             </tr>
+                           
                             {% endfor %}
                             {% else %}
                                 <tr><td>No Product Data</td></tr>
@@ -100,9 +82,6 @@
 
     
 </div>
-
-
-
 
 
 
