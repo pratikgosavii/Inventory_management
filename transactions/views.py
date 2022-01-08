@@ -415,8 +415,10 @@ def generate_report(request):
                 data2 = [] 
 
     print(date.today())
+
+    name = "output " + str(date.today()) + ".csv"
     
-    with open("output.csv",  'w', newline="") as f:
+    with open(name,  'w', newline="") as f:
         writer = csv.writer(f)
         writer.writerows(data1)
 
