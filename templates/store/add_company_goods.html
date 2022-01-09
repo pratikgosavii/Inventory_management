@@ -52,7 +52,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="name" class="control-label mb-1">Goods Name</label>
+                                <label for="name" class="control-label mb-1">Crop</label>
                                 {{ form.name }}
                             </div>
 
@@ -100,7 +100,7 @@
                 var texttwo;
             textone = parseFloat($('#bag_size').val());
             texttwo = parseFloat($('#total_bag').val());
-            var result = textone + texttwo;
+            var result = textone * texttwo;
             $('#total_pck').val(result.toFixed(2));
         });
         </script>

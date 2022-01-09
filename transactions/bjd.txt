@@ -2,7 +2,6 @@ from django.http.response import HttpResponseRedirect
 from django.shortcuts import render
 
 from store.views import numOfDays
-from transactions.filters import inward_filter, outward_filter
 from .forms import *
 from django.shortcuts import render, redirect
 from .models import *
@@ -13,6 +12,7 @@ import csv
 from datetime import datetime
 import pytz
 
+import pytz
 IST = pytz.timezone('Asia/Kolkata')
 
 
@@ -178,13 +178,8 @@ def list_inward(request):
 
     data = inward.objects.all()
 
-
-    
-    inward_filter_data = inward_filter()
-
     context = {
         'data': data,
-        'filter_inward' : inward_filter_data
     }
     
     return render(request, 'transactions/list_inward.html', context)
@@ -240,20 +235,6 @@ def add_outward(request):
         }
         return render(request, 'transactions/add_outward.html', context)
 
-
-def report_dashbord(request):
-
-    inward_filter_data = inward_filter()
-    outward_filter_data = outward_filter()
-
-
-
-    context = {
-            'filter_inward': inward_filter_data,
-            'filter_outward': outward_filter_data,
-        }
-
-    return render(request, 'transactions/report_dashbord.html', context)
 
 
 def list_outward(request):
@@ -384,22 +365,8 @@ def list_stock(request):
 
     return render(request, 'transactions/list_stock.html', context)
 
-
 def report_inward(request):
-
-    data = inward.objects.all()
-
-    filterd_data = inward_filter(request.GET, data)
-    data = filterd_data.qs
-
-    context = {
-        'data': data,
-        
-    }
-    
-    return render(request, 'transactions/list_inward.html', context)
-
-    
+    pass
 
 def report_outward(request):
     pass
@@ -422,11 +389,18 @@ def generate_report_stock(request):
         data1 = []
         data2 = []
 
-        for i in company_data:
+       
+
+        if company_filter:
+
+            instance = company.objects.get(id = company_filter)
+            
+
+           
             for j in goods_data:
                 for z in goods_company_data:
 
-                    sample = inward.objects.filter(company = i, company_goods = j, goods_company = z, DC_date__date__range=[date_from , date_to])
+                    sample = inward.objects.filter(company = instance, company_goods = j, goods_company = z, DC_date__date__range=[date_from , date_to])
                 
                     inward_total = 0
                     outward_total = 0
@@ -434,22 +408,25 @@ def generate_report_stock(request):
                     for a in sample:
 
                         inward_total = inward_total + a.bags
-                        
-                    sample = outward.objects.filter(company = i, company_goods = j, goods_company = z, DC_date__date__range=[date_from , date_to]) 
+                        print('--------------------------')
+                        print(a.DC_date)
+
+                    sample = outward.objects.filter(company = instance, company_goods = j, goods_company = z, DC_date__date__range=[date_from , date_to]) 
                 
+                    
+
                     for a in sample:
 
                         outward_total = outward_total + a.bags
+
+                    stock_data = stock.objects.filter(company = instance, company_goods = j, goods_company = z).first()
                     
-                    data2.append(i)
+                    data2.append(instance)
                     data2.append(j)
                     data2.append(z)
 
                     data2.append(inward_total)
                     data2.append(outward_total)
-
-                    stock_data = stock.objects.filter(company = i, company_goods = j, goods_company = z).first()
-
                     if stock_data:
 
                         data2.append(stock_data.total_bag)
@@ -460,6 +437,50 @@ def generate_report_stock(request):
                     data1.append(data2)
 
                     data2 = [] 
+    
+        else:
+
+            for i in company_data:
+                for j in goods_data:
+                    for z in goods_company_data:
+
+                        sample = inward.objects.filter(company = i, company_goods = j, goods_company = z, DC_date__date__range=[date_from , date_to])
+                    
+                        inward_total = 0
+                        outward_total = 0
+                    
+                        for a in sample:
+
+                            inward_total = inward_total + a.bags
+                            print('--------------------------')
+                            print(a.DC_date)
+
+                        sample = outward.objects.filter(company = i, company_goods = j, goods_company = z, DC_date__date__range=[date_from , date_to]) 
+                    
+                        
+
+                        for a in sample:
+
+                            outward_total = outward_total + a.bags
+
+                        stock_data = stock.objects.filter(company = i, company_goods = j, goods_company = z).first()
+                        
+                        data2.append(i)
+                        data2.append(j)
+                        data2.append(z)
+
+                        data2.append(inward_total)
+                        data2.append(outward_total)
+                        if stock_data:
+
+                            data2.append(stock_data.total_bag)
+                        else:
+                            data2.append('0')
+
+
+                        data1.append(data2)
+
+                        data2 = [] 
 
         print(date.today())
 

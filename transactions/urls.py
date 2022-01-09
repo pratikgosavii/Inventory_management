@@ -18,6 +18,9 @@ urlpatterns = [
 
     path('list-stock/', list_stock, name='list_stock'),
     
-    path('generate-report/', generate_report, name='generate_report'),
+
+    path('report-inward/', report_inward, name='report_inward'),
+    path('report-outward/', report_outward, name='report_outward'),
+    path('generate-report/', generate_report_stock, name='generate_report'),
   
 ]

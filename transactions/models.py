@@ -20,6 +20,9 @@ class inward(models.Model):
     DC_number = models.CharField(max_length=566)
     DC_date = models.DateTimeField()
 
+    def __str__(self):
+        return self.company.company_name
+
 
 class outward(models.Model):
 

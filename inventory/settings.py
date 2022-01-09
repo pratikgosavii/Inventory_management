@@ -39,9 +39,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     # local
+    'django_filters',
+
     'store.apps.StoreConfig',
     'users.apps.UsersConfig',
-    'transactions'
+    'transactions',
 ]
 
 MIDDLEWARE = [

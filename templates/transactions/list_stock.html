@@ -52,8 +52,29 @@
 {% block content %}
 
 
+<div class="form-group" style="display:flex;">
+    <form method="post" action="{% url 'generate_report' %}" style="display:flex;">
 
-<a href="{% url 'generate_report' %}"> <button class="btn_downlaod"><i class="fa fa-download"></i> Download</button> </a>
+        {% csrf_token %}
+        <label style="margin:10px;">Company</label>
+        <select name="company_filter" class="form-control" id="company">
+            <option value="" selected="">---------</option>
+          {% for i in company %}
+
+            <option value="{{ i.id }}">{{ i.company_name }}</option>
+          
+
+         {% endfor %}
+          </select>
+
+        <label style="margin:10px;display:flex">Date From </label> 
+        <input type="date" name="date_from" class="form-control" style="margin:10px;" required>
+        <label style="margin:10px;"> To </label> <input type="date" name="date_to" class="form-control" style="margin:10px;" requir
+        ed>
+        <button type="submit" class="btn_downlaod"><i class="fa fa-download"></i> Download</button>
+    
+    </form>
+</div>
 
 <div class="row">
     <div class="col-xl-12">
