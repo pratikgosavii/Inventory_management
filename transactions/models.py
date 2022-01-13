@@ -18,7 +18,7 @@ class inward(models.Model):
     agent = models.ForeignKey(agent , on_delete=models.CASCADE, related_name='sdv')
     bags = models.IntegerField()
     DC_number = models.CharField(max_length=566)
-    DC_date = models.DateTimeField()
+    DC_date = models.DateTimeField(auto_now_add=False)
 
     def __str__(self):
         return self.company.company_name
@@ -32,7 +32,20 @@ class outward(models.Model):
     agent = models.ForeignKey(agent , on_delete=models.CASCADE, related_name='df')
     bags = models.IntegerField()
     DC_number = models.CharField(max_length=566)
-    DC_date = models.DateTimeField()
+    DC_date = models.DateTimeField(auto_now_add=False)
+
+
+
+class supply_return(models.Model):
+
+    company = models.ForeignKey(company , on_delete=models.CASCADE, related_name='we')
+    company_goods = models.ForeignKey(company_goods , on_delete=models.CASCADE, related_name='tr')
+    goods_company = models.ForeignKey(goods_company , on_delete=models.CASCADE, related_name='wegvge')
+    agent = models.ForeignKey(agent , on_delete=models.CASCADE, related_name='fgrrt')
+    bags = models.IntegerField()
+    DC_number = models.CharField(max_length=566)
+    DC_date = models.DateTimeField(auto_now_add=False)
+
 
 class stock(models.Model):
 

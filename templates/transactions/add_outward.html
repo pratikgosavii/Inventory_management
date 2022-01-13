@@ -36,7 +36,7 @@
     <div class="col-lg-12">
         <div class="card">
             <div class="card-header">
-                <strong class="card-title">Add Company Goods</strong>
+                <strong class="card-title">Add Outward</strong>
             </div>
             <div class="card-body">
                 <!-- Credit Card -->
@@ -51,25 +51,28 @@
                                 {{ form.company }}
                             </div>
 
-                            <label for="inputStatus">Company Goods</label>
+                            <label for="inputStatus">Crop</label>
                             <select id="company_goods" class="form-control-sm custom-select" name="company_goods">
 
                            
 
                         </select>
 
-                        <label for="inputStatus">Goods Company</label>
+                        <label for="inputStatus">Variety</label>
                             <select id="goods_company" class="form-control-sm custom-select" name="goods_company">
 
                            
 
                         </select>
 
-                            <div class="form-group">
-                                <label for="name" class="control-label mb-1">Agent</label>
-                                {{ form.agent }}
-                            </div>
+                        <label for="inputStatus">Agent</label>
+                        <select id="agent" class="form-control-sm custom-select" name="agent">
 
+                       
+
+                        </select>
+
+                           
                             <div class="form-group">
                                 <label for="name" class="control-label mb-1">Total Bags</label>
                                 {{ form.bags }}
@@ -144,6 +147,29 @@
             }
         });
     });
+
+    
+
+    $("#company").change(function () {
+        const comapnyID = $(this).val();  // get the selected subject ID from the HTML dropdown list 
+        $.ajax({                       // initialize an AJAX request
+            type: "POST",
+            url: '{% url "get_agent_company_ajax" %}',
+            data: {
+                'company_id': comapnyID,       // add the country id to the POST parameters
+                'csrfmiddlewaretoken':$('input[name=csrfmiddlewaretoken]').val(),
+            },
+            success: function (data) {   // `data` is from `get_topics_ajax` view function
+                let html_data = '<option selected disabled>------------</option>';
+                data.forEach(function (data) {
+            
+                    html_data += `<option value="${data.id}" >${data.name}</option>` 
+                });
+                $("#agent").html(html_data); // replace the contents of the topic input with the data that came from the server
+            }
+        });
+    });
+
 
     
 </script>

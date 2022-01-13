@@ -1,21 +1,37 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
+from transactions.models import *
 
-from store.models import Brand, Supplier, Buyer, Order
+
+from store.models import *
 
 
 @login_required(login_url='login')
 def dashboard(request):
-    total_product = Brand.objects.count()
-    total_supplier = Supplier.objects.count()
-    total_buyer = Buyer.objects.count()
-    total_oder = Order.objects.count()
-    orders = Order.objects.all().order_by('-id')
+    
+    stock_data = stock.objects.all()
+    print(stock_data)
+    stock_count = 0
+    for i in stock_data:
+        stock_count = stock_count + i.total_bag
+    print(stock_count)
+
+    inward_data = inward.objects.all()
+    inward_count = 0
+    for i in inward_data:
+        inward_count = inward_count + i.bags
+
+    outward_data = outward.objects.all()
+    outward_count = 0
+    for i in outward_data:
+        outward_count = outward_count + i.bags
+
+    agent_data = agent.objects.all().count()
     context = {
-        'product': total_product,
-        'supplier': total_supplier,
-        'buyer': total_buyer,
-        'order': total_oder,
-        'orders': orders
+        
+        'stock': stock_count,
+        'inward_count': inward_count,
+        'outward_count': outward_count,
+        'agent_data': agent_data
     }
     return render(request, 'dashboard.html', context)

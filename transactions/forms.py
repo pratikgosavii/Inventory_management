@@ -66,6 +66,36 @@ class outward_Form(forms.ModelForm):
 
 
 
+class supply_return_Form(forms.ModelForm):
+    class Meta:
+        model = supply_return
+        fields = '__all__'
+        widgets = {
+            'company': forms.Select(attrs={
+                'class': 'form-control', 'id': 'company'
+            }),
+            'company_goods': forms.Select(attrs={
+                'class': 'form-control', 'id': 'name'
+            }),
+            'goods_company': forms.Select(attrs={
+                'class': 'form-control', 'id': 'pck_size'
+            }),
+             'agent': forms.Select(attrs={
+                'class': 'form-control', 'id': 'total_pck'
+            }),
+            'bags': forms.NumberInput(attrs={
+                'class': 'form-control', 'id': 'bag_size'
+            }),
+            'DC_number': forms.TextInput(attrs={
+                'class': 'form-control', 'id': 'total_bag'
+            }),
+
+            'DC_date': DateTimeInput(attrs={ 'class': 'form-control', 'type': 'datetime-local'}, format = '%Y-%m-%dT%H:%M'),
+            
+        }
+
+
+
 class goods_company_Form(forms.ModelForm):
     class Meta:
         model = stock

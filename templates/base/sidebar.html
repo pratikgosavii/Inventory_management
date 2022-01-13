@@ -56,11 +56,19 @@
                     </ul>
                 </li>
 
+                <li class="menu-item-has-children dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-paper-plane"></i>Supply Return</a>
+                    <ul class="sub-menu children dropdown-menu">
+                        <li><i class="fa fa-id-card-o"></i><a href="{% url 'add_return' %}">Add</a></li>
+                        <li><i class="fa fa-th"></i><a href="{% url 'list_return' %}">View</a></li>
+                    </ul>
+                </li>
+
+              
                 <li class="menu-title">Stock</li><!-- /.menu-title -->
                 <li class="menu-item-has-children dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-archive"></i>Stock</a>
                     <ul class="sub-menu children dropdown-menu">
-                        <li><i class="fa fa-id-card-o"></i><a href="{% url 'create-season' %}">Add</a></li>
                         <li><i class="fa fa-th"></i><a href="{% url 'list_stock' %}">View</a></li>
                     </ul>
                 </li>
