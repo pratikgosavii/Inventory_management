@@ -30,11 +30,25 @@
 {% endblock breadcrumbs %}
 
 {% block content %}
+
+
+
+  
+<form method="post" action="{% url 'download' %}">
+
+    {% csrf_token %}
+
+    <input type="hidden" value="{{ link }}" name="link">
+    <button class="btn btn-primary" type="submit">
+        Download Report
+    </button> 
+</form> <br>
+
 <div class="row">
     <div class="col-xl-12">
         <div class="card">
             <div class="card-body">
-                <h4 class="box-title">Product List </h4>
+                <h4 class="box-title">Daily Report </h4>
             </div>
             <div class="card-body--">
                 <div class="table-stats order-table ov-h">
@@ -42,25 +56,24 @@
                         <thead>
                             <tr>
                                 <th class="serial">#</th>
-                                <th>Name</th>
-                                <th>Actions</th>
+                                <th>Company Name</th>
+                                <th>Crop</th>
+                                <th>Variety</th>
+                                <th>Total Bags</th>
                                 
                             </tr>
                         </thead>
                         <tbody>
-                            {% if product %}
-                            {% for product in product %}
+                            {% if data %}
+                            {% for i in data %}
                             <tr>
                                 <td class="serial">{{ forloop.counter }}</td>
-                                <td>{{ product.name }}</td>
-                                <td>  
-                                   <a href="{% url 'view-product' product.id %}"> <button id="payment-button"  style="background-color: green; border: green; padding: 10px;border-radius: 12px;" type="submit" class="btn-info ">
-                                        <span id="payment-button-amount">View Product</span>
-                                    </button>  </a>
-                                    <button id="payment-button" style="background-color: red; border: red; padding: 10px;border-radius: 12px;" type="submit" class="btn-info">
-                                        <span id="payment-button-amount">Delete Brand</span>
-                                    </button>
-                                </td>
+                                <td>{{ i.0 }}</td>
+                                <td>{{ i.1 }}</td>
+                                <td>{{ i.2 }}</td>
+                                <td>{{ i.3 }}</td>
+                                
+                               
                                
                                
                             </tr>

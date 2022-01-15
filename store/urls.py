@@ -30,6 +30,17 @@ urlpatterns = [
     path('delete-agent/<agent_id>', delete_agent, name='delete_agent'),
     path('list-agent/', list_agent, name='list_agent'),
 
+    #delete urls 
+
+    path('list-company-delete/', list_company_delete, name='company_delete'),
+    path('list-company-goods-delete/', list_company_goods_delete, name='list_company_goods_delete'),
+    path('list-goods-company-delete/', list_goods_company_delete, name='list_goods_company_delete'),
+    path('list-agent-delete/', list_agent_delete, name='list_agent_delete'),
+
+
+
+
+
 
     # 
     # 

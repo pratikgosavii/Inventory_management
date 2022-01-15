@@ -99,3 +99,30 @@ class outward_filter(django_filters.FilterSet):
         fields = '__all__'
         exclude = ['bags', 'DC_number', 'DC_date']
        
+
+class stock_filter(django_filters.FilterSet):
+
+    company = django_filters.ModelChoiceFilter(
+        queryset=company.objects.all(),
+        widget=forms.Select(
+            attrs={
+                'class' : 'form-control',
+                'id' : 'company'
+            })
+    )
+
+    company_goods = django_filters.ChoiceFilter( 
+                
+        widget=forms.Select(attrs={'class': 'form-control', 'id' : 'company_goods'}))
+
+    goods_company = django_filters.ChoiceFilter( 
+        widget=forms.Select(attrs={'class': 'form-control', 'id' : 'goods_company'}))
+
+   
+
+    class Meta:
+        model = outward
+        fields = '__all__'
+        exclude = ['total_bags']
+       
+

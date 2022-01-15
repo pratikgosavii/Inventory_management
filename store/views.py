@@ -64,7 +64,7 @@ def get_company_goods_ajax(request):
 def get_goods_company_ajax(request):
 
     data = []
-    print('i am here')
+    print('i am here3')
 
     if request.method == "POST":
         company_id = request.POST['company_id']
@@ -389,3 +389,71 @@ def list_agent(request):
 
 
     return render(request, 'store/list_agent.html', context)
+
+
+
+# delete view
+
+     
+
+def list_company_delete(request):
+
+    data = company.objects.all()
+
+    context = {
+        'data': data
+    }
+
+    return render(request, 'delete/list_company_delete.html', context)
+
+
+def list_company_delete(request):
+
+    data = company.objects.all()
+
+    context = {
+        'data': data
+    }
+
+    return render(request, 'delete/list_company_delete.html', context)
+
+
+
+def list_company_goods_delete(request):
+    
+    data = company_goods.objects.all().order_by('company__company_name')
+
+    context = {
+            'data': data
+        }
+
+
+    return render(request, 'delete/list_company_goods_delete.html', context)
+
+
+
+def list_goods_company_delete(request):
+    
+    data = goods_company.objects.all().order_by('company_name__company_name')
+
+    context = {
+            'data': data
+        }
+
+
+    return render(request, 'delete/list_goods_company_delete.html', context)
+
+
+
+
+def list_agent_delete(request):
+    
+    data = agent.objects.all()
+
+    context = {
+            'data': data
+        }
+
+
+    return render(request, 'delete/list_agent_delete.html', context)
+

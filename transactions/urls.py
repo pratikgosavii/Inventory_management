@@ -23,6 +23,7 @@ urlpatterns = [
     path('delete-return/<return_id>', delete_return, name='delete_return'),
     path('list-return/', list_return, name='list_return'),
 
+    path('report-daily/', generate_report_daily, name='report_daily'),
     path('report-inward/', report_inward, name='report_inward'),
     path('report-outward/', report_outward, name='report_outward'),
     path('report-stock/', generate_report_stock, name='generate_report'),
@@ -30,5 +31,7 @@ urlpatterns = [
     path('report-main/', generate_report_main, name='generate_report_main'),
 
     path('download', download, name='download'),
+
+    path('delete-dashboard', delete_download, name='delete_download'),
   
 ]

@@ -4,7 +4,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 
 from store.views import numOfDays
-from transactions.filters import inward_filter, outward_filter
+from transactions.filters import inward_filter, outward_filter, stock_filter
 from .forms import *
 from django.shortcuts import render, redirect
 from .models import *
@@ -731,95 +731,36 @@ def generate_report_stock(request):
 
     print('i am here')
 
+    data = stock.objects.all()
 
-    data = inward.objects.all()
-
-    data_inward = inward_filter(request.GET, data)
-    data_inward_fil = data_inward.qs
-
-    data_outward = outward.objects.all()
-
-    filterd_data = outward_filter(request.GET, data_outward)
-    data_outward_fil = filterd_data.qs
-    outward_filter_data = outward_filter()
-
-
-    company_data = company.objects.all()
-    goods_data = company_goods.objects.all()
-    goods_company_data = goods_company.objects.all()
-
+    data_stock = stock_filter(request.GET, data)
+    data_stock = data_stock.qs
+    
     data1 = []
     data2 = []
 
-    for i in company_data:
-        for j in goods_data:
-            for z in goods_company_data:
+    
 
-                #inward total
-                inward_total = 0
-                final_data_inward = data_inward_fil.filter(company = i, company_goods = j, goods_company = z)
-                print(final_data_inward)
-                
-                if final_data_inward:
+               
 
-                    for a in final_data_inward:
+    if data_stock:
+       
+        for i in data_stock:
 
-                        inward_total = inward_total + a.bags
-                   
+            print('(i.company.company_name')
+            print(i.company.company_name)
 
-                #outward total
-                outward_total = 0
-                final_data_outward = data_outward_fil.filter(company = i, company_goods = j, goods_company = z)
-                print(final_data_outward)
-                
-                if final_data_outward:
-                
-                    for a in final_data_outward:
+            data1.append(i.company.company_name)
+            data1.append(i.company_goods)
+            data1.append(i.goods_company)
+            data1.append(i.total_bag)
 
-                        outward_total = outward_total + a.bags
+    
+        
 
-                
-                
-                #appending data
-                
+            data2.append(data1)
 
-                if final_data_inward != None and final_data_outward != None :
-                    print('here1')
-
-                    data2.append(final_data_inward.first())
-                    data2.append(inward_total)
-                    data2.append(outward_total)
-
-                elif final_data_inward != None and final_data_outward == None :
-                    print('here2')
-                    
-                    data2.append(final_data_inward.first())
-                    data2.append(inward_total)
-
-                elif final_data_inward == None and final_data_outward != None :
-
-                    print('here3')
-
-                    data2.append(final_data_inward.first())
-                    data2.append(outward_total)
-                    
-                #stock total
-                stock_data = stock.objects.filter(company = i, company_goods = j, goods_company = z).first()
-
-                if stock_data:
-
-                    stock_data = stock_data.total_bag
-
-                    data2.append(stock_data)
-
-                    data1.append(data2)
-
-
-                
-
-                
-
-                data2 = [] 
+            data1 = [] 
                 
                 
     
@@ -831,17 +772,17 @@ def generate_report_stock(request):
     
     with open(name,  'w', newline="") as f:
         writer = csv.writer(f)
-        writer.writerows(data1)
+        writer.writerows(data2)
 
-    outward_filter_data = outward_filter()
+    stock_filter_data = stock_filter()
 
     link = os.path.join(BASE_DIR) + '\\' + name
 
 
 
     context = {
-        'data': data1,
-        'filter_outward' : outward_filter_data,
+        'data': data2,
+        'filter_stock' : stock_filter_data,
         'link' : link
 
     }
@@ -958,7 +899,131 @@ def generate_report_main(request):
     }
     
     return render(request, 'report/main_report.html', context)
-   
+
+
+def generate_report_daily(request):
+
+
+    print('i am here')
+
+
+    data = inward.objects.all()
+
+    data_inward = inward_filter(request.GET, data)
+    data_inward_fil = data_inward.qs
+
+    data_outward = outward.objects.all()
+
+    filterd_data = outward_filter(request.GET, data_outward)
+    data_outward_fil = filterd_data.qs
+    outward_filter_data = outward_filter()
+
+
+    company_data = company.objects.all()
+    goods_data = company_goods.objects.all()
+    goods_company_data = goods_company.objects.all()
+
+    data1 = []
+    data2 = []
+
+    for i in company_data:
+        for j in goods_data:
+            for z in goods_company_data:
+
+                #inward total
+                inward_total = 0
+                final_data_inward = data_inward_fil.filter(company = i, company_goods = j, goods_company = z)
+                print(final_data_inward)
+                
+                if final_data_inward:
+
+                    for a in final_data_inward:
+
+                        inward_total = inward_total + a.bags
+                   
+
+                #outward total
+                outward_total = 0
+                final_data_outward = data_outward_fil.filter(company = i, company_goods = j, goods_company = z)
+                print(final_data_outward)
+                
+                if final_data_outward:
+                
+                    for a in final_data_outward:
+
+                        outward_total = outward_total + a.bags
+
+                
+                
+                #appending data
+                
+
+                if final_data_inward != None and final_data_outward != None :
+                    print('here1')
+
+                    data2.append(final_data_inward.first())
+                    data2.append(inward_total)
+                    data2.append(outward_total)
+
+                elif final_data_inward != None and final_data_outward == None :
+                    print('here2')
+                    
+                    data2.append(final_data_inward.first())
+                    data2.append(inward_total)
+
+                elif final_data_inward == None and final_data_outward != None :
+
+                    print('here3')
+
+                    data2.append(final_data_inward.first())
+                    data2.append(outward_total)
+                    
+                #stock total
+                stock_data = stock.objects.filter(company = i, company_goods = j, goods_company = z).first()
+
+                if stock_data:
+
+                    stock_data = stock_data.total_bag
+
+                    data2.append(stock_data)
+
+                    data1.append(data2)
+
+
+                
+
+                
+
+                data2 = [] 
+                
+                
+    
+    time =  str(datetime.now(ist))
+    time = time.split('.')
+    time = time[0].replace(':', '-')
+
+    name = "Daily_Report " + time + ".csv"
+    
+    with open(name,  'w', newline="") as f:
+        writer = csv.writer(f)
+        writer.writerows(data1)
+
+    outward_filter_data = outward_filter()
+
+    link = os.path.join(BASE_DIR) + '\\' + name
+
+
+
+    context = {
+        'data': data1,
+        'filter_outward' : outward_filter_data,
+        'link' : link
+
+    }
+    
+    return render(request, 'report/daily_report.html', context)
+
+
 
 
 def download(request):
@@ -984,3 +1049,9 @@ def download(request):
 
         else:
             print('wrong')
+
+
+
+def delete_download(request):
+
+    return render(request, 'delete/dashbaord.html')

@@ -41,7 +41,7 @@
 <p>
     
     <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-      Outward Report
+      Stock Report
     </button>
   </p>
   <div class="collapse" id="collapseExample">
@@ -65,6 +65,15 @@
   </div>
   
 
+  <form method="post" action="{% url 'download' %}">
+
+    {% csrf_token %}
+
+    <input type="hidden" value="{{ link }}" name="link">
+    <button class="btn btn-primary" type="submit">
+        Download Report
+    </button> 
+</form>
 
 <div class="row">
     <div class="col-xl-12">
@@ -81,8 +90,7 @@
                                 <th>Company Name</th>
                                 <th>Crop</th>
                                 <th>Variety</th>
-                                <th>Inward</th>
-                                <th>outward</th>
+                               
                                 <th>Stock</th>
                                 
                             </tr>
@@ -92,12 +100,11 @@
                             {% for i in data %}
                             <tr>
                                 <td class="serial">{{ forloop.counter }}</td>
-                                <td>{{ i.0.company }}</td>
-                                <td>{{ i.0.company_goods }}</td>
-                                <td>{{ i.0.goods_company }}</td>
+                                <td>{{ i.0 }}</td>
                                 <td>{{ i.1 }}</td>
                                 <td>{{ i.2 }}</td>
                                 <td>{{ i.3 }}</td>
+                                
                                 
                                
                                
