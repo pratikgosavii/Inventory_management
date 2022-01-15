@@ -846,10 +846,10 @@ def generate_report_main(request):
                         
                     #appending data
 
-                    if outward_total != 0:
+                    if data_inward_fil:
 
                       
-                        s = final_data_outward.first()
+                        s = data_inward_fil.first()
                         data2.append(s.agent.name)
                         data2.append(s.agent.district)
                         data2.append(s.agent.taluka)
@@ -864,8 +864,22 @@ def generate_report_main(request):
 
                         data1.append(data2)
 
-                        final_data_outward = None
-                        
+                    elif data_outward_fil:
+
+                        s = data_outward_fil.first()
+                        data2.append(s.agent.name)
+                        data2.append(s.agent.district)
+                        data2.append(s.agent.taluka)
+
+                        data2.append(s.company.company_name)
+                        data2.append(s.company_goods)
+                        data2.append(s.goods_company)
+
+                        data2.append(outward_total)
+                        data2.append(total_return_data)
+                        data2.append(net_sale)
+
+                        data1.append(data2)
 
                     
 
@@ -974,23 +988,20 @@ def generate_report_daily(request):
                         data2.append(inward_total)
                         data2.append(outward_total)
 
-                    elif final_data_inward != None and final_data_outward == None :
-                        print('here2')
-                        
-                        data2.append(final_data_inward.first())
+
+                    elif final_data_outward:
+
+                        s = final_data_outward.first()
+                        data2.append(s.company)
+                        data2.append(s.company_goods)
+                        data2.append(s.goods_company)
                         data2.append(inward_total)
-
-                    elif final_data_inward == None and final_data_outward != None :
-
-                        print('here3')
-
-                        data2.append(final_data_outward.first())
                         data2.append(outward_total)
                         
                     #stock total
                     stock_data = stock.objects.filter(company = i, company_goods = j, goods_company = z).first()
 
-                    if final_data_outward:
+                    if final_data_outward or final_data_outward:
 
 
                         if stock_data:
