@@ -7,6 +7,7 @@ from store.views import numOfDays
 from transactions.filters import inward_filter, outward_filter, stock_filter
 from .forms import *
 from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
 from .models import *
 from datetime import date
 from django.urls import reverse
@@ -29,6 +30,7 @@ IST = pytz.timezone('Asia/Kolkata')
 
 # Create your views here.
 
+@login_required(login_url='login')
 def add_inward(request):
     
     
@@ -79,6 +81,7 @@ def add_inward(request):
         return render(request, 'transactions/add_inward.html', context)
 
 
+@login_required(login_url='login')
 def update_inward(request, inward_id ):
     
     
@@ -170,6 +173,7 @@ def update_inward(request, inward_id ):
         return render(request, 'transactions/update_inward.html', context)
 
 
+@login_required(login_url='login')
 def delete_inward(request, inward_id):
 
     try:
@@ -195,6 +199,7 @@ def delete_inward(request, inward_id):
 
 
 
+@login_required(login_url='login')
 def list_inward(request):
 
     data = inward.objects.all()
@@ -209,6 +214,7 @@ def list_inward(request):
     return render(request, 'transactions/list_inward.html', context)
 
 
+@login_required(login_url='login')
 def add_outward(request):
 
     if request.method == 'POST':
@@ -260,6 +266,7 @@ def add_outward(request):
         return render(request, 'transactions/add_outward.html', context)
 
 
+@login_required(login_url='login')
 def report_dashbord(request):
 
     inward_filter_data = inward_filter()
@@ -275,6 +282,7 @@ def report_dashbord(request):
     return render(request, 'transactions/report_dashbord.html', context)
 
 
+@login_required(login_url='login')
 def list_outward(request):
 
     data = outward.objects.all()
@@ -290,6 +298,7 @@ def list_outward(request):
     
     return render(request, 'transactions/list_outward.html', context)
 
+@login_required(login_url='login')
 def update_outward(request, outward_id):
     
     
@@ -382,6 +391,7 @@ def update_outward(request, outward_id):
         return render(request, 'transactions/update_outward.html', context)
 
 
+@login_required(login_url='login')
 def delete_outward(request, outward_id):
 
     try:
@@ -404,6 +414,7 @@ def delete_outward(request, outward_id):
 
 
 
+@login_required(login_url='login')
 def list_stock(request):
 
     data = stock.objects.all()
@@ -422,6 +433,7 @@ def list_stock(request):
     return render(request, 'transactions/list_stock.html', context)
 
 
+@login_required(login_url='login')
 def add_return(request):
 
     
@@ -477,6 +489,7 @@ def add_return(request):
 
 
 
+@login_required(login_url='login')
 def list_return(request):
 
     data = supply_return.objects.all()
@@ -493,6 +506,7 @@ def list_return(request):
     return render(request, 'transactions/list_return.html', context)
 
 
+@login_required(login_url='login')
 def update_return(request, return_id):
 
     if request.method == 'POST':
@@ -583,6 +597,7 @@ def update_return(request, return_id):
         return render(request, 'transactions/update_return.html', context)
 
 
+@login_required(login_url='login')
 def delete_return(request, return_id):
 
     con = supply_return.objects.get(id = return_id).delete()
@@ -594,6 +609,7 @@ def delete_return(request, return_id):
         print('something went wrong')
 
 
+@login_required(login_url='login')
 def report_inward(request):
 
     data = inward.objects.all()
@@ -662,6 +678,7 @@ def report_inward(request):
 
     
 
+@login_required(login_url='login')
 def report_outward(request):
     
     data = outward.objects.all()
@@ -727,6 +744,7 @@ def report_outward(request):
     return render(request, 'report/outward_report.html', context)
 
 
+@login_required(login_url='login')
 def generate_report_stock(request):
 
     print('i am here')
@@ -792,6 +810,7 @@ def generate_report_stock(request):
 
 
 
+@login_required(login_url='login')
 def generate_report_main(request):
 
 
@@ -915,6 +934,7 @@ def generate_report_main(request):
     return render(request, 'report/main_report.html', context)
 
 
+@login_required(login_url='login')
 def generate_report_daily(request):
 
     print(date.today())
@@ -1045,6 +1065,7 @@ def generate_report_daily(request):
 
 
 
+@login_required(login_url='login')
 def download(request):
     # fill these variables with real values
      
@@ -1071,6 +1092,7 @@ def download(request):
 
 
 
+@login_required(login_url='login')
 def delete_download(request):
 
     return render(request, 'delete/dashbaord.html')

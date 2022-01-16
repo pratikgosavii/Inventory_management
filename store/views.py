@@ -20,7 +20,7 @@ ist = pytz.timezone('Asia/Kolkata')
 
 
 
-
+@login_required(login_url='login')
 def numOfDays(date1):
 
     dt1 = date1.split('T')
@@ -44,6 +44,7 @@ def numOfDays(date1):
     return date1
 
 
+@login_required(login_url='login')
 def get_company_goods_ajax(request):
 
     data = []
@@ -61,6 +62,7 @@ def get_company_goods_ajax(request):
         return JsonResponse(list(dropdown1.values('id', 'name')), safe = False) 
 
 
+@login_required(login_url='login')
 def get_goods_company_ajax(request):
 
     data = []
@@ -82,6 +84,7 @@ def get_goods_company_ajax(request):
         return JsonResponse(list(dropdown1.values('id', 'goods_company_name')), safe = False) 
 
 
+@login_required(login_url='login')
 def get_agent_company_ajax(request):
 
     data = []
@@ -101,6 +104,7 @@ def get_agent_company_ajax(request):
             return JsonResponse(data)
         return JsonResponse(list(agent_data.values('id', 'name')), safe = False) 
 
+@login_required(login_url='login')
 def add_company(request):
 
     if request.method == 'POST':
@@ -126,6 +130,7 @@ def add_company(request):
 
         
 
+@login_required(login_url='login')
 def update_company(request, company_id):
 
     if request.method == 'POST':
@@ -152,6 +157,7 @@ def update_company(request, company_id):
 
         
 
+@login_required(login_url='login')
 def delete_company(request, company_id):
 
     company.objects.get(id=company_id).delete()
@@ -161,6 +167,7 @@ def delete_company(request, company_id):
 
         
 
+@login_required(login_url='login')
 def list_company(request):
 
     data = company.objects.all()
@@ -173,6 +180,7 @@ def list_company(request):
 
 
 
+@login_required(login_url='login')
 def add_company_goods(request):
     
     if request.method == 'POST':
@@ -195,6 +203,7 @@ def add_company_goods(request):
         }
 
         return render(request, 'store/add_company_goods.html', context)
+
 
 def update_company_goods(request, company_goods_id):
 
@@ -221,6 +230,7 @@ def update_company_goods(request, company_goods_id):
         return render(request, 'store/add_company_goods.html', context)
 
 
+@login_required(login_url='login')
 def delete_company_goods(request, company_goods_id):
     
     company_goods.objects.get(id=company_goods_id).delete()
@@ -228,6 +238,7 @@ def delete_company_goods(request, company_goods_id):
     return HttpResponseRedirect(reverse('list_company_goods'))
 
 
+@login_required(login_url='login')
 def list_company_goods(request):
     
     data = company_goods.objects.all().order_by('company__company_name')
@@ -241,6 +252,7 @@ def list_company_goods(request):
 
 
 
+@login_required(login_url='login')
 def add_goods_company(request):
     
     if request.method == 'POST':
@@ -267,6 +279,7 @@ def add_goods_company(request):
 
         return render(request, 'store/add_goods_company.html', context)
 
+@login_required(login_url='login')
 def update_goods_company(request, company_goods_id):
 
     if request.method == 'POST':
@@ -292,6 +305,7 @@ def update_goods_company(request, company_goods_id):
         return render(request, 'store/add_goods_company.html', context)
 
 
+@login_required(login_url='login')
 def delete_goods_company(request, company_goods_id):
     
     goods_company.objects.get(id=company_goods_id).delete()
@@ -299,6 +313,7 @@ def delete_goods_company(request, company_goods_id):
     return HttpResponseRedirect(reverse('list_goods_company'))
 
 
+@login_required(login_url='login')
 def list_goods_company(request):
     
     data = goods_company.objects.all().order_by('company_name__company_name')
@@ -313,6 +328,7 @@ def list_goods_company(request):
 
 
 
+@login_required(login_url='login')
 def add_agent(request):
     
     if request.method == 'POST':
@@ -347,6 +363,7 @@ def add_agent(request):
         return render(request, 'store/add_agent.html', context)
 
 
+@login_required(login_url='login')
 def update_agent(request, agent_id):
 
     if request.method == 'POST':
@@ -372,6 +389,7 @@ def update_agent(request, agent_id):
         return render(request, 'store/add_agent.html', context)
 
 
+@login_required(login_url='login')
 def delete_agent(request, agent_id):
     
     agent.objects.get(id=agent_id).delete()
@@ -379,6 +397,7 @@ def delete_agent(request, agent_id):
     return HttpResponseRedirect(reverse('list_agent'))
 
 
+@login_required(login_url='login')
 def list_agent(request):
     
     data = agent.objects.all()
@@ -396,6 +415,7 @@ def list_agent(request):
 
      
 
+@login_required(login_url='login')
 def list_company_delete(request):
 
     data = company.objects.all()
@@ -407,6 +427,7 @@ def list_company_delete(request):
     return render(request, 'delete/list_company_delete.html', context)
 
 
+@login_required(login_url='login')
 def list_company_delete(request):
 
     data = company.objects.all()
@@ -419,6 +440,7 @@ def list_company_delete(request):
 
 
 
+@login_required(login_url='login')
 def list_company_goods_delete(request):
     
     data = company_goods.objects.all().order_by('company__company_name')
@@ -432,6 +454,7 @@ def list_company_goods_delete(request):
 
 
 
+@login_required(login_url='login')
 def list_goods_company_delete(request):
     
     data = goods_company.objects.all().order_by('company_name__company_name')
@@ -446,6 +469,7 @@ def list_goods_company_delete(request):
 
 
 
+@login_required(login_url='login')
 def list_agent_delete(request):
     
     data = agent.objects.all()
