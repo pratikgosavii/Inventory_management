@@ -121,8 +121,8 @@ class stock_filter(django_filters.FilterSet):
    
 
     class Meta:
-        model = outward
+        model = stock
         fields = '__all__'
-        exclude = ['total_bags']
+        exclude = ['total_bag']
        
 

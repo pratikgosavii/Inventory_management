@@ -161,7 +161,7 @@ def delete_company(request, company_id):
 
     company.objects.get(id=company_id).delete()
 
-    return HttpResponseRedirect(reverse('list_company'))
+    return HttpResponseRedirect(reverse('list_company_delete'))
 
 
         
@@ -234,7 +234,7 @@ def delete_company_goods(request, company_goods_id):
     
     company_goods.objects.get(id=company_goods_id).delete()
 
-    return HttpResponseRedirect(reverse('list_company_goods'))
+    return HttpResponseRedirect(reverse('list_company_goods_delete'))
 
 
 @login_required(login_url='login')
@@ -309,7 +309,7 @@ def delete_goods_company(request, company_goods_id):
     
     goods_company.objects.get(id=company_goods_id).delete()
 
-    return HttpResponseRedirect(reverse('list_goods_company'))
+    return HttpResponseRedirect(reverse('list_goods_company_delete'))
 
 
 @login_required(login_url='login')
@@ -393,7 +393,7 @@ def delete_agent(request, agent_id):
     
     agent.objects.get(id=agent_id).delete()
 
-    return HttpResponseRedirect(reverse('list_agent'))
+    return HttpResponseRedirect(reverse('list_agent_delete'))
 
 
 @login_required(login_url='login')

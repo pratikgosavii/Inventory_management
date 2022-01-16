@@ -1,4 +1,6 @@
+from email import message
 from genericpath import samefile
+from django.contrib import messages
 from django.http.response import HttpResponseRedirect
 from django.shortcuts import render
 from django.http import HttpResponse
@@ -186,12 +188,12 @@ def delete_inward(request, inward_id):
 
     except:
         print('something went wrong')
-        return HttpResponseRedirect(reverse('list_inward'))
+        return HttpResponseRedirect(reverse('list_inward_delete'))
 
 
 
     if con:
-        return HttpResponseRedirect(reverse('list_inward'))
+        return HttpResponseRedirect(reverse('list_inward_delete'))
 
     else:
         print('something went wrong')
@@ -232,7 +234,7 @@ def add_outward(request):
 
 
         if forms.is_valid():
-            forms.save()
+            
 
             a = forms.cleaned_data['company']
             b = forms.cleaned_data['company_goods']
@@ -242,14 +244,23 @@ def add_outward(request):
             try:
                 test = stock.objects.get(company = a, company_goods = b, goods_company = c)
                 
-                test.total_bag = test.total_bag - e
-                test.save()
+                if test.total_bag > e:
 
-                return redirect('list_outward')
+                    test.total_bag = test.total_bag - e
+                    test.save()
+                    forms.save()
+
+                    return redirect('list_outward')
+
+                else:
+                    messages.error(request, "Outward is more than Stock")
+                    print('Outward is more than Stock')
+                    return redirect('list_outward')
+                
             
             except stock.DoesNotExist:
 
-                print('no stock in inventory')
+                messages.error(request, 'no stock in inventory for outward')
                 return redirect('list_outward')
 
                 
@@ -404,10 +415,10 @@ def delete_outward(request, outward_id):
 
     except:
         print('something went wrong')
-        return HttpResponseRedirect(reverse('list_inward'))
+        return HttpResponseRedirect(reverse('list_outward_delete'))
 
     if con:
-        return HttpResponseRedirect(reverse('list_outward'))
+        return HttpResponseRedirect(reverse('list_outward_delete'))
 
     else:
         print('something went wrong')
@@ -418,16 +429,14 @@ def delete_outward(request, outward_id):
 def list_stock(request):
 
     data = stock.objects.all()
-    company_data = company.objects.all()
 
-    inward_filter_data = inward_filter()
+    stock_filter_data = stock_filter()
 
 
 
     context = {
         'data': data,
-        'company' : company_data,
-        'filter_inward' : inward_filter_data
+        'stock_filter' : stock_filter_data
     }
 
     return render(request, 'transactions/list_stock.html', context)
@@ -603,7 +612,7 @@ def delete_return(request, return_id):
     con = supply_return.objects.get(id = return_id).delete()
 
     if con:
-        return HttpResponseRedirect(reverse('list_return'))
+        return HttpResponseRedirect(reverse('list_return_delete'))
 
     else:
         print('something went wrong')
@@ -800,7 +809,7 @@ def generate_report_stock(request):
 
     context = {
         'data': data2,
-        'filter_stock' : stock_filter_data,
+        'stock_filter' : stock_filter_data,
         'link' : link
 
     }
@@ -939,8 +948,9 @@ def generate_report_daily(request):
 
     print(date.today())
 
-    data = inward.objects.filter(DC_date__range=[date.today(), date.today()])
-    data_outward = outward.objects.filter(DC_date__range=[date.today(), date.today()])
+    data = inward.objects.filter(DC_date__date=date.today())
+    data_outward = outward.objects.filter(DC_date__date=date.today())
+    print('data first')
     print(data, data_outward)
 
     if data == None and data_outward == None:
@@ -994,6 +1004,9 @@ def generate_report_daily(request):
                     
                     
                     #appending data
+
+                    print('outward_total herrew')
+                    print(outward_total)
                     
                     print('cheking if')
                     print(final_data_inward)
@@ -1011,6 +1024,8 @@ def generate_report_daily(request):
 
                     elif final_data_outward:
 
+                        print('oooo')
+
                         s = final_data_outward.first()
                         data2.append(s.company)
                         data2.append(s.company_goods)
@@ -1021,7 +1036,11 @@ def generate_report_daily(request):
                     #stock total
                     stock_data = stock.objects.filter(company = i, company_goods = j, goods_company = z).first()
 
-                    if final_data_outward or final_data_outward:
+                    print(final_data_inward, final_data_outward)
+
+                    if final_data_inward or final_data_outward:
+
+                        print(' in stock')
 
 
                         if stock_data:
@@ -1034,7 +1053,12 @@ def generate_report_daily(request):
 
 
                     data2 = [] 
+                
+                    print(' out in stock')
+
                     
+        print('data1')
+        print(data1)
                     
         
         time =  str(datetime.now(ist))
@@ -1093,6 +1117,55 @@ def download(request):
 
 
 @login_required(login_url='login')
-def delete_download(request):
+def delete_dashboard(request):
 
     return render(request, 'delete/dashbaord.html')
+
+
+# delete view
+
+   
+def list_inward_delete(request):
+
+    data = inward.objects.all()
+
+    inward_filter_data = inward_filter()
+
+    context = {
+        'data': data,
+        'filter_inward' : inward_filter_data
+    }
+    
+    return render(request, 'delete/list_inward_delete.html', context)
+
+
+def list_outward_delete(request):
+
+    data = outward.objects.all()
+
+    outward_filter_data = outward_filter()
+
+    
+
+    context = {
+        'data': data,
+        'filter_outward' : outward_filter_data
+    }
+    
+    return render(request, 'delete/list_outward_delete.html', context)
+
+def list_return_delete(request):
+
+    data = supply_return.objects.all()
+
+    # inward_filter_data = inward_filter()
+
+    print(data)
+
+    context = {
+        'data': data,
+        # 'filter_inward' : inward_filter_data
+    }
+    
+    return render(request, 'delete/list_return_delete.html', context)
+
