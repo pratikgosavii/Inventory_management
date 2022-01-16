@@ -20,7 +20,6 @@ ist = pytz.timezone('Asia/Kolkata')
 
 
 
-@login_required(login_url='login')
 def numOfDays(date1):
 
     dt1 = date1.split('T')
