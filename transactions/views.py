@@ -1107,28 +1107,20 @@ def generate_report_daily(request):
                 
                     print(' out in stock')
 
-                    
-        print('data1')
-        print(data1)
-                    
-        
+
         time =  str(datetime.now(ist))
         time = time.split('.')
         time = time[0].replace(':', '-')
 
         name = "Daily_Report " + time + ".csv"
-        
-        with open(name,  'w', newline="") as f:
+        path = os.path.join(BASE_DIR) + '\static\csv\\' + name
+        with open(path,  'w', newline="") as f:
             writer = csv.writer(f)
             writer.writerows(data1)
 
         outward_filter_data = outward_filter()
 
-        
-
-        link = os.path.join(BASE_DIR) + '/' + name
-
-
+        link = os.path.join(BASE_DIR) + '\static\csv\\' + name
 
         context = {
             'data': data1,
