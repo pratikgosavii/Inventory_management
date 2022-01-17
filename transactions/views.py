@@ -41,7 +41,12 @@ def add_inward(request):
         forms = inward_Form(request.POST)
         DC_date = request.POST.get('DC_date')
 
-        date_time = numOfDays(DC_date)
+
+        if DC_date:
+
+            date_time = numOfDays(DC_date)
+        else:
+            date_time = datetime.now(IST)
         print('-----------------------------------------------date_time')
         print(date_time.date())
         print(date.today())
@@ -72,6 +77,13 @@ def add_inward(request):
 
                 test = stock.objects.create(company = a, company_goods = b, goods_company = c, total_bag = e)
                 return redirect('list_inward')
+        else:
+            
+            form = inward_Form()
+            context = {
+                'form_error': forms.errors
+            }
+            return render(request, 'transactions/add_inward.html', context)
 
     else:
 
@@ -94,6 +106,13 @@ def update_inward(request, inward_id ):
         DC_date = request.POST.get('DC_date')
 
         date_time = numOfDays(DC_date)
+
+        if DC_date:
+
+            date_time = numOfDays(DC_date)
+        else:
+            date_time = datetime.now(IST)
+
         updated_request = request.POST.copy()
         updated_request.update({'DC_date': date_time})
         
@@ -225,6 +244,14 @@ def add_outward(request):
         DC_date = request.POST.get('DC_date')
 
         date_time = numOfDays(DC_date)
+
+        if DC_date:
+
+            date_time = numOfDays(DC_date)
+        else:
+            date_time = datetime.now(IST)
+
+
         updated_request = request.POST.copy()
         updated_request.update({'DC_date': date_time})
         forms = outward_Form(updated_request)
@@ -320,6 +347,14 @@ def update_outward(request, outward_id):
         DC_date = request.POST.get('DC_date')
 
         date_time = numOfDays(DC_date)
+
+        if DC_date:
+
+            date_time = numOfDays(DC_date)
+        else:
+            date_time = datetime.now(IST)
+
+
         updated_request = request.POST.copy()
         updated_request.update({'DC_date': date_time})
         
@@ -452,6 +487,14 @@ def add_return(request):
         DC_date = request.POST.get('DC_date')
 
         date_time = numOfDays(DC_date)
+
+        if DC_date:
+
+            date_time = numOfDays(DC_date)
+        else:
+            date_time = datetime.now(IST)
+
+
         print('-----------------------------------------------date_time')
         print(date_time.date())
         print(date.today())
@@ -525,6 +568,14 @@ def update_return(request, return_id):
         DC_date = request.POST.get('DC_date')
 
         date_time = numOfDays(DC_date)
+
+        if DC_date:
+
+            date_time = numOfDays(DC_date)
+        else:
+            date_time = datetime.now(IST)
+
+
         updated_request = request.POST.copy()
         updated_request.update({'DC_date': date_time})
         
@@ -1073,7 +1124,9 @@ def generate_report_daily(request):
 
         outward_filter_data = outward_filter()
 
-        link = os.path.join(BASE_DIR) + '\\' + name
+        
+
+        link = os.path.join(BASE_DIR) + '/' + name
 
 
 
@@ -1112,7 +1165,7 @@ def download(request):
                 
 
         else:
-            print('wrong')
+            messages.error(request, 'path does not exist')
 
 
 
