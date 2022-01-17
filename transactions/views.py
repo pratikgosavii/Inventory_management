@@ -718,13 +718,15 @@ def report_inward(request):
     time = time.split('.')
     time = time[0].replace(':', '-')
 
-    name = "Inward_Report " + time + ".csv"
-    
-    with open(name,  'w', newline="") as f:
+    name = "Daily_Report " + time + ".csv"
+    path = os.path.join(BASE_DIR) + '\static\csv\\' + name
+    with open(path,  'w', newline="") as f:
         writer = csv.writer(f)
-        writer.writerows(data2)
+        writer.writerows(data1)
 
-    link = os.path.join(BASE_DIR) + '\\' + name
+
+    link = os.path.join(BASE_DIR) + '\static\csv\\' + name
+
 
     context = {
         'data': data2,
@@ -784,13 +786,14 @@ def report_outward(request):
     time = time.split('.')
     time = time[0].replace(':', '-')
 
-    name = "Outward_Report " + time + ".csv"
-    
-    with open(name,  'w', newline="") as f:
+    name = "Daily_Report " + time + ".csv"
+    path = os.path.join(BASE_DIR) + '\static\csv\\' + name
+    with open(path,  'w', newline="") as f:
         writer = csv.writer(f)
-        writer.writerows(data2)
+        writer.writerows(data1)
 
-    link = os.path.join(BASE_DIR) + '\\' + name
+    link = os.path.join(BASE_DIR) + '\static\csv\\' + name
+
                         
 
     context = {
@@ -846,17 +849,15 @@ def generate_report_stock(request):
     time = time.split('.')
     time = time[0].replace(':', '-')
 
-    name = "Stock_Report " + time + ".csv"
-    
-    with open(name,  'w', newline="") as f:
+    name = "Daily_Report " + time + ".csv"
+    path = os.path.join(BASE_DIR) + '\static\csv\\' + name
+    with open(path,  'w', newline="") as f:
         writer = csv.writer(f)
-        writer.writerows(data2)
+        writer.writerows(data1)
+
+    link = os.path.join(BASE_DIR) + '\static\csv\\' + name
 
     stock_filter_data = stock_filter()
-
-    link = os.path.join(BASE_DIR) + '\\' + name
-
-
 
     context = {
         'data': data2,
@@ -970,16 +971,15 @@ def generate_report_main(request):
     time = time.split('.')
     time = time[0].replace(':', '-')
 
-    name = "Stock_Report " + time + ".csv"
-    
-    with open(name,  'w', newline="") as f:
+    name = "Daily_Report " + time + ".csv"
+    path = os.path.join(BASE_DIR) + '\static\csv\\' + name
+    with open(path,  'w', newline="") as f:
         writer = csv.writer(f)
         writer.writerows(data1)
 
-    
-    link = os.path.join(BASE_DIR) + '\\' + name
 
-    
+    link = os.path.join(BASE_DIR) + '\static\csv\\' + name
+
 
     outward_filter_data = outward_filter()
 
