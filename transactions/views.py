@@ -379,15 +379,15 @@ def update_outward(request, outward_id):
             print(bags_before)
             print(bags_after)
 
-            if bags_before > bags_after:
+            if bags_before < bags_after:
 
-                update_total_minus = bags_before - bags_after
+                update_total_minus = bags_after - bags_before
                 print('update_total_minus')
                 print(update_total_minus)
             
-            elif bags_after > bags_before:
+            elif bags_before > bags_after:
 
-                update_total_plus = bags_after - bags_before
+                update_total_plus = bags_before - bags_after
                 print('update_total_plus')
                 print(update_total_plus)
 
@@ -400,7 +400,7 @@ def update_outward(request, outward_id):
                 test = stock.objects.get(company = a, company_goods = b, goods_company = c)
                 print(test)
 
-                if update_total_minus != None:
+                if update_total_minus:
                 
                     test.total_bag = test.total_bag - update_total_minus
                 else:
