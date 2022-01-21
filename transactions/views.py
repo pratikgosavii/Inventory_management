@@ -34,8 +34,8 @@ IST = pytz.timezone('Asia/Kolkata')
 
 @login_required(login_url='login')
 def add_inward(request):
-    
-    
+
+
     if request.method == 'POST':
 
         forms = inward_Form(request.POST)
@@ -67,18 +67,18 @@ def add_inward(request):
 
             try:
                 test = stock.objects.get(company = a, company_goods = b, goods_company = c)
-                
+
                 test.total_bag = test.total_bag + e
                 test.save()
 
                 return redirect('list_inward')
-            
+
             except stock.DoesNotExist:
 
                 test = stock.objects.create(company = a, company_goods = b, goods_company = c, total_bag = e)
                 return redirect('list_inward')
         else:
-            
+
             form = inward_Form()
             context = {
                 'form_error': forms.errors
@@ -97,8 +97,8 @@ def add_inward(request):
 
 @login_required(login_url='login')
 def update_inward(request, inward_id ):
-    
-    
+
+
     if request.method == 'POST':
 
         instance = inward.objects.get(id = inward_id)
@@ -115,7 +115,7 @@ def update_inward(request, inward_id ):
 
         updated_request = request.POST.copy()
         updated_request.update({'DC_date': date_time})
-        
+
         forms = inward_Form(updated_request, instance = instance)
 
         bags_before = forms.instance.bags
@@ -141,7 +141,7 @@ def update_inward(request, inward_id ):
                 update_total_minus = bags_before - bags_after
                 print('update_total_minus')
                 print(update_total_minus)
-            
+
             elif bags_after > bags_before:
 
                 update_total_plus = bags_after - bags_before
@@ -149,7 +149,7 @@ def update_inward(request, inward_id ):
                 print(update_total_plus)
 
             else:
-                
+
                 return redirect('list_inward')
 
 
@@ -158,7 +158,7 @@ def update_inward(request, inward_id ):
                 print(test)
 
                 if update_total_minus != None:
-                
+
                     test.total_bag = test.total_bag - update_total_minus
                 else:
 
@@ -168,7 +168,7 @@ def update_inward(request, inward_id ):
 
 
                 return redirect('list_inward')
-            
+
             except stock.DoesNotExist:
 
                 print('no stock in inventory')
@@ -176,7 +176,7 @@ def update_inward(request, inward_id ):
 
         else:
             print(forms.errors)
-    
+
     else:
 
         instance = inward.objects.get(id = inward_id)
@@ -231,7 +231,7 @@ def list_inward(request):
         'data': data,
         'filter_inward' : inward_filter_data
     }
-    
+
     return render(request, 'transactions/list_inward.html', context)
 
 
@@ -261,7 +261,7 @@ def add_outward(request):
 
 
         if forms.is_valid():
-            
+
 
             a = forms.cleaned_data['company']
             b = forms.cleaned_data['company_goods']
@@ -270,7 +270,7 @@ def add_outward(request):
 
             try:
                 test = stock.objects.get(company = a, company_goods = b, goods_company = c)
-                
+
                 if test.total_bag > e:
 
                     test.total_bag = test.total_bag - e
@@ -283,17 +283,17 @@ def add_outward(request):
                     messages.error(request, "Outward is more than Stock")
                     print('Outward is more than Stock')
                     return redirect('list_outward')
-                
-            
+
+
             except stock.DoesNotExist:
 
                 messages.error(request, 'no stock in inventory for outward')
                 return redirect('list_outward')
 
-                
+
         else:
             print(forms.errors)
-    
+
     else:
 
         forms = outward_Form()
@@ -327,19 +327,19 @@ def list_outward(request):
 
     outward_filter_data = outward_filter()
 
-    
+
 
     context = {
         'data': data,
         'filter_outward' : outward_filter_data
     }
-    
+
     return render(request, 'transactions/list_outward.html', context)
 
 @login_required(login_url='login')
 def update_outward(request, outward_id):
-    
-    
+
+
     if request.method == 'POST':
 
         instance = outward.objects.get(id = outward_id)
@@ -357,7 +357,7 @@ def update_outward(request, outward_id):
 
         updated_request = request.POST.copy()
         updated_request.update({'DC_date': date_time})
-        
+
         forms = outward_Form(updated_request, instance = instance)
 
         print(DC_date)
@@ -384,7 +384,7 @@ def update_outward(request, outward_id):
                 update_total_minus = bags_after - bags_before
                 print('update_total_minus')
                 print(update_total_minus)
-            
+
             elif bags_before > bags_after:
 
                 update_total_plus = bags_before - bags_after
@@ -392,7 +392,7 @@ def update_outward(request, outward_id):
                 print(update_total_plus)
 
             else:
-                
+
                 return redirect('list_inward')
 
 
@@ -401,7 +401,7 @@ def update_outward(request, outward_id):
                 print(test)
 
                 if update_total_minus:
-                
+
                     test.total_bag = test.total_bag - update_total_minus
                 else:
 
@@ -411,15 +411,15 @@ def update_outward(request, outward_id):
 
 
                 return redirect('list_inward')
-            
+
             except stock.DoesNotExist:
 
                 print('no stock in inventory')
                 return redirect('list_intward')
-            
+
         else:
             print(forms.errors)
-    
+
     else:
 
         instance = outward.objects.get(id = outward_id)
@@ -480,7 +480,7 @@ def list_stock(request):
 @login_required(login_url='login')
 def add_return(request):
 
-    
+
     if request.method == 'POST':
 
         forms = supply_return_Form(request.POST)
@@ -516,12 +516,12 @@ def add_return(request):
             try:
 
                 test = stock.objects.get(company = a, company_goods = b, goods_company = c)
-                
+
                 test.total_bag = test.total_bag + e
                 test.save()
 
                 return redirect('list_return')
-                
+
             except stock.DoesNotExist:
 
                 test = stock.objects.create(company = a, company_goods = b, goods_company = c, total_bag = e)
@@ -554,7 +554,7 @@ def list_return(request):
         'data': data,
         # 'filter_inward' : inward_filter_data
     }
-    
+
     return render(request, 'transactions/list_return.html', context)
 
 
@@ -578,7 +578,7 @@ def update_return(request, return_id):
 
         updated_request = request.POST.copy()
         updated_request.update({'DC_date': date_time})
-        
+
         forms = supply_return_Form(updated_request, instance = instance)
 
         bags_before = forms.instance.bags
@@ -610,9 +610,9 @@ def update_return(request, return_id):
 
                 update_total_minus = bags_before - bags_after
 
-            
+
             else:
-                
+
                 return redirect('list_inward')
 
 
@@ -621,7 +621,7 @@ def update_return(request, return_id):
                 print(test)
 
                 if update_total_minus != None:
-                
+
                     test.total_bag = test.total_bag - update_total_minus
                 else:
 
@@ -631,7 +631,7 @@ def update_return(request, return_id):
 
 
                 return redirect('list_return')
-            
+
             except stock.DoesNotExist:
 
                 print('no stock in inventory')
@@ -639,7 +639,7 @@ def update_return(request, return_id):
 
         else:
             print(forms.errors)
-    
+
     else:
 
         instance = supply_return.objects.get(id = return_id)
@@ -686,7 +686,7 @@ def report_inward(request):
 
     data1 = []
     data2 = []
-    
+
 
     for i in company_data:
         for j in goods_data:
@@ -695,13 +695,13 @@ def report_inward(request):
                 inward_total = 0
 
                 final_data = filtered_data.filter(company = i, company_goods = j, goods_company = z)
-                
+
                 if final_data:
 
                     for a in final_data:
 
                         inward_total = inward_total + a.bags
-                    
+
                         s = final_data.first()
                         data1.append(s.company.company_name)
                         data1.append(s.company_goods)
@@ -733,16 +733,16 @@ def report_inward(request):
         'filter_inward' : inward_filter_data,
         'link' : link
 
-        
+
     }
-    
+
     return render(request, 'report/inward_report.html', context)
 
-    
+
 
 @login_required(login_url='login')
 def report_outward(request):
-    
+
     data = outward.objects.all()
 
     filterd_data = outward_filter(request.GET, data)
@@ -755,7 +755,7 @@ def report_outward(request):
 
     data1 = []
     data2 = []
-    
+
 
     for i in company_data:
         for j in goods_data:
@@ -764,13 +764,13 @@ def report_outward(request):
                 inward_total = 0
 
                 final_data = data.filter(company = i, company_goods = j, goods_company = z)
-                
+
                 if final_data:
-                
+
                     for a in final_data:
 
                         inward_total = inward_total + a.bags
-                    
+
                     s = final_data.first()
                     data1.append(s.company.company_name)
                     data1.append(s.company_goods)
@@ -794,16 +794,16 @@ def report_outward(request):
 
     link = os.path.join(BASE_DIR) + '\static\csv\\' + name
 
-                        
+
 
     context = {
         'data': data2,
         'filter_outward' : outward_filter_data,
         'link' : link
 
-        
+
     }
-    
+
     return render(request, 'report/outward_report.html', context)
 
 
@@ -816,16 +816,16 @@ def generate_report_stock(request):
 
     data_stock = stock_filter(request.GET, data)
     data_stock = data_stock.qs
-    
+
     data1 = []
     data2 = []
 
-    
 
-               
+
+
 
     if data_stock:
-       
+
         for i in data_stock:
 
             print('(i.company.company_name')
@@ -836,15 +836,15 @@ def generate_report_stock(request):
             data1.append(i.goods_company)
             data1.append(i.total_bag)
 
-    
-        
+
+
 
             data2.append(data1)
 
-            data1 = [] 
-                
-                
-    
+            data1 = []
+
+
+
     time =  str(datetime.now(ist))
     time = time.split('.')
     time = time[0].replace(':', '-')
@@ -865,7 +865,7 @@ def generate_report_stock(request):
         'link' : link
 
     }
-    
+
     return render(request, 'report/stock_report.html', context)
 
 
@@ -900,14 +900,14 @@ def generate_report_main(request):
             for z in goods_company_data:
                 for ag in agent_data:
 
-                   
+
                     #outward total
                     outward_total = 0
                     final_data_outward = data_outward_fil.filter(company = i, company_goods = j, goods_company = z,  agent = ag)
                     print(final_data_outward)
-                    
+
                     if final_data_outward:
-                    
+
                         for a in final_data_outward:
 
                             outward_total = outward_total + a.bags
@@ -923,12 +923,12 @@ def generate_report_main(request):
 
                     net_sale = outward_total - total_return_data
 
-                        
+
                     #appending data
 
                     if data_inward_fil:
 
-                      
+
                         s = data_inward_fil.first()
                         data2.append(s.agent.name)
                         data2.append(s.agent.district)
@@ -961,12 +961,12 @@ def generate_report_main(request):
 
                         data1.append(data2)
 
-                    
 
-                    data2 = [] 
-                
-                
-    
+
+                    data2 = []
+
+
+
     time =  str(datetime.now(ist))
     time = time.split('.')
     time = time[0].replace(':', '-')
@@ -990,7 +990,7 @@ def generate_report_main(request):
         'link' : link
 
     }
-    
+
     return render(request, 'report/main_report.html', context)
 
 
@@ -1008,12 +1008,12 @@ def generate_report_daily(request):
         print(' in if ')
 
         data1 = None
-    
+
         context = {
             'data': data1,
 
         }
-        
+
         return render(request, 'report/daily_report.html', context)
 
     else:
@@ -1033,32 +1033,32 @@ def generate_report_daily(request):
                     inward_total = 0
                     final_data_inward = data.filter(company = i, company_goods = j, goods_company = z)
                     print(final_data_inward)
-                    
+
                     if final_data_inward:
 
                         for a in final_data_inward:
 
                             inward_total = inward_total + a.bags
-                    
+
 
                     #outward total
                     outward_total = 0
                     final_data_outward = data_outward.filter(company = i, company_goods = j, goods_company = z)
                     print(final_data_outward)
-                    
+
                     if final_data_outward:
-                    
+
                         for a in final_data_outward:
 
                             outward_total = outward_total + a.bags
 
-                    
-                    
+
+
                     #appending data
 
                     print('outward_total herrew')
                     print(outward_total)
-                    
+
                     print('cheking if')
                     print(final_data_inward)
                     if final_data_inward:
@@ -1083,7 +1083,7 @@ def generate_report_daily(request):
                         data2.append(s.goods_company)
                         data2.append(inward_total)
                         data2.append(outward_total)
-                        
+
                     #stock total
                     stock_data = stock.objects.filter(company = i, company_goods = j, goods_company = z).first()
 
@@ -1103,8 +1103,8 @@ def generate_report_daily(request):
                             data1.append(data2)
 
 
-                    data2 = [] 
-                
+                    data2 = []
+
                     print(' out in stock')
 
 
@@ -1128,7 +1128,7 @@ def generate_report_daily(request):
             'link' : link
 
         }
-        
+
         return render(request, 'report/daily_report.html', context)
 
 
@@ -1137,15 +1137,15 @@ def generate_report_daily(request):
 @login_required(login_url='login')
 def download(request):
     # fill these variables with real values
-     
-   
+
+
     if request.method == 'POST':
 
         fl_path =  request.POST.get('link')
 
 
 
-        if os.path.exists(fl_path): 
+        if os.path.exists(fl_path):
 
             with open(fl_path, 'r' ) as fh:
                 mime_type  = mimetypes.guess_type(fl_path)
@@ -1154,7 +1154,7 @@ def download(request):
                 response = HttpResponse(fh.read(), content_type=mime_type)
                 response['Content-Disposition'] = 'attachment;filename=' + str(fl_path)
                 return response
-                
+
 
         else:
             messages.error(request, 'path does not exist')
@@ -1169,7 +1169,7 @@ def delete_dashboard(request):
 
 # delete view
 
-   
+
 def list_inward_delete(request):
 
     data = inward.objects.all()
@@ -1180,7 +1180,7 @@ def list_inward_delete(request):
         'data': data,
         'filter_inward' : inward_filter_data
     }
-    
+
     return render(request, 'delete/list_inward_delete.html', context)
 
 
@@ -1190,13 +1190,13 @@ def list_outward_delete(request):
 
     outward_filter_data = outward_filter()
 
-    
+
 
     context = {
         'data': data,
         'filter_outward' : outward_filter_data
     }
-    
+
     return render(request, 'delete/list_outward_delete.html', context)
 
 def list_return_delete(request):
@@ -1211,6 +1211,6 @@ def list_return_delete(request):
         'data': data,
         # 'filter_inward' : inward_filter_data
     }
-    
+
     return render(request, 'delete/list_return_delete.html', context)
 
