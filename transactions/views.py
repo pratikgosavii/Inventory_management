@@ -722,7 +722,7 @@ def report_inward(request):
     path = os.path.join(BASE_DIR) + '\static\csv\\' + name
     with open(path,  'w', newline="") as f:
         writer = csv.writer(f)
-        writer.writerows(data1)
+        writer.writerows(data2)
 
 
     link = os.path.join(BASE_DIR) + '\static\csv\\' + name
@@ -790,7 +790,7 @@ def report_outward(request):
     path = os.path.join(BASE_DIR) + '\static\csv\\' + name
     with open(path,  'w', newline="") as f:
         writer = csv.writer(f)
-        writer.writerows(data1)
+        writer.writerows(data2)
 
     link = os.path.join(BASE_DIR) + '\static\csv\\' + name
 
@@ -853,7 +853,7 @@ def generate_report_stock(request):
     path = os.path.join(BASE_DIR) + '\static\csv\\' + name
     with open(path,  'w', newline="") as f:
         writer = csv.writer(f)
-        writer.writerows(data1)
+        writer.writerows(data2)
 
     link = os.path.join(BASE_DIR) + '\static\csv\\' + name
 
