@@ -719,7 +719,7 @@ def report_inward(request):
     time = time[0].replace(':', '-')
 
     name = "Daily_Report " + time + ".csv"
-    path = name
+    path = os.path.join(BASE_DIR) + '\static\csv\\' + name
     with open(path,  'w', newline="") as f:
         writer = csv.writer(f)
         writer.writerows(data2)
@@ -787,7 +787,7 @@ def report_outward(request):
     time = time[0].replace(':', '-')
 
     name = "Daily_Report " + time + ".csv"
-    path = name
+    path = os.path.join(BASE_DIR) + '\static\csv\\' + name
     with open(path,  'w', newline="") as f:
         writer = csv.writer(f)
         writer.writerows(data2)
@@ -850,7 +850,7 @@ def generate_report_stock(request):
     time = time[0].replace(':', '-')
 
     name = "Daily_Report " + time + ".csv"
-    path = name
+    path = os.path.join(BASE_DIR) + '\static\csv\\' + name
     with open(path,  'w', newline="") as f:
         writer = csv.writer(f)
         writer.writerows(data2)
@@ -972,7 +972,7 @@ def generate_report_main(request):
     time = time[0].replace(':', '-')
 
     name = "Daily_Report " + time + ".csv"
-    path = name
+    path = os.path.join(BASE_DIR) + '\static\csv\\' + name
     with open(path,  'w', newline="") as f:
         writer = csv.writer(f)
         writer.writerows(data1)
@@ -1113,7 +1113,7 @@ def generate_report_daily(request):
         time = time[0].replace(':', '-')
 
         name = "Daily_Report " + time + ".csv"
-        path = name
+        path = os.path.join(BASE_DIR) + '\static\csv\\' + name
         with open(path,  'w', newline="") as f:
             writer = csv.writer(f)
             writer.writerows(data1)
