@@ -51,24 +51,28 @@
                                 {{ form.company }}
                             </div>
 
-                            <label for="inputStatus">Company Goods</label>
+
+                            <div class="form-group">
+                                <label for="name" class="control-label mb-1">Agent</label>
+                                {{ form.agent }}
+                            </div>
+
+
+                            <label for="inputStatus">Crop</label>
                             <select id="company_goods" class="form-control-sm custom-select" name="company_goods">
 
                            
 
                         </select>
 
-                        <label for="inputStatus">Goods Company</label>
+                        <label for="inputStatus">Vaiety</label>
                             <select id="goods_company" class="form-control-sm custom-select" name="goods_company">
 
                            
 
                         </select>
 
-                            <div class="form-group">
-                                <label for="name" class="control-label mb-1">Agent</label>
-                                {{ form.agent }}
-                            </div>
+                            
 
                             <div class="form-group">
                                 <label for="name" class="control-label mb-1">Total Packet</label>
