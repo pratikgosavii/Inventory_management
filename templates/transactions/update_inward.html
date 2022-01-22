@@ -146,8 +146,6 @@
     });
 
     //to select dropdown value one it get load using above code
-    $("#company_goods").val({{ comapny_goods_ID }});
-    $("#goods_company").val({{ goods_company_ID }});
     
 
     $("#company").change(function () {
@@ -193,6 +191,10 @@
         });
     });
 
+    window.onload = function(){
+        $("#company_goods").val({{ comapny_goods_ID }});
+        $("#goods_company").val({{ goods_company_ID }});
+      };
     
 </script>
 
