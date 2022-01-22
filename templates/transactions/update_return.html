@@ -122,6 +122,7 @@
                 html_data += `<option value="${data.id}" >${data.name}</option>` 
             });
             $("#company_goods").html(html_data); // replace the contents of the topic input with the data that came from the server
+            $("#company_goods").val({{ comapny_goods_ID }});
         }
     });
    
@@ -142,15 +143,10 @@
                 html_data += `<option value="${data.id}" >${data.goods_company_name}</option>` 
             });
             $("#goods_company").html(html_data); // replace the contents of the topic input with the data that came from the server
+            $("#goods_company").val({{ goods_company_ID }});
         }
     });
 
-    //to select dropdown value one it get load using above code
-    window.onload = function(){
-        $("#company_goods").val({{ comapny_goods_ID }});
-        $("#goods_company").val({{ goods_company_ID }});
-      };
-    
 
     $("#company").change(function () {
         const comapnyID = $(this).val();  // get the selected subject ID from the HTML dropdown list 
