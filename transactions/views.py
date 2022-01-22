@@ -456,13 +456,6 @@ def delete_outward(request, outward_id):
         print('something went wrong')
         return HttpResponseRedirect(reverse('list_outward_delete'))
 
-    if con:
-        return HttpResponseRedirect(reverse('list_outward_delete'))
-
-    else:
-        print('something went wrong')
-
-
 
 @login_required(login_url='login')
 def list_stock(request):
@@ -666,13 +659,18 @@ def update_return(request, return_id):
 @login_required(login_url='login')
 def delete_return(request, return_id):
 
-    con = supply_return.objects.get(id = return_id).delete()
+    try:
+        con = supply_return.objects.get(id = return_id).first()
+        test = stock.objects.get(company = con.company, company_goods = con.company_goods, goods_company = con.goods_company)
+        test.total_bag = test.total_bag - con.bags
+        test.save()
+        con.delete()
 
-    if con:
-        return HttpResponseRedirect(reverse('list_return_delete'))
-
-    else:
+    except:
         print('something went wrong')
+        return HttpResponseRedirect(reverse('list_return'))
+ 
+        
 
 
 @login_required(login_url='login')
