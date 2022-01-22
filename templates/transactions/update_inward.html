@@ -105,6 +105,11 @@
 <script>
     
    
+    window.onload = function(){
+
+
+
+
     
     // help to enter value in dropdown when page gets load
     //runonly one time
@@ -146,10 +151,7 @@
     });
 
     //to select dropdown value one it get load using above code
-    window.onload = function(){
-        $("#company_goods").val({{ comapny_goods_ID }});
-        $("#goods_company").val({{ goods_company_ID }});
-      };
+   
     
 
     $("#company").change(function () {
@@ -195,7 +197,12 @@
         });
     });
 
-    
+
+
+        $("#company_goods").val({{ comapny_goods_ID }});
+        $("#goods_company").val({{ goods_company_ID }});
+      };
+
 </script>
 
 {% endblock content %}
