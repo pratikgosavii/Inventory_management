@@ -184,12 +184,14 @@ def update_inward(request, inward_id ):
         comapnyID = forms.instance.company.id
         comapny_goods_ID = forms.instance.company_goods.id
         goods_company_ID = forms.instance.goods_company.id
+        agent_ID = forms.instance.agent.id
 
         context = {
             'form': forms,
             'comapnyID' : comapnyID,
             'comapny_goods_ID' : comapny_goods_ID,
-            'goods_company_ID' : goods_company_ID
+            'goods_company_ID' : goods_company_ID,
+            'agent_ID' : agent_ID
         }
         return render(request, 'transactions/update_inward.html', context)
 
@@ -427,12 +429,14 @@ def update_outward(request, outward_id):
         comapnyID = forms.instance.company.id
         comapny_goods_ID = forms.instance.company_goods.id
         goods_company_ID = forms.instance.goods_company.id
+        agent_ID = forms.instance.agent.id
 
         context = {
             'form': forms,
             'comapnyID' : comapnyID,
             'comapny_goods_ID' : comapny_goods_ID,
-            'goods_company_ID' : goods_company_ID
+            'goods_company_ID' : goods_company_ID,
+            'agent_ID' : agent_ID
         }
         return render(request, 'transactions/update_outward.html', context)
 
@@ -647,12 +651,14 @@ def update_return(request, return_id):
         comapnyID = forms.instance.company.id
         comapny_goods_ID = forms.instance.company_goods.id
         goods_company_ID = forms.instance.goods_company.id
+        agent_ID = forms.instance.agent.id
 
         context = {
             'form': forms,
             'comapnyID' : comapnyID,
             'comapny_goods_ID' : comapny_goods_ID,
-            'goods_company_ID' : goods_company_ID
+            'goods_company_ID' : goods_company_ID,
+            'agent_ID' : agent_ID       
         }
         return render(request, 'transactions/update_return.html', context)
 
