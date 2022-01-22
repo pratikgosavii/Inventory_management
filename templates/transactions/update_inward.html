@@ -101,11 +101,14 @@
     </div><!--/.col-->
 </div>
 
+{% endblock content %}
+
+
+{% block js %}
 
 <script>
     
    
-    window.onload = function(){
 
 
 
@@ -197,6 +200,9 @@
         });
     });
 
+    
+    window.onload = function(){
+
 
 
         $("#company_goods").val({{ comapny_goods_ID }});
@@ -204,5 +210,5 @@
       };
 
 </script>
-
-{% endblock content %}
+ 
+{% endblock js %}
