@@ -1157,13 +1157,22 @@ def download(request):
                 print(mime_type)
                 response = HttpResponse(fh.read(), content_type=mime_type)
                 response['Content-Disposition'] = 'attachment;filename=' + str(fl_path)
+                # a =  _delete_file(fl_path)
+
                 return response
+
 
 
         else:
             messages.error(request, 'path does not exist')
 
 
+def _delete_file(path):
+   """ Deletes file from filesystem. """
+   if os.path.isfile(path):
+       os.remove(path)
+
+       return 'abc'
 
 @login_required(login_url='login')
 def delete_dashboard(request):
