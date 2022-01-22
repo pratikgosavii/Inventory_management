@@ -8,3 +8,5 @@ from .models import *
 
 
 admin.site.register(inward)
+admin.site.register(outward)
+admin.site.register(stock)
