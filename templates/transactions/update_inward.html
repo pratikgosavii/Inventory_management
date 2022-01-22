@@ -130,6 +130,8 @@
                 html_data += `<option value="${data.id}" >${data.name}</option>` 
             });
             $("#company_goods").html(html_data); // replace the contents of the topic input with the data that came from the server
+            $("#company_goods").val({{ comapny_goods_ID }});
+            
         }
     });
    
@@ -173,6 +175,8 @@
                     html_data += `<option value="${data.id}" >${data.name}</option>` 
                 });
                 $("#company_goods").html(html_data); // replace the contents of the topic input with the data that came from the server
+                $("#goods_company").val({{ goods_company_ID }});
+                
             }
         });
     });
@@ -200,14 +204,10 @@
         });
     });
 
-    
-    window.onload = function(){
 
 
 
-        $("#company_goods").val({{ comapny_goods_ID }});
-        $("#goods_company").val({{ goods_company_ID }});
-      };
+
 
 </script>
  
