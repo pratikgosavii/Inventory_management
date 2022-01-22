@@ -120,8 +120,6 @@ def add_company(request):
 
         forms = company_Form()
 
-        messages.error(request, 'hsdisdhisidsi')
-
         context = {
             'form': forms
         }
