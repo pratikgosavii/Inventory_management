@@ -1,7 +1,10 @@
+from email import message
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
+from django.contrib import messages
 
-from .forms import LoginForm
+
+from .forms import *
 
 
 def login_page(request):
@@ -17,6 +20,33 @@ def login_page(request):
                 return redirect('dashboard')
     context = {'form': forms}
     return render(request, 'users/login.html', context)
+
+
+
+# def resgister_page(request):
+
+#     forms = registerForm()
+#     if request.method == 'POST':
+#         forms = registerForm(request.POST)
+#         if forms.is_valid():
+#             forms.save()
+#             username = forms.cleaned_data['username']
+#             password = forms.cleaned_data['password1']
+#             user = authenticate(username=username, password=password)
+#             if user:
+                
+#                 messages.error(request, 'user already exsist')
+#                 return redirect('dashboard')
+#             else:
+#                 return redirect('resgister')
+#         else:
+#             print(forms.errors)
+#     else:
+#         print(forms.as_p)
+
+#         context = {'form': forms}
+
+#         return render(request, 'users/resgister.html', context)
 
 
 def logout_page(request):
