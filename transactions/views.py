@@ -108,11 +108,7 @@ def update_inward(request, inward_id ):
         goods_company = request.POST.get('goods_company')
         bags = request.POST.get('bags')
 
-        print(instance.company.company_name, company)
-        print(instance.company_goods.name, company_goods)
-        print(instance.goods_company.goods_company_name, goods_company)
-
-        if instance.company.company_name != company and instance.company_goods.name != company_goods and instance.goods_company.goods_company_name != goods_company:
+        if instance.company.company_name != company or instance.company_goods.name != company_goods or instance.goods_company.goods_company_name != goods_company:
 
             print('in if')
 
@@ -380,7 +376,7 @@ def update_outward(request, outward_id):
         goods_company = request.POST.get('goods_company')
         bags = request.POST.get('bags')
 
-        if instance.company.company_name != company and instance.company_goods.name != company_goods and instance.goods_company.goods_company_name != goods_company:
+        if instance.company.company_name != company or instance.company_goods.name != company_goods or instance.goods_company.goods_company_name != goods_company:
 
             print('in if')
 
@@ -619,7 +615,7 @@ def update_return(request, return_id):
         goods_company = request.POST.get('goods_company')
         bags = request.POST.get('bags')
 
-        if instance.company.company_name != company and instance.company_goods.name != company_goods and instance.goods_company.goods_company_name != goods_company:
+        if instance.company.company_name != company or instance.company_goods.name != company_goods or instance.goods_company.goods_company_name != goods_company:
 
             test = stock.objects.get(company = company, company_goods = company_goods, goods_company = goods_company)
             test.total_bag = test.total_bag + int(bags)
@@ -1084,7 +1080,7 @@ def generate_report_daily(request):
     print('data first')
     print(data, data_outward)
 
-    if data == None and data_outward == None:
+    if data == None or data_outward == None:
         print(' in if ')
 
         data1 = None
