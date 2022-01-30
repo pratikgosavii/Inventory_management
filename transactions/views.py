@@ -974,6 +974,8 @@ def generate_report_main(request):
     data1 = []
     data2 = []
 
+    print('till here is all good')
+
     for i in company_data:
         for j in goods_data:
             for z in goods_company_data:
@@ -983,7 +985,6 @@ def generate_report_main(request):
                     #outward total
                     outward_total = 0
                     final_data_outward = data_outward_fil.filter(company = i, company_goods = j, goods_company = z,  agent = ag)
-                    print(final_data_outward)
 
                     if final_data_outward:
 
