@@ -968,7 +968,7 @@ def generate_report_main(request):
     goods_company_data = goods_company.objects.all()
     agent_data = agent.objects.all()
 
-    return_data = supply_return.objects.filter(company = i, company_goods = j, goods_company = z, agent = ag)
+    return_data = supply_return.objects.all()
 
 
     data1 = []
