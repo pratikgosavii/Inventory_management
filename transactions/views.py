@@ -994,6 +994,9 @@ def generate_report_main(request):
 
                     return_data = return_data.filter(company = i, company_goods = j, goods_company = z, agent = ag)
 
+                    print('till here is all good 2')
+
+
                     total_return_data = 0
                     if return_data:
 
@@ -1003,6 +1006,7 @@ def generate_report_main(request):
 
                     net_sale = outward_total - total_return_data
 
+                    print('till here is all good 3')
 
                     #appending data
 
@@ -1046,6 +1050,7 @@ def generate_report_main(request):
                     data2 = []
 
 
+    print('till here is all good 4')
 
     time =  str(datetime.now(ist))
     time = time.split('.')
