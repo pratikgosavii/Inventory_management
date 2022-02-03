@@ -952,18 +952,6 @@ def generate_report_stock(request):
 def generate_report_main(request):
 
 
-    # data = inward.objects.all()
-
-    # data_inward = inward_filter(request.GET, data)
-    # data_inward_fil = data_inward.qs
-
-    # data_outward = outward.objects.all()
-
-    # filterd_data = outward_filter(request.GET, data_outward)
-    # data_outward_fil = filterd_data.qs
-    # outward_filter_data = outward_filter()
-
-
     company_data = company.objects.all()
     company_goods_data = company_goods.objects.all()
     goods_company_data = goods_company.objects.all()
@@ -1024,8 +1012,11 @@ def generate_report_main(request):
 
     outward_filter_data = outward_filter()
 
+    vals_list = (vals.tolist())
+
 
     context = {
+        'data' : vals_list,
         'filter_outward' : outward_filter_data,
         'link' : link
 
