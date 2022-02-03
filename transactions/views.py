@@ -4,6 +4,7 @@ from django.contrib import messages
 from django.http.response import HttpResponseRedirect
 from django.shortcuts import render
 from django.http import HttpResponse
+import pandas as pd
 
 from store.views import numOfDays
 from transactions.filters import inward_filter, outward_filter, stock_filter
@@ -951,106 +952,61 @@ def generate_report_stock(request):
 def generate_report_main(request):
 
 
-    data = inward.objects.all()
+    # data = inward.objects.all()
 
-    data_inward = inward_filter(request.GET, data)
-    data_inward_fil = data_inward.qs
+    # data_inward = inward_filter(request.GET, data)
+    # data_inward_fil = data_inward.qs
 
-    data_outward = outward.objects.all()
+    # data_outward = outward.objects.all()
 
-    filterd_data = outward_filter(request.GET, data_outward)
-    data_outward_fil = filterd_data.qs
-    outward_filter_data = outward_filter()
+    # filterd_data = outward_filter(request.GET, data_outward)
+    # data_outward_fil = filterd_data.qs
+    # outward_filter_data = outward_filter()
 
 
     company_data = company.objects.all()
-    goods_data = company_goods.objects.all()
+    company_goods_data = company_goods.objects.all()
     goods_company_data = goods_company.objects.all()
     agent_data = agent.objects.all()
 
-    return_data = supply_return.objects.all()
+    company_data = pd.DataFrame(list(company.objects.all().values('id', 'company_name')))
+    company_data = dict(company_data.values)
 
+    company_goods_data = pd.DataFrame(list(company_goods.objects.all().values('id', 'name')))
+    company_goods_data = dict(company_goods_data.values)
 
-    data1 = []
-    data2 = []
+    goods_company_data = pd.DataFrame(list(goods_company.objects.all().values('id', 'goods_company_name')))
+    goods_company_data = dict(goods_company_data.values)
 
-    print('till here is all good')
-
-    for i in company_data:
-        for j in goods_data:
-            for z in goods_company_data:
-                for ag in agent_data:
-
-
-                    #outward total
-                    outward_total = 0
-                    final_data_outward = data_outward_fil.filter(company = i, company_goods = j, goods_company = z,  agent = ag)
-
-                    if final_data_outward:
-
-                        for a in final_data_outward:
-
-                            outward_total = outward_total + a.bags
-
-                    return_data = return_data.filter(company = i, company_goods = j, goods_company = z, agent = ag)
-
-                    print('till here is all good 2')
-
-
-                    total_return_data = 0
-                    if return_data:
-
-                        for re in return_data:
-
-                            total_return_data = total_return_data + re.bags
-
-                    net_sale = outward_total - total_return_data
-
-                    print('till here is all good 3')
-
-                    #appending data
-
-                    if data_inward_fil:
-
-
-                        s = data_inward_fil.first()
-                        data2.append(s.agent.name)
-                        data2.append(s.agent.district)
-                        data2.append(s.agent.taluka)
-
-                        data2.append(s.company.company_name)
-                        data2.append(s.company_goods)
-                        data2.append(s.goods_company)
-
-                        data2.append(outward_total)
-                        data2.append(total_return_data)
-                        data2.append(net_sale)
-
-                        data1.append(data2)
-
-                    elif data_outward_fil:
-
-                        s = data_outward_fil.first()
-                        data2.append(s.agent.name)
-                        data2.append(s.agent.district)
-                        data2.append(s.agent.taluka)
-
-                        data2.append(s.company.company_name)
-                        data2.append(s.company_goods)
-                        data2.append(s.goods_company)
-
-                        data2.append(outward_total)
-                        data2.append(total_return_data)
-                        data2.append(net_sale)
-
-                        data1.append(data2)
+    agent_data = pd.DataFrame(list(agent.objects.all().values('id', 'name')))
+    agent_data = dict(agent_data.values)
 
 
 
-                    data2 = []
+    # return_data = supply_return.objects.all()
 
 
-    print('till here is all good 4')
+    df = pd.DataFrame(list(outward.objects.all().values()))
+
+    sum__ = df.groupby(['company_id', 'company_goods_id', 'goods_company_id', 'agent_id']).sum().reset_index()
+
+    df2 = pd.DataFrame(list(supply_return.objects.all().values()))
+
+    sum__2 = df2.groupby(['company_id', 'company_goods_id', 'goods_company_id', 'agent_id']).sum().reset_index()
+
+    final_ou = pd.merge(sum__, sum__2, on=['company_id', 'company_goods_id', 'goods_company_id', 'agent_id'])[['company_id', 'company_goods_id', 'goods_company_id', 'agent_id', 'bags_x', 'bags_y']]
+
+    final_ou['bagsz'] = final_ou['bags_x'] -  final_ou['bags_y']
+
+
+
+    final_ou['company_id'] = final_ou['company_id'].map(company_data)
+    final_ou['company_goods_id'] = final_ou['company_goods_id'].map(company_goods_data)
+    final_ou['goods_company_id'] = final_ou['goods_company_id'].map(goods_company_data)
+    final_ou['agent_id'] = final_ou['agent_id'].map(agent_data)
+
+    vals = final_ou.values
+    print(vals)
 
     time =  str(datetime.now(ist))
     time = time.split('.')
@@ -1060,7 +1016,7 @@ def generate_report_main(request):
     path = os.path.join(BASE_DIR) + '\static\csv\\' + name
     with open(path,  'w', newline="") as f:
         writer = csv.writer(f)
-        writer.writerows(data1)
+        writer.writerows(vals)
 
 
     link = os.path.join(BASE_DIR) + '\static\csv\\' + name
@@ -1070,7 +1026,6 @@ def generate_report_main(request):
 
 
     context = {
-        'data': data1,
         'filter_outward' : outward_filter_data,
         'link' : link
 
