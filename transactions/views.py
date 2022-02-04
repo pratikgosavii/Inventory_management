@@ -964,7 +964,10 @@ def generate_report_main(request):
 
     agent_data = pd.DataFrame(list(agent.objects.all().values('id', 'name')))
     agent_data = dict(agent_data.values)
+    
+    agent_data2 = pd.DataFrame(list(agent.objects.all().values('id', 'name', 'district', 'taluka')))
 
+    print(agent_data2)
 
 
     # return_data = supply_return.objects.all()
@@ -980,17 +983,21 @@ def generate_report_main(request):
 
     final_ou = pd.merge(sum__, sum__2, on=['company_id', 'company_goods_id', 'goods_company_id', 'agent_id'])[['company_id', 'company_goods_id', 'goods_company_id', 'agent_id', 'bags_x', 'bags_y']]
 
-    final_ou['bagsz'] = final_ou['bags_x'] -  final_ou['bags_y']
+    final_ou['bagsz'] = final_ou['bags_x'] - final_ou['bags_y']
 
-
+    
 
     final_ou['company_id'] = final_ou['company_id'].map(company_data)
     final_ou['company_goods_id'] = final_ou['company_goods_id'].map(company_goods_data)
     final_ou['goods_company_id'] = final_ou['goods_company_id'].map(goods_company_data)
     final_ou['agent_id'] = final_ou['agent_id'].map(agent_data)
 
-    vals = final_ou.values
-    print(vals)
+    print(final_ou)
+    # here
+    out = (final_ou.merge(agent_data2, left_on='agent_id', right_on='name').reindex(columns=['agent_id', 'district', 'taluka','company_id', 'company_goods_id', 'goods_company_id', 'bags_x', 'bags_y', 'bagsz']))
+
+    print(out)
+    vals = out.values
 
     time =  str(datetime.now(ist))
     time = time.split('.')
