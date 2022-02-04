@@ -16,11 +16,13 @@ class inward_filter(django_filters.FilterSet):
             })
     )
 
-    company_goods = django_filters.ChoiceFilter( 
+    company_goods = django_filters.ModelChoiceFilter( 
+        queryset=company_goods.objects.all(),
                 
         widget=forms.Select(attrs={'class': 'form-control', 'id' : 'company_goods'}))
 
-    goods_company = django_filters.ChoiceFilter( 
+    goods_company = django_filters.ModelChoiceFilter( 
+        queryset=goods_company.objects.all(),
         widget=forms.Select(attrs={'class': 'form-control', 'id' : 'goods_company'}))
 
     agent = django_filters.ModelChoiceFilter(
@@ -63,11 +65,12 @@ class outward_filter(django_filters.FilterSet):
             })
     )
 
-    company_goods = django_filters.ChoiceFilter( 
-                
+    company_goods = django_filters.ModelChoiceFilter( 
+        queryset=company_goods.objects.all(),
         widget=forms.Select(attrs={'class': 'form-control', 'id' : 'company_goods'}))
 
-    goods_company = django_filters.ChoiceFilter( 
+    goods_company = django_filters.ModelChoiceFilter( 
+        queryset=goods_company.objects.all(),
         widget=forms.Select(attrs={'class': 'form-control', 'id' : 'goods_company'}))
 
     agent = django_filters.ModelChoiceFilter(
@@ -111,11 +114,12 @@ class stock_filter(django_filters.FilterSet):
             })
     )
 
-    company_goods = django_filters.ChoiceFilter( 
-                
+    company_goods = django_filters.ModelChoiceFilter( 
+        queryset=company_goods.objects.all(),
         widget=forms.Select(attrs={'class': 'form-control', 'id' : 'company_goods'}))
 
-    goods_company = django_filters.ChoiceFilter( 
+    goods_company = django_filters.ModelChoiceFilter( 
+        queryset=goods_company.objects.all(),
         widget=forms.Select(attrs={'class': 'form-control', 'id' : 'goods_company'}))
 
    

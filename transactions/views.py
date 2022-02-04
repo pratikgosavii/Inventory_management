@@ -255,8 +255,11 @@ def list_inward(request):
 
     inward_filter_data = inward_filter()
 
+    company_data = company.objects.all()
+
     context = {
         'data': data,
+        'company_data' : company_data,
         'filter_inward' : inward_filter_data
     }
 
@@ -355,11 +358,12 @@ def list_outward(request):
 
     outward_filter_data = outward_filter()
 
-
+    company_data = company.objects.all()
 
     context = {
         'data': data,
-        'filter_outward' : outward_filter_data
+        'filter_outward' : outward_filter_data,
+        'company_data' : company_data
     }
 
     return render(request, 'transactions/list_outward.html', context)
@@ -513,11 +517,12 @@ def list_stock(request):
 
     stock_filter_data = stock_filter()
 
-
+    company_data = company.objects.all()
 
     context = {
         'data': data,
-        'stock_filter' : stock_filter_data
+        'stock_filter' : stock_filter_data,
+        'company_data': company_data
     }
 
     return render(request, 'transactions/list_stock.html', context)
@@ -596,8 +601,11 @@ def list_return(request):
 
     print(data)
 
+    company_data = company.objects.all()
+
     context = {
         'data': data,
+        'company_data': company_data
         # 'filter_inward' : inward_filter_data
     }
 
@@ -752,7 +760,9 @@ def report_inward(request):
     data = inward.objects.all()
 
     filterd_data = inward_filter(request.GET, data)
+    print(filterd_data)
     filtered_data = filterd_data.qs
+    print(filtered_data)
     inward_filter_data = inward_filter()
 
 

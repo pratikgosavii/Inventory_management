@@ -68,7 +68,37 @@
 
             <div class="form-group">
 
-                {{ stock_filter.form }}
+                <div class="form-group">
+                    <div class="form-group">
+                        <label for="name" class="control-label mb-1">Company Name</label>
+                        <select name="company" class="form-control" id="company">
+                            <option value="" selected="">---------</option>
+    
+                            {% for i in company_data %}
+    
+                                <option value="{{ i.id }}" >{{ i.company_name }}</option>
+    
+                            {% endfor %}
+    
+                          </select>
+                    </div>
+
+                    <label for="inputStatus">Crop</label>
+                    <select id="company_goods" class="form-control-sm custom-select" name="company_goods">
+
+                
+
+                    </select>
+
+                    <label for="inputStatus">Variety</label>
+                        <select id="goods_company" class="form-control-sm custom-select" name="goods_company">
+
+                    
+
+                    </select>
+
+                </div>
+                    
             
             </div> <br>
             

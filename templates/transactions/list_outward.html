@@ -56,7 +56,16 @@
                 <div class="form-group">
                     <div class="form-group">
                         <label for="name" class="control-label mb-1">Company Name</label>
-                        {{ filter_outward.form.company }}
+                        <select name="company" class="form-control" id="company">
+                            <option value="" selected="">---------</option>
+    
+                            {% for i in company_data %}
+    
+                                <option value="{{ i.id }}">{{ i.company_name }}</option>
+    
+                            {% endfor %}
+    
+                        </select>
                     </div>
                     
                     <label for="inputStatus">Name of Party</label>
