@@ -775,7 +775,7 @@ def report_inward(request):
 
 
 
-    df = pd.DataFrame(list(inward.objects.all().values()))
+    df = pd.DataFrame(list(filtered_data.values()))
 
     sum__ = df.groupby(['company_id', 'company_goods_id', 'goods_company_id', 'agent_id']).sum().reset_index()
 
