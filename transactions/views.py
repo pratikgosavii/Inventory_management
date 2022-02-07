@@ -7,7 +7,7 @@ from django.http import HttpResponse
 import pandas as pd
 
 from store.views import numOfDays
-from transactions.filters import inward_filter, outward_filter, stock_filter
+from transactions.filters import inward_filter, outward_filter, stock_filter, supply_return_filter
 from .forms import *
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
@@ -597,6 +597,8 @@ def list_return(request):
 
     data = supply_return.objects.all()
 
+    supply_return_filter_data = supply_return_filter()
+
     # inward_filter_data = inward_filter()
 
     print(data)
@@ -605,8 +607,8 @@ def list_return(request):
 
     context = {
         'data': data,
-        'company_data': company_data
-        # 'filter_inward' : inward_filter_data
+        'company_data': company_data,
+        'filter_return_supply' : supply_return_filter_data
     }
 
     return render(request, 'transactions/list_return.html', context)
@@ -781,7 +783,7 @@ def report_inward(request):
     # agent_data = pd.DataFrame(list(agent.objects.all().values('id', 'name')))
     # agent_data = dict(agent_data.values)
 
-    df = pd.DataFrame(list(outward.objects.all().values()))
+    df = pd.DataFrame(list(filtered_data.values()))
 
     sum__ = df.groupby(['company_id', 'company_goods_id', 'goods_company_id']).sum().reset_index()
 
@@ -832,7 +834,6 @@ def report_outward(request):
     data = outward.objects.all()
 
     filterd_data = outward_filter(request.GET, data)
-    data = filterd_data.qs
     outward_filter_data = outward_filter()
 
     company_data = company.objects.all()
@@ -855,7 +856,7 @@ def report_outward(request):
 
     agent_data2 = pd.DataFrame(list(agent.objects.all().values('id', 'name', 'place', 'taluka', 'district')))
 
-    df = pd.DataFrame(list(outward.objects.all().values()))
+    df = pd.DataFrame(list(filterd_data.qs.values()))
 
     sum__ = df.groupby(['company_id', 'company_goods_id', 'goods_company_id', 'agent_id']).sum().reset_index()
 
@@ -894,6 +895,74 @@ def report_outward(request):
         'filter_outward' : outward_filter_data,
         'link' : link
 
+
+    }
+
+    return render(request, 'report/outward_report.html', context)
+
+
+
+
+@login_required(login_url='login')
+def report_supply_return(request):
+
+    data = supply_return.objects.all()
+
+    filterd_data = supply_return_filter(request.GET, data)
+    data = filterd_data.qs
+
+    company_data = pd.DataFrame(list(company.objects.all().values('id', 'company_name')))
+    company_data = dict(company_data.values)
+
+    company_goods_data = pd.DataFrame(list(company_goods.objects.all().values('id', 'name')))
+    company_goods_data = dict(company_goods_data.values)
+
+    goods_company_data = pd.DataFrame(list(goods_company.objects.all().values('id', 'goods_company_name')))
+    goods_company_data = dict(goods_company_data.values)
+
+    
+    agent_data = pd.DataFrame(list(agent.objects.all().values('id', 'name')))
+    agent_data = dict(agent_data.values)
+
+    agent_data2 = pd.DataFrame(list(agent.objects.all().values('id', 'name', 'place', 'taluka', 'district')))
+
+    df = pd.DataFrame(list(filterd_data.qs.values()))
+
+    sum__ = df.groupby(['company_id', 'company_goods_id', 'goods_company_id', 'agent_id']).sum().reset_index()
+
+    print('all right')
+
+    sum__['company_id'] = sum__['company_id'].map(company_data)
+    sum__['company_goods_id'] = sum__['company_goods_id'].map(company_goods_data)
+    sum__['goods_company_id'] = sum__['goods_company_id'].map(goods_company_data)
+    sum__['agent_id'] = sum__['agent_id'].map(agent_data)
+
+    out = (sum__.merge(agent_data2, left_on='agent_id', right_on='name').reindex(columns=['agent_id', 'place', 'taluka', 'district', 'company_id', 'company_goods_id', 'goods_company_id', 'bags']))
+
+    sum__ = out
+
+    time =  str(datetime.now(ist))
+    time = time.split('.')
+    time = time[0].replace(':', '-')
+    vals = sum__.values
+
+    print(vals)
+
+
+    name = "Daily_Report " + time + ".csv"
+    path = os.path.join(BASE_DIR) + '\static\csv\\' + name
+    with open(path,  'w', newline="") as f:
+        writer = csv.writer(f)
+        writer.writerows(vals)
+
+    link = os.path.join(BASE_DIR) + '\static\csv\\' + name
+
+    vals_list = (vals.tolist())
+
+
+    context = {
+        'data': vals_list,
+        'link' : link,
 
     }
 

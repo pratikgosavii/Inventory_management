@@ -26,6 +26,7 @@ urlpatterns = [
     path('report-daily/', generate_report_daily, name='report_daily'),
     path('report-inward/', report_inward, name='report_inward'),
     path('report-outward/', report_outward, name='report_outward'),
+    path('report-supply-return/', report_supply_return, name='report_supply_return'),
     path('report-stock/', generate_report_stock, name='generate_report'),
 
     path('report-main/', generate_report_main, name='generate_report_main'),
