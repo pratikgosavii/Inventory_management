@@ -1050,9 +1050,6 @@ def generate_report_main(request):
     
     agent_data2 = pd.DataFrame(list(agent.objects.all().values('id', 'name', 'place', 'taluka', 'district')))
 
-    print(agent_data2)
-
-
     # return_data = supply_return.objects.all()
 
     outward_data = outward.objects.all()
@@ -1060,22 +1057,27 @@ def generate_report_main(request):
     outward_filterd_data = outward_filter(request.GET, outward_data)
     supply_return_filterd_data = outward_filter(request.GET, supply_return_data)
 
-    df = pd.DataFrame(list(outward_filterd_data.qs.values()))
 
-    sum__ = df.groupby(['company_id', 'company_goods_id', 'goods_company_id', 'agent_id']).sum().reset_index()
+    # outward sum
+    df2 = pd.DataFrame(list(outward_filterd_data.qs.values()))
+    sum__ = df2.groupby(['company_id', 'company_goods_id', 'goods_company_id', 'agent_id']).sum().reset_index()
 
+    print('outward ')
     print(sum__)
-    df2 = pd.DataFrame(list(supply_return_filterd_data.qs.values()))
 
-    sum__2 = df2.groupby(['company_id', 'company_goods_id', 'goods_company_id', 'agent_id']).sum().reset_index()
+    #return sum
+    df3 = pd.DataFrame(list(supply_return_filterd_data.qs.values()))
+    sum__2 = df3.groupby(['company_id', 'company_goods_id', 'goods_company_id', 'agent_id']).sum().reset_index()
 
+    print('return ')
     print(sum__2)
+
     final_ou = pd.merge(sum__, sum__2, on=['company_id', 'company_goods_id', 'goods_company_id', 'agent_id'], how="outer")[['company_id', 'company_goods_id', 'goods_company_id', 'agent_id', 'bags_x', 'bags_y']]
+    final_ou['bags_z'] = final_ou.fillna(0)['bags_x'] - final_ou.fillna(0)['bags_y']
 
-    final_ou['bags_z'] = final_ou['bags_x'] - final_ou['bags_y']
-
+    
+    print('stock ')
     print(final_ou)
-
     final_ou['company_id'] = final_ou['company_id'].map(company_data)
     final_ou['company_goods_id'] = final_ou['company_goods_id'].map(company_goods_data)
     final_ou['goods_company_id'] = final_ou['goods_company_id'].map(goods_company_data)
@@ -1084,6 +1086,8 @@ def generate_report_main(request):
     # print(final_ou)
     # here
     out = (final_ou.merge(agent_data2, left_on='agent_id', right_on='name').reindex(columns=['agent_id', 'place', 'taluka', 'district','company_id', 'company_goods_id', 'goods_company_id', 'bags_x', 'bags_y', 'bags_z']))
+
+    print(out)
 
     # print(out)
     vals = out.values
