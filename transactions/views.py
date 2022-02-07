@@ -760,16 +760,13 @@ def report_inward(request):
     data = inward.objects.all()
 
     filterd_data = inward_filter(request.GET, data)
-    print(filterd_data)
     filtered_data = filterd_data.qs
-    print(filtered_data)
     inward_filter_data = inward_filter()
 
 
     company_data = company.objects.all()
     company_goods_data = company_goods.objects.all()
     goods_company_data = goods_company.objects.all()
-    agent_data = agent.objects.all()
 
     company_data = pd.DataFrame(list(company.objects.all().values('id', 'company_name')))
     company_data = dict(company_data.values)
@@ -780,27 +777,29 @@ def report_inward(request):
     goods_company_data = pd.DataFrame(list(goods_company.objects.all().values('id', 'goods_company_name')))
     goods_company_data = dict(goods_company_data.values)
 
-    agent_data = pd.DataFrame(list(agent.objects.all().values('id', 'name')))
-    agent_data = dict(agent_data.values)
+   
+    # agent_data = pd.DataFrame(list(agent.objects.all().values('id', 'name')))
+    # agent_data = dict(agent_data.values)
 
+    df = pd.DataFrame(list(outward.objects.all().values()))
 
+    sum__ = df.groupby(['company_id', 'company_goods_id', 'goods_company_id']).sum().reset_index()
 
-    df = pd.DataFrame(list(filtered_data.values()))
-
-    sum__ = df.groupby(['company_id', 'company_goods_id', 'goods_company_id', 'agent_id']).sum().reset_index()
 
     sum__['company_id'] = sum__['company_id'].map(company_data)
     sum__['company_goods_id'] = sum__['company_goods_id'].map(company_goods_data)
     sum__['goods_company_id'] = sum__['goods_company_id'].map(goods_company_data)
-    sum__['agent_id'] = sum__['agent_id'].map(agent_data)
+    # sum__['agent_id'] = sum__['agent_id'].map(agent_data)
+
+    del sum__['agent_id']
+    del sum__['id']
 
     print(sum__)
 
-    vals = sum__.values
-    print(vals)
     time =  str(datetime.now(ist))
     time = time.split('.')
     time = time[0].replace(':', '-')
+    vals = sum__.values
 
     name = "Daily_Report " + time + ".csv"
     path = os.path.join(BASE_DIR) + '\static\csv\\' + name
@@ -812,6 +811,8 @@ def report_inward(request):
     link = os.path.join(BASE_DIR) + '\static\csv\\' + name
 
     vals_list = (vals.tolist())
+
+    print(vals_list)
 
     context = {
         'data': vals_list,
@@ -837,7 +838,7 @@ def report_outward(request):
     company_data = company.objects.all()
     company_goods_data = company_goods.objects.all()
     goods_company_data = goods_company.objects.all()
-    agent_data = agent.objects.all()
+ 
 
     company_data = pd.DataFrame(list(company.objects.all().values('id', 'company_name')))
     company_data = dict(company_data.values)
@@ -847,10 +848,11 @@ def report_outward(request):
 
     goods_company_data = pd.DataFrame(list(goods_company.objects.all().values('id', 'goods_company_name')))
     goods_company_data = dict(goods_company_data.values)
-
+    
     agent_data = pd.DataFrame(list(agent.objects.all().values('id', 'name')))
     agent_data = dict(agent_data.values)
 
+    print(agent_data)
     df = pd.DataFrame(list(outward.objects.all().values()))
 
     sum__ = df.groupby(['company_id', 'company_goods_id', 'goods_company_id', 'agent_id']).sum().reset_index()
@@ -864,8 +866,9 @@ def report_outward(request):
     time =  str(datetime.now(ist))
     time = time.split('.')
     time = time[0].replace(':', '-')
-
     vals = sum__.values
+
+    print(vals)
 
 
     name = "Daily_Report " + time + ".csv"
