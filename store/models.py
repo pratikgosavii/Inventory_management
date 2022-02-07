@@ -48,10 +48,10 @@ class agent(models.Model):
 
     company = models.ForeignKey(company , on_delete=models.CASCADE, related_name='ddfdf')
     name = models.CharField(max_length=120, unique=True)
-    address = models.CharField(max_length=120, unique=False)
+    place =  models.CharField(max_length=120, unique=False)
     taluka  = models.CharField(max_length=120, unique=False)
+    address = models.CharField(max_length=120, unique=False)
     district = models.CharField(max_length=120, unique=False)
     mobile_number =  models.IntegerField(unique=True)
-    place =  models.CharField(max_length=120, unique=False)
 
         

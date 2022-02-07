@@ -848,20 +848,27 @@ def report_outward(request):
 
     goods_company_data = pd.DataFrame(list(goods_company.objects.all().values('id', 'goods_company_name')))
     goods_company_data = dict(goods_company_data.values)
+
     
     agent_data = pd.DataFrame(list(agent.objects.all().values('id', 'name')))
     agent_data = dict(agent_data.values)
 
-    print(agent_data)
+    agent_data2 = pd.DataFrame(list(agent.objects.all().values('id', 'name', 'place', 'taluka', 'district')))
+
     df = pd.DataFrame(list(outward.objects.all().values()))
 
     sum__ = df.groupby(['company_id', 'company_goods_id', 'goods_company_id', 'agent_id']).sum().reset_index()
 
+    print('all right')
 
     sum__['company_id'] = sum__['company_id'].map(company_data)
     sum__['company_goods_id'] = sum__['company_goods_id'].map(company_goods_data)
     sum__['goods_company_id'] = sum__['goods_company_id'].map(goods_company_data)
     sum__['agent_id'] = sum__['agent_id'].map(agent_data)
+
+    out = (sum__.merge(agent_data2, left_on='agent_id', right_on='name').reindex(columns=['agent_id', 'place', 'taluka', 'district', 'company_id', 'company_goods_id', 'goods_company_id', 'bags']))
+
+    sum__ = out
 
     time =  str(datetime.now(ist))
     time = time.split('.')
@@ -960,12 +967,6 @@ def generate_report_stock(request):
 @login_required(login_url='login')
 def generate_report_main(request):
 
-
-    company_data = company.objects.all()
-    company_goods_data = company_goods.objects.all()
-    goods_company_data = goods_company.objects.all()
-    agent_data = agent.objects.all()
-
     company_data = pd.DataFrame(list(company.objects.all().values('id', 'company_name')))
     company_data = dict(company_data.values)
 
@@ -978,38 +979,44 @@ def generate_report_main(request):
     agent_data = pd.DataFrame(list(agent.objects.all().values('id', 'name')))
     agent_data = dict(agent_data.values)
     
-    agent_data2 = pd.DataFrame(list(agent.objects.all().values('id', 'name', 'district', 'taluka')))
+    agent_data2 = pd.DataFrame(list(agent.objects.all().values('id', 'name', 'place', 'taluka', 'district')))
 
     print(agent_data2)
 
 
     # return_data = supply_return.objects.all()
 
+    outward_data = outward.objects.all()
+    supply_return_data = supply_return.objects.all()
+    outward_filterd_data = outward_filter(request.GET, outward_data)
+    supply_return_filterd_data = outward_filter(request.GET, supply_return_data)
 
-    df = pd.DataFrame(list(outward.objects.all().values()))
+    df = pd.DataFrame(list(outward_filterd_data.qs.values()))
 
     sum__ = df.groupby(['company_id', 'company_goods_id', 'goods_company_id', 'agent_id']).sum().reset_index()
 
-    df2 = pd.DataFrame(list(supply_return.objects.all().values()))
+    print(sum__)
+    df2 = pd.DataFrame(list(supply_return_filterd_data.qs.values()))
 
     sum__2 = df2.groupby(['company_id', 'company_goods_id', 'goods_company_id', 'agent_id']).sum().reset_index()
 
-    final_ou = pd.merge(sum__, sum__2, on=['company_id', 'company_goods_id', 'goods_company_id', 'agent_id'])[['company_id', 'company_goods_id', 'goods_company_id', 'agent_id', 'bags_x', 'bags_y']]
+    print(sum__2)
+    final_ou = pd.merge(sum__, sum__2, on=['company_id', 'company_goods_id', 'goods_company_id', 'agent_id'], how="outer")[['company_id', 'company_goods_id', 'goods_company_id', 'agent_id', 'bags_x', 'bags_y']]
 
     final_ou['bagsz'] = final_ou['bags_x'] - final_ou['bags_y']
 
-    
+    print(final_ou)
 
     final_ou['company_id'] = final_ou['company_id'].map(company_data)
     final_ou['company_goods_id'] = final_ou['company_goods_id'].map(company_goods_data)
     final_ou['goods_company_id'] = final_ou['goods_company_id'].map(goods_company_data)
     final_ou['agent_id'] = final_ou['agent_id'].map(agent_data)
 
-    print(final_ou)
+    # print(final_ou)
     # here
-    out = (final_ou.merge(agent_data2, left_on='agent_id', right_on='name').reindex(columns=['agent_id', 'district', 'taluka','company_id', 'company_goods_id', 'goods_company_id', 'bags_x', 'bags_y', 'bagsz']))
+    out = (final_ou.merge(agent_data2, left_on='agent_id', right_on='name').reindex(columns=['agent_id', 'place', 'taluka', 'district','company_id', 'company_goods_id', 'goods_company_id', 'bags_x', 'bags_y', 'bagsz']))
 
-    print(out)
+    # print(out)
     vals = out.values
 
     time =  str(datetime.now(ist))
@@ -1030,16 +1037,18 @@ def generate_report_main(request):
 
     vals_list = (vals.tolist())
 
+    company_data = company.objects.all()
 
     context = {
         'data' : vals_list,
         'filter_outward' : outward_filter_data,
-        'link' : link
+        'link' : link,
+        'company_data' : company_data
 
     }
 
     return render(request, 'report/main_report.html', context)
-
+    
 
 @login_required(login_url='login')
 def generate_report_daily(request):
