@@ -1131,12 +1131,6 @@ def generate_report_daily(request):
     goods_company_data = pd.DataFrame(list(goods_company.objects.all().values('id', 'goods_company_name')))
     goods_company_data = dict(goods_company_data.values)
 
-    agent_data = pd.DataFrame(list(agent.objects.all().values('id', 'name')))
-    agent_data = dict(agent_data.values)
-
-    agent_data2 = pd.DataFrame(list(agent.objects.all().values('id', 'name', 'place', 'taluka', 'district')))
-
-
     inward_data = inward.objects.all()
     outward_data = outward.objects.all()
     supply_return_data = outward.objects.all()
@@ -1147,14 +1141,14 @@ def generate_report_daily(request):
 
     # inward sum
     df = pd.DataFrame(list(inward_filterd_data.qs.values()))
-    sum__ = df.groupby(['company_id', 'company_goods_id', 'goods_company_id', 'agent_id']).sum().reset_index()
+    sum__ = df.groupby(['company_id', 'company_goods_id', 'goods_company_id']).sum().reset_index()
 
     # outward sum
     df2 = pd.DataFrame(list(outward_data_filterd_data.qs.values()))
-    sum__2 = df2.groupby(['company_id', 'company_goods_id', 'goods_company_id', 'agent_id']).sum().reset_index()
+    sum__2 = df2.groupby(['company_id', 'company_goods_id', 'goods_company_id']).sum().reset_index()
 
     # subtracting inward and return 
-    final_ou = pd.merge(sum__, sum__2, on=['company_id', 'company_goods_id', 'goods_company_id', 'agent_id'], how="outer")[['company_id', 'company_goods_id', 'goods_company_id', 'agent_id', 'bags_x', 'bags_y']]
+    final_ou = pd.merge(sum__, sum__2, on=['company_id', 'company_goods_id', 'goods_company_id'], how="outer")[['company_id', 'company_goods_id', 'goods_company_id',  'bags_x', 'bags_y']]
 
     final_ou['bags_z'] = final_ou.fillna(0)['bags_x'] - final_ou.fillna(0)['bags_y']
 
@@ -1164,24 +1158,20 @@ def generate_report_daily(request):
 
     #return sum
     df3 = pd.DataFrame(list(supply_return.objects.all().values()))
-    sum__3 = df3.groupby(['company_id', 'company_goods_id', 'goods_company_id', 'agent_id']).sum().reset_index()
+    sum__3 = df3.groupby(['company_id', 'company_goods_id', 'goods_company_id']).sum().reset_index()
 
-    final_out = pd.merge(final_ou, sum__3, on=['company_id', 'company_goods_id', 'goods_company_id', 'agent_id'], how="outer")[['company_id', 'company_goods_id', 'goods_company_id', 'agent_id', 'bags_x', 'bags_y', 'bags_z', 'bags']]
+    final_out = pd.merge(final_ou, sum__3, on=['company_id', 'company_goods_id', 'goods_company_id', 'agent_id'], how="outer")[['company_id', 'company_goods_id', 'goods_company_id',  'bags_x', 'bags_y', 'bags_z', 'bags']]
     final_out['stock'] = final_out.fillna(0)['bags_z'] - final_out.fillna(0)['bags']
 
 
     final_out['company_id'] = final_out['company_id'].map(company_data)
     final_out['company_goods_id'] = final_out['company_goods_id'].map(company_goods_data)
     final_out['goods_company_id'] = final_out['goods_company_id'].map(goods_company_data)
-    final_out['agent_id'] = final_out['agent_id'].map(agent_data)
 
+   
+    print('final_out')
     print(final_out)
-
-    out = (final_out.merge(agent_data2, left_on='agent_id', right_on='name').reindex(columns=['agent_id', 'place', 'taluka', 'district','company_id', 'company_goods_id', 'goods_company_id', 'bags_x', 'bags_y', 'bags', 'stock']))
-
-    print('out')
-    print(out)
-    vals = out.values
+    vals = final_out.values
     
     time =  str(datetime.now(ist))
     time = time.split('.')
