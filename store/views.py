@@ -226,7 +226,7 @@ def update_company_goods(request, company_goods_id):
             'form': forms
         }
 
-        return render(request, 'store/add_company_goods.html', context)
+        return render(request, 'store/update_company_goods.html', context)
 
 
 @login_required(login_url='login')
