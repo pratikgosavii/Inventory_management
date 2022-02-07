@@ -1143,9 +1143,15 @@ def generate_report_daily(request):
     df = pd.DataFrame(list(inward_filterd_data.qs.values()))
     sum__ = df.groupby(['company_id', 'company_goods_id', 'goods_company_id']).sum().reset_index()
 
+    print('inward')
+    print(sum__)
+
     # outward sum
     df2 = pd.DataFrame(list(outward_data_filterd_data.qs.values()))
     sum__2 = df2.groupby(['company_id', 'company_goods_id', 'goods_company_id']).sum().reset_index()
+
+    print('outward')
+    print(sum__2)
 
     # subtracting inward and return 
     final_ou = pd.merge(sum__, sum__2, on=['company_id', 'company_goods_id', 'goods_company_id'], how="outer")[['company_id', 'company_goods_id', 'goods_company_id',  'bags_x', 'bags_y']]
@@ -1153,15 +1159,18 @@ def generate_report_daily(request):
     final_ou['bags_z'] = final_ou.fillna(0)['bags_x'] - final_ou.fillna(0)['bags_y']
 
     print('final_ou')
-
     print(final_ou)
 
     #return sum
     df3 = pd.DataFrame(list(supply_return.objects.all().values()))
     sum__3 = df3.groupby(['company_id', 'company_goods_id', 'goods_company_id']).sum().reset_index()
 
+    print('return')
+    print(sum__3)
+
+
     final_out = pd.merge(final_ou, sum__3, on=['company_id', 'company_goods_id', 'goods_company_id'], how="outer")[['company_id', 'company_goods_id', 'goods_company_id',  'bags_x', 'bags_y', 'bags_z', 'bags']]
-    final_out['stock'] = final_out.fillna(0)['bags_z'] - final_out.fillna(0)['bags']
+    final_out['stock'] = final_out.fillna(0)['bags_z'] + final_out.fillna(0)['bags']
 
 
     final_out['company_id'] = final_out['company_id'].map(company_data)
