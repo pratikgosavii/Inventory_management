@@ -51,6 +51,8 @@ def get_company_goods_ajax(request):
 
     if request.method == "POST":
         company_id = request.POST['company_id']
+        print('----here----')
+        print(company_id)
         try:
             instance = company.objects.filter(id = company_id).first()
             dropdown1 = company_goods.objects.filter(company = instance)
@@ -271,7 +273,7 @@ def add_goods_company(request):
 
         context = {
             'form': forms,
-            'data' : data
+            'data' : data,
         }
 
         return render(request, 'store/add_goods_company.html', context)
@@ -294,9 +296,15 @@ def update_goods_company(request, company_goods_id):
         instance = goods_company.objects.get(id=company_goods_id)
 
         forms = goods_company_Form(instance = instance)
+        comapny_goods_ID = forms.instance.company_goods.id
+
+        print('-----------------')
+        print(instance.company_name.id)
 
         context = {
-            'form': forms
+            'form': forms,
+            'comapnyID' : instance.company_name.id,
+            'comapny_goods_ID' : comapny_goods_ID,
         }
 
         return render(request, 'store/add_goods_company.html', context)
