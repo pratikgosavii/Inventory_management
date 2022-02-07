@@ -1072,7 +1072,7 @@ def generate_report_main(request):
     print(sum__2)
     final_ou = pd.merge(sum__, sum__2, on=['company_id', 'company_goods_id', 'goods_company_id', 'agent_id'], how="outer")[['company_id', 'company_goods_id', 'goods_company_id', 'agent_id', 'bags_x', 'bags_y']]
 
-    final_ou['bagsz'] = final_ou['bags_x'] - final_ou['bags_y']
+    final_ou['bags_z'] = final_ou['bags_x'] - final_ou['bags_y']
 
     print(final_ou)
 
@@ -1083,7 +1083,7 @@ def generate_report_main(request):
 
     # print(final_ou)
     # here
-    out = (final_ou.merge(agent_data2, left_on='agent_id', right_on='name').reindex(columns=['agent_id', 'place', 'taluka', 'district','company_id', 'company_goods_id', 'goods_company_id', 'bags_x', 'bags_y', 'bagsz']))
+    out = (final_ou.merge(agent_data2, left_on='agent_id', right_on='name').reindex(columns=['agent_id', 'place', 'taluka', 'district','company_id', 'company_goods_id', 'goods_company_id', 'bags_x', 'bags_y', 'bags_z']))
 
     # print(out)
     vals = out.values
@@ -1122,103 +1122,92 @@ def generate_report_main(request):
 @login_required(login_url='login')
 def generate_report_daily(request):
 
-    print(date.today())
+    company_data = pd.DataFrame(list(company.objects.all().values('id', 'company_name')))
+    company_data = dict(company_data.values)
 
-    data = inward.objects.filter(DC_date__date=date.today())
-    data_outward = outward.objects.filter(DC_date__date=date.today())
-    print('data first')
-    print(data, data_outward)
+    company_goods_data = pd.DataFrame(list(company_goods.objects.all().values('id', 'name')))
+    company_goods_data = dict(company_goods_data.values)
 
-    if data == None or data_outward == None:
-        print(' in if ')
+    goods_company_data = pd.DataFrame(list(goods_company.objects.all().values('id', 'goods_company_name')))
+    goods_company_data = dict(goods_company_data.values)
 
-        data1 = None
+    agent_data = pd.DataFrame(list(agent.objects.all().values('id', 'name')))
+    agent_data = dict(agent_data.values)
 
-        context = {
-            'data': data1,
-
-        }
-
-        return render(request, 'report/daily_report.html', context)
-
-    else:
-
-        company_data = company.objects.all()
-        company_goods_data = company_goods.objects.all()
-        goods_company_data = goods_company.objects.all()
-        agent_data = agent.objects.all()
-
-        company_data = pd.DataFrame(list(company.objects.all().values('id', 'company_name')))
-        company_data = dict(company_data.values)
-
-        company_goods_data = pd.DataFrame(list(company_goods.objects.all().values('id', 'name')))
-        company_goods_data = dict(company_goods_data.values)
-
-        goods_company_data = pd.DataFrame(list(goods_company.objects.all().values('id', 'goods_company_name')))
-        goods_company_data = dict(goods_company_data.values)
-
-        agent_data = pd.DataFrame(list(agent.objects.all().values('id', 'name')))
-        agent_data = dict(agent_data.values)
-
-        # inward sum
-        df = pd.DataFrame(list(inward.objects.all().values()))
-
-        sum__ = df.groupby(['company_id', 'company_goods_id', 'goods_company_id', 'agent_id']).sum().reset_index()
-
-        # outward sum
-        df2 = pd.DataFrame(list(outward.objects.all().values()))
-
-        sum__2 = df2.groupby(['company_id', 'company_goods_id', 'goods_company_id', 'agent_id']).sum().reset_index()
-
-        # adding inward and return 
-        final_ou = pd.merge(sum__, sum__2, on=['company_id', 'company_goods_id', 'goods_company_id', 'agent_id'])[['company_id', 'company_goods_id', 'goods_company_id', 'agent_id', 'bags_x', 'bags_y']]
-
-        final_ou['bagsz'] = final_ou['bags_x'] +  final_ou['bags_y']
-
-        #return sum
-        df3 = pd.DataFrame(list(supply_return.objects.all().values()))
-
-        sum__3 = df3.groupby(['company_id', 'company_goods_id', 'goods_company_id', 'agent_id']).sum().reset_index()
-
-        print(sum__3)
-
-        final_out = pd.merge(final_ou, sum__3, on=['company_id', 'company_goods_id', 'goods_company_id', 'agent_id'])[['company_id', 'company_goods_id', 'goods_company_id', 'agent_id', 'bagsz', 'bags']]
-        final_out['bags_final'] = final_out['bagsz'] - final_out['bags']
-
-        final_out['company_id'] = final_out['company_id'].map(company_data)
-        final_out['company_goods_id'] = final_out['company_goods_id'].map(company_goods_data)
-        final_out['goods_company_id'] = final_out['goods_company_id'].map(goods_company_data)
-        final_out['agent_id'] = final_out['agent_id'].map(agent_data)
-
-        print(final_out)
-
-        vals = final_out.values
-       
-        time =  str(datetime.now(ist))
-        time = time.split('.')
-        time = time[0].replace(':', '-')
-
-        name = "Daily_Report " + time + ".csv"
-        path = os.path.join(BASE_DIR) + '\static\csv\\' + name
-        with open(path,  'w', newline="") as f:
-            writer = csv.writer(f)
-            writer.writerows(vals)
-
-        outward_filter_data = outward_filter()
-
-        link = os.path.join(BASE_DIR) + '\static\csv\\' + name
-
-        vals_list = (vals.tolist())
+    agent_data2 = pd.DataFrame(list(agent.objects.all().values('id', 'name', 'place', 'taluka', 'district')))
 
 
-        context = {
-            'data': vals_list,
-            'filter_outward' : outward_filter_data,
-            'link' : link
+    inward_data = inward.objects.all()
+    outward_data = outward.objects.all()
+    supply_return_data = outward.objects.all()
+    inward_filterd_data = inward_filter(request.GET, inward_data)
+    outward_data_filterd_data = outward_filter(request.GET, outward_data)
+    supply_return_data= supply_return_filter(request.GET, supply_return_data)
 
-        }
 
-        return render(request, 'report/daily_report.html', context)
+    # inward sum
+    df = pd.DataFrame(list(inward_filterd_data.qs.values()))
+    sum__ = df.groupby(['company_id', 'company_goods_id', 'goods_company_id', 'agent_id']).sum().reset_index()
+
+    # outward sum
+    df2 = pd.DataFrame(list(outward_data_filterd_data.qs.values()))
+    sum__2 = df2.groupby(['company_id', 'company_goods_id', 'goods_company_id', 'agent_id']).sum().reset_index()
+
+    # subtracting inward and return 
+    final_ou = pd.merge(sum__, sum__2, on=['company_id', 'company_goods_id', 'goods_company_id', 'agent_id'], how="outer")[['company_id', 'company_goods_id', 'goods_company_id', 'agent_id', 'bags_x', 'bags_y']]
+
+    final_ou['bags_z'] = final_ou.fillna(0)['bags_x'] - final_ou.fillna(0)['bags_y']
+
+    print('final_ou')
+
+    print(final_ou)
+
+    #return sum
+    df3 = pd.DataFrame(list(supply_return.objects.all().values()))
+    sum__3 = df3.groupby(['company_id', 'company_goods_id', 'goods_company_id', 'agent_id']).sum().reset_index()
+
+    final_out = pd.merge(final_ou, sum__3, on=['company_id', 'company_goods_id', 'goods_company_id', 'agent_id'], how="outer")[['company_id', 'company_goods_id', 'goods_company_id', 'agent_id', 'bags_x', 'bags_y', 'bags_z', 'bags']]
+    final_out['stock'] = final_out.fillna(0)['bags_z'] - final_out.fillna(0)['bags']
+
+
+    final_out['company_id'] = final_out['company_id'].map(company_data)
+    final_out['company_goods_id'] = final_out['company_goods_id'].map(company_goods_data)
+    final_out['goods_company_id'] = final_out['goods_company_id'].map(goods_company_data)
+    final_out['agent_id'] = final_out['agent_id'].map(agent_data)
+
+    print(final_out)
+
+    out = (final_out.merge(agent_data2, left_on='agent_id', right_on='name').reindex(columns=['agent_id', 'place', 'taluka', 'district','company_id', 'company_goods_id', 'goods_company_id', 'bags_x', 'bags_y', 'bags', 'stock']))
+
+    print('out')
+    print(out)
+    vals = out.values
+    
+    time =  str(datetime.now(ist))
+    time = time.split('.')
+    time = time[0].replace(':', '-')
+
+    name = "Daily_Report " + time + ".csv"
+    path = os.path.join(BASE_DIR) + '\static\csv\\' + name
+    with open(path,  'w', newline="") as f:
+        writer = csv.writer(f)
+        writer.writerows(vals)
+
+    outward_filter_data = outward_filter()
+
+    link = os.path.join(BASE_DIR) + '\static\csv\\' + name
+
+    vals_list = (vals.tolist())
+
+
+    context = {
+        'data': vals_list,
+        'filter_outward' : outward_filter_data,
+        'link' : link
+
+    }
+
+    return render(request, 'report/daily_report.html', context)
 
 
 
