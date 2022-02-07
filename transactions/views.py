@@ -1160,7 +1160,7 @@ def generate_report_daily(request):
     df3 = pd.DataFrame(list(supply_return.objects.all().values()))
     sum__3 = df3.groupby(['company_id', 'company_goods_id', 'goods_company_id']).sum().reset_index()
 
-    final_out = pd.merge(final_ou, sum__3, on=['company_id', 'company_goods_id', 'goods_company_id', 'agent_id'], how="outer")[['company_id', 'company_goods_id', 'goods_company_id',  'bags_x', 'bags_y', 'bags_z', 'bags']]
+    final_out = pd.merge(final_ou, sum__3, on=['company_id', 'company_goods_id', 'goods_company_id'], how="outer")[['company_id', 'company_goods_id', 'goods_company_id',  'bags_x', 'bags_y', 'bags_z', 'bags']]
     final_out['stock'] = final_out.fillna(0)['bags_z'] - final_out.fillna(0)['bags']
 
 
