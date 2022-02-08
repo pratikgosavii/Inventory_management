@@ -23,6 +23,9 @@ class inward(models.Model):
     def __str__(self):
         return self.company.company_name
 
+    class Meta:
+       ordering = ['company', 'company_goods', 'goods_company', 'agent']
+
 
 class outward(models.Model):
 
@@ -34,6 +37,8 @@ class outward(models.Model):
     DC_number = models.CharField(max_length=566)
     DC_date = models.DateTimeField(auto_now_add=False)
 
+    class Meta:
+       ordering = ['company', 'company_goods', 'goods_company', 'agent']
 
 
 class supply_return(models.Model):
