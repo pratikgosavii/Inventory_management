@@ -117,9 +117,9 @@
                         <thead>
                             <tr>
                                 <th class="serial">#</th>
+                                <th>Company Name</th>
                                 <th>Party</th>
                                 <th>Place</th>
-                                <th>Company Name</th>
                                 <th>Crop</th>
                                 <th>Variety</th>
                                 <th>Total Packet</th>
@@ -132,9 +132,9 @@
                             {% for i in data %}
                             <tr>
                                 <td class="serial">{{ forloop.counter }}</td>
+                                <td>{{ i.company }}</td>
                                 <td>{{ i.agent.name }}</td>
                                 <td>{{ i.agent.place }}</td>
-                                <td>{{ i.company }}</td>
                                 <td>{{ i.company_goods }}</td>
                                 <td>{{ i.goods_company }}</td>
                                 <td>{{ i.bags }}</td>
