@@ -80,7 +80,7 @@
                             <div class="form-group">
                                 <label for="name" class="control-label mb-1">Company Goods</label>
                                 {{ form.company_goods }}
-                            </div> {% endcomment %}
+                            </div> {% endcomment %}<br><br>
 
                             <div class="form-group">
                                 <label for="name" class="control-label mb-1">Variety</label>
@@ -122,6 +122,26 @@
                 $("#company_goods").html(html_data); // replace the contents of the topic input with the data that came from the server
             }
         });
+    });
+
+    
+    $.ajax({                       // initialize an AJAX request
+        type: "POST",
+        url: '{% url "get_company_goods_ajax" %}',
+        data: {
+            'company_id': {{ comapnyID }},       // add the country id to the POST parameters
+            'csrfmiddlewaretoken':$('input[name=csrfmiddlewaretoken]').val(),
+        },
+        success: function (data) {   // `data` is from `get_topics_ajax` view function
+            let html_data = '<option selected disabled>------------</option>';
+            data.forEach(function (data) {
+        
+                html_data += `<option value="${data.id}" >${data.name}</option>` 
+            });
+            $("#company_goods").html(html_data); // replace the contents of the topic input with the data that came from the server
+            $("#company_goods").val({{ comapny_goods_ID }});
+            
+        }
     });
 
 

@@ -867,7 +867,7 @@ def report_outward(request):
     sum__['goods_company_id'] = sum__['goods_company_id'].map(goods_company_data)
     sum__['agent_id'] = sum__['agent_id'].map(agent_data)
 
-    out = (sum__.merge(agent_data2, left_on='agent_id', right_on='name').reindex(columns=['agent_id', 'place', 'taluka', 'district', 'company_id', 'company_goods_id', 'goods_company_id', 'bags']))
+    out = (sum__.merge(agent_data2, left_on='agent_id', right_on='name').reindex(columns=['company_id', 'agent_id', 'place', 'taluka', 'district', 'company_goods_id', 'goods_company_id', 'bags']))
 
     sum__ = out
 
@@ -937,7 +937,7 @@ def report_supply_return(request):
     sum__['goods_company_id'] = sum__['goods_company_id'].map(goods_company_data)
     sum__['agent_id'] = sum__['agent_id'].map(agent_data)
 
-    out = (sum__.merge(agent_data2, left_on='agent_id', right_on='name').reindex(columns=['agent_id', 'place', 'taluka', 'district', 'company_id', 'company_goods_id', 'goods_company_id', 'bags']))
+    out = (sum__.merge(agent_data2, left_on='agent_id', right_on='name').reindex(columns=['company_id', 'agent_id','place', 'taluka', 'district',   'company_goods_id', 'goods_company_id', 'bags']))
 
     sum__ = out
 
@@ -1085,7 +1085,7 @@ def generate_report_main(request):
 
     # print(final_ou)
     # here
-    out = (final_ou.merge(agent_data2, left_on='agent_id', right_on='name').reindex(columns=['agent_id', 'place', 'taluka', 'district','company_id', 'company_goods_id', 'goods_company_id', 'bags_x', 'bags_y', 'bags_z']))
+    out = (final_ou.merge(agent_data2, left_on='agent_id', right_on='name').reindex(columns=['company_id', 'agent_id', 'place', 'taluka', 'district', 'company_goods_id', 'goods_company_id', 'bags_x', 'bags_y', 'bags_z']))
 
     print(out)
 

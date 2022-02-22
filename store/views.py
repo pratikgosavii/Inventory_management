@@ -295,8 +295,10 @@ def update_goods_company(request, company_goods_id):
 
         instance = goods_company.objects.get(id=company_goods_id)
 
+        
+
         forms = goods_company_Form(instance = instance)
-        comapny_goods_ID = forms.instance.company_goods.id
+        comapny_goods_ID = instance.company_goods.id
 
         print('-----------------')
         print(instance.company_name.id)
