@@ -228,8 +228,13 @@ def update_company_goods(request, company_goods_id):
         comapnyID = instance.company.id
         comapny_goods_ID = instance.id
 
+        print(comapnyID)
+        print(comapny_goods_ID)
+
         context = {
             'form': forms,
+            'comapnyID' : comapnyID,
+            'comapny_goods_ID' : comapny_goods_ID
             
         }
 
@@ -316,7 +321,7 @@ def update_goods_company(request, company_goods_id):
             'comapny_goods_ID' : comapny_goods_ID,
         }
 
-        return render(request, 'store/add_goods_company.html', context)
+        return render(request, 'store/update_goods_company.html', context)
 
 
 @login_required(login_url='login')

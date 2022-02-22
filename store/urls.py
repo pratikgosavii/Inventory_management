@@ -20,7 +20,7 @@ urlpatterns = [
     path('list-company-goods/', list_company_goods, name='list_company_goods'),
 
     
-    path('goods-company/', add_goods_company, name='add_goods_company'),
+    path('add-goods-company/', add_goods_company, name='add_goods_company'),
     path('update-goods-company/<company_goods_id>', update_goods_company, name='update_goods_company'),
     path('delete-goods-company/<company_goods_id>', delete_goods_company, name='delete_goods_company'),
     path('list-goods-company/', list_goods_company, name='list_goods_company'),
