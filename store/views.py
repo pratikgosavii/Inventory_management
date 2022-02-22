@@ -215,6 +215,9 @@ def update_company_goods(request, company_goods_id):
         if forms.is_valid():
             forms.save()
             return redirect('list_company_goods')
+
+        else:
+            print(forms.errors)
     
     else:
 
@@ -222,8 +225,12 @@ def update_company_goods(request, company_goods_id):
 
         forms = company_goods_Form(instance = instance)
 
+        comapnyID = instance.company.id
+        comapny_goods_ID = instance.id
+
         context = {
-            'form': forms
+            'form': forms,
+            
         }
 
         return render(request, 'store/update_company_goods.html', context)

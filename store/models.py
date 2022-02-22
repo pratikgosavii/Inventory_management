@@ -24,10 +24,7 @@ class company_goods(models.Model):
 
     company = models.ForeignKey(company , on_delete=models.CASCADE, related_name='event_ticket')
     name = models.CharField(max_length=120, unique=False)
-    pck_size = models.CharField(max_length=120, unique=False)
-    bag_size = models.CharField(max_length=120, unique=False)
-
-
+    
     
     def __str__(self):
         return self.name

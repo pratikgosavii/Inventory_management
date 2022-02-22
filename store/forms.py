@@ -27,13 +27,7 @@ class company_goods_Form(forms.ModelForm):
             'name': forms.TextInput(attrs={
                 'class': 'form-control', 'id': 'name'
             }),
-            'pck_size': forms.NumberInput(attrs={
-                'class': 'form-control', 'id': 'pck_size'
-            }),
             
-            'bag_size': forms.NumberInput(attrs={
-                'class': 'form-control cal', 'id': 'bag_size'
-            }),
            
      
             
