@@ -48,6 +48,7 @@
                         <thead>
                             <tr>
                                 <th class="serial">#</th>
+                                <th>Company Name</th>
                                 <th>Name</th>
                                 <th>Actions</th>
                                 
@@ -58,6 +59,7 @@
                             {% for i in data %}
                             <tr>
                                 <td class="serial">{{ forloop.counter }}</td>
+                                <td>{{ i.company.company_name }}</td>
                                 <td>{{ i.name }}</td>
                                 <td>  
                                    <a href="{% url 'update_agent' i.id %}"> <button id="payment-button"  style="background-color: green; border: green; padding: 10px;border-radius: 12px;" type="submit" class="btn-info ">
