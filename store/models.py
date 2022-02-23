@@ -49,6 +49,6 @@ class agent(models.Model):
     taluka  = models.CharField(max_length=120, unique=False)
     address = models.CharField(max_length=120, unique=False)
     district = models.CharField(max_length=120, unique=False)
-    mobile_number =  models.IntegerField(unique=True)
+    mobile_number =  models.IntegerField(unique=False)
 
         
