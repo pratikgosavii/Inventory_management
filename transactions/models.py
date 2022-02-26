@@ -17,15 +17,13 @@ class inward(models.Model):
     goods_company = models.ForeignKey(goods_company , on_delete=models.CASCADE, related_name='xvc')
     agent = models.ForeignKey(agent , on_delete=models.CASCADE, related_name='sdv')
     bags = models.IntegerField()
-    DC_number = models.CharField(max_length=566)
+    DC_number = models.IntegerField()
     DC_date = models.DateTimeField(auto_now_add=False)
 
     def __str__(self):
         return self.company.company_name
 
-    class Meta:
-       ordering = ['company', 'company_goods', 'goods_company', 'agent']
-
+   
 
 class outward(models.Model):
 
@@ -34,11 +32,10 @@ class outward(models.Model):
     goods_company = models.ForeignKey(goods_company , on_delete=models.CASCADE, related_name='cvg')
     agent = models.ForeignKey(agent , on_delete=models.CASCADE, related_name='df')
     bags = models.IntegerField()
-    DC_number = models.CharField(max_length=566)
+    DC_number = models.IntegerField()
     DC_date = models.DateTimeField(auto_now_add=False)
 
-    class Meta:
-       ordering = ['company', 'company_goods', 'goods_company', 'agent']
+    
 
 
 class supply_return(models.Model):
