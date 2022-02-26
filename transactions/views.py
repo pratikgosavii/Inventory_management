@@ -102,7 +102,9 @@ def update_inward(request, inward_id ):
 
     if request.method == 'POST':
 
-        instance = inward.objects.get(id = inward_id)
+        instance_inward = inward.objects.get(id = inward_id)
+
+        data_inward = instance_inward
 
         company = request.POST.get('company')
         company_goods = request.POST.get('company_goods')
@@ -117,108 +119,74 @@ def update_inward(request, inward_id ):
         else:
             date_time = datetime.now(IST)
 
-        print('-----------------------------------------------date_time')
-        print(date_time)
 
         updated_request = request.POST.copy()
         updated_request.update({'DC_date': date_time})
-        forms = inward_Form(updated_request, instance=instance)
+        forms = inward_Form(updated_request, instance=instance_inward)
 
-        print(DC_date)
 
         if forms.is_valid():
-            forms.save()
 
-            if instance.company.company_name != company or instance.company_goods.name != company_goods or instance.goods_company.goods_company_name != goods_company:
+            instance_inward = inward.objects.get(id = inward_id)
 
-                print('in if')
+            if instance_inward.company.id != int(company) or instance_inward.company_goods.id != int(company_goods) or instance_inward.goods_company.id != int(goods_company):
 
                 test = stock.objects.get(company = company, company_goods = company_goods, goods_company = goods_company)
                 test.total_bag = test.total_bag + int(bags)
                 test.save()
-                stock_before = stock.objects.get(company = instance.company.id, company_goods = instance.company_goods.id, goods_company = instance.goods_company.id)
-                stock_before.total_bag = stock_before.total_bag - instance.bags
+                stock_before = stock.objects.get(company = instance_inward.company.id, company_goods = instance_inward.company_goods.id, goods_company = instance_inward.goods_company.id)
+                stock_before.total_bag = stock_before.total_bag - instance_inward.bags
                 stock_before.save()
 
-                return HttpResponseRedirect(reverse('list_inward'))
-
-
-        else:
-
-            DC_date = request.POST.get('DC_date')
-
-
-            date_time = numOfDays(DC_date)
-
-            if DC_date:
-
-                date_time = numOfDays(DC_date)
-            else:
-                date_time = datetime.now(IST)
-
-            updated_request = request.POST.copy()
-            updated_request.update({'DC_date': date_time})
-
-            forms = inward_Form(updated_request, instance = instance)
-
-            bags_before = forms.instance.bags
-
-            print(DC_date)
-
-            if forms.is_valid():
                 forms.save()
 
-                a = forms.cleaned_data['company']
-                b = forms.cleaned_data['company_goods']
-                c = forms.cleaned_data['goods_company']
-                d = forms.cleaned_data['agent']
-                bags_after = forms.cleaned_data['bags']
+                return HttpResponseRedirect(reverse('list_inward'))
+            
+            else:
 
-                update_total_minus = None
+                if instance_inward.bags != int(bags):
 
-                print(bags_before)
-                print(bags_after)
+                    test = stock.objects.get(company = company, company_goods = company_goods, goods_company = goods_company)
 
-                if bags_before > bags_after:
+                    if instance_inward.bags > int(bags):
+                        minus_stock = instance_inward.bags - int(bags)
 
-                    update_total_minus = bags_before - bags_after
-                    print('update_total_minus')
-                    print(update_total_minus)
+                    else:
+                        add_stock = int(bags) - instance_inward.bags
 
-                elif bags_after > bags_before:
+                    if minus_stock:
 
-                    update_total_plus = bags_after - bags_before
-                    print('update_total_plus')
-                    print(update_total_plus)
+                        if test.total_bag >= int(bags):
+
+                            test.total_bag = test.total_bag - minus_stock
+                            test.save()
+                            forms.save()
+                            return redirect('list_inward')
+
+                        else:
+                        
+                            messages.error(request, "Outward is more than Stock")
+                            return redirect('list_inward')
+
+                    else:
+
+                        print(data_inward.bags)
+
+                        test.total_bag = test.total_bag + add_stock
+                        test.save()
+
+                        forms.save()
+
+                        return redirect('list_inward')
 
                 else:
 
-                    return redirect('list_inward')
+                    print(data_inward.bags, bags)
 
 
-                try:
-                    test = stock.objects.get(company = a, company_goods = b, goods_company = c)
-                    print(test)
+            
 
-                    if update_total_minus != None:
-
-                        test.total_bag = test.total_bag - update_total_minus
-                    else:
-
-                        test.total_bag = test.total_bag + update_total_plus
-
-                    test.save()
-
-
-                    return redirect('list_inward')
-
-                except stock.DoesNotExist:
-
-                    print('no stock in inventory')
-                    return redirect('list_intward')
-
-            else:
-                print(forms.errors)
+        
 
     else:
 
@@ -256,14 +224,6 @@ def delete_inward(request, inward_id):
     except:
         print('something went wrong')
         return HttpResponseRedirect(reverse('list_inward_delete'))
-
-
-
-    if con:
-        return HttpResponseRedirect(reverse('list_inward_delete'))
-
-    else:
-        print('something went wrong')
 
 
 
@@ -326,6 +286,7 @@ def add_outward(request):
 
                     test.total_bag = test.total_bag - e
                     test.save()
+                    print('save')
                     forms.save()
 
                     return redirect('list_outward')
@@ -426,36 +387,31 @@ def update_outward(request, outward_id):
 
             print('3')
 
-            form = forms.save(commit=False)
-
-            
-
-          
+            instance = inward.objects.get(id = outward_id)
 
             try:
 
               
                 if instance.company.company_name != company or instance.company_goods.name != company_goods or instance.goods_company.goods_company_name != goods_company:
 
-                    print('in if')
+                    print('change')
                     instance = outward.objects.get(id = outward_id)
-                    print(instance.goods_company)
 
                     test = stock.objects.get(company = company, company_goods = company_goods, goods_company = goods_company)
-                    print('stock before')
-                    print(test)
-                    if test.total_bag >= int(bags):
 
+                    if test.total_bag >= int(bags):
+                        
+                        print('entered bags')
+                        
+                        print(test.total_bag, bags)
                         test.total_bag = test.total_bag - int(bags)
                         test.save()
 
                         stock_before = stock.objects.get(company = instance.company.id, company_goods = instance.company_goods.id, goods_company = instance.goods_company.id)
-                        print('stock after')
-                        print(stock_before)
                         
                         stock_before.total_bag = stock_before.total_bag + instance.bags
                         stock_before.save()
-                        form.save()
+                        forms.save()
 
                         return redirect('list_outward')
 
@@ -466,18 +422,42 @@ def update_outward(request, outward_id):
                     
                     
                 else:
-                    if test.total_bag >= e:
+                    if instance.total_bag != int(bags):
+                        
+                        test = stock.objects.get(company = company, company_goods = company_goods, goods_company = goods_company)
 
-                        test.total_bag = test.total_bag - e
-                        test.save()
-                        forms.save()
+                        if instance.bags > int(bags):
+                            minus_stock = instance.bags - int(bags)
+                        else:
+                            add_stock = int(bags) - instance.bags
+
+                        if minus_stock:
+
+                            if test.total_bag >= int(bags):
+
+                                test.total_bag = test.total_bag - minus_stock
+                                test.save()
+                                print('save')
+
+                                forms.save()
+                            else:
+
+                                messages.error(request, "Outward is more than Stock")
+                                print('Outward is more than Stock')
+                                return redirect('list_outward')
+
+                        
+                        else:
+
+                            test.total_bag = test.total_bag + add_stock
+                            test.save()
+                            print('save')
+
+                            forms.save()
 
                         return redirect('list_outward')
 
-                    else:
-                        messages.error(request, "Outward is more than Stock")
-                        print('Outward is more than Stock')
-                        return redirect('list_outward')
+                    
 
             except stock.DoesNotExist:
 
@@ -487,81 +467,8 @@ def update_outward(request, outward_id):
            
 
         else:
-            DC_date = request.POST.get('DC_date')
-
-            date_time = numOfDays(DC_date)
-
-            if DC_date:
-
-                date_time = numOfDays(DC_date)
-            else:
-                date_time = datetime.now(IST)
-
-
-            updated_request = request.POST.copy()
-            updated_request.update({'DC_date': date_time})
-
-            forms = outward_Form(updated_request, instance = instance)
-
-            print(DC_date)
-
-            bags_before = forms.instance.bags
-
-
-            if forms.is_valid():
-                forms.save()
-
-                a = forms.cleaned_data['company']
-                b = forms.cleaned_data['company_goods']
-                c = forms.cleaned_data['goods_company']
-                d = forms.cleaned_data['agent']
-                bags_after = forms.cleaned_data['bags']
-
-                update_total_minus = None
-
-                print(bags_before)
-                print(bags_after)
-
-                if bags_before < bags_after:
-
-                    update_total_minus = bags_after - bags_before
-                    print('update_total_minus')
-                    print(update_total_minus)
-
-                elif bags_before > bags_after:
-
-                    update_total_plus = bags_before - bags_after
-                    print('update_total_plus')
-                    print(update_total_plus)
-
-                else:
-
-                    return redirect('list_inward')
-
-
-                try:
-                    test = stock.objects.get(company = a, company_goods = b, goods_company = c)
-                    print(test)
-
-                    if update_total_minus:
-
-                        test.total_bag = test.total_bag - update_total_minus
-                    else:
-
-                        test.total_bag = test.total_bag + update_total_plus
-
-                    test.save()
-
-
-                    return redirect('list_inward')
-
-                except stock.DoesNotExist:
-
-                    print('no stock in inventory')
-                    return redirect('list_intward')
-
-            else:
-                print(forms.errors)
+           
+            print(forms.errors)
 
     else:
 
@@ -647,6 +554,8 @@ def add_return(request):
         print(DC_date)
 
         if forms.is_valid():
+            print('save')
+
             forms.save()
 
             a = forms.cleaned_data['company']
@@ -716,96 +625,83 @@ def update_return(request, return_id):
         company_goods = request.POST.get('company_goods')
         goods_company = request.POST.get('goods_company')
         bags = request.POST.get('bags')
+        
+        DC_date = request.POST.get('DC_date')
 
-        if instance.company.company_name != company or instance.company_goods.name != company_goods or instance.goods_company.goods_company_name != goods_company:
+        date_time = numOfDays(DC_date)
 
-            test = stock.objects.get(company = company, company_goods = company_goods, goods_company = goods_company)
-            test.total_bag = test.total_bag + int(bags)
-            test.save()
-            stock_before = stock.objects.get(company = instance.company.id, company_goods = instance.company_goods.id, goods_company = instance.goods_company.id)
-            stock_before.total_bag = stock_before.total_bag - instance.bags
-            stock_before.save()
+        if DC_date:
+
+            date_time = numOfDays(DC_date)
+        else:
+            date_time = datetime.now(IST)
 
 
-            return HttpResponseRedirect(reverse('list_return'))
+        updated_request = request.POST.copy()
+        updated_request.update({'DC_date': date_time})
+        forms = supply_return_Form(updated_request, instance=instance)
+
+        if forms.is_valid():
+
+            instance = supply_return.objects.get(id = return_id)
+
+
+            try:
+
+                test = stock.objects.get(company = company, company_goods = company_goods, goods_company = goods_company)
+
+                if instance.company.company_name != company or instance.company_goods.name != company_goods or instance.goods_company.goods_company_name != goods_company:
+
+                    if test.total_bag >= int(bags):
+                        test = stock.objects.get(company = company, company_goods = company_goods, goods_company = goods_company)
+                        test.total_bag = test.total_bag - int(bags)
+                        test.save()
+                        stock_before = stock.objects.get(company = instance.company.id, company_goods = instance.company_goods.id, goods_company = instance.goods_company.id)
+                        stock_before.total_bag = stock_before.total_bag + instance.bags
+                        stock_before.save()
+                else:
+
+                    if instance.total_bag != int(bags):
+                        
+                        test = stock.objects.get(company = company, company_goods = company_goods, goods_company = goods_company)
+
+                        if instance.bags > int(bags):
+                            minus_stock = instance.bags - int(bags)
+                        else:
+                            add_stock = int(bags) - instance.bags
+
+                        if minus_stock:
+
+                            if test.total_bag >= int(bags):
+
+                                test.total_bag = test.total_bag - minus_stock
+                                test.save()
+                                forms.save()
+                            else:
+                                
+                                messages.error(request, "Outward is more than Stock")
+                                print('Outward is more than Stock')
+                                return redirect('list_return')
+
+                    
+                        else:
+
+                            test.total_bag = test.total_bag + add_stock
+                            test.save()
+                            forms.save()
+
+                    return redirect('list_return')
+                return HttpResponseRedirect(reverse('list_return'))
+
+            except stock.DoesNotExist:
+
+                messages.error(request, 'no stock in inventory for outward')
+                return redirect('list_return')
 
 
         else:
 
-            DC_date = request.POST.get('DC_date')
-
-            date_time = numOfDays(DC_date)
-
-            if DC_date:
-
-                date_time = numOfDays(DC_date)
-            else:
-                date_time = datetime.now(IST)
-
-
-            updated_request = request.POST.copy()
-            updated_request.update({'DC_date': date_time})
-
-            forms = supply_return_Form(updated_request, instance = instance)
-
-            bags_before = forms.instance.bags
-
-            print(DC_date)
-
-            if forms.is_valid():
-                forms.save()
-
-                a = forms.cleaned_data['company']
-                b = forms.cleaned_data['company_goods']
-                c = forms.cleaned_data['goods_company']
-                d = forms.cleaned_data['agent']
-                bags_after = forms.cleaned_data['bags']
-
-                update_total_minus = None
-                update_total_plus = None
-
-                print(bags_before)
-                print(bags_after)
-
-
-                if bags_before < bags_after:
-
-                    update_total_plus = bags_after - bags_before
-
-
-                elif bags_before > bags_after:
-
-                    update_total_minus = bags_before - bags_after
-
-
-                else:
-
-                    return redirect('list_inward')
-
-
-                try:
-                    test = stock.objects.get(company = a, company_goods = b, goods_company = c)
-                    print(test)
-
-                    if update_total_minus != None:
-
-                        test.total_bag = test.total_bag - update_total_minus
-                    else:
-
-                        test.total_bag = test.total_bag + update_total_plus
-
-                    test.save()
-
-
-                    return redirect('list_return')
-
-                except stock.DoesNotExist:
-
-                    print('no stock in inventory')
-                    return redirect('list_return')
-
-            else:
-                print(forms.errors)
+            print(forms.errors)
 
     else:
 
