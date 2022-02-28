@@ -714,7 +714,7 @@ def update_return(request, return_id):
 
                     else:
                         forms.save()
-                        return HttpResponseRedirect(reverse('list_inward'))
+                        return HttpResponseRedirect(reverse('list_return'))
 
             except stock.DoesNotExist:
 
