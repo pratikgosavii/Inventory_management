@@ -667,7 +667,7 @@ def update_return(request, return_id):
                         stock_before.save()
                 else:
 
-                    if instance.total_bag != int(bags):
+                    if instance.bag != int(bags):
                         
                         test = stock.objects.get(company = company, company_goods = company_goods, goods_company = goods_company)
 
