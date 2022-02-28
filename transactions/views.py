@@ -665,6 +665,10 @@ def update_return(request, return_id):
                         stock_before = stock.objects.get(company = instance.company.id, company_goods = instance.company_goods.id, goods_company = instance.goods_company.id)
                         stock_before.total_bag = stock_before.total_bag + instance.bags
                         stock_before.save()
+
+                        print('--------heheye----------')
+
+                        forms.save()
                 else:
 
                     if instance.bags != int(bags):
