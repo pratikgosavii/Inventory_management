@@ -181,7 +181,9 @@ def update_inward(request, inward_id ):
 
                 else:
 
-                    print(data_inward.bags, bags)
+                    forms.save()
+                    return HttpResponseRedirect(reverse('list_inward'))
+
 
 
             
@@ -463,6 +465,10 @@ def update_outward(request, outward_id):
 
                         return redirect('list_outward')
 
+                    else:
+                        forms.save()
+                        return HttpResponseRedirect(reverse('list_inward'))
+
                     
 
             except stock.DoesNotExist:
@@ -687,6 +693,9 @@ def update_return(request, return_id):
                                 test.total_bag = test.total_bag - minus_stock
                                 test.save()
                                 forms.save()
+
+                                return redirect('list_return')
+
                             else:
                                 
                                 messages.error(request, "Outward is more than Stock")
@@ -700,8 +709,12 @@ def update_return(request, return_id):
                             test.save()
                             forms.save()
 
-                    return redirect('list_return')
-                return HttpResponseRedirect(reverse('list_return'))
+                            return redirect('list_return')
+
+
+                    else:
+                        forms.save()
+                        return HttpResponseRedirect(reverse('list_inward'))
 
             except stock.DoesNotExist:
 
