@@ -13,6 +13,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from .models import *
 from datetime import date
+from functools import reduce
 from django.urls import reverse
 import csv
 import mimetypes
@@ -1152,6 +1153,11 @@ def generate_report_main(request):
 @login_required(login_url='login')
 def generate_report_daily(request):
 
+    pd.set_option('display.float_format', '{:.2f}'.format)
+    print('--------------soukdgsbvhgdvei')
+
+    #DC_date_start__date=2022-02-28&DC_date_end__date=2022-02-28
+
     company_data = pd.DataFrame(list(company.objects.all().values('id', 'company_name')))
     company_data = dict(company_data.values)
 
@@ -1161,55 +1167,69 @@ def generate_report_daily(request):
     goods_company_data = pd.DataFrame(list(goods_company.objects.all().values('id', 'goods_company_name')))
     goods_company_data = dict(goods_company_data.values)
 
-    inward_data = inward.objects.all()
-    outward_data = outward.objects.all()
-    supply_return_data = outward.objects.all()
+    inward_data = inward.objects.filter(DC_date = datetime.now())
+    outward_data = outward.objects.filter(DC_date = datetime.now())
+    supply_return_data = outward.objects.filter(DC_date = datetime.now())
     inward_filterd_data = inward_filter(request.GET, inward_data)
     outward_data_filterd_data = outward_filter(request.GET, outward_data)
-    supply_return_data= supply_return_filter(request.GET, supply_return_data)
+    print(inward_data)
+    if inward_data:
+        # inward sum
+        df = pd.DataFrame(list(inward_filterd_data.qs.values()))
+        sum__ = df.groupby(['company_id', 'company_goods_id', 'goods_company_id']).sum().reset_index()
+    else:
+        sum__ = pd.DataFrame(columns=['company_id', 'company_goods_id', 'goods_company_id', 'id', 'agent_id', 'bags', 'DC_number'])
 
+    if outward_data:
+        # outward sum
+        df2 = pd.DataFrame(list(outward_data_filterd_data.qs.values()))
+        sum__2 = df2.groupby(['company_id', 'company_goods_id', 'goods_company_id']).sum().reset_index()
+        
+    else:
+        sum__2 = pd.DataFrame(columns=['company_id', 'company_goods_id', 'goods_company_id', 'id', 'agent_id', 'bags', 'DC_number'])
 
-    # inward sum
-    df = pd.DataFrame(list(inward_filterd_data.qs.values()))
-    sum__ = df.groupby(['company_id', 'company_goods_id', 'goods_company_id']).sum().reset_index()
+    if supply_return_data:
+        
+        #return sum
+        df3 = pd.DataFrame(list(supply_return_data.values()))
+        sum__3 = df3.groupby(['company_id', 'company_goods_id', 'goods_company_id']).sum().reset_index()
 
-    print('inward')
-    print(sum__)
+    else:
+        sum__3 = pd.DataFrame(columns=['company_id', 'company_goods_id', 'goods_company_id', 'id', 'agent_id', 'bags', 'DC_number'])
 
-    # outward sum
-    df2 = pd.DataFrame(list(outward_data_filterd_data.qs.values()))
-    sum__2 = df2.groupby(['company_id', 'company_goods_id', 'goods_company_id']).sum().reset_index()
+    #stock
+    sum__4 = pd.DataFrame(list(stock.objects.all().values()))
+    print('stock')
+    print(sum__4)
 
-    print('outward')
-    print(sum__2)
+    data_frames = [sum__, sum__2, sum__3, sum__4]
 
-    # subtracting inward and return 
-    final_ou = pd.merge(sum__, sum__2, on=['company_id', 'company_goods_id', 'goods_company_id'], how="outer")[['company_id', 'company_goods_id', 'goods_company_id',  'bags_x', 'bags_y']]
+    ada = reduce(lambda  left,right: pd.merge(left,right,on=['company_id', 'company_goods_id', 'goods_company_id'], how='outer'), data_frames)[['company_id', 'company_goods_id', 'goods_company_id', 'bags_x', 'bags_y', 'bags', 'total_bag']]
+    print('final')
 
-    final_ou['bags_z'] = final_ou.fillna(0)['bags_x'] - final_ou.fillna(0)['bags_y']
+    print(ada)
 
-    print('final_ou')
-    print(final_ou)
+   
 
-    #return sum
-    df3 = pd.DataFrame(list(supply_return.objects.all().values()))
-    sum__3 = df3.groupby(['company_id', 'company_goods_id', 'goods_company_id']).sum().reset_index()
+    # m = pd.merge(sum__, sum__2, on=['company_id', 'company_goods_id', 'goods_company_id'], how="outer")[['company_id', 'company_goods_id', 'goods_company_id',  'bags_x', 'bags_y']]
+    
+    # print('m')
+    # print(m)
+    # m1 = pd.merge(m, sum__3, on=['company_id', 'company_goods_id', 'goods_company_id'], how="outer")[['company_id', 'company_goods_id', 'goods_company_id',  'bags_x', 'bags_y', 'bags']]
+   
+    # print('m1')
+    # print(m1)
+    # m2 = pd.merge(m1, sum__4, on=['company_id', 'company_goods_id', 'goods_company_id'], how="outer")[['company_id', 'company_goods_id', 'goods_company_id',  'bags_x', 'bags_y', 'bags', 'total_bag']]
 
-    print('return')
-    print(sum__3)
+    # print('m2')
+    # print(m2)
 
-
-    final_out = pd.merge(final_ou, sum__3, on=['company_id', 'company_goods_id', 'goods_company_id'], how="outer")[['company_id', 'company_goods_id', 'goods_company_id',  'bags_x', 'bags_y', 'bags_z', 'bags']]
-    final_out['stock'] = final_out.fillna(0)['bags_z'] + final_out.fillna(0)['bags']
-
+    final_out = ada
 
     final_out['company_id'] = final_out['company_id'].map(company_data)
     final_out['company_goods_id'] = final_out['company_goods_id'].map(company_goods_data)
     final_out['goods_company_id'] = final_out['goods_company_id'].map(goods_company_data)
 
-   
-    print('final_out')
-    print(final_out)
     vals = final_out.values
     
     time =  str(datetime.now(ist))
@@ -1329,4 +1349,9 @@ def list_return_delete(request):
     }
 
     return render(request, 'delete/list_return_delete.html', context)
+
+
+
+
+
 

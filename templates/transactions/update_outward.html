@@ -128,7 +128,7 @@
             'csrfmiddlewaretoken':$('input[name=csrfmiddlewaretoken]').val(),
         },
         success: function (data) {   // `data` is from `get_topics_ajax` view function
-            let html_data = '<option selected disabled>------------</option>';
+            let html_data = '<option value="" selected disabled>------------</option>';
             data.forEach(function (data) {
         
                 html_data += `<option value="${data.id}" >${data.name}</option>` 
@@ -150,7 +150,7 @@
             'csrfmiddlewaretoken':$('input[name=csrfmiddlewaretoken]').val(),
         },
         success: function (data) {   // `data` is from `get_topics_ajax` view function
-            let html_data = '<option selected disabled>------------</option>';
+            let html_data = '<option value="" selected disabled>------------</option>';
             data.forEach(function (data) {
         
                 html_data += `<option value="${data.id}" >${data.goods_company_name}</option>` 
@@ -169,7 +169,7 @@
             'csrfmiddlewaretoken':$('input[name=csrfmiddlewaretoken]').val(),
         },
         success: function (data) {   // `data` is from `get_topics_ajax` view function
-            let html_data = '<option selected disabled>------------</option>';
+            let html_data = '<option value="" selected disabled>------------</option>';
             data.forEach(function (data) {
         
                 html_data += `<option value="${data.id}" >${data.name}</option>` 
@@ -196,7 +196,7 @@
                 'csrfmiddlewaretoken':$('input[name=csrfmiddlewaretoken]').val(),
             },
             success: function (data) {   // `data` is from `get_topics_ajax` view function
-                let html_data = '<option selected disabled>------------</option>';
+                let html_data = '<option value="" selected disabled>------------</option>';
                 data.forEach(function (data) {
             
                     html_data += `<option value="${data.id}" >${data.name}</option>` 
@@ -219,7 +219,7 @@
                 'csrfmiddlewaretoken':$('input[name=csrfmiddlewaretoken]').val(),
             },
             success: function (data) {   // `data` is from `get_topics_ajax` view function
-                let html_data = '<option selected disabled>------------</option>';
+                let html_data = '<option value="" selected disabled>------------</option>';
                 data.forEach(function (data) {
             
                     html_data += `<option value="${data.id}" >${data.goods_company_name}</option>` 
@@ -239,7 +239,7 @@
                 'csrfmiddlewaretoken':$('input[name=csrfmiddlewaretoken]').val(),
             },
             success: function (data) {   // `data` is from `get_topics_ajax` view function
-                let html_data = '<option selected disabled>------------</option>';
+                let html_data = '<option value="" selected disabled>------------</option>';
                 data.forEach(function (data) {
             
                     html_data += `<option value="${data.id}" >${data.name}</option>` 
