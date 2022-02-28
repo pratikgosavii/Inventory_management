@@ -439,7 +439,7 @@ def update_outward(request, outward_id):
 
                         if minus_stock:
 
-                            if test.total_bag >= int(bags):
+                            if test.total_bag >= minus_stock:
 
                                 test.total_bag = test.total_bag - minus_stock
                                 test.save()
