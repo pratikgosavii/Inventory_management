@@ -156,7 +156,7 @@ def update_inward(request, inward_id ):
 
                     if minus_stock:
 
-                        if test.total_bag >= int(bags):
+                        if test.total_bag >= minus_stock:
 
                             test.total_bag = test.total_bag - minus_stock
                             test.save()
@@ -656,8 +656,8 @@ def update_return(request, return_id):
 
                 test = stock.objects.get(company = company, company_goods = company_goods, goods_company = goods_company)
 
-                if instance.company.company_name != company or instance.company_goods.name != company_goods or instance.goods_company.goods_company_name != goods_company:
-
+                if int(instance.company.id) != int(company) or int(instance.company_goods.id) != int(company_goods) or int(instance.goods_company.id) != int(goods_company):
+                
                     if test.total_bag >= int(bags):
                         test = stock.objects.get(company = company, company_goods = company_goods, goods_company = goods_company)
                         test.total_bag = test.total_bag - int(bags)
@@ -678,7 +678,7 @@ def update_return(request, return_id):
 
                         if minus_stock:
 
-                            if test.total_bag >= int(bags):
+                            if test.total_bag >= minus_stock:
 
                                 test.total_bag = test.total_bag - minus_stock
                                 test.save()
