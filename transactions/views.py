@@ -387,7 +387,7 @@ def update_outward(request, outward_id):
 
             print('3')
 
-            instance = inward.objects.get(id = outward_id)
+            instance = outward.objects.get(id = outward_id)
 
             try:
 
