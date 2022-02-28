@@ -129,7 +129,7 @@ def update_inward(request, inward_id ):
 
             instance_inward = inward.objects.get(id = inward_id)
 
-            if instance_inward.company.id != int(company) or instance_inward.company_goods.id != int(company_goods) or instance_inward.goods_company.id != int(goods_company):
+            if int(instance_inward.company.id) != int(company) or int(instance_inward.company_goods.id) != int(company_goods) or int(instance_inward.goods_company.id) != int(goods_company):
 
                 test = stock.objects.get(company = company, company_goods = company_goods, goods_company = goods_company)
                 test.total_bag = test.total_bag + int(bags)
@@ -381,8 +381,6 @@ def update_outward(request, outward_id):
 
         print('2')
 
-
-
         if forms.is_valid():
 
             print('3')
@@ -391,8 +389,10 @@ def update_outward(request, outward_id):
 
             try:
 
-              
-                if instance.company.company_name != company or instance.company_goods.name != company_goods or instance.goods_company.goods_company_name != goods_company:
+                print('testing ------------------------')
+
+                
+                if int(instance.company.id) != int(company) or int(instance.company_goods.id) != int(company_goods) or int(instance.goods_company.id) != int(goods_company):
 
                     print('change')
                     instance = outward.objects.get(id = outward_id)
@@ -416,20 +416,23 @@ def update_outward(request, outward_id):
                         return redirect('list_outward')
 
                     else:
-                        messages.error(request, "Outward is more than Stock")
+                        messages.error(request, "Outward is more than1 Stock")
                         print('Outward is more than Stock')
                         return redirect('list_outward')
                     
                     
                 else:
+
+                    print('wored')
+
                     if instance.total_bag != int(bags):
                         
                         test = stock.objects.get(company = company, company_goods = company_goods, goods_company = goods_company)
 
                         if instance.bags > int(bags):
-                            minus_stock = instance.bags - int(bags)
+                            add_stock = instance.bags - int(bags)
                         else:
-                            add_stock = int(bags) - instance.bags
+                            minus_stock = int(bags) - instance.bags
 
                         if minus_stock:
 
