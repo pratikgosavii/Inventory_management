@@ -428,6 +428,9 @@ def update_outward(request, outward_id):
                     if instance.bags != int(bags):
                         
                         test = stock.objects.get(company = company, company_goods = company_goods, goods_company = goods_company)
+                        
+                        add_stock = None
+                        minus_stock = None
 
                         if instance.bags > int(bags):
                             add_stock = instance.bags - int(bags)
