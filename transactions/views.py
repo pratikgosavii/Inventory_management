@@ -339,6 +339,15 @@ def list_outward(request):
 
     data = outward.objects.filter().order_by('DC_number')
 
+
+    agent_name = request.GET.get('agent_name')
+
+    if agent_name:
+
+        data = data.filter(agent__name__icontains=agent_name)
+
+    
+
     outward_filter_data = outward_filter()
 
     company_data = company.objects.all()
@@ -614,6 +623,13 @@ def list_return(request):
     # inward_filter_data = inward_filter()
 
     print(data)
+
+    agent_name = request.GET.get('agent_name')
+
+    if agent_name:
+
+        data = data.filter(agent__name__icontains=agent_name)
+
 
     company_data = company.objects.all()
 
