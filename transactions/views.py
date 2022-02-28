@@ -425,7 +425,7 @@ def update_outward(request, outward_id):
 
                     print('wored')
 
-                    if instance.total_bag != int(bags):
+                    if instance.bags != int(bags):
                         
                         test = stock.objects.get(company = company, company_goods = company_goods, goods_company = goods_company)
 
