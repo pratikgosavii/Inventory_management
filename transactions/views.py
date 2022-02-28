@@ -467,7 +467,7 @@ def update_outward(request, outward_id):
 
                     else:
                         forms.save()
-                        return HttpResponseRedirect(reverse('list_inward'))
+                        return HttpResponseRedirect(reverse('list_outward'))
 
                     
 
