@@ -47,15 +47,15 @@ def add_inward(request):
         if DC_date:
 
             date_time = numOfDays(DC_date)
+            print('in if')
         else:
             date_time = datetime.now(IST)
         print('-----------------------------------------------date_time')
         print(date_time)
+        print('---------------------')
         updated_request = request.POST.copy()
         updated_request.update({'DC_date': date_time})
         forms = inward_Form(updated_request)
-
-        print(DC_date)
 
         if forms.is_valid():
             forms.save()
@@ -1280,7 +1280,6 @@ def download(request):
                 print(mime_type)
                 response = HttpResponse(fh.read(), content_type=mime_type)
                 response['Content-Disposition'] = 'attachment;filename=' + str(fl_path)
-                # a =  _delete_file(fl_path)
 
                 return response
 

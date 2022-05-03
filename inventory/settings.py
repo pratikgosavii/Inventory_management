@@ -44,17 +44,17 @@ INSTALLED_APPS = [
     'store.apps.StoreConfig',
     'users.apps.UsersConfig',
     'transactions',
-    #'dbbackup',
+    'dbbackup',
     # 'django_crontab',
 ]
 
 
-# DBBACKUP_STORAGE = 'django.core.files.storage.FileSystemStorage'
-# DBBACKUP_STORAGE_OPTIONS = {'location':os.path.join(BASE_DIR, 'backup')}
+DBBACKUP_STORAGE = 'django.core.files.storage.FileSystemStorage'
+DBBACKUP_STORAGE_OPTIONS = {'location':os.path.join(BASE_DIR, 'backup')}
 
-# CRONJOBS = [
-#     ('*/5 * * * *', 'inventory.cron.my_backup')
-# ]
+CRONJOBS = [
+    ('*/5 * * * *', 'inventory.cron.my_backup')
+]
 
 
 MIDDLEWARE = [
