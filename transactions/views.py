@@ -133,7 +133,8 @@ def update_inward(request, inward_id ):
             if int(instance_inward.company.id) != int(company) or int(instance_inward.company_goods.id) != int(company_goods) or int(instance_inward.goods_company.id) != int(goods_company):
 
                 try:
-                    test = stock.objects.get(company = company, company_goods = company_goods, goods_company = goods_company)
+                
+                    test = stock.objects.get(company = instance_inward.company, company_goods = instance_inward.company_goods, goods_company = instance_inward.goods_company)
                     test.total_bag = test.total_bag + int(bags)
                     test.save()
 
