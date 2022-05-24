@@ -132,13 +132,20 @@ def update_inward(request, inward_id ):
 
             if int(instance_inward.company.id) != int(company) or int(instance_inward.company_goods.id) != int(company_goods) or int(instance_inward.goods_company.id) != int(goods_company):
 
-                test = stock.objects.get(company = company, company_goods = company_goods, goods_company = goods_company)
-                test.total_bag = test.total_bag + int(bags)
-                test.save()
+                try:
+                    test = stock.objects.get(company = company, company_goods = company_goods, goods_company = goods_company)
+                    test.total_bag = test.total_bag + int(bags)
+                    test.save()
+
+                except stock.DoesNotExist:
+                    stock.objects.create(company = instance_inward.company.id, company_goods = instance_inward.company_goods.id, goods_company = instance_inward.goods_company.id, total_bag =  int(bags))
+
+
+            
                 stock_before = stock.objects.get(company = instance_inward.company.id, company_goods = instance_inward.company_goods.id, goods_company = instance_inward.goods_company.id)
                 stock_before.total_bag = stock_before.total_bag - instance_inward.bags
                 stock_before.save()
-
+                
                 forms.save()
 
                 return HttpResponseRedirect(reverse('list_inward'))
