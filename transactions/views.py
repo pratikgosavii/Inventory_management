@@ -107,9 +107,9 @@ def update_inward(request, inward_id ):
 
         data_inward = instance_inward
 
-        company = request.POST.get('company')
-        company_goods = request.POST.get('company_goods')
-        goods_company = request.POST.get('goods_company')
+        company_id = request.POST.get('company')
+        company_goods_id = request.POST.get('company_goods')
+        goods_company_id = request.POST.get('goods_company')
         bags = request.POST.get('bags')
 
         DC_date = request.POST.get('DC_date')
@@ -130,32 +130,47 @@ def update_inward(request, inward_id ):
 
             instance_inward = inward.objects.get(id = inward_id)
 
-            if int(instance_inward.company.id) != int(company) or int(instance_inward.company_goods.id) != int(company_goods) or int(instance_inward.goods_company.id) != int(goods_company):
+            if int(instance_inward.company.id) != int(company_id) or int(instance_inward.company_goods.id) != int(company_goods_id) or int(instance_inward.goods_company.id) != int(goods_company_id):
 
                 try:
-                
-                    test = stock.objects.get(company = instance_inward.company, company_goods = instance_inward.company_goods, goods_company = instance_inward.goods_company)
+
+                    company_instance = company.objects.get(id = company_id) 
+                    company_goods_instance = company_goods.objects.get(id = company_goods_id) 
+                    goods_company_instance = goods_company.objects.get(id = goods_company_id) 
+
+                    test = stock.objects.get(company = company_instance, company_goods = company_goods_instance, goods_company = goods_company_instance)
                     test.total_bag = test.total_bag + int(bags)
                     test.save()
 
+                    print('1')
+
                 except stock.DoesNotExist:
-                    stock.objects.create(company = instance_inward.company.id, company_goods = instance_inward.company_goods.id, goods_company = instance_inward.goods_company.id, total_bag =  int(bags))
+                    stock.objects.create(company = company_instance, company_goods = company_goods_instance, goods_company = goods_company_instance, total_bag =  int(bags))
 
 
-            
-                stock_before = stock.objects.get(company = instance_inward.company.id, company_goods = instance_inward.company_goods.id, goods_company = instance_inward.goods_company.id)
+                company_instance = company.objects.get(id =instance_inward.company.id)
+                company_goods_instance = company_goods.objects.get(id = instance_inward.company_goods.id)
+                goods_company_instance = goods_company.objects.get(id = instance_inward.goods_company.id)
+
+                stock_before = stock.objects.get(company = company_instance, company_goods = company_goods_instance, goods_company = goods_company_instance)
                 stock_before.total_bag = stock_before.total_bag - instance_inward.bags
                 stock_before.save()
-                
+
+               
+                    
+               
+                    
                 forms.save()
 
                 return HttpResponseRedirect(reverse('list_inward'))
             
             else:
 
+                minus_stock = None
+
                 if instance_inward.bags != int(bags):
 
-                    test = stock.objects.get(company = company, company_goods = company_goods, goods_company = goods_company)
+                    test = stock.objects.get(company = company_id, company_goods = company_goods_id, goods_company = goods_company_id)
 
                     if instance_inward.bags > int(bags):
                         minus_stock = instance_inward.bags - int(bags)
@@ -379,9 +394,15 @@ def update_outward(request, outward_id):
         print('before')
         print(instance.goods_company)
        
-        company = request.POST.get('company')
-        company_goods = request.POST.get('company_goods')
-        goods_company = request.POST.get('goods_company')
+        
+        company_id = request.POST.get('company')
+        company_goods_id = request.POST.get('company_goods')
+        goods_company_id = request.POST.get('goods_company')
+
+        company_instance = company.objects.get(id = company_id) 
+        company_goods_instance = company_goods.objects.get(id = company_goods_id) 
+        goods_company_instance = goods_company.objects.get(id = goods_company_id) 
+
         bags = request.POST.get('bags')
 
         DC_date = request.POST.get('DC_date')
@@ -412,12 +433,20 @@ def update_outward(request, outward_id):
                 print('testing ------------------------')
 
                 
-                if int(instance.company.id) != int(company) or int(instance.company_goods.id) != int(company_goods) or int(instance.goods_company.id) != int(goods_company):
+                if int(instance.company.id) != int(company_id) or int(instance.company_goods.id) != int(company_goods_id) or int(instance.goods_company.id) != int(goods_company_id):
 
-                    print('change')
-                    instance = outward.objects.get(id = outward_id)
 
-                    test = stock.objects.get(company = company, company_goods = company_goods, goods_company = goods_company)
+                    
+                    try:
+                        test = stock.objects.get(company = company_instance, company_goods = company_goods_instance, goods_company = goods_company_instance)
+
+                        test = stock.objects.get(company = company_instance, company_goods = company_goods_instance, goods_company = goods_company_instance)
+                        test.total_bag = test.total_bag - int(bags)
+                        test.save()
+
+                    except stock.DoesNotExist:
+                        stock.objects.create(company = company_instance, company_goods = company_goods_instance, goods_company = goods_company_instance, total_bag =  int(bags))
+
 
                     if test.total_bag >= int(bags):
                         
@@ -447,7 +476,7 @@ def update_outward(request, outward_id):
 
                     if instance.bags != int(bags):
                         
-                        test = stock.objects.get(company = company, company_goods = company_goods, goods_company = goods_company)
+                        test = stock.objects.get(company = company_instance, company_goods = company_goods_instance, goods_company = goods_company_instance)
                         
                         add_stock = None
                         minus_stock = None
