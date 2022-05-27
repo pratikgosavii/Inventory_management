@@ -13,6 +13,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from .models import *
 from datetime import date
+from django.core.paginator import Paginator, EmptyPage
 from functools import reduce
 from django.urls import reverse
 import csv
@@ -358,6 +359,9 @@ def report_dashbord(request):
     return render(request, 'transactions/report_dashbord.html', context)
 
 
+
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+
 @login_required(login_url='login')
 def list_outward(request):
 
@@ -375,6 +379,21 @@ def list_outward(request):
     outward_filter_data = outward_filter()
 
     company_data = company.objects.all()
+
+
+
+    page = request.GET.get('page', 1)
+    paginator = Paginator(data, 50)
+
+    try:
+        data = paginator.page(page)
+    except PageNotAnInteger:
+        data = paginator.page(1)
+    except EmptyPage:
+        data = paginator.page(paginator.num_pages)
+
+    print(data)
+
 
     context = {
         'data': data,
