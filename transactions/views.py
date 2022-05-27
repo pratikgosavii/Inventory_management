@@ -950,7 +950,7 @@ def report_outward(request):
     sum__['goods_company_id'] = sum__['goods_company_id'].map(goods_company_data)
     sum__['agent_id'] = sum__['agent_id'].map(agent_data)
 
-    out = (sum__.merge(agent_data2, left_on='agent_id', right_on='name').reindex(columns=['company_id', 'agent_id', 'place', 'taluka', 'district', 'company_goods_id', 'goods_company_id', 'bags']))
+    out = (sum__.merge(agent_data2, left_on='agent_id', right_on='name').reindex(columns=['company_id', 'agent_id', 'place', 'taluka', 'district', 'company_goods_id', 'goods_company_id', 'bags', 'DC_number']))
 
     sum__ = out
 
