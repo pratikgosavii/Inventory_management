@@ -849,42 +849,41 @@ def report_inward(request):
     inward_filter_data = inward_filter()
 
 
-    company_data = company.objects.all()
-    company_goods_data = company_goods.objects.all()
-    goods_company_data = goods_company.objects.all()
 
-    company_data = pd.DataFrame(list(company.objects.all().values('id', 'company_name')))
-    company_data = dict(company_data.values)
+    vals = []
+    data = inward.objects.all()
 
-    company_goods_data = pd.DataFrame(list(company_goods.objects.all().values('id', 'name')))
-    company_goods_data = dict(company_goods_data.values)
+    filterd_data = inward_filter(request.GET, data)
+    filtered_data = filterd_data.qs
+    # print(out)
 
-    goods_company_data = pd.DataFrame(list(goods_company.objects.all().values('id', 'goods_company_name')))
-    goods_company_data = dict(goods_company_data.values)
+    vals1 = []
+    vals1.append('Company')
+    vals1.append('Agent')
+    vals1.append("Agent Place")
+    vals1.append("Variety")
+    vals1.append("Crop")
+    vals1.append("Bags")
+    vals1.append("DC Number")
 
-   
-    # agent_data = pd.DataFrame(list(agent.objects.all().values('id', 'name')))
-    # agent_data = dict(agent_data.values)
-
-    df = pd.DataFrame(list(filtered_data.values()))
-
-    sum__ = df.groupby(['company_id', 'company_goods_id', 'goods_company_id']).sum().reset_index()
+    vals.append(vals1)
 
 
-    sum__['company_id'] = sum__['company_id'].map(company_data)
-    sum__['company_goods_id'] = sum__['company_goods_id'].map(company_goods_data)
-    sum__['goods_company_id'] = sum__['goods_company_id'].map(goods_company_data)
-    # sum__['agent_id'] = sum__['agent_id'].map(agent_data)
+    for i in filtered_data:
+        vals1 = []
+        vals1.append(i.company)
+        vals1.append(i.agent.name)
+        vals1.append(i.agent.place)
+        vals1.append(i.company_goods)
+        vals1.append(i.goods_company)
+        vals1.append(i.bags)
+        vals1.append(i.DC_number)
 
-    del sum__['agent_id']
-    del sum__['id']
-
-    print(sum__)
+        vals.append(vals1)
 
     time =  str(datetime.now(ist))
     time = time.split('.')
     time = time[0].replace(':', '-')
-    vals = sum__.values
 
     name = "Daily_Report " + time + ".csv"
     path = os.path.join(BASE_DIR) + '\static\csv\\' + name
@@ -895,7 +894,7 @@ def report_inward(request):
 
     link = os.path.join(BASE_DIR) + '\static\csv\\' + name
 
-    vals_list = (vals.tolist())
+    vals_list = vals
 
     print(vals_list)
 
@@ -914,50 +913,43 @@ def report_inward(request):
 @login_required(login_url='login')
 def report_outward(request):
 
-    data = outward.objects.all()
+   
 
-    filterd_data = outward_filter(request.GET, data)
-    outward_filter_data = outward_filter()
+    vals = []
 
-    company_data = company.objects.all()
-    company_goods_data = company_goods.objects.all()
-    goods_company_data = goods_company.objects.all()
- 
+    outward_data = outward.objects.all()
+    outward_filterd_data = outward_filter(request.GET, outward_data)
+    # print(out)
 
-    company_data = pd.DataFrame(list(company.objects.all().values('id', 'company_name')))
-    company_data = dict(company_data.values)
+    vals1 = []
+    vals1.append('Company')
+    vals1.append('Agent')
+    vals1.append("Agent Place")
+    vals1.append("Variety")
+    vals1.append("Crop")
+    vals1.append("Bags")
+    vals1.append("DC Number")
 
-    company_goods_data = pd.DataFrame(list(company_goods.objects.all().values('id', 'name')))
-    company_goods_data = dict(company_goods_data.values)
+    vals.append(vals1)
 
-    goods_company_data = pd.DataFrame(list(goods_company.objects.all().values('id', 'goods_company_name')))
-    goods_company_data = dict(goods_company_data.values)
 
-    
-    agent_data = pd.DataFrame(list(agent.objects.all().values('id', 'name')))
-    agent_data = dict(agent_data.values)
+    for i in outward_filterd_data.qs:
+        vals1 = []
+        vals1.append(i.company)
+        vals1.append(i.agent.name)
+        vals1.append(i.agent.place)
+        vals1.append(i.company_goods)
+        vals1.append(i.goods_company)
+        vals1.append(i.bags)
+        vals1.append(i.DC_number)
 
-    agent_data2 = pd.DataFrame(list(agent.objects.all().values('id', 'name', 'place', 'taluka', 'district')))
+        vals.append(vals1)
 
-    df = pd.DataFrame(list(filterd_data.qs.values()))
-
-    sum__ = df.groupby(['company_id', 'company_goods_id', 'goods_company_id', 'agent_id']).sum().reset_index()
-
-    print('all right')
-
-    sum__['company_id'] = sum__['company_id'].map(company_data)
-    sum__['company_goods_id'] = sum__['company_goods_id'].map(company_goods_data)
-    sum__['goods_company_id'] = sum__['goods_company_id'].map(goods_company_data)
-    sum__['agent_id'] = sum__['agent_id'].map(agent_data)
-
-    out = (sum__.merge(agent_data2, left_on='agent_id', right_on='name').reindex(columns=['company_id', 'agent_id', 'place', 'taluka', 'district', 'company_goods_id', 'goods_company_id', 'bags', 'DC_number']))
-
-    sum__ = out
+   
 
     time =  str(datetime.now(ist))
     time = time.split('.')
     time = time[0].replace(':', '-')
-    vals = sum__.values
 
     print(vals)
 
@@ -970,12 +962,11 @@ def report_outward(request):
 
     link = os.path.join(BASE_DIR) + '\static\csv\\' + name
 
-    vals_list = (vals.tolist())
+    vals_list = vals
 
 
     context = {
         'data': vals_list,
-        'filter_outward' : outward_filter_data,
         'link' : link
 
 
