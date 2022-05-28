@@ -895,6 +895,8 @@ def report_inward(request):
     link = os.path.join(BASE_DIR) + '\static\csv\\' + name
 
     vals_list = vals
+    vals_list.pop(0)
+
 
     print(vals_list)
 
@@ -938,8 +940,8 @@ def report_outward(request):
         vals1.append(i.company)
         vals1.append(i.agent.name)
         vals1.append(i.agent.place)
-        vals1.append(i.company_goods)
         vals1.append(i.goods_company)
+        vals1.append(i.company_goods)
         vals1.append(i.bags)
         vals1.append(i.DC_number)
 
@@ -963,6 +965,7 @@ def report_outward(request):
     link = os.path.join(BASE_DIR) + '\static\csv\\' + name
 
     vals_list = vals
+    vals_list.pop(0)
 
 
     context = {
