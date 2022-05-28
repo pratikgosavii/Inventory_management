@@ -921,7 +921,16 @@ def report_outward(request):
 
     outward_data = outward.objects.all()
     outward_filterd_data = outward_filter(request.GET, outward_data)
+    outward_filterd_data = outward_filterd_data.qs
+
+    outward_filterd_data = list(outward_filterd_data.values_list('company', 'agent__name', 'agent__place', 'goods_company__goods_company_name', 'company_goods__name', 'bags', 'DC_number'))
     # print(out)
+
+    outward_filterd_data = list(map(list, outward_filterd_data))
+
+    print('-------------------------------')
+    print(outward_filterd_data)
+
 
     vals1 = []
     vals1.append('Company')
@@ -935,15 +944,15 @@ def report_outward(request):
     vals.append(vals1)
 
 
-    for i in outward_filterd_data.qs:
+    for i in outward_filterd_data:
         vals1 = []
-        vals1.append(i.company)
-        vals1.append(i.agent.name)
-        vals1.append(i.agent.place)
-        vals1.append(i.goods_company)
-        vals1.append(i.company_goods)
-        vals1.append(i.bags)
-        vals1.append(i.DC_number)
+        vals1.append(i[0])
+        vals1.append(i[1])
+        vals1.append(i[2])
+        vals1.append(i[3])
+        vals1.append(i[4])
+        vals1.append(i[5])
+        vals1.append(i[6])
 
         vals.append(vals1)
 
