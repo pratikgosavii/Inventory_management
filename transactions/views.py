@@ -842,6 +842,9 @@ def delete_return(request, return_id):
 @login_required(login_url='login')
 def report_inward(request):
 
+    counteer = 1
+
+
     data = inward.objects.all()
 
     filterd_data = inward_filter(request.GET, data)
@@ -857,29 +860,42 @@ def report_inward(request):
     filtered_data = filterd_data.qs
     # print(out)
 
+
+    
+    filtered_data = list(filtered_data.values_list('DC_number', 'agent__name', 'agent__place', 'agent__taluka', 'agent__district', 'company_goods__name', 'goods_company__goods_company_name', 'bags'))
+
     vals1 = []
-    vals1.append('Company')
-    vals1.append('Agent')
-    vals1.append("Agent Place")
-    vals1.append("Variety")
-    vals1.append("Crop")
-    vals1.append("Bags")
+    vals1.append('Serial')
     vals1.append("DC Number")
+    vals1.append("Party Name")
+    vals1.append("Party Place")
+    vals1.append("Party Taluka")
+    vals1.append("Party District")
+    vals1.append("Crop")
+    vals1.append("Variety")
+    vals1.append('Packet')
 
     vals.append(vals1)
 
 
     for i in filtered_data:
         vals1 = []
-        vals1.append(i.company)
-        vals1.append(i.agent.name)
-        vals1.append(i.agent.place)
-        vals1.append(i.company_goods)
-        vals1.append(i.goods_company)
-        vals1.append(i.bags)
-        vals1.append(i.DC_number)
+        vals1.append(counteer)
+        counteer = counteer + 1
+        vals1.append(i[0])
+        vals1.append(i[1])
+        vals1.append(i[2])
+        vals1.append(i[3])
+        vals1.append(i[4])
+        vals1.append(i[5])
+        vals1.append(i[6])
+        vals1.append(i[7])
 
         vals.append(vals1)
+
+
+
+       
 
     time =  str(datetime.now(ist))
     time = time.split('.')
@@ -902,7 +918,6 @@ def report_inward(request):
 
     context = {
         'data': vals_list,
-        'filter_inward' : inward_filter_data,
         'link' : link
 
 
@@ -915,6 +930,9 @@ def report_inward(request):
 @login_required(login_url='login')
 def report_outward(request):
 
+
+    counteer = 1
+
    
 
     vals = []
@@ -923,7 +941,7 @@ def report_outward(request):
     outward_filterd_data = outward_filter(request.GET, outward_data)
     outward_filterd_data = outward_filterd_data.qs
 
-    outward_filterd_data = list(outward_filterd_data.values_list('company', 'agent__name', 'agent__place', 'goods_company__goods_company_name', 'company_goods__name', 'bags', 'DC_number'))
+    outward_filterd_data = list(outward_filterd_data.values_list('DC_number', 'agent__name', 'agent__place', 'agent__taluka', 'agent__district', 'company_goods__name', 'goods_company__goods_company_name', 'bags'))
     # print(out)
 
     outward_filterd_data = list(map(list, outward_filterd_data))
@@ -933,19 +951,23 @@ def report_outward(request):
 
 
     vals1 = []
-    vals1.append('Company')
-    vals1.append('Agent')
-    vals1.append("Agent Place")
-    vals1.append("Variety")
-    vals1.append("Crop")
-    vals1.append("Bags")
+    vals1.append("Serial")
     vals1.append("DC Number")
+    vals1.append("Party Name")
+    vals1.append("Party Place")
+    vals1.append("Party Taluka")
+    vals1.append("Party District")
+    vals1.append("Crop")
+    vals1.append("Variety")
+    vals1.append('Packet')
 
     vals.append(vals1)
 
 
     for i in outward_filterd_data:
         vals1 = []
+        vals1.append(counteer)
+        counteer = counteer + 1
         vals1.append(i[0])
         vals1.append(i[1])
         vals1.append(i[2])
@@ -953,6 +975,7 @@ def report_outward(request):
         vals1.append(i[4])
         vals1.append(i[5])
         vals1.append(i[6])
+        vals1.append(i[7])
 
         vals.append(vals1)
 
