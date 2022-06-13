@@ -300,7 +300,6 @@ def add_outward(request):
 
         if forms.is_valid():
 
-
             a = forms.cleaned_data['company']
             b = forms.cleaned_data['company_goods']
             c = forms.cleaned_data['goods_company']
