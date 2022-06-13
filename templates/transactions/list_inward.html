@@ -129,6 +129,7 @@
                             {% if data %}
                             {% for i in data %}
                             <tr>
+                                <input type="hidden" value="{{ i.id }}">
                                 <td class="serial">{{ forloop.counter }}</td>
                                 <td>{{ i.company.company_name }}</td>
                                 <td>{{ i.company_goods.name }}</td>
