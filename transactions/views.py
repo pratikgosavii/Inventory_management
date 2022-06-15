@@ -844,7 +844,7 @@ def report_inward(request):
     counteer = 1
 
 
-    data = inward.objects.all()
+    data = inward.objects.all().order_by("DC_number")
 
     filterd_data = inward_filter(request.GET, data)
     filtered_data = filterd_data.qs
@@ -936,7 +936,7 @@ def report_outward(request):
 
     vals = []
 
-    outward_data = outward.objects.all()
+    outward_data = outward.objects.all().order_by("DC_number")
     outward_filterd_data = outward_filter(request.GET, outward_data)
     outward_filterd_data = outward_filterd_data.qs
 
