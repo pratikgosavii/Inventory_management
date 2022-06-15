@@ -848,12 +848,10 @@ def report_inward(request):
 
     filterd_data = inward_filter(request.GET, data)
     filtered_data = filterd_data.qs
-    inward_filter_data = inward_filter()
 
 
 
     vals = []
-    data = inward.objects.all()
 
     filterd_data = inward_filter(request.GET, data)
     filtered_data = filterd_data.qs
