@@ -898,7 +898,7 @@ def report_inward(request):
     time = time.split('.')
     time = time[0].replace(':', '-')
 
-    name = "Daily_Report " + time + ".csv"
+    name = "Report.csv"
     path = os.path.join(BASE_DIR) + '\static\csv\\' + name
     with open(path,  'w', newline="") as f:
         writer = csv.writer(f)
@@ -985,7 +985,7 @@ def report_outward(request):
     print(vals)
 
 
-    name = "Daily_Report " + time + ".csv"
+    name = "Report.csv"
     path = os.path.join(BASE_DIR) + '\static\csv\\' + name
     with open(path,  'w', newline="") as f:
         writer = csv.writer(f)
@@ -1012,50 +1012,56 @@ def report_outward(request):
 @login_required(login_url='login')
 def report_supply_return(request):
 
-    data = supply_return.objects.all()
+    data = supply_return.objects.all().order_by("DC_number")
 
     filterd_data = supply_return_filter(request.GET, data)
     data = filterd_data.qs
 
-    company_data = pd.DataFrame(list(company.objects.all().values('id', 'company_name')))
-    company_data = dict(company_data.values)
+    vals = []
 
-    company_goods_data = pd.DataFrame(list(company_goods.objects.all().values('id', 'name')))
-    company_goods_data = dict(company_goods_data.values)
 
-    goods_company_data = pd.DataFrame(list(goods_company.objects.all().values('id', 'goods_company_name')))
-    goods_company_data = dict(goods_company_data.values)
+    filtered_data = list(data.values_list('DC_number', 'agent__name', 'agent__place', 'agent__taluka', 'agent__district', 'company_goods__name', 'goods_company__goods_company_name', 'bags'))
+
+
+    vals1 = []
+    vals1.append('Serial')
+    vals1.append("DC Number")
+    vals1.append("Party Name")
+    vals1.append("Party Place")
+    vals1.append("Party Taluka")
+    vals1.append("Party District")
+    vals1.append("Crop")
+    vals1.append("Variety")
+    vals1.append('Packet')
+
+    vals.append(vals1)
+    print(vals)
+
+    counteer = 1
 
     
-    agent_data = pd.DataFrame(list(agent.objects.all().values('id', 'name')))
-    agent_data = dict(agent_data.values)
+    for i in filtered_data:
+        vals1 = []
+        vals1.append(counteer)
+        counteer = counteer + 1
+        vals1.append(i[0])
+        vals1.append(i[1])
+        vals1.append(i[2])
+        vals1.append(i[3])
+        vals1.append(i[4])
+        vals1.append(i[5])
+        vals1.append(i[6])
+        vals1.append(i[7])
 
-    agent_data2 = pd.DataFrame(list(agent.objects.all().values('id', 'name', 'place', 'taluka', 'district')))
+        vals.append(vals1)
 
-    df = pd.DataFrame(list(filterd_data.qs.values()))
-
-    sum__ = df.groupby(['company_id', 'company_goods_id', 'goods_company_id', 'agent_id']).sum().reset_index()
-
-    print('all right')
-
-    sum__['company_id'] = sum__['company_id'].map(company_data)
-    sum__['company_goods_id'] = sum__['company_goods_id'].map(company_goods_data)
-    sum__['goods_company_id'] = sum__['goods_company_id'].map(goods_company_data)
-    sum__['agent_id'] = sum__['agent_id'].map(agent_data)
-
-    out = (sum__.merge(agent_data2, left_on='agent_id', right_on='name').reindex(columns=['company_id', 'agent_id','place', 'taluka', 'district',   'company_goods_id', 'goods_company_id', 'bags']))
-
-    sum__ = out
 
     time =  str(datetime.now(ist))
     time = time.split('.')
     time = time[0].replace(':', '-')
-    vals = sum__.values
-
-    print(vals)
 
 
-    name = "Daily_Report " + time + ".csv"
+    name = "Report.csv"
     path = os.path.join(BASE_DIR) + '\static\csv\\' + name
     with open(path,  'w', newline="") as f:
         writer = csv.writer(f)
@@ -1063,7 +1069,8 @@ def report_supply_return(request):
 
     link = os.path.join(BASE_DIR) + '\static\csv\\' + name
 
-    vals_list = (vals.tolist())
+    vals_list = vals
+    vals_list.pop(0)
 
 
     context = {
@@ -1117,7 +1124,7 @@ def generate_report_stock(request):
     time = time.split('.')
     time = time[0].replace(':', '-')
 
-    name = "Daily_Report " + time + ".csv"
+    name = "Report.csv"
     path = os.path.join(BASE_DIR) + '\static\csv\\' + name
     with open(path,  'w', newline="") as f:
         writer = csv.writer(f)
@@ -1202,7 +1209,7 @@ def generate_report_main(request):
     time = time.split('.')
     time = time[0].replace(':', '-')
 
-    name = "Daily_Report " + time + ".csv"
+    name = "Report.csv"
     path = os.path.join(BASE_DIR) + '\static\csv\\' + name
     with open(path,  'w', newline="") as f:
         writer = csv.writer(f)
@@ -1315,7 +1322,7 @@ def generate_report_daily(request):
     time = time.split('.')
     time = time[0].replace(':', '-')
 
-    name = "Daily_Report " + time + ".csv"
+    name = "Report.csv"
     path = os.path.join(BASE_DIR) + '\static\csv\\' + name
     with open(path,  'w', newline="") as f:
         writer = csv.writer(f)
