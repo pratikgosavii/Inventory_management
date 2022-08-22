@@ -1194,38 +1194,31 @@ def generate_report_main(request):
         out = (sum__.merge(agent_data2, left_on='agent_id', right_on='name').reindex(columns=['agent_id', 'place', 'taluka', 'district', 'company_id', 'company_goods_id', 'goods_company_id', 'bags_x', 'bags_y', 'bags_z']))
 
 
+      
 
-    elif supply_return_data and not outward_data:
-        #return sum
-        df3 = pd.DataFrame(list(supply_return_filterd_data.qs.values()))
 
-        sum__2 = df3.groupby(['company_id', 'company_goods_id', 'goods_company_id', 'agent_id']).sum().reset_index()
-        print('df2--------newwwww-----------')
-        print(sum__2)
+    
 
-        sum__2['bags_x'] = None
-        sum__2['bags_y'] = sum__2['bags']
-        sum__2['bags_z'] = sum__2['bags']
-        sum__2['company_id'] = sum__2['company_id'].map(company_data)
-        sum__2['company_goods_id'] = sum__2['company_goods_id'].map(company_goods_data)
-        sum__2['goods_company_id'] = sum__2['goods_company_id'].map(goods_company_data)
-        sum__2['agent_id'] = sum__2['agent_id'].map(agent_data)
         
 
-        out = (sum__2.merge(agent_data2, left_on='agent_id', right_on='name').reindex(columns=['agent_id', 'place', 'taluka', 'district', 'company_id', 'company_goods_id', 'goods_company_id', 'bags_x', 'bags_y', 'bags_z']))
+      
 
+        
 
+        
+
+    elif supply_return_data:
+        #return sum
+        df3 = pd.DataFrame(list(supply_return_filterd_data.qs.values()))
+        sum__2 = df3.groupby(['company_id', 'company_goods_id', 'goods_company_id', 'agent_id']).sum().reset_index()
+
+        print('return ')
+        print(sum__2)
+
+        vals = out.values
 
 
     else:
-
-        df2 = pd.DataFrame(list(outward_filterd_data.qs.values()))
-
-        df3 = pd.DataFrame(list(supply_return_filterd_data.qs.values()))
-
-
-        sum__ = df2.groupby(['company_id', 'company_goods_id', 'goods_company_id', 'agent_id']).sum().reset_index()
-        sum__2 = df3.groupby(['company_id', 'company_goods_id', 'goods_company_id', 'agent_id']).sum().reset_index()
 
 
         final_ou = pd.merge(sum__, sum__2, on=['company_id', 'company_goods_id', 'goods_company_id', 'agent_id'], how="outer")[['company_id', 'company_goods_id', 'goods_company_id', 'agent_id', 'bags_x', 'bags_y']]
@@ -1246,16 +1239,12 @@ def generate_report_main(request):
         print(out)
 
         # print(out)
-
     vals = out.values
 
     time =  str(datetime.now(ist))
     time = time.split('.')
     time = time[0].replace(':', '-')
-        
 
-
-    
     vals_list = (vals.tolist())
     vals1 = []
     vals1.append("Party Name")
@@ -1270,11 +1259,6 @@ def generate_report_main(request):
     vals1.append('Net Packet')
 
     vals_list.insert(0, vals1)
-
-    time =  str(datetime.now(ist))
-    time = time.split('.')
-    time = time[0].replace(':', '-')
-
 
     name = "Report.csv"
     path = os.path.join(BASE_DIR) + '\static\csv\\' + name

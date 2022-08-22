@@ -165,7 +165,7 @@
         type: "POST",
         url: '{% url "get_agent_company_ajax" %}',
         data: {
-            'company_id': {{ comapnyID }}, 
+            'company_id': {{ comapnyID }}{{ comapnyID }}, 
             'csrfmiddlewaretoken':$('input[name=csrfmiddlewaretoken]').val(),
         },
         success: function (data) {   // `data` is from `get_topics_ajax` view function
