@@ -249,6 +249,25 @@
         });
     });
 
+    
+    $.ajax({                       // initialize an AJAX request
+        type: "POST",
+        url: '{% url "get_agent_company_ajax" %}',
+        data: {
+            'company_id': {{ comapnyID }}, 
+            'csrfmiddlewaretoken':$('input[name=csrfmiddlewaretoken]').val(),
+        },
+        success: function (data) {   // `data` is from `get_topics_ajax` view function
+            let html_data = '<option value="" selected disabled>------------</option>';
+            data.forEach(function (data) {
+        
+                html_data += `<option value="${data.id}" >${data.name}</option>` 
+            });
+            $("#agent").html(html_data); // replace the contents of the topic input with the data that came from the server
+            $("#agent").val({{ agent_ID }});
+        
+        }
+    });
 
 
 
