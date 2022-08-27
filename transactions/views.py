@@ -672,7 +672,7 @@ def add_return(request):
 @login_required(login_url='login')
 def list_return(request):
 
-    data = supply_return.objects.all()
+    data = supply_return.objects.all().order_by("DC_number")
 
     supply_return_filter_data = supply_return_filter()
 
