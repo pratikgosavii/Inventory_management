@@ -411,6 +411,9 @@ def update_outward(request, outward_id):
         instance = outward.objects.get(id = outward_id)
         print('before')
         print(instance.goods_company)
+
+
+        print(request.POST)
        
         
         company_id = request.POST.get('company')
@@ -461,6 +464,7 @@ def update_outward(request, outward_id):
                       
 
                     except stock.DoesNotExist:
+                        test = None
                         stock.objects.create(company = company_instance, company_goods = company_goods_instance, goods_company = goods_company_instance, total_bag =  int(bags))
 
 
