@@ -456,11 +456,9 @@ def update_outward(request, outward_id):
 
                     
                     try:
+                      
                         test = stock.objects.get(company = company_instance, company_goods = company_goods_instance, goods_company = goods_company_instance)
-
-                        test = stock.objects.get(company = company_instance, company_goods = company_goods_instance, goods_company = goods_company_instance)
-                        test.total_bag = test.total_bag - int(bags)
-                        test.save()
+                      
 
                     except stock.DoesNotExist:
                         stock.objects.create(company = company_instance, company_goods = company_goods_instance, goods_company = goods_company_instance, total_bag =  int(bags))
@@ -480,10 +478,11 @@ def update_outward(request, outward_id):
                         stock_before.save()
                         forms.save()
 
+                     
                         return redirect('list_outward')
 
                     else:
-                        messages.error(request, "Outward is more than1 Stock")
+                        messages.error(request, "Outward is more than Stock")
                         print('Outward is more than Stock')
                         return redirect('list_outward')
                     
@@ -748,6 +747,7 @@ def update_return(request, return_id):
 
                         forms.save()
                 else:
+
 
                     if instance.bags != int(bags):
                         
