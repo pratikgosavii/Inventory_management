@@ -502,7 +502,6 @@ def update_outward(request, outward_id):
                         print('Outward is more than Stock')
                         return redirect('list_outward')
                     
-                    
                 else:
 
                     print('wored')
