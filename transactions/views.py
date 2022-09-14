@@ -264,6 +264,18 @@ def list_inward(request):
 
     company_data = company.objects.all()
 
+    page = request.GET.get('page', 1)
+    paginator = Paginator(data, 50)
+
+    try:
+        data = paginator.page(page)
+    except PageNotAnInteger:
+        data = paginator.page(1)
+    except EmptyPage:
+        data = paginator.page(paginator.num_pages)
+
+
+
     context = {
         'data': data,
         'company_data' : company_data,
@@ -688,6 +700,20 @@ def list_return(request):
     if agent_name:
 
         data = data.filter(agent__name__icontains=agent_name)
+
+
+
+    page = request.GET.get('page', 1)
+    paginator = Paginator(data, 50)
+
+    
+    try:
+        data = paginator.page(page)
+    except PageNotAnInteger:
+        data = paginator.page(1)
+    except EmptyPage:
+        data = paginator.page(paginator.num_pages)
+
 
 
     company_data = company.objects.all()
