@@ -764,17 +764,21 @@ def update_return(request, return_id):
 
                 if int(instance.company.id) != int(company) or int(instance.company_goods.id) != int(company_goods) or int(instance.goods_company.id) != int(goods_company):
                 
-                    if test.total_bag >= int(bags):
-                        test = stock.objects.get(company = company, company_goods = company_goods, goods_company = goods_company)
-                        test.total_bag = test.total_bag - int(bags)
-                        test.save()
-                        stock_before = stock.objects.get(company = instance.company.id, company_goods = instance.company_goods.id, goods_company = instance.goods_company.id)
-                        stock_before.total_bag = stock_before.total_bag + instance.bags
-                        stock_before.save()
+                    
+                    test = stock.objects.get(company = company, company_goods = company_goods, goods_company = goods_company)
+                    test.total_bag = test.total_bag - int(bags)
+                    test.save()
+                    stock_before = stock.objects.get(company = instance.company.id, company_goods = instance.company_goods.id, goods_company = instance.goods_company.id)
+                    stock_before.total_bag = stock_before.total_bag + instance.bags
+                    stock_before.save()
 
-                        print('--------heheye----------')
+                    print('--------heheye----------')
 
-                        forms.save()
+                    forms.save()
+
+                    return redirect('list_return')
+
+                 
                 else:
 
 
@@ -786,6 +790,7 @@ def update_return(request, return_id):
                             minus_stock = instance.bags - int(bags)
                         else:
                             add_stock = int(bags) - instance.bags
+                            minus_stock = None
 
                         if minus_stock:
 
@@ -824,6 +829,8 @@ def update_return(request, return_id):
 
 
         else:
+
+            print('---------------------huhuhuh--')
 
             print(forms.errors)
 
