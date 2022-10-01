@@ -48,7 +48,6 @@ class supply_return(models.Model):
     DC_number = models.CharField(max_length=566)
     DC_date = models.DateTimeField(auto_now_add=False)
 
-    
 
 
 class stock(models.Model):

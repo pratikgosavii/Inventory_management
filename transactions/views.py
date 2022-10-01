@@ -33,6 +33,45 @@ IST = pytz.timezone('Asia/Kolkata')
 
 
 
+def demo(request):
+
+    
+    
+    s = stock.objects.all()
+
+
+
+
+    for ab in s:
+
+        a = inward.objects.filter(company__company_name = ab.company.company_name, company_goods__name = ab.company_goods.name, goods_company__goods_company_name = ab.goods_company.goods_company_name)
+        b = outward.objects.filter(company__company_name =  ab.company.company_name, company_goods__name = ab.company_goods.name, goods_company__goods_company_name = ab.goods_company.goods_company_name)
+        c = supply_return.objects.filter(company__company_name =  ab.company.company_name, company_goods__name = ab.company_goods.name, goods_company__goods_company_name = ab.goods_company.goods_company_name)
+
+        x = 0
+        y = 0
+        z = 0
+
+        for i in a:
+            x = x + i.bags
+            
+        for i in b:
+            y = y + i.bags
+
+        for i in c:
+            z = z + i.bags
+
+        
+
+        st = x - y + z
+
+
+        ab.total_bag = st
+        ab.save()
+
+
+
+
 # Create your views here.
 
 @login_required(login_url='login')
@@ -241,9 +280,18 @@ def delete_inward(request, inward_id):
         con = inward.objects.filter(id = inward_id).first()
 
         test = stock.objects.get(company = con.company, company_goods = con.company_goods, goods_company = con.goods_company)
-        test.total_bag = test.total_bag - con.bags
-        test.save()
-        con.delete()
+        if test.total_bag >= con.bags:
+            test.total_bag = test.total_bag - con.bags
+            test.save()
+            con.delete()
+
+        else:
+
+            messages.error(request, 'cant delete stock is less')
+
+            return HttpResponseRedirect(reverse('list_inward_delete'))
+
+
 
         return HttpResponseRedirect(reverse('list_inward_delete'))
 
@@ -860,9 +908,15 @@ def delete_return(request, return_id):
         con = supply_return.objects.get(id = return_id)
         print(con)
         test = stock.objects.get(company = con.company, company_goods = con.company_goods, goods_company = con.goods_company)
-        test.total_bag = test.total_bag - con.bags
-        test.save()
-        con.delete()
+        if test.total_bag >= con.bags:
+            test.total_bag = test.total_bag - con.bags
+            test.save()
+            con.delete()
+        else:
+
+            messages.error(request, 'cant delete stock is less')
+            return HttpResponseRedirect(reverse('list_return'))
+
 
         return HttpResponseRedirect(reverse('list_return'))
 
