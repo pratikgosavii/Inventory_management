@@ -87,3 +87,15 @@ class agent_Form(forms.ModelForm):
 
         }
            
+
+class transport_Form(forms.ModelForm):
+    class Meta:
+        model = transport
+        fields = '__all__'
+        widgets = {
+           
+            'name': forms.TextInput(attrs={
+                'class': 'form-control', 'id': 'company'
+            }),
+            
+        }

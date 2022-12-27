@@ -430,6 +430,90 @@ def list_agent(request):
 
 
 
+
+@login_required(login_url='login')
+def add_transport(request):
+    
+    if request.method == 'POST':
+
+        forms = transport_Form(request.POST)
+        print('-----------------------------1---------------------')
+        if forms.is_valid():
+            forms.save()
+            return redirect('list_transport')
+        else:
+            print('-----------------------------2---------------------')
+
+            print(forms.errors)
+            return redirect('list_transport')
+    
+    else:
+
+        forms = transport_Form()
+        print('--------------------------------------------------')
+
+        
+        print(forms)
+        print('-----------------------------3---------------------')
+
+        company_data = company.objects.all()
+
+        context = {
+            'form': forms,
+            'company' : company_data
+        }
+
+        return render(request, 'store/add_transport.html', context)
+
+
+@login_required(login_url='login')
+def update_transport(request, transport_id):
+
+    if request.method == 'POST':
+
+        instance = transport.objects.get(id=transport_id)
+
+        forms = transport_Form(request.POST, instance = instance)
+
+        if forms.is_valid():
+            forms.save()
+            return redirect('list_transport')
+    
+    else:
+
+        instance = transport.objects.get(id=transport_id)
+
+        forms = transport_Form(instance = instance)
+
+        context = {
+            'form': forms
+        }
+
+        return render(request, 'store/add_transport.html', context)
+
+
+@login_required(login_url='login')
+def delete_transport(request, transport_id):
+    
+    transport.objects.get(id=transport_id).delete()
+
+    return HttpResponseRedirect(reverse('list_transport_delete'))
+
+
+@login_required(login_url='login')
+def list_transport(request):
+    
+    data = transport.objects.all()
+
+    context = {
+            'data': data
+        }
+
+
+    return render(request, 'store/list_transport.html', context)
+
+
+
 # delete view
 
      
@@ -499,4 +583,17 @@ def list_agent_delete(request):
 
 
     return render(request, 'delete/list_agent_delete.html', context)
+
+
+@login_required(login_url='login')
+def list_transport_delete(request):
+    
+    data = transport.objects.all()
+
+    context = {
+            'data': data
+        }
+
+
+    return render(request, 'delete/list_transport_delete.html', context)
 

@@ -44,11 +44,25 @@ class goods_company(models.Model):
 class agent(models.Model):
 
     company = models.ForeignKey(company , on_delete=models.CASCADE, related_name='ddfdf')
-    name = models.CharField(max_length=120, unique=True)
+    name = models.CharField(max_length=120)
     place =  models.CharField(max_length=120, unique=False)
     taluka  = models.CharField(max_length=120, unique=False)
     address = models.CharField(max_length=120, unique=False)
     district = models.CharField(max_length=120, unique=False)
     mobile_number =  models.IntegerField(unique=False)
 
+
+
+    class Meta:
+        unique_together = ('company', 'name')
         
+
+
+
+class transport(models.Model):
+
+    name = models.CharField(max_length=120)
+
+    
+    def __str__(self):
+        return self.name

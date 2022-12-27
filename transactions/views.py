@@ -3,7 +3,7 @@ from genericpath import samefile
 from django.contrib import messages
 from django.http.response import HttpResponseRedirect
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 import pandas as pd
 
 from store.views import numOfDays
@@ -15,6 +15,7 @@ from .models import *
 from datetime import date
 from django.core.paginator import Paginator, EmptyPage
 from functools import reduce
+
 from django.urls import reverse
 import csv
 import mimetypes
@@ -112,20 +113,23 @@ def add_inward(request):
                 test.total_bag = test.total_bag + e
                 test.save()
 
-                return redirect('list_inward')
+                print('--------------------------')
+                print('--------------------------')
+                print('--------------------------')
+
+                return JsonResponse({'status' : 'done'}, safe=False)
+
 
             except stock.DoesNotExist:
 
                 test = stock.objects.create(company = a, company_goods = b, goods_company = c, total_bag = e)
-                return redirect('list_inward')
-        else:
-            print(forms.errors)
+                return JsonResponse({'status' : 'done'}, safe=False)
 
-            form = inward_Form()
-            context = {
-                'form_error': forms.errors
-            }
-            return render(request, 'transactions/add_inward.html', context)
+        else:
+                
+            error = forms.errors.as_json()
+            print(error)
+            return JsonResponse({'error' : error}, safe=False)
 
     else:
 
@@ -249,10 +253,25 @@ def update_inward(request, inward_id ):
                     return HttpResponseRedirect(reverse('list_inward'))
 
 
+        else:
 
+            instance = inward.objects.get(id = inward_id)
+            comapnyID = forms.instance.company.id
+            comapny_goods_ID = forms.instance.company_goods.id
+            goods_company_ID = forms.instance.goods_company.id
+            agent_ID = forms.instance.agent.id
+
+            context = {
+                'form': forms,
+                'comapnyID' : comapnyID,
+                'comapny_goods_ID' : comapny_goods_ID,
+                'goods_company_ID' : goods_company_ID,
+                'agent_ID' : agent_ID
+            }
             
 
-        
+            return render(request, 'transactions/update_inward.html', context)
+
 
     else:
 
@@ -306,7 +325,18 @@ def delete_inward(request, inward_id):
 @login_required(login_url='login')
 def list_inward(request):
 
-    data = inward.objects.all()
+    year = request.GET.get('year')
+
+    if year:
+
+        date1 = str(int(year) - 1) + '-04-01'
+        date2 = year + '-03-31'
+
+        data = inward.objects.filter(DC_date__range=[date1, date2])
+    
+    else:
+
+        data = inward.objects.filter()
 
     inward_filter_data = inward_filter()
 
@@ -322,16 +352,16 @@ def list_inward(request):
     except EmptyPage:
         data = paginator.page(paginator.num_pages)
 
-
-
     context = {
         'data': data,
         'company_data' : company_data,
-        'filter_inward' : inward_filter_data
+        'filter_inward' : inward_filter_data,
+        'year' : year
     }
 
     return render(request, 'transactions/list_inward.html', context)
 
+import json
 
 @login_required(login_url='login')
 def add_outward(request):
@@ -375,22 +405,29 @@ def add_outward(request):
                     print('save')
                     forms.save()
 
-                    return redirect('list_outward')
+                    return JsonResponse({'status' : 'done'}, safe=False)
+
 
                 else:
-                    messages.error(request, "Outward is more than Stock")
-                    print('Outward is more than Stock')
-                    return redirect('list_outward')
-
+                   
+                    error = json.dumps({ 'error' : [{'message' : 'Outward is more than Stock'}]})
+                    print(error)
+                    return JsonResponse({'error' : error}, safe=False)
 
             except stock.DoesNotExist:
 
-                messages.error(request, 'no stock in inventory for outward')
-                return redirect('list_outward')
+                error = json.dumps({ 'error' : [{'message' : 'no stock in inventor'}]})
+                print(error)
+                return JsonResponse({'error' : error}, safe=False)
+
 
 
         else:
-            print(forms.errors)
+
+            error = forms.errors.as_json()
+            print(error)
+            return JsonResponse({'error' : error}, safe=False)
+
 
     else:
 
@@ -424,7 +461,19 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 @login_required(login_url='login')
 def list_outward(request):
 
-    data = outward.objects.filter().order_by('DC_number')
+
+    year = request.GET.get('year')
+
+    if year:
+
+        date1 = str(int(year) - 1) + '-04-01'
+        date2 = year + '-03-31'
+
+        data = outward.objects.filter(DC_date__range=[date1, date2])
+    
+    else:
+
+        data = outward.objects.filter().order_by('DC_number')
 
 
     agent_name = request.GET.get('agent_name')
@@ -457,7 +506,9 @@ def list_outward(request):
     context = {
         'data': data,
         'filter_outward' : outward_filter_data,
-        'company_data' : company_data
+        'company_data' : company_data,
+        'year' : year
+
     }
 
     return render(request, 'transactions/list_outward.html', context)
@@ -575,13 +626,27 @@ def update_outward(request, outward_id):
                                 print('save')
 
                                 forms.save()
+                                
                             else:
 
                                 messages.error(request, "Outward is more than Stock")
                                 print('Outward is more than Stock')
-                                return redirect('list_outward')
+                                comapnyID = forms.instance.company.id
+                                comapny_goods_ID = forms.instance.company_goods.id
+                                goods_company_ID = forms.instance.goods_company.id
+                                agent_ID = forms.instance.agent.id
 
-                        
+                                    
+                                context = {
+                                    'form':  forms,
+                                    'comapnyID' : comapnyID,
+                                    'comapny_goods_ID' : comapny_goods_ID,
+                                    'goods_company_ID' : goods_company_ID,
+                                    'agent_ID' : agent_ID
+                                }
+
+                                return render(request, 'transactions/update_outward.html', context)
+
                         else:
 
                             test.total_bag = test.total_bag + add_stock
@@ -608,6 +673,22 @@ def update_outward(request, outward_id):
         else:
            
             print(forms.errors)
+            comapnyID = forms.instance.company.id
+            comapny_goods_ID = forms.instance.company_goods.id
+            goods_company_ID = forms.instance.goods_company.id
+            agent_ID = forms.instance.agent.id
+
+                
+            context = {
+                'form':  forms,
+                'comapnyID' : comapnyID,
+                'comapny_goods_ID' : comapny_goods_ID,
+                'goods_company_ID' : goods_company_ID,
+                'agent_ID' : agent_ID
+            }
+
+            return render(request, 'transactions/update_outward.html', context)
+
 
     else:
 
@@ -693,6 +774,7 @@ def add_return(request):
         print(DC_date)
 
         if forms.is_valid():
+
             print('save')
 
             forms.save()
@@ -710,15 +792,20 @@ def add_return(request):
                 test.total_bag = test.total_bag + e
                 test.save()
 
-                return redirect('list_return')
+                return JsonResponse({'status' : 'done'}, safe=False)
+
 
             except stock.DoesNotExist:
 
                 test = stock.objects.create(company = a, company_goods = b, goods_company = c, total_bag = e)
-                return redirect('list_inward')
+                return JsonResponse({'status' : 'done'}, safe=False)
+
 
         else:
-            print(forms.error)
+            error = forms.errors.as_json()
+            print(error)
+            return JsonResponse({'error' : error}, safe=False)
+
 
     else:
 
@@ -734,7 +821,18 @@ def add_return(request):
 @login_required(login_url='login')
 def list_return(request):
 
-    data = supply_return.objects.all().order_by("DC_date")
+    year = request.GET.get('year')
+
+    if year:
+
+        date1 = str(int(year) - 1) + '-04-01'
+        date2 = year + '-03-31'
+
+        data = inward.objects.filter(DC_date__range=[date1, date2])
+    
+    else:
+
+        data = supply_return.objects.all().order_by("DC_date")
 
     supply_return_filter_data = supply_return_filter()
 
@@ -768,7 +866,9 @@ def list_return(request):
     context = {
         'data': data,
         'company_data': company_data,
-        'filter_return_supply' : supply_return_filter_data
+        'filter_return_supply' : supply_return_filter_data,
+        'year' : year
+
     }
 
     return render(request, 'transactions/list_return.html', context)
@@ -949,7 +1049,7 @@ def report_inward(request):
 
 
     
-    filtered_data = list(filtered_data.values_list('DC_number', 'agent__name', 'agent__place', 'agent__taluka', 'agent__district', 'company_goods__name', 'goods_company__goods_company_name', 'bags'))
+    filtered_data = list(filtered_data.values_list('DC_number', 'agent__name', 'agent__place', 'agent__taluka', 'agent__district', 'company_goods__name', 'goods_company__goods_company_name', 'bags', 'DC_date', 'transport__name', 'LR_number', 'freight'))
 
     vals1 = []
     vals1.append('Serial')
@@ -961,6 +1061,10 @@ def report_inward(request):
     vals1.append("Crop")
     vals1.append("Variety")
     vals1.append('Packet')
+    vals1.append('Date')
+    vals1.append('Transport')
+    vals1.append('LR Number')
+    vals1.append('Freight')
 
     vals.append(vals1)
 
@@ -977,6 +1081,10 @@ def report_inward(request):
         vals1.append(i[5])
         vals1.append(i[6])
         vals1.append(i[7])
+        vals1.append(i[8])
+        vals1.append(i[9])
+        vals1.append(i[10])
+        vals1.append(i[11])
 
         vals.append(vals1)
 
@@ -1028,7 +1136,7 @@ def report_outward(request):
     outward_filterd_data = outward_filter(request.GET, outward_data)
     outward_filterd_data = outward_filterd_data.qs
 
-    outward_filterd_data = list(outward_filterd_data.values_list('DC_number', 'agent__name', 'agent__place', 'agent__taluka', 'agent__district', 'company_goods__name', 'goods_company__goods_company_name', 'bags'))
+    outward_filterd_data = list(outward_filterd_data.values_list('DC_number', 'agent__name', 'agent__place', 'agent__taluka', 'agent__district', 'company_goods__name', 'goods_company__goods_company_name', 'bags', 'DC_date', 'transport__name', 'LR_number', 'freight'))
     # print(out)
 
     outward_filterd_data = list(map(list, outward_filterd_data))
@@ -1047,7 +1155,10 @@ def report_outward(request):
     vals1.append("Crop")
     vals1.append("Variety")
     vals1.append('Packet')
-
+    vals1.append('Date')
+    vals1.append('Transport')
+    vals1.append('LR Number')
+    vals1.append('Freight')
     vals.append(vals1)
 
 
@@ -1063,7 +1174,10 @@ def report_outward(request):
         vals1.append(i[5])
         vals1.append(i[6])
         vals1.append(i[7])
-
+        vals1.append(i[8])
+        vals1.append(i[9])
+        vals1.append(i[10])
+        vals1.append(i[11])
         vals.append(vals1)
 
    
@@ -1110,7 +1224,7 @@ def report_supply_return(request):
     vals = []
 
 
-    filtered_data = list(data.values_list('DC_number', 'agent__name', 'agent__place', 'agent__taluka', 'agent__district', 'company_goods__name', 'goods_company__goods_company_name', 'bags'))
+    filtered_data = list(data.values_list('DC_number', 'agent__name', 'agent__place', 'agent__taluka', 'agent__district', 'company_goods__name', 'goods_company__goods_company_name', 'bags', 'DC_date', 'transport__name', 'LR_number', 'freight'))
 
 
     vals1 = []
@@ -1123,7 +1237,10 @@ def report_supply_return(request):
     vals1.append("Crop")
     vals1.append("Variety")
     vals1.append('Packet')
-
+    vals1.append('Date')
+    vals1.append('Transport')
+    vals1.append('LR Number')
+    vals1.append('Freight')
     vals.append(vals1)
     print(vals)
 
@@ -1142,7 +1259,10 @@ def report_supply_return(request):
         vals1.append(i[5])
         vals1.append(i[6])
         vals1.append(i[7])
-
+        vals1.append(i[8])
+        vals1.append(i[9])
+        vals1.append(i[10])
+        vals1.append(i[11])
         vals.append(vals1)
 
 

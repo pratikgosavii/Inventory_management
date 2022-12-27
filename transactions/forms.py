@@ -23,6 +23,15 @@ class inward_Form(forms.ModelForm):
              'agent': forms.Select(attrs={
                 'class': 'form-control', 'id': 'total_pck'
             }),
+            'transport': forms.Select(attrs={
+                'class': 'form-control', 'id': 'transport'
+            }),
+            'LR_number': forms.TextInput(attrs={
+                'class': 'form-control', 'id': 'bag_size'
+            }),
+            'freight': forms.TextInput(attrs={
+                'class': 'form-control', 'id': 'bag_size'
+            }),
             'bags': forms.NumberInput(attrs={
                 'class': 'form-control', 'id': 'bag_size'
             }),
@@ -53,6 +62,15 @@ class outward_Form(forms.ModelForm):
              'agent': forms.Select(attrs={
                 'class': 'form-control', 'id': 'total_pck'
             }),
+             'transport': forms.Select(attrs={
+                'class': 'form-control', 'id': 'transport'
+            }),
+            'LR_number': forms.TextInput(attrs={
+                'class': 'form-control', 'id': 'bag_size'
+            }),
+            'freight': forms.TextInput(attrs={
+                'class': 'form-control', 'id': 'bag_size'
+            }),
             'bags': forms.NumberInput(attrs={
                 'class': 'form-control', 'id': 'bag_size'
             }),
@@ -82,6 +100,15 @@ class supply_return_Form(forms.ModelForm):
             }),
              'agent': forms.Select(attrs={
                 'class': 'form-control', 'id': 'total_pck'
+            }),
+             'transport': forms.Select(attrs={
+                'class': 'form-control', 'id': 'transport'
+            }),
+            'LR_number': forms.TextInput(attrs={
+                'class': 'form-control', 'id': 'bag_size'
+            }),
+            'freight': forms.TextInput(attrs={
+                'class': 'form-control', 'id': 'bag_size'
             }),
             'bags': forms.NumberInput(attrs={
                 'class': 'form-control', 'id': 'bag_size'

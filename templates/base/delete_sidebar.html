@@ -36,6 +36,13 @@
                 </li>
 
                 <li class="menu-item-has-children dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-archive"></i>Delete Transport</a>
+                    <ul class="sub-menu children dropdown-menu">
+                        <li><i class="fa fa-th"></i><a href="{% url 'list_transport_delete' %}">View</a></li>
+                    </ul>
+                </li>
+
+                <li class="menu-item-has-children dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-archive"></i>Delete Inward</a>
                     <ul class="sub-menu children dropdown-menu">
                         <li><i class="fa fa-th"></i><a href="{% url 'list_inward_delete' %}">View</a></li>
