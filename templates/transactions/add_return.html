@@ -207,7 +207,7 @@
         $.ajax({   
             cache: false,                    // initialize an AJAX request
             type: "POST",
-            url: "{% url 'add_inward' %}",
+            url: "{% url 'add_return' %}",
             data: data,     // add the country id to the POST parameters
 
             success: function (data) {   // `data` is from `get_topics_ajax` view function

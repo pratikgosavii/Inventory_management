@@ -35,7 +35,7 @@ class inward_Form(forms.ModelForm):
             'bags': forms.NumberInput(attrs={
                 'class': 'form-control', 'id': 'bag_size'
             }),
-            'DC_number': forms.TextInput(attrs={
+            'DC_number': forms.NumberInput(attrs={
                 'class': 'form-control', 'id': 'total_bag'
             }),
 
@@ -74,7 +74,7 @@ class outward_Form(forms.ModelForm):
             'bags': forms.NumberInput(attrs={
                 'class': 'form-control', 'id': 'bag_size'
             }),
-            'DC_number': forms.TextInput(attrs={
+            'DC_number': forms.NumberInput(attrs={
                 'class': 'form-control', 'id': 'total_bag'
             }),
 
@@ -114,7 +114,7 @@ class supply_return_Form(forms.ModelForm):
                 'class': 'form-control', 'id': 'bag_size'
             }),
             'DC_number': forms.TextInput(attrs={
-                'class': 'form-control', 'id': 'total_bag'
+                'class': 'form-control', 'id': 'DC_number'
             }),
 
             'DC_date': DateTimeInput(attrs={ 'class': 'form-control', 'type': 'datetime-local'}, format = '%Y-%m-%dT%H:%M'),

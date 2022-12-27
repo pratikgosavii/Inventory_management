@@ -773,7 +773,10 @@ def add_return(request):
 
         print(DC_date)
 
+        print('------------')
+
         if forms.is_valid():
+            
 
             print('save')
 
@@ -810,6 +813,8 @@ def add_return(request):
     else:
 
         forms = supply_return_Form()
+
+        print(forms)
 
         context = {
             'form': forms

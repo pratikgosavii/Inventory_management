@@ -54,7 +54,7 @@ class supply_return(models.Model):
     LR_number = models.CharField(max_length=50, null = True, blank = True)
     freight = models.CharField(max_length=50, null = True, blank = True)
     bags = models.BigIntegerField()
-    DC_number = models.CharField(max_length=566)
+    DC_number = models.CharField(max_length=50)
     DC_date = models.DateTimeField(auto_now_add=False)
 
 
