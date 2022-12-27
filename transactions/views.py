@@ -329,8 +329,8 @@ def list_inward(request):
 
     if year:
 
-        date1 = str(int(year) - 1) + '-04-01'
-        date2 = year + '-03-31'
+        date1 = year + '-04-01'
+        date2 = str(int(year) + 1) + '-03-31'
 
         data = inward.objects.filter(DC_date__range=[date1, date2])
     
@@ -466,8 +466,8 @@ def list_outward(request):
 
     if year:
 
-        date1 = str(int(year) - 1) + '-04-01'
-        date2 = year + '-03-31'
+        date1 =year + '-04-01'
+        date2 = str(int(year) + 1) + '-03-31'
 
         data = outward.objects.filter(DC_date__range=[date1, date2])
     
@@ -825,8 +825,8 @@ def list_return(request):
 
     if year:
 
-        date1 = str(int(year) - 1) + '-04-01'
-        date2 = year + '-03-31'
+        date1 = year + '-04-01'
+        date2 = str(int(year) + 1) + '-03-31'
 
         data = inward.objects.filter(DC_date__range=[date1, date2])
     
@@ -1081,7 +1081,7 @@ def report_inward(request):
         vals1.append(i[5])
         vals1.append(i[6])
         vals1.append(i[7])
-        vals1.append(i[8])
+        vals1.append('%s/%s/%s' % (i[8].month, i[8].day, i[8].year))
         vals1.append(i[9])
         vals1.append(i[10])
         vals1.append(i[11])
@@ -1174,7 +1174,7 @@ def report_outward(request):
         vals1.append(i[5])
         vals1.append(i[6])
         vals1.append(i[7])
-        vals1.append(i[8])
+        vals1.append('%s/%s/%s' % (i[8].month, i[8].day, i[8].year))
         vals1.append(i[9])
         vals1.append(i[10])
         vals1.append(i[11])
@@ -1259,7 +1259,7 @@ def report_supply_return(request):
         vals1.append(i[5])
         vals1.append(i[6])
         vals1.append(i[7])
-        vals1.append(i[8])
+        vals1.append('%s/%s/%s' % (i[8].month, i[8].day, i[8].year))
         vals1.append(i[9])
         vals1.append(i[10])
         vals1.append(i[11])
