@@ -1,0 +1,268 @@
+{% extends 'base/base.html' %}
+{% load i18n %}
+
+{% block title %}Product List{% endblock title %}
+
+
+{% block head %}
+
+<head>
+{% comment %} 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script> {% endcomment %}
+
+    <style>
+
+        .menu-nav {
+       
+            display: flex;
+            justify-content: space-between;
+          }
+          
+          .menu-item {
+            color: #FCC;
+            padding: 3px;
+          }
+          
+          .three-dots:after {
+            cursor: pointer;
+            color: #444;
+            content: '\2807';
+            font-size: 20px;
+            padding: 0 5px;
+          }
+          
+          a {
+            text-decoration: none;
+            color: white;
+          }
+          
+          a div {
+            padding: 2px;
+          }
+         
+          
+          .dropdownn {
+            position: absolute;
+            right: 10px;
+            background-color: #868e96;
+            
+            outline: none;
+            opacity: 0;
+            z-index: -1;
+            max-height: 0;
+            transition: opacity 0.1s, z-index 0.1s, max-height: 5s;
+          }
+          
+          .dropdownn-container:focus {
+            outline: none;
+          }
+          
+          .dropdownn-container:focus .dropdownn {
+            opacity: 1;
+            z-index: 100;
+            max-height: 100vh;
+            transition: opacity 0.2s, z-index 0.2s, max-height: 0.2s;
+          }
+
+          .logged-in {
+            color: orange;
+            font-size: 21px;
+          }
+          
+
+    </style>
+
+</head>
+
+{% endblock head %}
+
+{% block breadcrumbs %}
+<div class="breadcrumbs">
+    <div class="breadcrumbs-inner">
+        <div class="row m-0">
+            
+            {% comment %} <div class="col-sm-8">
+                <div class="page-header float-right">
+                    <div class="page-title">
+                        <ol class="breadcrumb text-right">
+                            <li><a href="#">Dashboard</a></li>
+                            <li><a href="#">Product</a></li>
+                            <li class="active">List</li>
+                        </ol>
+                    </div>
+                </div>
+            </div> {% endcomment %}
+        </div>
+    </div>
+</div>
+{% endblock breadcrumbs %}
+
+{% block content %}
+
+<p>
+    
+<form method="post" action="{% url 'download' %}">
+
+    {% csrf_token %}
+
+    <input type="hidden" value="{{ link }}" name="link">
+    <button class="btn btn-primary" type="submit">
+        Download Report
+    </button> 
+</form>
+
+<br>
+
+
+
+    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+      Filters
+    </button>
+  </p>
+  <div class="collapse" id="collapseExample">
+    <div class="card card-body">
+      
+
+        <form method="get" action="{% url 'report_monthly' %}" style="padding:15px;">
+
+            {% csrf_token %}
+
+            <div class="form-group" style="display: flex;
+            gap: 14px;">
+                                    
+                <label for="name" class="control-label mb-1" style="margin-left : 0px;">Date From</label>
+                {{ filter_outward.form.DC_date_start__date }}
+            
+
+
+                <label for="name" class="control-label mb-1">Date To</label>
+                                                {{ filter_outward.form.DC_date_end__date }}
+
+
+
+            </div>
+
+            <br>
+          
+            <button class="btn btn-primary" type="submit" > Submit </button>
+
+        </form>
+    </div>
+  </div>
+  
+
+<div class="row">
+    <div class="col-xl-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="box-title"> Monyhly Report </h4>
+            </div>
+            <div class="card-body--">
+                <div class="table-stats order-table ov-h">
+                    <table class="table ">
+                        <thead>
+                          <tr>
+                            <th class="serial">#</th>
+                            <th>Company Name</th>
+                            <th>Crop</th>
+                            <th>Variety</th>
+                            <th>Inward</th>
+                            <th>Outward</th>
+                            <th>Return</th>
+                            <th>Stock</th>
+
+                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% if data %}
+                        {% for i in data %}
+                        <tr>
+                            <td class="serial">{{ forloop.counter }}</td>
+                            <td>{{ i.0 }}</td>
+                            <td>{{ i.1 }}</td>
+                            <td>{{ i.2 }}</td>
+                            <td>{{ i.3 }}</td>
+                            <td>{{ i.4 }}</td>
+                            <td>{{ i.5 }}</td>
+                            <td>{{ i.6 }}</td>
+                           
+                        </tr>
+                        {% endfor %}
+                        {% else %}
+                            <tr><td>No Product Data</td></tr>
+                        {% endif %}
+                    </tbody>
+                    </table>
+                    {% comment %} <footer class="site-footer">
+                      <div class="footer-inner bg-white">
+                          <div class="row" style="float: right;">
+                              <p style="font-weight: 700;
+                              color: black;"> Total :- {{ total }} RS</p>
+                          </div>
+                          <button style="background-color: #05386b; border: green; padding: 10px;border-radius: 12px;" class="btn-info" onclick="mass_edit_request();" > Submit </button>
+                      </div>
+                  </footer> {% endcomment %}
+                          
+  {% if data.has_other_pages %}
+  <nav>
+    <ul class="pagination justify-content-center">
+      {% if data.has_previous %}
+        <li class="page-item">
+          <a class="page-link" href="?page={{ data.previous_page_number }}" aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+          </a>
+        </li>
+      {% else %}
+        <li class="page-item disabled">
+            <span class="page-link" aria-hidden="true">&laquo;</span>
+        </li>
+      {% endif %}
+
+      {% for p in data.paginator.page_range %}
+        {% if data.number == p %}
+          <li class="page-item"><a class="page-link" style="color: red;" href="#">{{ p }}</a></li>
+        {% else %}
+          <li class="page-item"><a class="page-link" href="?page={{ p }}">{{ p }}</a></li>
+        {% endif %}
+      {% endfor %}
+
+      {% if data.has_next %}
+        <li class="page-item">
+          <a class="page-link" href="?page={{ data.next_page_number }}" aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+          </a>
+        </li>
+      {% else %}
+        <li class="page-item disabled">
+          <span class="page-link" aria-hidden="true">&raquo;</span>
+        </li>
+      {% endif %}
+  </ul>
+  </nav>
+{% endif %}
+
+
+
+
+                </div> <!-- /.table-stats -->
+            </div>
+        </div> <!-- /.card -->
+    </div>  <!-- /.col-lg-8 -->
+
+    
+</div>
+
+
+
+<script>
+
+
+
+    
+</script>
+
+
+
+{% endblock content %}

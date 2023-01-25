@@ -1520,6 +1520,7 @@ def generate_report_main(request):
 
 @login_required(login_url='login')
 def generate_report_daily(request):
+
     pd.set_option('display.float_format', '{:.2f}'.format)
     print('--------------soukdgsbvhgdvei')
 
@@ -1534,21 +1535,21 @@ def generate_report_daily(request):
     goods_company_data = pd.DataFrame(list(goods_company.objects.all().values('id', 'goods_company_name')))
     goods_company_data = dict(goods_company_data.values)
 
-    inward_data = inward.objects.filter(DC_date__date = date.today())
-    outward_data = outward.objects.filter(DC_date__date = date.today())
-    supply_return_data = supply_return.objects.filter(DC_date__date = date.today())
+    inward_data = inward.objects.filter(DC_date = datetime.now())
+    outward_data = outward.objects.filter(DC_date = datetime.now())
+    supply_return_data = supply_return.objects.filter(DC_date = datetime.now())
     inward_filterd_data = inward_filter(request.GET, inward_data)
     outward_data_filterd_data = outward_filter(request.GET, outward_data)
-    supply_return_filterd_data = outward_filter(request.GET, supply_return_data)
+    supply_return_data_filterd_data = supply_return_filter(request.GET, supply_return_data)
     print(inward_data)
-    if inward_filterd_data.qs:
+    if inward_data:
         # inward sum
         df = pd.DataFrame(list(inward_filterd_data.qs.values()))
         sum__ = df.groupby(['company_id', 'company_goods_id', 'goods_company_id']).sum().reset_index()
     else:
         sum__ = pd.DataFrame(columns=['company_id', 'company_goods_id', 'goods_company_id', 'id', 'agent_id', 'bags', 'DC_number'])
 
-    if outward_data_filterd_data.qs:
+    if outward_data:
         # outward sum
         df2 = pd.DataFrame(list(outward_data_filterd_data.qs.values()))
         sum__2 = df2.groupby(['company_id', 'company_goods_id', 'goods_company_id']).sum().reset_index()
@@ -1556,10 +1557,10 @@ def generate_report_daily(request):
     else:
         sum__2 = pd.DataFrame(columns=['company_id', 'company_goods_id', 'goods_company_id', 'id', 'agent_id', 'bags', 'DC_number'])
 
-    if supply_return_filterd_data.qs:
+    if supply_return_data_filterd_data.qs:
         
         #return sum
-        df3 = pd.DataFrame(list(supply_return_filterd_data.qs.values()))
+        df3 = pd.DataFrame(list(supply_return_data_filterd_data.qs.values()))
         sum__3 = df3.groupby(['company_id', 'company_goods_id', 'goods_company_id']).sum().reset_index()
 
     else:
@@ -1570,7 +1571,7 @@ def generate_report_daily(request):
     print('stock')
     print(sum__4)
 
-    data_frames = [sum__, sum__2, sum__3, sum__4]
+    data_frames = [sum__, sum__2, sum__4]
 
     ada = reduce(lambda  left,right: pd.merge(left,right,on=['company_id', 'company_goods_id', 'goods_company_id'], how='outer'), data_frames)[['company_id', 'company_goods_id', 'goods_company_id', 'bags_x', 'bags_y', 'bags', 'total_bag']]
     print('final')
@@ -1628,9 +1629,11 @@ def generate_report_daily(request):
 
 
 
+
 @login_required(login_url='login')
 def generate_report_monthly(request):
 
+    
     pd.set_option('display.float_format', '{:.2f}'.format)
     print('--------------soukdgsbvhgdvei')
 
@@ -1649,20 +1652,27 @@ def generate_report_monthly(request):
     outward_data = outward.objects.all()
     supply_return_data = supply_return.objects.all()
     inward_filterd_data = inward_filter(request.GET, inward_data)
-    outward_data_filterd_data = outward_filter(request.GET, outward_data)
-    supply_return_filterd_data = outward_filter(request.GET, supply_return_data)
-
+    outward_filterd_data = outward_filter(request.GET, outward_data)
+    supply_return_filterd_data = supply_return_filter(request.GET, supply_return_data)
     print(inward_data)
     if inward_filterd_data.qs:
+
+        print('--------------')
+        print('--------------')
+        print('--------------')
+        print('--------------')
+        print('--------------')
+        print(inward_filterd_data)
         # inward sum
         df = pd.DataFrame(list(inward_filterd_data.qs.values()))
+        print(df)
         sum__ = df.groupby(['company_id', 'company_goods_id', 'goods_company_id']).sum().reset_index()
     else:
         sum__ = pd.DataFrame(columns=['company_id', 'company_goods_id', 'goods_company_id', 'id', 'agent_id', 'bags', 'DC_number'])
 
-    if outward_data_filterd_data.qs:
+    if outward_filterd_data.qs:
         # outward sum
-        df2 = pd.DataFrame(list(outward_data_filterd_data.qs.values()))
+        df2 = pd.DataFrame(list(outward_filterd_data.qs.values()))
         sum__2 = df2.groupby(['company_id', 'company_goods_id', 'goods_company_id']).sum().reset_index()
         
     else:
@@ -1671,7 +1681,7 @@ def generate_report_monthly(request):
     if supply_return_filterd_data.qs:
         
         #return sum
-        df3 = pd.DataFrame(list(supply_return_filterd_data.qs.values()))
+        df3 = pd.DataFrame(list(supply_return_data.qs.values()))
         sum__3 = df3.groupby(['company_id', 'company_goods_id', 'goods_company_id']).sum().reset_index()
 
     else:
