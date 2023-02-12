@@ -837,7 +837,7 @@ def list_return(request):
     
     else:
 
-        data = supply_return.objects.all().order_by("DC_date")
+        data = supply_return.objects.all().order_by("DC_date").order_by("DC_number")
 
     supply_return_filter_data = supply_return_filter()
 
