@@ -833,11 +833,13 @@ def list_return(request):
         date1 = year + '-04-01'
         date2 = str(int(year) + 1) + '-03-31'
 
-        data = inward.objects.filter(DC_date__range=[date1, date2]).order_by("DC_number")
+        data = inward.objects.filter(DC_date__range=[date1, date2])
+        data.extra(select={'DC_number':'SUBSTRING("DC_number",m,-)'}).order_by("DC_number")
     
     else:
 
-        data = supply_return.objects.all().order_by("DC_date").order_by("DC_number")
+        data = supply_return.objects.all()
+        data.extra(select={'DC_number':'SUBSTRING("DC_number",m,-)'}).order_by('DC_number')
 
     supply_return_filter_data = supply_return_filter()
 
@@ -1217,11 +1219,13 @@ def report_outward(request):
 
 
 
+from django.db.models.functions import Substr
 
 @login_required(login_url='login')
 def report_supply_return(request):
 
-    data = supply_return.objects.all().order_by("DC_number")
+    data = supply_return.objects.all()
+    data.extra(select={'DC_number':'SUBSTRING("DC_number",m,-)'}).order_by('DC_number')
 
     filterd_data = supply_return_filter(request.GET, data)
     data = filterd_data.qs
