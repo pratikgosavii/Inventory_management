@@ -69,3 +69,7 @@ class stock(models.Model):
     
 
 
+
+    def __str__(self):
+        return self.goods_company.goods_company_name
+
