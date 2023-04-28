@@ -23,7 +23,7 @@ class company(models.Model):
 class company_goods(models.Model):
 
     company = models.ForeignKey(company , on_delete=models.CASCADE, related_name='event_ticket')
-    name = models.CharField(max_length=120, unique=True)
+    name = models.CharField(max_length=120, unique=False)
     
     
     def __str__(self):
@@ -34,10 +34,11 @@ class goods_company(models.Model):
     
     company_name = models.ForeignKey(company, on_delete=models.CASCADE, related_name='sfsf')
     company_goods = models.ForeignKey(company_goods , on_delete=models.CASCADE, related_name='sds')
-    goods_company_name = models.CharField(max_length=120, unique=False)
+    goods_company_name = models.CharField(max_length=121, unique=False)
 
     class Meta:
-        unique_together = ('company_goods', 'goods_company_name',)
+        unique_together = ('company_name', 'company_goods', 'goods_company_name',)
+
 
     def __str__(self):
         return self.goods_company_name
