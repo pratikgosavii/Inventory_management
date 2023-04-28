@@ -37,7 +37,7 @@ class goods_company(models.Model):
     goods_company_name = models.CharField(max_length=121, unique=False)
 
     class Meta:
-        unique_together = ('company_name', 'company_goods', 'goods_company_name',)
+        unique_together = ('company_goods', 'goods_company_name',)
 
 
     def __str__(self):
