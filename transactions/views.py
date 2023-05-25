@@ -40,14 +40,16 @@ def demo(request):
     
     s = stock.objects.all()
 
-
+    inward_fi = inward.objects.filter(company__company_name__in = ["kasavi Kasvi Agri Genetics Pvt Ltd", "royaln Royal Seeds Pvt Ltd", "nadnnhi Nandini Agrisciences Pvt.Ltd", "saouthern Southern Agri Sciences", "sai bhvaaya Sai Bhavya Seeds Pvt Ltd"])
+    outward_fi = outward.objects.filter(company__company_name__in = ["kasavi Kasvi Agri Genetics Pvt Ltd", "royaln Royal Seeds Pvt Ltd", "nadnnhi Nandini Agrisciences Pvt.Ltd", "saouthern Southern Agri Sciences", "sai bhvaaya Sai Bhavya Seeds Pvt Ltd"])
+    supply_return_fi = supply_return.objects.filter(company__company_name__in = ["kasavi Kasvi Agri Genetics Pvt Ltd", "royaln Royal Seeds Pvt Ltd", "nadnnhi Nandini Agrisciences Pvt.Ltd", "saouthern Southern Agri Sciences", "sai bhvaaya Sai Bhavya Seeds Pvt Ltd"])
 
 
     for ab in s:
 
-        a = inward.objects.filter(company__company_name = ab.company.company_name, company_goods__name = ab.company_goods.name, goods_company__goods_company_name = ab.goods_company.goods_company_name)
-        b = outward.objects.filter(company__company_name =  ab.company.company_name, company_goods__name = ab.company_goods.name, goods_company__goods_company_name = ab.goods_company.goods_company_name)
-        c = supply_return.objects.filter(company__company_name =  ab.company.company_name, company_goods__name = ab.company_goods.name, goods_company__goods_company_name = ab.goods_company.goods_company_name)
+        a = inward_fi.objects.filter(company__company_name = ab.company.company_name, company_goods__name = ab.company_goods.name, goods_company__goods_company_name = ab.goods_company.goods_company_name, DC_date__gte = datetime.date(2023, 3, 31))
+        b = outward_fi.objects.filter(company__company_name =  ab.company.company_name, company_goods__name = ab.company_goods.name, goods_company__goods_company_name = ab.goods_company.goods_company_name, DC_date__gte = datetime.date(2023, 3, 31))
+        c = supply_return_fi.objects.filter(company__company_name =  ab.company.company_name, company_goods__name = ab.company_goods.name, goods_company__goods_company_name = ab.goods_company.goods_company_name, DC_date__gte = datetime.date(2023, 3, 31))
 
         x = 0
         y = 0
