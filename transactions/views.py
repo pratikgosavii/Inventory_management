@@ -26,7 +26,7 @@ import os
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
-from datetime import datetime
+from datetime import date
 import pytz
 
 IST = pytz.timezone('Asia/Kolkata')
@@ -47,9 +47,9 @@ def demo(request):
 
     for ab in s:
 
-        a = inward_fi.filter(company__company_name = ab.company.company_name, company_goods__name = ab.company_goods.name, goods_company__goods_company_name = ab.goods_company.goods_company_name, DC_date__gte = datetime.date(2023, 3, 31))
-        b = outward_fi.filter(company__company_name =  ab.company.company_name, company_goods__name = ab.company_goods.name, goods_company__goods_company_name = ab.goods_company.goods_company_name, DC_date__gte = datetime.date(2023, 3, 31))
-        c = supply_return_fi.filter(company__company_name =  ab.company.company_name, company_goods__name = ab.company_goods.name, goods_company__goods_company_name = ab.goods_company.goods_company_name, DC_date__gte = datetime.date(2023, 3, 31))
+        a = inward_fi.filter(company__company_name = ab.company.company_name, company_goods__name = ab.company_goods.name, goods_company__goods_company_name = ab.goods_company.goods_company_name, DC_date__gte = date(int(2023), int(3), int(31)))
+        b = outward_fi.filter(company__company_name =  ab.company.company_name, company_goods__name = ab.company_goods.name, goods_company__goods_company_name = ab.goods_company.goods_company_name, DC_date__gte = date(int(2023), int(3), int(31)))
+        c = supply_return_fi.filter(company__company_name =  ab.company.company_name, company_goods__name = ab.company_goods.name, goods_company__goods_company_name = ab.goods_company.goods_company_name, DC_date__gte = date(int(2023), int(3), int(31)))
 
         x = 0
         y = 0
