@@ -1152,6 +1152,7 @@ def report_outward(request):
     # print(out)
 
     outward_filterd_data = list(map(list, outward_filterd_data))
+    
 
     print('-------------------------------')
     print(outward_filterd_data)
