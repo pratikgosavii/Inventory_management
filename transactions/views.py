@@ -40,9 +40,9 @@ def demo(request):
     
     s = stock.objects.all()
 
-    inward_fi = inward.objects.filter(company__company_name__in = ["Kasvi Agri Genetics Pvt Ltd", "Royal Seeds Pvt Ltd", "Nandini Agrisciences Pvt.Ltd", "Southern Agri Sciences", "Sai Bhavya Seeds Pvt Ltd"])
-    outward_fi = outward.objects.filter(company__company_name__in = ["Kasvi Agri Genetics Pvt Ltd", "Royal Seeds Pvt Ltd", "Nandini Agrisciences Pvt.Ltd", "Southern Agri Sciences", "Sai Bhavya Seeds Pvt Ltd"])
-    supply_return_fi = supply_return.objects.filter(company__company_name__in = ["Kasvi Agri Genetics Pvt Ltd", "Royal Seeds Pvt Ltd", "Nandini Agrisciences Pvt.Ltd", "Southern Agri Sciences", "Sai Bhavya Seeds Pvt Ltd"])
+    inward_fi = inward.objects.filter(company__company_name__in = ["Kasvi Agri Genetics Pvt Ltd", "Royal Seeds Pvt Ltd", "Nandini Agrisciences Pvt.Ltd", "Southern Agri Sciences", "Sai Bhavya Seeds Pvt Ltd, Aadhyaa Seeds Pvt.Ltd"])
+    outward_fi = outward.objects.filter(company__company_name__in = ["Kasvi Agri Genetics Pvt Ltd", "Royal Seeds Pvt Ltd", "Nandini Agrisciences Pvt.Ltd", "Southern Agri Sciences", "Sai Bhavya Seeds Pvt Ltd, Aadhyaa Seeds Pvt.Ltd"])
+    supply_return_fi = supply_return.objects.filter(company__company_name__in = ["Kasvi Agri Genetics Pvt Ltd", "Royal Seeds Pvt Ltd", "Nandini Agrisciences Pvt.Ltd", "Southern Agri Sciences", "Sai Bhavya Seeds Pvt Ltd, Aadhyaa Seeds Pvt.Ltd"])
 
     print(inward_fi.count())
     print(outward_fi.count())
@@ -50,9 +50,9 @@ def demo(request):
 
     for ab in s:
 
-        a = inward_fi.filter(company__company_name = ab.company.company_name, company_goods__name = ab.company_goods.name, goods_company__goods_company_name = ab.goods_company.goods_company_name, DC_date__gte = date(int(2023), int(4), int(1)), DC_date__lte = date(int(2023), int(5), int(25)))
-        b = outward_fi.filter(company__company_name =  ab.company.company_name, company_goods__name = ab.company_goods.name, goods_company__goods_company_name = ab.goods_company.goods_company_name, DC_date__gte = date(int(2023), int(4), int(1)), DC_date__lte = date(int(2023), int(5), int(25)))
-        c = supply_return_fi.filter(company__company_name =  ab.company.company_name, company_goods__name = ab.company_goods.name, goods_company__goods_company_name = ab.goods_company.goods_company_name, DC_date__gte = date(int(2024), int(3), int(1)), DC_date__lte = date(int(2023), int(5), int(25)))
+        a = inward_fi.filter(company__company_name = ab.company.company_name, company_goods__name = ab.company_goods.name, goods_company__goods_company_name = ab.goods_company.goods_company_name, DC_date__gte = date(int(2023), int(4), int(1)), DC_date__lte = date(int(2023), int(5), int(27)))
+        b = outward_fi.filter(company__company_name =  ab.company.company_name, company_goods__name = ab.company_goods.name, goods_company__goods_company_name = ab.goods_company.goods_company_name, DC_date__gte = date(int(2023), int(4), int(1)), DC_date__lte = date(int(2023), int(5), int(27)))
+        c = supply_return_fi.filter(company__company_name =  ab.company.company_name, company_goods__name = ab.company_goods.name, goods_company__goods_company_name = ab.goods_company.goods_company_name, DC_date__gte = date(int(2024), int(3), int(1)), DC_date__lte = date(int(2023), int(5), int(27)))
 
         x = 0
         y = 0
