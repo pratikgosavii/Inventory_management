@@ -28,7 +28,6 @@ def dashboard(request):
 
     agent_data = agent.objects.all().count()
     context = {
-        
         'stock': stock_count,
         'inward_count': inward_count,
         'outward_count': outward_count,

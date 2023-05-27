@@ -4,7 +4,8 @@ from django.forms.widgets import DateTimeInput
 from .models import *
 from django.contrib.admin.widgets import  AdminDateWidget, AdminTimeWidget, AdminSplitDateTime
 
-
+class DateInput(forms.DateInput):
+    input_type = 'date'
 
 class inward_Form(forms.ModelForm):
     class Meta:
@@ -39,7 +40,7 @@ class inward_Form(forms.ModelForm):
                 'class': 'form-control', 'id': 'total_bag'
             }),
 
-            'DC_date': DateTimeInput(attrs={ 'class': 'form-control', 'type': 'datetime-local'}, format = '%Y-%m-%dT%H:%M'),
+            'DC_date': DateInput(attrs={ 'class': 'form-control da', 'onkeypress' : "return false"}, format = '%Y-%m-%dT%H:%M'),
             
         }
 
@@ -78,7 +79,7 @@ class outward_Form(forms.ModelForm):
                 'class': 'form-control', 'id': 'total_bag'
             }),
 
-            'DC_date': DateTimeInput(attrs={ 'class': 'form-control', 'type': 'datetime-local'}, format = '%Y-%m-%dT%H:%M'),
+            'DC_date': DateInput(attrs={ 'class': 'form-control da', 'onkeypress' : "return false"}, format = '%Y-%m-%dT%H:%M'),
             
         }
 
@@ -117,7 +118,7 @@ class supply_return_Form(forms.ModelForm):
                 'class': 'form-control', 'id': 'DC_number'
             }),
 
-            'DC_date': DateTimeInput(attrs={ 'class': 'form-control', 'type': 'datetime-local'}, format = '%Y-%m-%dT%H:%M'),
+            'DC_date': DateInput(attrs={ 'class': 'form-control da', 'onkeypress' : "return false"}, format = '%Y-%m-%dT%H:%M'),
             
         }
 
