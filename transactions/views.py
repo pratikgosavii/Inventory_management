@@ -40,9 +40,9 @@ def demo(request):
     
     s = stock.objects.all()
 
-    inward_fi = inward.objects.filter(company__company_name__in = ["Kasvi Agri Genetics Pvt Ltd", "Royal Seeds Pvt Ltd", "Nandini Agrisciences Pvt.Ltd", "Southern Agri Sciences", "Sai Bhavya Seeds Pvt Ltd, Aadhyaa Seeds Pvt.Ltd"])
-    outward_fi = outward.objects.filter(company__company_name__in = ["Kasvi Agri Genetics Pvt Ltd", "Royal Seeds Pvt Ltd", "Nandini Agrisciences Pvt.Ltd", "Southern Agri Sciences", "Sai Bhavya Seeds Pvt Ltd, Aadhyaa Seeds Pvt.Ltd"])
-    supply_return_fi = supply_return.objects.filter(company__company_name__in = ["Kasvi Agri Genetics Pvt Ltd", "Royal Seeds Pvt Ltd", "Nandini Agrisciences Pvt.Ltd", "Southern Agri Sciences", "Sai Bhavya Seeds Pvt Ltd, Aadhyaa Seeds Pvt.Ltd"])
+    inward_fi = inward.objects.filter(company__company_name__in = ["Kasvi Agri Genetics Pvt Ltd", "Royal Seeds Pvt Ltd", "Nandini Agrisciences Pvt.Ltd", "Southern Agri Sciences", "Sai Bhavya Seeds Pvt Ltd", "Aadhyaa Seeds Pvt.Ltd"])
+    outward_fi = outward.objects.filter(company__company_name__in = ["Kasvi Agri Genetics Pvt Ltd", "Royal Seeds Pvt Ltd", "Nandini Agrisciences Pvt.Ltd", "Southern Agri Sciences", "Sai Bhavya Seeds Pvt Ltd", "Aadhyaa Seeds Pvt.Ltd"])
+    supply_return_fi = supply_return.objects.filter(company__company_name__in = ["Kasvi Agri Genetics Pvt Ltd", "Royal Seeds Pvt Ltd", "Nandini Agrisciences Pvt.Ltd", "Southern Agri Sciences", "Sai Bhavya Seeds Pvt Ltd", "Aadhyaa Seeds Pvt.Ltd"])
 
     print(inward_fi.count())
     print(outward_fi.count())
