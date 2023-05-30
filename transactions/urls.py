@@ -9,6 +9,7 @@ urlpatterns = [
 
 
     path('fix-stock/', demo, name='demo'),
+    path('delete_entry/', delete_entry, name='delete_entry'),
 
 
     path('add-inward/', add_inward, name='add_inward'),

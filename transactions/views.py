@@ -75,6 +75,13 @@ def demo(request):
         ab.total_bag = st
         ab.save()
 
+def delete_entry(request):
+
+    inward.objects.filter(DC_date__lte = date(int(2023), int(3), int(31))).delete()
+    outward.objects.filter(DC_date__lte = date(int(2023), int(3), int(31))).delete()
+    supply_return.objects.filter(DC_date__lte = date(int(2023), int(3), int(31))).delete()
+
+
 
 
 
