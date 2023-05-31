@@ -1,8 +1,11 @@
 Serial,DC Number,Party Name,Party Place,Party Taluka,Party District,Crop,Variety,Packet,Date,Transport,LR Number,Freight
-1,2,Royal Seeds Pvt.Ltd,Mansoorabad,Mansoorabad,Hyderabad,Cotton,Ranadheer,24990,4/18/2022,,,1
-2,2,Royal Seeds Pvt.Ltd,Mansoorabad,Mansoorabad,Hyderabad,Cotton,Ranadheer,25350,4/19/2023,,,
-3,3,Royal Seeds Pvt.Ltd,Mansoorabad,Mansoorabad,Hyderabad,Cotton,Ranadheer,24440,4/17/2022,,,1
-4,3,Royal Seeds Pvt.Ltd,Mansoorabad,Mansoorabad,Hyderabad,Cotton,Ranadheer,24445,4/20/2023,,,
-5,50,Royal Seeds Pvt.Ltd,Mansoorabad,Mansoorabad,Hyderabad,Cotton,Ranadheer,16425,4/24/2023,,,
-6,69,Royal Seeds Pvt.Ltd,Mansoorabad,Mansoorabad,Hyderabad,Cotton,Ranadheer,16425,5/4/2023,,,
-7,2332,Aditya Krushi Kendra,Mardi,Wani,Yavatmal,Cotton,Ranadheer,2323,5/25/2023,,,
+1,146,Sakshi Fertilizer,Bhavani,Umarkhed,Yavatmal,Jowar,Virat - 3 kg,13,9/1/2023,Ram Transport,,
+2,148,Jay Gurudev Krushi Kendra,Pandharkawda,Yavatmal,Yavatmal,Jowar,Virat - 3 kg,13,10/1/2023,Ram Transport,,
+3,149,Laxmi Krushi Kendra,Pandharkawda,Yavatmal,Yavatmal,Jowar,Virat - 3 kg,13,21/1/2023,Ram Transport,,
+4,151,Ajay Krushi Kendra,Yavatmal,Yavatmal,Yavatmal,Jowar,Virat - 3 kg,13,27/1/2023,,,IPT
+5,153,Amol Krushi Kendra,Mohada,Yavatmal,Yavatmal,Jowar,Virat - 3 kg,13,30/1/2023,Ram Transport,,
+6,154,Kasvi Agri Genetics Pvt Ltd,Mahabubnagar,Mahabubnagar,Mahabubnagar,Jowar,Virat - 3 kg,278,22/3/2023,,,
+7,154,Kasvi Agri Genetics Pvt Ltd,Mahabubnagar,Mahabubnagar,Mahabubnagar,Jowar,Karishma-3 Kg,153,22/3/2023,,,
+8,154,Kasvi Agri Genetics Pvt Ltd,Mahabubnagar,Mahabubnagar,Mahabubnagar,Jowar,Jhansi-3 Kg,221,22/3/2023,,,
+9,154,Kasvi Agri Genetics Pvt Ltd,Mahabubnagar,Mahabubnagar,Mahabubnagar,Maize,Arrow - 4 Kg,55,23/3/2023,,,
+10,155,Kasvi Agri Genetics Pvt Ltd,Mahabubnagar,Mahabubnagar,Mahabubnagar,Jowar,Karishma-3 Kg,153,3/4/2023,VRL,1069648617,3300
