@@ -10,11 +10,9 @@ from store.models import *
 def dashboard(request):
     
     stock_data = stock.objects.all()
-    print(stock_data)
     stock_count = 0
     for i in stock_data:
         stock_count = stock_count + i.total_bag
-    print(stock_count)
 
     inward_data = inward.objects.all()
     inward_count = 0

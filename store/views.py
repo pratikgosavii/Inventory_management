@@ -38,8 +38,7 @@ def numOfDays(date1):
 
     date1 = datetime(year,month, day , int(time1[0]), int(time1[1]), tzinfo=ist)
 
-    print('--------------')
-    print(date1)
+   
     return date1
 
 
@@ -51,12 +50,9 @@ def get_company_goods_ajax(request):
 
     if request.method == "POST":
         company_id = request.POST['company_id']
-        print('----here----')
-        print(company_id)
         try:
             instance = company.objects.filter(id = company_id).first()
             dropdown1 = company_goods.objects.filter(company = instance)
-            print(dropdown1)
         except Exception:
             data['error_message'] = 'error'
             return JsonResponse(data)
@@ -67,18 +63,14 @@ def get_company_goods_ajax(request):
 def get_goods_company_ajax(request):
 
     data = []
-    print('i am here3')
 
     if request.method == "POST":
         company_id = request.POST['company_id']
         company_goods_id = request.POST['company_goods']
-        print(company_id)
         try:
             company_instance = company.objects.get(id= company_id)
             instance = company_goods.objects.filter(id = company_goods_id).first()
-            print(instance)
             dropdown1 = goods_company.objects.filter(company_goods = instance, company_name= company_instance)
-            print(dropdown1)
         except Exception:
             data['error_message'] = 'error'
             return JsonResponse(data)
@@ -89,17 +81,13 @@ def get_goods_company_ajax(request):
 def get_agent_company_ajax(request):
 
     data = []
-    print('i am here2')
 
     if request.method == "POST":
         company_id = request.POST['company_id']
-        print(company_id)
         try:
             company_instance = company.objects.get(id= company_id)
-            print(company_instance)
             
             agent_data = agent.objects.filter(company = company_instance)
-            print(agent_data)
         except Exception:
             data['error_message'] = 'error'
             return JsonResponse(data)
@@ -116,8 +104,14 @@ def add_company(request):
             forms.save()
             return redirect('list_company')
         else:
-            print(forms.errors)
-    
+
+            
+            context = {
+                'form': forms
+            }
+
+            return render(request, 'store/add_company.html', context)
+
     else:
 
         forms = company_Form()
@@ -142,8 +136,12 @@ def update_company(request, company_id):
             forms.save()
             return redirect('list_company')
         else:
-            print(forms.errors)
-    
+            context = {
+                'form': forms
+            }
+            return render(request, 'store/add_company.html', context)
+
+
     else:
 
         instance = company.objects.get(id=company_id)
@@ -190,7 +188,6 @@ def add_company_goods(request):
             forms.save()
             return redirect('list_company_goods')
         else:
-            print(forms.errors)
             return redirect('add_company_goods')
     
     else:
@@ -217,7 +214,7 @@ def update_company_goods(request, company_goods_id):
             return redirect('list_company_goods')
 
         else:
-            print(forms.errors)
+            pass
     
     else:
 
@@ -228,9 +225,7 @@ def update_company_goods(request, company_goods_id):
         comapnyID = instance.company.id
         comapny_goods_ID = instance.id
 
-        print(comapnyID)
-        print(comapny_goods_ID)
-
+      
         context = {
             'form': forms,
             'comapnyID' : comapnyID,
@@ -274,14 +269,12 @@ def add_goods_company(request):
             forms.save()
             return redirect('list_goods_company')
         else:
-            print(forms.errors)
             return redirect('list_goods_company')
     
     else:
 
         forms = goods_company_Form()
         data = company.objects.all()
-        print(data)
 
         context = {
             'form': forms,
@@ -312,9 +305,7 @@ def update_goods_company(request, company_goods_id):
         forms = goods_company_Form(instance = instance)
         comapny_goods_ID = instance.company_goods.id
 
-        print('-----------------')
-        print(instance.company_name.id)
-
+   
         context = {
             'form': forms,
             'comapnyID' : instance.company_name.id,
@@ -353,25 +344,17 @@ def add_agent(request):
     if request.method == 'POST':
 
         forms = agent_Form(request.POST)
-        print('-----------------------------1---------------------')
         if forms.is_valid():
             forms.save()
             return redirect('list_agent')
         else:
-            print('-----------------------------2---------------------')
-
-            print(forms.errors)
+          
             return redirect('list_agent')
     
     else:
 
         forms = agent_Form()
-        print('--------------------------------------------------')
-
-        
-        print(forms)
-        print('-----------------------------3---------------------')
-
+      
         company_data = company.objects.all()
 
         context = {
@@ -437,25 +420,17 @@ def add_transport(request):
     if request.method == 'POST':
 
         forms = transport_Form(request.POST)
-        print('-----------------------------1---------------------')
         if forms.is_valid():
             forms.save()
             return redirect('list_transport')
         else:
-            print('-----------------------------2---------------------')
-
-            print(forms.errors)
+          
             return redirect('list_transport')
     
     else:
 
         forms = transport_Form()
-        print('--------------------------------------------------')
-
-        
-        print(forms)
-        print('-----------------------------3---------------------')
-
+       
         company_data = company.objects.all()
 
         context = {

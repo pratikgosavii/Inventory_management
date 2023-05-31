@@ -79,8 +79,12 @@
                                 <th>Company Name</th>
                                 <th>Crop</th>
                                 <th>Variety</th>
-                                <th>Party</th>
+                                <th>Dc Number</th>
                                 <th>Total Packet</th>
+                                <th>Date</th>
+                                <th>Transport</th>
+                                <th>LR NO</th>
+                                <th>Frieght</th>
                                 <th>Actions</th>
                                 
                             </tr>
@@ -89,13 +93,19 @@
                             {% if data %}
                             {% for i in data %}
                             <tr>
+                                <input type="hidden" value="{{ i.id }}">
                                 <td class="serial">{{ forloop.counter }}</td>
                                 <td>{{ i.company.company_name }}</td>
                                 <td>{{ i.company_goods.name }}</td>
                                 <td>{{ i.goods_company.goods_company_name }}</td>
-                                <td>{{ i.agent.name }}</td>
+                                <td>{{ i.DC_number }}</td>
                                 <td>{{ i.bags }}</td>
-                                
+                                <td style="min-width:128px;">{{ i.DC_date }}</td>
+                                <td>{{ i.transport }}</td>
+                                <td>{{ i.LR_number }}</td>
+                                <td>{{ i.freight }}</td>
+
+                               
                                 <td>  
                                    <a href="{% url 'update_inward' i.id %}"> <button id="payment-button"  style="background-color: green; border: green; padding: 10px;border-radius: 12px;" type="submit" class="btn-info ">
                                         <span id="payment-button-amount">View</span>

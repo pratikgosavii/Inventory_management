@@ -1179,8 +1179,7 @@ def generate_report_main(request):
         # outward sum
         df2 = pd.DataFrame(list(outward_filterd_data.qs.values()))
         sum__ = df2.groupby(['company_id', 'company_goods_id', 'goods_company_id', 'agent_id']).sum().reset_index()
-        print('df2--------newwwww-----------')
-        print(sum__)
+       
 
         sum__['bags_x'] = sum__['bags']
         sum__['bags_y'] = None

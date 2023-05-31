@@ -186,7 +186,6 @@ def update_inward(request, inward_id ):
                     test.total_bag = test.total_bag + int(bags)
                     test.save()
 
-                    print('1')
 
                 except stock.DoesNotExist:
                     stock.objects.create(company = company_instance, company_goods = company_goods_instance, goods_company = goods_company_instance, total_bag =  int(bags))
@@ -237,8 +236,6 @@ def update_inward(request, inward_id ):
                             return redirect('list_inward')
 
                     else:
-
-                        print(data_inward.bags)
 
                         test.total_bag = test.total_bag + add_stock
                         test.save()
@@ -384,10 +381,6 @@ def add_outward(request):
         updated_request.update({'DC_date': date_time})
         forms = outward_Form(updated_request)
 
-        print(DC_date)
-
-
-
         if forms.is_valid():
 
             a = forms.cleaned_data['company']
@@ -402,7 +395,6 @@ def add_outward(request):
 
                     test.total_bag = test.total_bag - e
                     test.save()
-                    print('save')
                     forms.save()
 
                     return JsonResponse({'status' : 'done'}, safe=False)
@@ -417,7 +409,6 @@ def add_outward(request):
             except stock.DoesNotExist:
 
                 error = json.dumps({ 'error' : [{'message' : 'no stock in inventor'}]})
-                print(error)
                 return JsonResponse({'error' : error}, safe=False)
 
 
@@ -500,8 +491,6 @@ def list_outward(request):
     except EmptyPage:
         data = paginator.page(paginator.num_pages)
 
-    print(data)
-
 
     context = {
         'data': data,
@@ -520,12 +509,7 @@ def update_outward(request, outward_id):
     if request.method == 'POST':
 
         instance = outward.objects.get(id = outward_id)
-        print('before')
-        print(instance.goods_company)
-
-
-        print(request.POST)
-       
+    
         
         company_id = request.POST.get('company')
         company_goods_id = request.POST.get('company_goods')
@@ -552,17 +536,11 @@ def update_outward(request, outward_id):
         updated_request.update({'DC_date': date_time})
         forms = outward_Form(updated_request, instance=instance)
 
-        print('2')
-
         if forms.is_valid():
-
-            print('3')
 
             instance = outward.objects.get(id = outward_id)
 
             try:
-
-                print('testing ------------------------')
 
                 
                 if int(instance.company.id) != int(company_id) or int(instance.company_goods.id) != int(company_goods_id) or int(instance.goods_company.id) != int(goods_company_id):
@@ -598,7 +576,6 @@ def update_outward(request, outward_id):
 
                     else:
                         messages.error(request, "Outward is more than Stock")
-                        print('Outward is more than Stock')
                         return redirect('list_outward')
                     
                 else:
@@ -623,14 +600,12 @@ def update_outward(request, outward_id):
 
                                 test.total_bag = test.total_bag - minus_stock
                                 test.save()
-                                print('save')
 
                                 forms.save()
                                 
                             else:
 
                                 messages.error(request, "Outward is more than Stock")
-                                print('Outward is more than Stock')
                                 comapnyID = forms.instance.company.id
                                 comapny_goods_ID = forms.instance.company_goods.id
                                 goods_company_ID = forms.instance.goods_company.id
@@ -651,7 +626,6 @@ def update_outward(request, outward_id):
 
                             test.total_bag = test.total_bag + add_stock
                             test.save()
-                            print('save')
 
                             forms.save()
 
@@ -764,9 +738,6 @@ def add_return(request):
             date_time = datetime.now(IST)
 
 
-        print('-----------------------------------------------date_time')
-        print(date_time.date())
-        print(date.today())
         updated_request = request.POST.copy()
         updated_request.update({'DC_date': date_time})
         forms = supply_return_Form(updated_request)
@@ -777,9 +748,6 @@ def add_return(request):
 
         if forms.is_valid():
             
-
-            print('save')
-
             forms.save()
 
             a = forms.cleaned_data['company']
@@ -983,7 +951,6 @@ def update_return(request, return_id):
 
         else:
 
-            print('---------------------huhuhuh--')
 
             print(forms.errors)
 
@@ -1394,8 +1361,7 @@ def generate_report_main(request):
         # outward sum
         df2 = pd.DataFrame(list(outward_filterd_data.qs.values()))
         sum__ = df2.groupby(['company_id', 'company_goods_id', 'goods_company_id', 'agent_id']).sum().reset_index()
-        print('df2--------newwwww-----------')
-        print(sum__)
+       
 
         sum__['bags_x'] = sum__['bags']
         sum__['bags_y'] = None
