@@ -47,9 +47,9 @@ def demo(request):
 
     for ab in s:
 
-        a = inward_fi.filter(company__company_name = ab.company.company_name, company_goods__name = ab.company_goods.name, goods_company__goods_company_name = ab.goods_company.goods_company_name, DC_date__range=["2023-04-01", "2023-05-31"])
-        b = outward_fi.filter(company__company_name =  ab.company.company_name, company_goods__name = ab.company_goods.name, goods_company__goods_company_name = ab.goods_company.goods_company_name, DC_date__range=["2023-04-01", "2023-05-31"])
-        c = supply_return_fi.filter(company__company_name =  ab.company.company_name, company_goods__name = ab.company_goods.name, goods_company__goods_company_name = ab.goods_company.goods_company_name, DC_date__range=["2023-04-01", "2023-05-31"])
+        a = inward_fi.filter(company__company_name = ab.company.company_name, company_goods__name = ab.company_goods.name, goods_company__goods_company_name = ab.goods_company.goods_company_name, DC_date__range=["2023-04-01", "2023-06-15"])
+        b = outward_fi.filter(company__company_name =  ab.company.company_name, company_goods__name = ab.company_goods.name, goods_company__goods_company_name = ab.goods_company.goods_company_name, DC_date__range=["2023-04-01", "2023-06-15"])
+        c = supply_return_fi.filter(company__company_name =  ab.company.company_name, company_goods__name = ab.company_goods.name, goods_company__goods_company_name = ab.goods_company.goods_company_name, DC_date__range=["2023-04-01", "2023-06-15"])
 
         x = 0
         y = 0
