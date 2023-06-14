@@ -142,6 +142,7 @@ def update_inward(request, inward_id ):
         company_id = request.POST.get('company')
         company_goods_id = request.POST.get('company_goods')
         goods_company_id = request.POST.get('goods_company')
+        agent_id = request.POST.get('agent')
         bags = request.POST.get('bags')
 
         forms = inward_Form(request.POST, instance=instance_inward)
@@ -151,7 +152,7 @@ def update_inward(request, inward_id ):
 
             instance_inward = inward.objects.get(id = inward_id)
 
-            if int(instance_inward.company.id) == int(company_id) and int(instance_inward.company_goods.id) == int(company_goods_id) and int(instance_inward.goods_company.id) == int(goods_company_id):
+            if int(instance_inward.company.id) == int(company_id) and int(instance_inward.company_goods.id) == int(company_goods_id) and int(instance_inward.goods_company.id) == int(goods_company_id) and int(instance_inward.agent.id) == int(agent_id):
                 
                 test = stock.objects.get(company = instance_inward.company, company_goods = instance_inward.company_goods, goods_company = instance_inward.goods_company)
                 temp_stock = test.total_bag
@@ -241,17 +242,11 @@ def delete_inward(request, inward_id):
         con = inward.objects.filter(id = inward_id).first()
 
         test = stock.objects.get(company = con.company, company_goods = con.company_goods, goods_company = con.goods_company)
-        if test.total_bag >= con.bags:
-            test.total_bag = test.total_bag - con.bags
-            test.save()
-            con.delete()
+        test.total_bag = test.total_bag - con.bags
+        test.save()
+        con.delete()
 
-        else:
-
-            messages.error(request, 'cant delete stock is less')
-
-            return HttpResponseRedirect(reverse('list_inward_delete'))
-
+       
 
 
         return HttpResponseRedirect(reverse('list_inward_delete'))
@@ -448,6 +443,7 @@ def update_outward(request, outward_id):
         company_id = request.POST.get('company')
         company_goods_id = request.POST.get('company_goods')
         goods_company_id = request.POST.get('goods_company')
+        agent_id = request.POST.get('agent_id')
 
         bags = request.POST.get('bags')
 
@@ -459,8 +455,9 @@ def update_outward(request, outward_id):
 
            
             outward_inward = outward.objects.get(id = outward_id)
+            
 
-            if int(outward_inward.company.id) == int(company_id) and int(outward_inward.company_goods.id) == int(company_goods_id) and int(outward_inward.goods_company.id) == int(goods_company_id):
+            if int(outward_inward.company.id) == int(company_id) and int(outward_inward.company_goods.id) == int(company_goods_id) and int(outward_inward.goods_company.id) == int(goods_company_id) and int(outward_inward.agent.id) == int(agent_id):
                 
                 test = stock.objects.get(company = outward_inward.company, company_goods = outward_inward.company_goods, goods_company = outward_inward.goods_company)
                 temp_stock = test.total_bag
@@ -473,7 +470,7 @@ def update_outward(request, outward_id):
                 outward_inward.save()
                 forms.save()
 
-                return HttpResponseRedirect(reverse('list_ouward'))
+                return HttpResponseRedirect(reverse('list_outward'))
 
                
             else:
@@ -492,7 +489,7 @@ def update_outward(request, outward_id):
                     new_stock.save()
                     forms.save()
 
-                    return HttpResponseRedirect(reverse('list_ouward'))
+                    return HttpResponseRedirect(reverse('list_outward'))
 
                     
 
@@ -502,7 +499,7 @@ def update_outward(request, outward_id):
                     test.save()
 
 
-                    return HttpResponseRedirect(reverse('list_ouward'))
+                    return HttpResponseRedirect(reverse('list_outward'))
 
         else:
            
@@ -700,6 +697,7 @@ def update_return(request, return_id):
         company_id = request.POST.get('company')
         company_goods_id = request.POST.get('company_goods')
         goods_company_id = request.POST.get('goods_company')
+        agent_id = request.POST.get('agent')
         bags = request.POST.get('bags')
         
       
@@ -710,7 +708,7 @@ def update_return(request, return_id):
 
             instance_inward = supply_return.objects.get(id = return_id)
 
-            if int(instance_inward.company.id) == int(company_id) and int(instance_inward.company_goods.id) == int(company_goods_id) and int(instance_inward.goods_company.id) == int(goods_company_id):
+            if int(instance_inward.company.id) == int(company_id) and int(instance_inward.company_goods.id) == int(company_goods_id) and int(instance_inward.goods_company.id) == int(goods_company_id) and int(instance_inward.agent.id) == int(agent_id):
                 
                 test = stock.objects.get(company = instance_inward.company, company_goods = instance_inward.company_goods, goods_company = instance_inward.goods_company)
                 temp_stock = test.total_bag
@@ -727,8 +725,7 @@ def update_return(request, return_id):
 
                
             else:
-
-
+                
                 test = stock.objects.get(company = instance_inward.company, company_goods = instance_inward.company_goods, goods_company = instance_inward.goods_company)
                 test.total_bag = test.total_bag - int(bags)
 
@@ -796,14 +793,10 @@ def delete_return(request, return_id):
     try:
         con = supply_return.objects.get(id = return_id)
         test = stock.objects.get(company = con.company, company_goods = con.company_goods, goods_company = con.goods_company)
-        if test.total_bag >= con.bags:
-            test.total_bag = test.total_bag - con.bags
-            test.save()
-            con.delete()
-        else:
-
-            messages.error(request, 'cant delete stock is less')
-            return HttpResponseRedirect(reverse('list_return'))
+      
+        test.total_bag = test.total_bag - con.bags
+        test.save()
+    
 
 
         return HttpResponseRedirect(reverse('list_return'))
