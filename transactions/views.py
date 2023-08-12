@@ -93,7 +93,6 @@ def add_inward(request):
         forms = inward_Form(request.POST)
 
         if forms.is_valid():
-            forms.save()
 
             a = forms.cleaned_data['company']
             b = forms.cleaned_data['company_goods']
@@ -106,6 +105,8 @@ def add_inward(request):
 
                 test.total_bag = test.total_bag + e
                 test.save()
+                forms.save()
+
 
               
                 return JsonResponse({'status' : 'done'}, safe=False)
@@ -114,7 +115,7 @@ def add_inward(request):
             except stock.DoesNotExist:
 
                 test = stock.objects.create(company = a, company_goods = b, goods_company = c, total_bag = e)
-                return JsonResponse({'status' : 'done'}, safe=False)
+                return JsonResponse({'status' : 'done', 'error_msg' : 'stock does not exsist'}, safe=False)
 
         else:
                 
@@ -591,7 +592,6 @@ def add_return(request):
         if forms.is_valid():
             
 
-            forms.save()
 
             a = forms.cleaned_data['company']
             b = forms.cleaned_data['company_goods']
@@ -605,6 +605,8 @@ def add_return(request):
 
                 test.total_bag = test.total_bag + e
                 test.save()
+                forms.save()
+
 
                 return JsonResponse({'status' : 'done'}, safe=False)
 
@@ -612,7 +614,7 @@ def add_return(request):
             except stock.DoesNotExist:
 
                 test = stock.objects.create(company = a, company_goods = b, goods_company = c, total_bag = e)
-                return JsonResponse({'status' : 'done'}, safe=False)
+                return JsonResponse({'status' : 'failed', 'error_msg' : 'stock does not exsist'}, safe=False)
 
 
         else:
