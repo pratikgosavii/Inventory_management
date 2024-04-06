@@ -94,28 +94,11 @@ def add_inward(request):
 
         if forms.is_valid():
 
-            a = forms.cleaned_data['company']
-            b = forms.cleaned_data['company_goods']
-            c = forms.cleaned_data['goods_company']
-            d = forms.cleaned_data['agent']
-            e = forms.cleaned_data['bags']
+          
+            forms.save()
 
-            try:
-                test = stock.objects.get(company = a, company_goods = b, goods_company = c)
+            return JsonResponse({'status' : 'done'}, safe=False)
 
-                test.total_bag = test.total_bag + e
-                test.save()
-                forms.save()
-
-
-              
-                return JsonResponse({'status' : 'done'}, safe=False)
-
-
-            except stock.DoesNotExist:
-
-                test = stock.objects.create(company = a, company_goods = b, goods_company = c, total_bag = e)
-                return JsonResponse({'status' : 'done', 'error_msg' : 'stock does not exsist'}, safe=False)
 
         else:
                 
@@ -270,32 +253,9 @@ def add_outward(request):
 
         if forms.is_valid():
 
-            a = forms.cleaned_data['company']
-            b = forms.cleaned_data['company_goods']
-            c = forms.cleaned_data['goods_company']
-            e = forms.cleaned_data['bags']
+            forms.save()
 
-            try:
-                test = stock.objects.get(company = a, company_goods = b, goods_company = c)
-
-                if test.total_bag >= e:
-
-                    test.total_bag = test.total_bag - e
-                    test.save()
-                    forms.save()
-
-                    return JsonResponse({'status' : 'done'}, safe=False)
-
-
-                else:
-                   
-                    error = json.dumps({ 'error' : [{'message' : 'Outward is more than Stock'}]})
-                    return JsonResponse({'error' : error}, safe=False)
-
-            except stock.DoesNotExist:
-
-                error = json.dumps({ 'error' : [{'message' : 'no stock in inventor'}]})
-                return JsonResponse({'error' : error}, safe=False)
+            return JsonResponse({'status' : 'done'}, safe=False)
 
 
 
@@ -470,18 +430,23 @@ def delete_outward(request, outward_id):
 from django.db.models import Sum, F, ExpressionWrapper, IntegerField
 from django.http import JsonResponse
 import pandas as pd
+from itertools import chain
 
 
 @login_required(login_url='login')
 def list_stock(request):
 
+    # Get all distinct combinations from inward, outward, and supply_return models
+    inward_combinations = inward.objects.values('company', 'company_goods', 'goods_company').distinct()
+    outward_combinations = outward.objects.values('company', 'company_goods', 'goods_company').distinct()
+    supply_return_combinations = supply_return.objects.values('company', 'company_goods', 'goods_company').distinct()
     
+    # Merge all combinations into a single list
+    all_combinations = list(chain(inward_combinations, outward_combinations, supply_return_combinations))
+
     stock_data = []
 
-    # Get unique combinations of company, company_goods, and goods_company
-    combinations = stock.objects.values('company', 'company_goods', 'goods_company').distinct()
-
-    for combination in combinations:
+    for combination in all_combinations:
         # Get aggregate inward, outward, and supply_return data for the combination
         inward_stock_total = inward.objects.filter(company=combination['company'], company_goods=combination['company_goods'], goods_company=combination['goods_company']).aggregate(total=Sum('bags'))['total'] or 0
         outward_stock_total = outward.objects.filter(company=combination['company'], company_goods=combination['company_goods'], goods_company=combination['goods_company']).aggregate(total=Sum('bags'))['total'] or 0
@@ -491,31 +456,25 @@ def list_stock(request):
         total_stock = inward_stock_total + supply_return_stock_total - outward_stock_total
 
         # Append the calculated data to the stock_data list
+        company_instance = company.objects.get(id=combination['company'])
+        company_goods_instance = company_goods.objects.get(id=combination['company_goods'])
+        goods_company_instance = goods_company.objects.get(id=combination['goods_company'])
 
-        comapny_instance = company.objects.get(id = combination['company'])
-        company_goods_instance = company_goods.objects.get(id = combination['company_goods'])
-        goods_company_instance = goods_company.objects.get(id = combination['goods_company']
-                                               )
         stock_data.append({
-            'Company': comapny_instance,
+            'Company': company_instance,
             'Goods': company_goods_instance,
-            'Company2': goods_company_instance,
+            'Goods Company': goods_company_instance,
             'Stock': total_stock
         })
 
-    print(stock_data)
-
-    data = stock_data
-
-    stock_filter_data = stock_filter()
-
-    company_data = company.objects.all()
+    # Apply filters
+    stock_filter = StockFilter(request.GET, queryset=stock_data)
 
     context = {
-        'data': data,
-        'stock_filter' : stock_filter_data,
-        'company_data': company_data
+        'data': stock_filter.qs,
+        'stock_filter': stock_filter,
     }
+
 
     return render(request, 'transactions/list_stock.html', context)
 
