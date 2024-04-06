@@ -463,7 +463,7 @@ def list_stock(request):
         stock_data.append({
             'Company': company_instance,
             'Goods': company_goods_instance,
-            'Goods Company': goods_company_instance,
+            'Company2': goods_company_instance,
             'Stock': total_stock
         })
 
