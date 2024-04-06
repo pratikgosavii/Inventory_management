@@ -140,62 +140,15 @@ def update_inward(request, inward_id ):
 
         instance_inward = inward.objects.get(id = inward_id)
 
-        company_id = request.POST.get('company')
-        company_goods_id = request.POST.get('company_goods')
-        goods_company_id = request.POST.get('goods_company')
-        agent_id = request.POST.get('agent')
-        bags = request.POST.get('bags')
 
         forms = inward_Form(request.POST, instance=instance_inward)
 
 
         if forms.is_valid():
 
-            instance_inward = inward.objects.get(id = inward_id)
+            forms.save()
 
-            if int(instance_inward.company.id) == int(company_id) and int(instance_inward.company_goods.id) == int(company_goods_id) and int(instance_inward.goods_company.id) == int(goods_company_id) and int(instance_inward.agent.id) == int(agent_id):
-                
-                test = stock.objects.get(company = instance_inward.company, company_goods = instance_inward.company_goods, goods_company = instance_inward.goods_company)
-                temp_stock = test.total_bag
-                temp_stock = (temp_stock - instance_inward.bags) + int(bags)
-                test.total_bag = temp_stock
-                test.save()
-
-
-                instance_inward.total_bag = int(bags)
-                instance_inward.save()
-                forms.save()
-
-                return HttpResponseRedirect(reverse('list_inward'))
-
-               
-            else:
-
-
-                test = stock.objects.get(company = instance_inward.company, company_goods = instance_inward.company_goods, goods_company = instance_inward.goods_company)
-                test.total_bag = test.total_bag - int(bags)
-
-
-                try:
-
-
-                    new_stock = stock.objects.get(company__id = company_id, company_goods__id = company_goods_id, goods_company__id = goods_company_id)
-                    new_stock.total_bag = new_stock.total_bag + int(bags)
-                    test.save()
-                    new_stock.save()
-                    forms.save()
-                    
-                    return HttpResponseRedirect(reverse('list_inward'))
-                    
-
-                except stock.DoesNotExist:
-                    stock.objects.create(company = company_id, company_goods__id = company_goods_id, goods_company__id = goods_company_id, total_bag =  int(bags))
-                    forms.save()
-                    test.save()
-
-
-                    return HttpResponseRedirect(reverse('list_inward'))
-
+            return HttpResponseRedirect(reverse('list_inward'))
 
         else:
 
@@ -446,67 +399,15 @@ def update_outward(request, outward_id):
         instance = outward.objects.get(id = outward_id)
       
        
-        
-        company_id = request.POST.get('company')
-        company_goods_id = request.POST.get('company_goods')
-        goods_company_id = request.POST.get('goods_company')
-        agent_id = request.POST.get('agent_id')
-
-        bags = request.POST.get('bags')
-
-       
         forms = outward_Form(request.POST, instance=instance)
 
 
         if forms.is_valid():
 
            
-            outward_inward = outward.objects.get(id = outward_id)
-            
+            forms.save()
 
-            if int(outward_inward.company.id) == int(company_id) and int(outward_inward.company_goods.id) == int(company_goods_id) and int(outward_inward.goods_company.id) == int(goods_company_id) and int(outward_inward.agent.id) == int(agent_id):
-                
-                test = stock.objects.get(company = outward_inward.company, company_goods = outward_inward.company_goods, goods_company = outward_inward.goods_company)
-                temp_stock = test.total_bag
-                temp_stock = (temp_stock + outward_inward.bags) - int(bags)
-                test.total_bag = temp_stock
-                test.save()
-
-
-                outward_inward.total_bag = int(bags)
-                outward_inward.save()
-                forms.save()
-
-                return HttpResponseRedirect(reverse('list_outward'))
-
-               
-            else:
-
-
-                test = stock.objects.get(company = outward_inward.company, company_goods = outward_inward.company_goods, goods_company = outward_inward.goods_company)
-                test.total_bag = test.total_bag + int(bags)
-
-
-                try:
-
-
-                    new_stock = stock.objects.get(company__id = company_id, company_goods__id = company_goods_id, goods_company__id = goods_company_id)
-                    new_stock.total_bag = new_stock.total_bag - int(bags)
-                    test.save()
-                    new_stock.save()
-                    forms.save()
-
-                    return HttpResponseRedirect(reverse('list_outward'))
-
-                    
-
-                except stock.DoesNotExist:
-                    stock.objects.create(company = company_id, company_goods__id = company_goods_id, goods_company__id = goods_company_id, total_bag =  -(int(bags)))
-                    forms.save()
-                    test.save()
-
-
-                    return HttpResponseRedirect(reverse('list_outward'))
+            return HttpResponseRedirect(reverse('list_outward'))
 
         else:
            
@@ -743,63 +644,14 @@ def update_return(request, return_id):
 
         instance = supply_return.objects.get(id = return_id)
 
-        company_id = request.POST.get('company')
-        company_goods_id = request.POST.get('company_goods')
-        goods_company_id = request.POST.get('goods_company')
-        agent_id = request.POST.get('agent')
-        bags = request.POST.get('bags')
-        
-      
-
         forms = supply_return_Form(request.POST, instance=instance)
 
         if forms.is_valid():
 
-            instance_inward = supply_return.objects.get(id = return_id)
-
-            if int(instance_inward.company.id) == int(company_id) and int(instance_inward.company_goods.id) == int(company_goods_id) and int(instance_inward.goods_company.id) == int(goods_company_id) and int(instance_inward.agent.id) == int(agent_id):
-                
-                test = stock.objects.get(company = instance_inward.company, company_goods = instance_inward.company_goods, goods_company = instance_inward.goods_company)
-                temp_stock = test.total_bag
-                temp_stock = (temp_stock - instance_inward.bags) + int(bags)
-                test.total_bag = temp_stock
-                test.save()
+            forms.save()
 
 
-                instance_inward.total_bag = int(bags)
-                instance_inward.save()
-                forms.save()
-
-                return HttpResponseRedirect(reverse('list_return'))
-
-               
-            else:
-                
-                test = stock.objects.get(company = instance_inward.company, company_goods = instance_inward.company_goods, goods_company = instance_inward.goods_company)
-                test.total_bag = test.total_bag - int(bags)
-
-
-                try:
-
-
-                    new_stock = stock.objects.get(company__id = company_id, company_goods__id = company_goods_id, goods_company__id = goods_company_id)
-                    new_stock.total_bag = new_stock.total_bag + int(bags)
-                    test.save()
-                    new_stock.save()
-                    forms.save()
-
-                    return HttpResponseRedirect(reverse('list_return'))
-
-                    
-
-                except stock.DoesNotExist:
-                    stock.objects.create(company = company_id, company_goods__id = company_goods_id, goods_company__id = goods_company_id, total_bag =  int(bags))
-                    forms.save()
-                    test.save()
-
-
-                    return HttpResponseRedirect(reverse('list_return'))
-
+              
         else:
 
             instance = supply_return.objects.get(id = return_id)
