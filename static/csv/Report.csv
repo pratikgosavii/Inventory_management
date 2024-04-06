@@ -1,11 +1,346 @@
 Serial,DC Number,Party Name,Party Place,Party Taluka,Party District,Crop,Variety,Packet,Date,Transport,LR Number,Freight
-1,146,Sakshi Fertilizer,Bhavani,Umarkhed,Yavatmal,Jowar,Virat - 3 kg,13,9/1/2023,Ram Transport,,
-2,148,Jay Gurudev Krushi Kendra,Pandharkawda,Yavatmal,Yavatmal,Jowar,Virat - 3 kg,13,10/1/2023,Ram Transport,,
-3,149,Laxmi Krushi Kendra,Pandharkawda,Yavatmal,Yavatmal,Jowar,Virat - 3 kg,13,21/1/2023,Ram Transport,,
-4,151,Ajay Krushi Kendra,Yavatmal,Yavatmal,Yavatmal,Jowar,Virat - 3 kg,13,27/1/2023,,,IPT
-5,153,Amol Krushi Kendra,Mohada,Yavatmal,Yavatmal,Jowar,Virat - 3 kg,13,30/1/2023,Ram Transport,,
-6,154,Kasvi Agri Genetics Pvt Ltd,Mahabubnagar,Mahabubnagar,Mahabubnagar,Jowar,Virat - 3 kg,278,22/3/2023,,,
-7,154,Kasvi Agri Genetics Pvt Ltd,Mahabubnagar,Mahabubnagar,Mahabubnagar,Jowar,Karishma-3 Kg,153,22/3/2023,,,
-8,154,Kasvi Agri Genetics Pvt Ltd,Mahabubnagar,Mahabubnagar,Mahabubnagar,Jowar,Jhansi-3 Kg,221,22/3/2023,,,
-9,154,Kasvi Agri Genetics Pvt Ltd,Mahabubnagar,Mahabubnagar,Mahabubnagar,Maize,Arrow - 4 Kg,55,23/3/2023,,,
-10,155,Kasvi Agri Genetics Pvt Ltd,Mahabubnagar,Mahabubnagar,Mahabubnagar,Jowar,Karishma-3 Kg,153,3/4/2023,VRL,1069648617,3300
+1,1,SHRI SAI AGRO TRADERS,WANSADI,Chandrapur,Chandrapur,Cotton,Sitara,128,29/5/2023,F K Trasnport,,
+2,1,SHRI SAI AGRO TRADERS,WANSADI,Chandrapur,Chandrapur,Cotton,Chatrapathi,64,29/5/2023,F K Trasnport,,
+3,1,SHRI SAI AGRO TRADERS,WANSADI,Chandrapur,Chandrapur,Redgram,Vikky Apurva,120,29/5/2023,F K Trasnport,,
+4,2,SHREE BALAJI KRUSHI KENDRA,KOPARNA,Chandrapur,Chandrapur,Cotton,Sitara,128,29/5/2023,F K Trasnport,,
+5,2,SHREE BALAJI KRUSHI KENDRA,KOPARNA,Chandrapur,Chandrapur,Cotton,Chatrapathi,64,29/5/2023,F K Trasnport,,
+6,2,SHREE BALAJI KRUSHI KENDRA,KOPARNA,Chandrapur,Chandrapur,Redgram,Vikky Apurva,80,29/5/2023,F K Trasnport,,
+7,3,SHRI SAIKRUPA KRISHI KENDRA,korpana,Chandrapur,Chandrapur,Cotton,Sitara,384,29/5/2023,F K Trasnport,,
+8,3,SHRI SAIKRUPA KRISHI KENDRA,korpana,Chandrapur,Chandrapur,Cotton,Chatrapathi,128,29/5/2023,F K Trasnport,,
+9,3,SHRI SAIKRUPA KRISHI KENDRA,korpana,Chandrapur,Chandrapur,Redgram,Vikky Apurva,120,29/5/2023,F K Trasnport,,
+10,4,ANNAND KRUSHI KENDRA SAKHARWAHI,SAKHARWAHI,BHADODA,Chandrapur,Cotton,Sitara,64,29/5/2023,F K Trasnport,,
+11,4,ANNAND KRUSHI KENDRA SAKHARWAHI,SAKHARWAHI,BHADODA,Chandrapur,Cotton,Chatrapathi,64,29/5/2023,F K Trasnport,,
+12,4,ANNAND KRUSHI KENDRA SAKHARWAHI,SAKHARWAHI,BHADODA,Chandrapur,Redgram,Vikky Apurva,80,29/5/2023,F K Trasnport,,
+13,5,JANARDHAN AGRO CENTRE RAJURA,chandrapur,chandrapur,chandrapur,Cotton,Sitara,160,29/5/2023,F K Trasnport,,
+14,5,JANARDHAN AGRO CENTRE RAJURA,chandrapur,chandrapur,chandrapur,Cotton,Chatrapathi,64,29/5/2023,F K Trasnport,,
+15,5,JANARDHAN AGRO CENTRE RAJURA,chandrapur,chandrapur,chandrapur,Redgram,Vikky Apurva,80,29/5/2023,F K Trasnport,,
+16,6,SHIV KRUSHI KENDRA WARORA,WARORA,warora,Chandrapur,Cotton,Sitara,96,29/5/2023,F K Trasnport,,
+17,6,SHIV KRUSHI KENDRA WARORA,WARORA,warora,Chandrapur,Cotton,Chatrapathi,64,29/5/2023,F K Trasnport,,
+18,6,SHIV KRUSHI KENDRA WARORA,WARORA,warora,Chandrapur,Redgram,Vikky Apurva,80,29/5/2023,F K Trasnport,,
+19,7,Pravin Agrotech,Warora,Warora,Chandrapur,Cotton,Sitara,96,29/5/2023,F K Trasnport,,
+20,7,Pravin Agrotech,Warora,Warora,Chandrapur,Cotton,Chatrapathi,64,29/5/2023,F K Trasnport,,
+21,7,Pravin Agrotech,Warora,Warora,Chandrapur,Redgram,Vikky Apurva,80,29/5/2023,F K Trasnport,,
+22,8,SHITAL AGRO AGENCIES TEMBHURDA,Tembhurda,warora,Chandrapur,Cotton,Sitara,96,29/5/2023,F K Trasnport,,
+23,8,SHITAL AGRO AGENCIES TEMBHURDA,Tembhurda,warora,Chandrapur,Cotton,Chatrapathi,64,29/5/2023,F K Trasnport,,
+24,8,SHITAL AGRO AGENCIES TEMBHURDA,Tembhurda,warora,Chandrapur,Redgram,Vikky Apurva,80,29/5/2023,F K Trasnport,,
+25,9,SATHONE KRISHI KENDRA KHAMBADA,Khambada,Chandrapur,Chandrapur,Cotton,Sitara,128,29/5/2023,F K Trasnport,,
+26,9,SATHONE KRISHI KENDRA KHAMBADA,Khambada,Chandrapur,Chandrapur,Cotton,Chatrapathi,96,29/5/2023,F K Trasnport,,
+27,9,SATHONE KRISHI KENDRA KHAMBADA,Khambada,Chandrapur,Chandrapur,Redgram,Vikky Apurva,80,29/5/2023,F K Trasnport,,
+28,10,MAHALAXMI AGRI AGENCIES BHURKUNDRA,BHURKUNDRA,Rajura,Chandrapur,Cotton,Sitara,96,29/5/2023,F K Trasnport,,
+29,10,MAHALAXMI AGRI AGENCIES BHURKUNDRA,BHURKUNDRA,Rajura,Chandrapur,Cotton,Chatrapathi,64,29/5/2023,F K Trasnport,,
+30,10,MAHALAXMI AGRI AGENCIES BHURKUNDRA,BHURKUNDRA,Rajura,Chandrapur,Redgram,Vikky Apurva,80,29/5/2023,F K Trasnport,,
+31,11,BHAGYASHREE AGRO TRADERS TEMURDA,TEMURDA,warora,Chandrapur,Cotton,Sitara,160,29/5/2023,F K Trasnport,,
+32,11,BHAGYASHREE AGRO TRADERS TEMURDA,TEMURDA,warora,Chandrapur,Cotton,Chatrapathi,128,29/5/2023,F K Trasnport,,
+33,11,BHAGYASHREE AGRO TRADERS TEMURDA,TEMURDA,warora,Chandrapur,Redgram,Vikky Apurva,80,29/5/2023,F K Trasnport,,
+34,12,BHAGYASHRI KRISHI KENDRA MADHELI,Madheli,warora,Chandrapur,Cotton,Sitara,96,30/5/2023,F K Trasnport,,
+35,12,BHAGYASHRI KRISHI KENDRA MADHELI,Madheli,warora,Chandrapur,Cotton,Chatrapathi,64,30/5/2023,F K Trasnport,,
+36,12,BHAGYASHRI KRISHI KENDRA MADHELI,Madheli,warora,Chandrapur,Redgram,Vikky Apurva,80,30/5/2023,F K Trasnport,,
+37,13,SHRI VYANKATESH KRISHI KENDRA WANI,WANI,Wani,Yavatmal,Cotton,Sitara,384,30/5/2023,Ram Transport,,
+38,13,SHRI VYANKATESH KRISHI KENDRA WANI,WANI,Wani,Yavatmal,Cotton,Chatrapathi,96,30/5/2023,Ram Transport,,
+39,13,SHRI VYANKATESH KRISHI KENDRA WANI,WANI,Wani,Yavatmal,Redgram,Vikky Apurva,240,30/5/2023,Ram Transport,,
+40,14,Krushichaya Krishi Kendra Dongarkheda,dongarkheda,Yavatmal,Yavatmal,Cotton,Sitara,96,30/5/2023,Ram Transport,,
+41,14,Krushichaya Krishi Kendra Dongarkheda,dongarkheda,Yavatmal,Yavatmal,Cotton,Chatrapathi,64,30/5/2023,Ram Transport,,
+42,14,Krushichaya Krishi Kendra Dongarkheda,dongarkheda,Yavatmal,Yavatmal,Redgram,Vikky Apurva,80,30/5/2023,Ram Transport,,
+43,15,Mahi Agro Care Karanji,Karanji,Karanji,yawatmal,Cotton,Sitara,96,30/5/2023,Ram Transport,,
+44,15,Mahi Agro Care Karanji,Karanji,Karanji,yawatmal,Cotton,Chatrapathi,64,30/5/2023,Ram Transport,,
+45,15,Mahi Agro Care Karanji,Karanji,Karanji,yawatmal,Redgram,Vikky Apurva,360,30/5/2023,Ram Transport,,
+46,16,Amol Krushi Kendra,Mohada,Yavatmal,Yavatmal,Cotton,Sitara,96,30/5/2023,Ram Transport,,
+47,16,Amol Krushi Kendra,Mohada,Yavatmal,Yavatmal,Cotton,Chatrapathi,32,30/5/2023,Ram Transport,,
+48,16,Amol Krushi Kendra,Mohada,Yavatmal,Yavatmal,Redgram,Vikky Apurva,40,30/5/2023,Ram Transport,,
+49,17,Jay Gurudev Krushi Kendra,Pandharkawda,Yavatmal,Yavatmal,Cotton,Sitara,64,30/5/2023,Ram Transport,,
+50,17,Jay Gurudev Krushi Kendra,Pandharkawda,Yavatmal,Yavatmal,Cotton,Chatrapathi,32,30/5/2023,Ram Transport,,
+51,17,Jay Gurudev Krushi Kendra,Pandharkawda,Yavatmal,Yavatmal,Redgram,Vikky Apurva,80,30/5/2023,Ram Transport,,
+52,18,JAJU KRISHI KENDRA YAWATMAL,YAWATMAL,YAWATMAL,YAWATMAL,Cotton,Sitara,64,30/5/2023,Ram Transport,,
+53,19,Suyog Agro Agencies,Yavatmal,Yavatmal,Yavatmal,Cotton,Sitara,64,30/5/2023,Ram Transport,,
+54,19,Suyog Agro Agencies,Yavatmal,Yavatmal,Yavatmal,Cotton,Chatrapathi,32,30/5/2023,Ram Transport,,
+55,19,Suyog Agro Agencies,Yavatmal,Yavatmal,Yavatmal,Redgram,Vikky Apurva,80,30/5/2023,Ram Transport,,
+56,20,NAVJIVAN KRUSHI KENDRA AKOLA BAZAR,AKOLA BAZAR,Yavatmal,Yavatmal,Cotton,Sitara,64,30/5/2023,Ram Transport,,
+57,20,NAVJIVAN KRUSHI KENDRA AKOLA BAZAR,AKOLA BAZAR,Yavatmal,Yavatmal,Cotton,Chatrapathi,32,30/5/2023,Ram Transport,,
+58,20,NAVJIVAN KRUSHI KENDRA AKOLA BAZAR,AKOLA BAZAR,Yavatmal,Yavatmal,Redgram,Vikky Apurva,80,30/5/2023,Ram Transport,,
+59,21,AGRI BUSINESS CENTRE YAWATMAL,Yavatmal,Y,Y,Cotton,Sitara,320,30/5/2023,Ram Transport,,
+60,21,AGRI BUSINESS CENTRE YAWATMAL,Yavatmal,Y,Y,Cotton,Chatrapathi,64,30/5/2023,Ram Transport,,
+61,21,AGRI BUSINESS CENTRE YAWATMAL,Yavatmal,Y,Y,Redgram,Vikky Apurva,600,30/5/2023,Ram Transport,,
+62,22,GAYATRINBOYANE WARDHA,WARDHA,Wardha,WARDHA,Cotton,Sitara,96,30/5/2023,Bullet Transport,,
+63,22,GAYATRINBOYANE WARDHA,WARDHA,Wardha,WARDHA,Cotton,Chatrapathi,64,30/5/2023,Bullet Transport,,
+64,22,GAYATRINBOYANE WARDHA,WARDHA,Wardha,WARDHA,Redgram,Vikky Apurva,160,30/5/2023,Bullet Transport,,
+65,23,SHREE CHINTAMANI KRUSHI KENDRA,SHRASGON,Yavatmal,Yavatmal,Cotton,Sitara,96,30/5/2023,Ram Transport,,
+66,23,SHREE CHINTAMANI KRUSHI KENDRA,SHRASGON,Yavatmal,Yavatmal,Cotton,Chatrapathi,64,30/5/2023,Ram Transport,,
+67,23,SHREE CHINTAMANI KRUSHI KENDRA,SHRASGON,Yavatmal,Yavatmal,Redgram,Vikky Apurva,120,30/5/2023,Ram Transport,,
+68,24,SHREE KRUSHI KENDRA,FULSAWANGI,Yavatmal,Yavatmal,Cotton,Sitara,64,30/5/2023,Ram Transport,,
+69,24,SHREE KRUSHI KENDRA,FULSAWANGI,Yavatmal,Yavatmal,Cotton,Chatrapathi,64,30/5/2023,Ram Transport,,
+70,24,SHREE KRUSHI KENDRA,FULSAWANGI,Yavatmal,Yavatmal,Redgram,Vikky Apurva,80,30/5/2023,Ram Transport,,
+71,25,KESHAV KRUSHI KENDRA,PUSAD,Pusad,Yavatmal,Cotton,Sitara,96,30/5/2023,Ram Transport,,
+72,25,KESHAV KRUSHI KENDRA,PUSAD,Pusad,Yavatmal,Cotton,Chatrapathi,32,30/5/2023,Ram Transport,,
+73,25,KESHAV KRUSHI KENDRA,PUSAD,Pusad,Yavatmal,Redgram,Vikky Apurva,80,30/5/2023,Ram Transport,,
+74,26,Rathi Seeds,Pusad,Yavatmal,Yavatmal,Cotton,Sitara,96,30/5/2023,Ram Transport,,
+75,26,Rathi Seeds,Pusad,Yavatmal,Yavatmal,Cotton,Chatrapathi,32,30/5/2023,Ram Transport,,
+76,26,Rathi Seeds,Pusad,Yavatmal,Yavatmal,Redgram,Vikky Apurva,120,30/5/2023,Ram Transport,,
+77,27,JAY GURUDEO  KRUSHI KENDRA PANDERKHODA,Pandharkawada,Yavatmal,Yavatmal,Cotton,Sitara,64,30/5/2023,Ram Transport,,
+78,27,JAY GURUDEO  KRUSHI KENDRA PANDERKHODA,Pandharkawada,Yavatmal,Yavatmal,Cotton,Chatrapathi,32,30/5/2023,Ram Transport,,
+79,27,JAY GURUDEO  KRUSHI KENDRA PANDERKHODA,Pandharkawada,Yavatmal,Yavatmal,Redgram,Vikky Apurva,80,30/5/2023,Ram Transport,,
+80,28,ROHIT TRADERS,HINGANGHAT,HINGANGHAT,Wardha,Cotton,Sitara,96,30/5/2023,Ram Transport,,
+81,28,ROHIT TRADERS,HINGANGHAT,HINGANGHAT,Wardha,Cotton,Chatrapathi,64,30/5/2023,Ram Transport,,
+82,29,pragati krushi kendra kora,kora,Wardha,Wardha,Cotton,Sitara,96,30/5/2023,Bullet Transport,,
+83,29,pragati krushi kendra kora,kora,Wardha,Wardha,Cotton,Chatrapathi,64,30/5/2023,Bullet Transport,,
+84,29,pragati krushi kendra kora,kora,Wardha,Wardha,Redgram,Vikky Apurva,80,30/5/2023,Bullet Transport,,
+85,30,shivprabha krushi kendra,anji mothi,Wardha,Wardha,Cotton,Sitara,96,30/5/2023,Bullet Transport,,
+86,30,shivprabha krushi kendra,anji mothi,Wardha,Wardha,Cotton,Chatrapathi,32,30/5/2023,Bullet Transport,,
+87,30,shivprabha krushi kendra,anji mothi,Wardha,Wardha,Redgram,Vikky Apurva,80,30/5/2023,Bullet Transport,,
+88,31,jai mahakali krushi sewa kendra,waigaon,Wardha,Wardha,Cotton,Sitara,64,30/5/2023,Bullet Transport,,
+89,31,jai mahakali krushi sewa kendra,waigaon,Wardha,Wardha,Cotton,Chatrapathi,32,30/5/2023,Bullet Transport,,
+90,32,Gaurav beej bhandar,andegaon,Nanded,Nanded,Cotton,Sitara,64,30/5/2023,Trimurti Transport,,
+91,32,Gaurav beej bhandar,andegaon,Nanded,Nanded,Cotton,Chatrapathi,64,30/5/2023,Trimurti Transport,,
+92,32,Gaurav beej bhandar,andegaon,Nanded,Nanded,Redgram,Vikky Apurva,80,30/5/2023,Trimurti Transport,,
+93,33,Raut krushi seva kendra,barshingi,narkhed,Nagpur,Cotton,Sitara,96,30/5/2023,F K Trasnport,,
+94,33,Raut krushi seva kendra,barshingi,narkhed,Nagpur,Cotton,Chatrapathi,32,30/5/2023,F K Trasnport,,
+95,33,Raut krushi seva kendra,barshingi,narkhed,Nagpur,Redgram,Vikky Apurva,160,30/5/2023,F K Trasnport,,
+96,34,BHAGWAN AGRO AGENCY,PACHIKHEDA,Nagpur,Nagpur,Cotton,Sitara,224,31/5/2023,F K Trasnport,,
+97,34,BHAGWAN AGRO AGENCY,PACHIKHEDA,Nagpur,Nagpur,Cotton,Chatrapathi,96,31/5/2023,F K Trasnport,,
+98,34,BHAGWAN AGRO AGENCY,PACHIKHEDA,Nagpur,Nagpur,Redgram,Vikky Apurva,480,31/5/2023,F K Trasnport,,
+99,35,Agri shop,babhlgaon,babhulgaon,YAVATMAL,Cotton,Sitara,64,31/5/2023,Ram Transport,,
+100,35,Agri shop,babhlgaon,babhulgaon,YAVATMAL,Cotton,Chatrapathi,32,31/5/2023,Ram Transport,,
+101,35,Agri shop,babhlgaon,babhulgaon,YAVATMAL,Redgram,Vikky Apurva,80,31/5/2023,Ram Transport,,
+102,35,Shri sainath krushi sewa kendra,sawargaon,Wardha,Wardha,Cotton,Sitara,160,31/5/2023,F K Trasnport,,
+103,35,Shri sainath krushi sewa kendra,sawargaon,Wardha,Wardha,Cotton,Chatrapathi,64,31/5/2023,F K Trasnport,,
+104,35,Shri sainath krushi sewa kendra,sawargaon,Wardha,Wardha,Redgram,Vikky Apurva,80,31/5/2023,F K Trasnport,,
+105,35,SAMARTH KRUSHI KENDRA - AMBELOHEL,Ambelohal,Gangapur,Aurangbad,Jowar,Virat - 3 kg,345,10/11/2023,Ishwari Transport,,
+106,36,Shri gneshay krushi sewa kendra,nimkhed,parasconi,Nagpur,Cotton,Sitara,96,31/5/2023,F K Trasnport,,
+107,36,Shri gneshay krushi sewa kendra,nimkhed,parasconi,Nagpur,Cotton,Chatrapathi,64,31/5/2023,F K Trasnport,,
+108,36,Shri gneshay krushi sewa kendra,nimkhed,parasconi,Nagpur,Redgram,Vikky Apurva,120,31/5/2023,F K Trasnport,,
+109,36,Shree Ganesh Krushi Kendra,khadakdoh,Yavatmal,YAVATMAL,Cotton,Sitara,992,31/5/2023,Ram Transport,,
+110,36,Shree Ganesh Krushi Kendra,khadakdoh,Yavatmal,YAVATMAL,Cotton,Chatrapathi,128,31/5/2023,Ram Transport,,
+111,36,Shree Ganesh Krushi Kendra,khadakdoh,Yavatmal,YAVATMAL,Redgram,Vikky Apurva,360,31/5/2023,Ram Transport,,
+112,37,JAGDAMBA KRUSHI SEWA KENDRA,MANORA,manora,Yavatmal,Cotton,Sitara,128,31/5/2023,Ram Transport,,
+113,37,JAGDAMBA KRUSHI SEWA KENDRA,MANORA,manora,Yavatmal,Cotton,Chatrapathi,64,31/5/2023,Ram Transport,,
+114,37,JAGDAMBA KRUSHI SEWA KENDRA,MANORA,manora,Yavatmal,Redgram,Vikky Apurva,120,31/5/2023,Ram Transport,,
+115,38,Shree gajanan seeds&pesticides,Wardha,Wardha,Wardha,Cotton,Sitara,96,31/5/2023,Bullet Transport,,
+116,38,Shree gajanan seeds&pesticides,Wardha,Wardha,Wardha,Cotton,Chatrapathi,64,31/5/2023,Bullet Transport,,
+117,38,Shree gajanan seeds&pesticides,Wardha,Wardha,Wardha,Redgram,Vikky Apurva,200,31/5/2023,Bullet Transport,,
+118,39,Shraddha beej bhandar,mahur,mahur,Nanded,Cotton,Sitara,224,31/5/2023,Trimurti Transport,,
+119,39,Shraddha beej bhandar,mahur,mahur,Nanded,Cotton,Chatrapathi,64,31/5/2023,Trimurti Transport,,
+120,39,Shraddha beej bhandar,mahur,mahur,Nanded,Redgram,Vikky Apurva,360,31/5/2023,Trimurti Transport,,
+121,41,Shri Agro india,Nagpur,Nagpur,Nagpur,Cotton,Sitara,320,31/5/2023,F K Trasnport,,
+122,41,Shri Agro india,Nagpur,Nagpur,Nagpur,Cotton,Chatrapathi,64,31/5/2023,F K Trasnport,,
+123,41,Shri Agro india,Nagpur,Nagpur,Nagpur,Redgram,Vikky Apurva,520,31/5/2023,F K Trasnport,,
+124,42,Satnam Krushi kendra,Saoner,saoner,Nagpur,Cotton,Sitara,64,31/5/2023,F K Trasnport,,
+125,42,Satnam Krushi kendra,Saoner,saoner,Nagpur,Cotton,Chatrapathi,96,31/5/2023,F K Trasnport,,
+126,42,Satnam Krushi kendra,Saoner,saoner,Nagpur,Redgram,Vikky Apurva,160,31/5/2023,F K Trasnport,,
+127,43,Ram Agro Agencies,Darwha,Darwha,Yavatmal,Cotton,Sitara,96,31/5/2023,Ram Transport,,
+128,43,Ram Agro Agencies,Darwha,Darwha,Yavatmal,Cotton,Chatrapathi,32,31/5/2023,Ram Transport,,
+129,43,Ram Agro Agencies,Darwha,Darwha,Yavatmal,Redgram,Vikky Apurva,80,31/5/2023,Ram Transport,,
+130,44,vighnahart Agro Agencies,Nagpur,Nagpur,Nagpur,Cotton,Sitara,160,31/5/2023,F K Trasnport,,
+131,44,vighnahart Agro Agencies,Nagpur,Nagpur,Nagpur,Cotton,Chatrapathi,64,31/5/2023,F K Trasnport,,
+132,44,vighnahart Agro Agencies,Nagpur,Nagpur,Nagpur,Redgram,Vikky Apurva,160,31/5/2023,F K Trasnport,,
+133,45,Ramchandrasath Agro,waibajar,Wardha,Nanded,Cotton,Sitara,96,31/5/2023,Ram Transport,,
+134,45,Ramchandrasath Agro,waibajar,Wardha,Nanded,Cotton,Chatrapathi,64,31/5/2023,Ram Transport,,
+135,45,Ramchandrasath Agro,waibajar,Wardha,Nanded,Redgram,Vikky Apurva,80,31/5/2023,Ram Transport,,
+136,46,Pawar krushi seva kendra,loha,loha,Nanded,Cotton,Sitara,64,31/5/2023,Trimurti Transport,,
+137,46,Pawar krushi seva kendra,loha,loha,Nanded,Cotton,Chatrapathi,64,31/5/2023,Trimurti Transport,,
+138,46,Pawar krushi seva kendra,loha,loha,Nanded,Redgram,Vikky Apurva,80,31/5/2023,Trimurti Transport,,
+139,47,Shetkari krushi seva kendra,Nanded,Nanded,Nanded,Cotton,Sitara,160,31/5/2023,Trimurti Transport,,
+140,47,Shetkari krushi seva kendra,Nanded,Nanded,Nanded,Cotton,Chatrapathi,32,31/5/2023,Trimurti Transport,,
+141,47,Shetkari krushi seva kendra,Nanded,Nanded,Nanded,Redgram,Vikky Apurva,80,31/5/2023,Trimurti Transport,,
+142,48,Anusaya Traders,Shridshahapur,Shridshahapur,HINGOLI,Cotton,Sitara,64,31/5/2023,Trimurti Transport,,
+143,48,Anusaya Traders,Shridshahapur,Shridshahapur,HINGOLI,Cotton,Chatrapathi,32,31/5/2023,Trimurti Transport,,
+144,48,Anusaya Traders,Shridshahapur,Shridshahapur,HINGOLI,Redgram,Vikky Apurva,80,31/5/2023,Trimurti Transport,,
+145,49,Jijai krushi seva kendra,boath fata,kinwat,Nanded,Cotton,Sitara,64,31/5/2023,Ram Transport,,
+146,49,Jijai krushi seva kendra,boath fata,kinwat,Nanded,Cotton,Chatrapathi,32,31/5/2023,Ram Transport,,
+147,49,Jijai krushi seva kendra,boath fata,kinwat,Nanded,Redgram,Vikky Apurva,40,31/5/2023,Ram Transport,,
+148,50,Kisan Agro Agency,Kondhali,KATOL,Nagpur,Cotton,Sitara,96,31/5/2023,F K Trasnport,,
+149,50,Kisan Agro Agency,Kondhali,KATOL,Nagpur,Cotton,Chatrapathi,32,31/5/2023,F K Trasnport,,
+150,50,Kisan Agro Agency,Kondhali,KATOL,Nagpur,Redgram,Vikky Apurva,80,31/5/2023,F K Trasnport,,
+151,52,Mauli Agro Center,Maod,Katol,Nagpur,Cotton,Sitara,96,31/5/2023,F K Trasnport,,
+152,52,Mauli Agro Center,Maod,Katol,Nagpur,Cotton,Chatrapathi,32,31/5/2023,F K Trasnport,,
+153,52,Mauli Agro Center,Maod,Katol,Nagpur,Redgram,Vikky Apurva,80,31/5/2023,F K Trasnport,,
+154,53,SHIVKRUPA AGRO AGENCY,CHAMPA,UMRED,NAGPUR,Cotton,Sitara,96,31/5/2023,F K Trasnport,,
+155,53,SHIVKRUPA AGRO AGENCY,CHAMPA,UMRED,NAGPUR,Cotton,Chatrapathi,64,31/5/2023,F K Trasnport,,
+156,53,SHIVKRUPA AGRO AGENCY,CHAMPA,UMRED,NAGPUR,Redgram,Vikky Apurva,80,31/5/2023,F K Trasnport,,
+157,54,MUKTAI AGRO AGENCY,WADGAON,Yavatmal,Yavatmal,Cotton,Sitara,64,31/5/2023,Ram Transport,,
+158,54,MUKTAI AGRO AGENCY,WADGAON,Yavatmal,Yavatmal,Redgram,Vikky Apurva,80,31/5/2023,Ram Transport,,
+159,55,BANKAR KRUSHI SEWA KENDRA,TALEGAON,DHAMANGAON REL,Amravati,Cotton,Sitara,64,1/6/2023,Bullet Transport,,
+160,55,BANKAR KRUSHI SEWA KENDRA,TALEGAON,DHAMANGAON REL,Amravati,Cotton,Chatrapathi,32,1/6/2023,Bullet Transport,,
+161,55,BANKAR KRUSHI SEWA KENDRA,TALEGAON,DHAMANGAON REL,Amravati,Redgram,Vikky Apurva,80,1/6/2023,Bullet Transport,,
+162,56,SHETI VIKAS KENDRA,KUHI,KUHI,Nagpur,Cotton,Sitara,64,1/6/2023,F K Trasnport,,
+163,56,SHETI VIKAS KENDRA,KUHI,KUHI,Nagpur,Cotton,Chatrapathi,32,1/6/2023,F K Trasnport,,
+164,56,SHETI VIKAS KENDRA,KUHI,KUHI,Nagpur,Redgram,Vikky Apurva,80,1/6/2023,F K Trasnport,,
+165,57,PRANAY AGRO AGENCY,KHAIRGAON,NARKHED,Nagpur,Cotton,Sitara,96,1/6/2023,F K Trasnport,,
+166,57,PRANAY AGRO AGENCY,KHAIRGAON,NARKHED,Nagpur,Cotton,Chatrapathi,64,1/6/2023,F K Trasnport,,
+167,57,PRANAY AGRO AGENCY,KHAIRGAON,NARKHED,Nagpur,Redgram,Vikky Apurva,80,1/6/2023,F K Trasnport,,
+168,58,BADNORE AGRO CHEM,DEOLI,DEOLI,Wardha,Cotton,Sitara,96,1/6/2023,Bullet Transport,,
+169,58,BADNORE AGRO CHEM,DEOLI,DEOLI,Wardha,Cotton,Chatrapathi,32,1/6/2023,Bullet Transport,,
+170,58,BADNORE AGRO CHEM,DEOLI,DEOLI,Wardha,Redgram,Vikky Apurva,80,1/6/2023,Bullet Transport,,
+171,59,Shri gurdeo Agro Agencie,borgaon hatala,arvi,Wardha,Cotton,Sitara,64,1/6/2023,Bullet Transport,,
+172,59,Shri gurdeo Agro Agencie,borgaon hatala,arvi,Wardha,Cotton,Chatrapathi,32,1/6/2023,Bullet Transport,,
+173,59,Shri gurdeo Agro Agencie,borgaon hatala,arvi,Wardha,Redgram,Vikky Apurva,80,1/6/2023,Bullet Transport,,
+174,60,Baliraja krushi kendra,samudrapur,samudrapur,Wardha,Cotton,Sitara,64,1/6/2023,Bullet Transport,,
+175,60,Baliraja krushi kendra,samudrapur,samudrapur,Wardha,Cotton,Chatrapathi,32,1/6/2023,Bullet Transport,,
+176,60,Baliraja krushi kendra,samudrapur,samudrapur,Wardha,Redgram,Vikky Apurva,80,1/6/2023,Bullet Transport,,
+177,62,Setaki Bhandar,Shindi Meghe,Wardha,Wardha,Cotton,Sitara,64,1/6/2023,Bullet Transport,,
+178,62,Setaki Bhandar,Shindi Meghe,Wardha,Wardha,Cotton,Chatrapathi,32,1/6/2023,Bullet Transport,,
+179,62,Setaki Bhandar,Shindi Meghe,Wardha,Wardha,Redgram,Vikky Apurva,80,1/6/2023,Bullet Transport,,
+180,63,Monali krushi seva kendra,Deoli,Deoli,Wardha,Cotton,Sitara,96,1/6/2023,Bullet Transport,,
+181,63,Monali krushi seva kendra,Deoli,Deoli,Wardha,Cotton,Chatrapathi,32,1/6/2023,Bullet Transport,,
+182,63,Monali krushi seva kendra,Deoli,Deoli,Wardha,Redgram,Vikky Apurva,80,1/6/2023,Bullet Transport,,
+183,64,Sakshi Fertilizer,Bhavani,Umarkhed,Yavatmal,Cotton,Sitara,96,1/6/2023,Ram Transport,,
+184,64,Sakshi Fertilizer,Bhavani,Umarkhed,Yavatmal,Cotton,Chatrapathi,32,1/6/2023,Ram Transport,,
+185,64,Sakshi Fertilizer,Bhavani,Umarkhed,Yavatmal,Redgram,Vikky Apurva,80,1/6/2023,Ram Transport,,
+186,65,Mauli krushi kendra,GHATANJI,GHATANJI,Yavatmal,Cotton,Sitara,64,1/6/2023,Ram Transport,,
+187,65,Mauli krushi kendra,GHATANJI,GHATANJI,Yavatmal,Cotton,Chatrapathi,32,1/6/2023,Ram Transport,,
+188,65,Mauli krushi kendra,GHATANJI,GHATANJI,Yavatmal,Redgram,Vikky Apurva,80,1/6/2023,Ram Transport,,
+189,66,Mauli krushi kendra pandharkawda,pandharkawada,Pandharkawda,Yavatmal,Cotton,Sitara,32,1/6/2023,Ram Transport,,
+190,66,Mauli krushi kendra pandharkawda,pandharkawada,Pandharkawda,Yavatmal,Cotton,Chatrapathi,32,1/6/2023,Ram Transport,,
+191,66,Mauli krushi kendra pandharkawda,pandharkawada,Pandharkawda,Yavatmal,Redgram,Vikky Apurva,80,1/6/2023,,,
+192,67,Kisan Agro Agency,Kondhali,KATOL,Nagpur,Cotton,Sitara,128,1/6/2023,Ram Transport,,
+193,67,Kisan Agro Agency,Kondhali,KATOL,Nagpur,Cotton,Chatrapathi,64,1/6/2023,Ram Transport,,
+194,67,Kisan Agro Agency,Kondhali,KATOL,Nagpur,Redgram,Vikky Apurva,80,1/6/2023,Ram Transport,,
+195,68,Sunanda Frtilizer,Pusad,Yavatmal,Yavatmal,Cotton,Sitara,128,1/6/2023,Ram Transport,,
+196,68,Sunanda Frtilizer,Pusad,Yavatmal,Yavatmal,Cotton,Chatrapathi,64,1/6/2023,Ram Transport,,
+197,68,Sunanda Frtilizer,Pusad,Yavatmal,Yavatmal,Redgram,Vikky Apurva,320,1/6/2023,Ram Transport,,
+198,69,Patel Krushi Kendra,Digras,Digras,Digras,Cotton,Sitara,128,1/6/2023,Ram Transport,,
+199,69,Patel Krushi Kendra,Digras,Digras,Digras,Cotton,Chatrapathi,64,1/6/2023,Ram Transport,,
+200,69,Patel Krushi Kendra,Digras,Digras,Digras,Redgram,Vikky Apurva,80,1/6/2023,Ram Transport,,
+201,70,Thombare Krushi Kendra  Yenboli,Yenboli,Ballarshah,Chandrapur,Cotton,Sitara,64,1/6/2023,F K Trasnport,61836,400
+202,70,Thombare Krushi Kendra  Yenboli,Yenboli,Ballarshah,Chandrapur,Redgram,Vikky Apurva,80,1/6/2023,F K Trasnport,61836,400
+203,71,krushipandhari krushi udyog,Gunj,MAHAGAON,YAVATMAL,Cotton,Sitara,64,1/6/2023,Ram Transport,3208,
+204,71,krushipandhari krushi udyog,Gunj,MAHAGAON,YAVATMAL,Cotton,Chatrapathi,32,1/6/2023,Ram Transport,3208,535
+205,71,krushipandhari krushi udyog,Gunj,MAHAGAON,YAVATMAL,Redgram,Vikky Apurva,80,1/6/2023,Ram Transport,3208,535
+206,72,shri sadguru krushi seva kendra arvi,Arvi,Arvi,Wardha,Cotton,Sitara,64,1/6/2023,Bullet Transport,60954,550
+207,72,shri sadguru krushi seva kendra arvi,Arvi,Arvi,Wardha,Cotton,Chatrapathi,32,1/6/2023,Bullet Transport,60954,550
+208,72,shri sadguru krushi seva kendra arvi,Arvi,Arvi,Wardha,Redgram,Vikky Apurva,80,1/6/2023,Bullet Transport,60954,550
+209,73,Kastkar Krushi Kendra,pardshinga,KATOL,Nagpur,Cotton,Sitara,128,1/6/2023,F K Trasnport,61835,1030
+210,73,Kastkar Krushi Kendra,pardshinga,KATOL,Nagpur,Cotton,Chatrapathi,32,1/6/2023,F K Trasnport,61835,1030
+211,73,Kastkar Krushi Kendra,pardshinga,KATOL,Nagpur,Redgram,Vikky Apurva,160,1/6/2023,F K Trasnport,61835,1030
+212,74,SHRI SAIKRUPA KRISHI KENDRA,korpana,Chandrapur,Chandrapur,Cotton,Sitara,384,2/6/2023,F K Trasnport,61832,1440
+213,75,SHRI SAI AGRO TRADERS,WANSADI,Chandrapur,Chandrapur,Cotton,Sitara,160,2/6/2023,F K Trasnport,61841,1000
+214,75,SHRI SAI AGRO TRADERS,WANSADI,Chandrapur,Chandrapur,Cotton,Chatrapathi,160,2/6/2023,F K Trasnport,61841,1000
+215,79,Chaudhari and sons,Nagpur,Nagpur,Nagpur,Cotton,Chatrapathi,96,5/6/2023,F K Trasnport,62113,710
+216,79,Chaudhari and sons,Nagpur,Nagpur,Nagpur,Redgram,Vikky Apurva,120,5/6/2023,F K Trasnport,62113,710
+217,80,Shri Ganesh Krushi Seva Kendra Sarkhini,Sarkhini,Kinwat,Nanded,Cotton,Chatrapathi,32,5/6/2023,Ram Transport,3671,250
+218,80,Shri Ganesh Krushi Seva Kendra Sarkhini,Sarkhini,Kinwat,Nanded,Redgram,Vikky Apurva,40,5/6/2023,Ram Transport,3671,250
+219,81,Aryan Krushi Kendra Shegaon,Shegaon,Warora,Chandrapur,Cotton,Chatrapathi,32,5/6/2023,F K Trasnport,62119,310
+220,81,Aryan Krushi Kendra Shegaon,Shegaon,Warora,Chandrapur,Redgram,Vikky Apurva,40,5/6/2023,F K Trasnport,62119,310
+221,82,Kastkar Krushi Kendra,pardshinga,KATOL,Nagpur,Cotton,Chatrapathi,32,5/6/2023,F K Trasnport,,
+222,82,Kastkar Krushi Kendra,pardshinga,KATOL,Nagpur,Redgram,Vikky Apurva,40,5/6/2023,F K Trasnport,,
+223,83,Shubham Krushi Kendra Wandhali,Wandhali,warora,Chandrapur,Cotton,Chatrapathi,32,5/6/2023,F K Trasnport,62120,310
+224,83,Shubham Krushi Kendra Wandhali,Wandhali,warora,Chandrapur,Redgram,Vikky Apurva,40,5/6/2023,F K Trasnport,62120,310
+225,84,Jagadamba Agro Agency Bhokar,Bhokar,Bhokar,Nanded,Cotton,Chatrapathi,32,5/6/2023,Trimurti Transport,6455,200
+226,84,Jagadamba Agro Agency Bhokar,Bhokar,Bhokar,Nanded,Redgram,Vikky Apurva,40,5/6/2023,Trimurti Transport,6455,200
+227,85,Adhunik Sheti Kendra Akola,Akola,Akola,Akola,Cotton,Chatrapathi,32,5/6/2023,Local Auto,,
+228,85,Adhunik Sheti Kendra Akola,Akola,Akola,Akola,Redgram,Vikky Apurva,40,5/6/2023,Local Auto,,
+229,86,Fulai Krushi Kendra Isapur,Isapur,kinwat,Nanded,Cotton,Chatrapathi,32,5/6/2023,Ram Transport,3670,250
+230,86,Fulai Krushi Kendra Isapur,Isapur,kinwat,Nanded,Redgram,Vikky Apurva,40,5/6/2023,Ram Transport,3670,250
+231,87,Raj Krushi Kendra Kangaon,Kangaon,Hinganghat,Wardha,Cotton,Chatrapathi,96,5/6/2023,Bullet Transport,61231,410
+232,87,Raj Krushi Kendra Kangaon,Kangaon,Hinganghat,Wardha,Redgram,Vikky Apurva,40,5/6/2023,Bullet Transport,61231,410
+233,88,SHRI SAIKRUPA KRISHI KENDRA,korpana,Chandrapur,Chandrapur,Cotton,Chatrapathi,96,5/6/2023,F K Trasnport,62117,320
+234,89,Laxmi Krushi Kendra,Pandharkawda,Yavatmal,Yavatmal,Cotton,Chatrapathi,64,5/6/2023,Ram Transport,3669,450
+235,89,Laxmi Krushi Kendra,Pandharkawda,Yavatmal,Yavatmal,Redgram,Vikky Apurva,80,5/6/2023,Ram Transport,3669,450
+236,90,Shree Krushi Kendra,Phulsawangi,Mahagaon,Yavatmal,Cotton,Chatrapathi,64,5/6/2023,Ram Transport,3672,230
+237,91,BANKAR KRUSHI SEWA KENDRA,TALEGAON,DHAMANGAON REL,Amravati,Cotton,Chatrapathi,64,6/6/2023,,,
+238,92,Amol Krushi Kendra,Mohada,Yavatmal,Yavatmal,Cotton,Sitara,96,6/6/2023,,,
+239,93,Laxmi Krushi Kendra,Pandharkawda,Yavatmal,Yavatmal,Cotton,Sitara,64,6/6/2023,,,
+240,94,Chaudhari and sons,Nagpur,Nagpur,Nagpur,Cotton,Sitara,170,6/6/2023,,,
+241,95,Raj Krushi Kendra Kangaon,Kangaon,Hinganghat,Wardha,Cotton,Sitara,64,6/6/2023,Bullet Transport,61319,190
+242,96,GAYATRINBOYANE WARDHA,WARDHA,Wardha,WARDHA,Cotton,Chatrapathi,128,6/6/2023,Bullet Transport,61285,370
+243,97,Shree gajanan seeds&pesticides,Wardha,Wardha,Wardha,Cotton,Chatrapathi,192,6/6/2023,Bullet Transport,61284,550
+244,98,Lokhande agro agency,bharaswada,ashti,Wardha,Cotton,Sitara,32,6/6/2023,Bullet Transport,61323,610
+245,98,Lokhande agro agency,bharaswada,ashti,Wardha,Cotton,Chatrapathi,64,6/6/2023,Bullet Transport,61323,610
+246,98,Lokhande agro agency,bharaswada,ashti,Wardha,Redgram,Vikky Apurva,80,6/6/2023,Bullet Transport,61323,610
+247,99,Shri gneshay krushi sewa kendra,nimkhed,parasconi,Nagpur,Cotton,Sitara,64,6/6/2023,Ram Transport,3847,230
+248,100,Jagadamba Agro Agency Bhokar,Bhokar,Bhokar,Nanded,Cotton,Sitara,64,6/6/2023,Ishwari Transport,4897,190
+249,101,Fulai Krushi Kendra Isapur,Isapur,kinwat,Nanded,Cotton,Sitara,32,6/6/2023,Ram Transport,3844,120
+250,102,Shetkari krushi seva kendra,Nanded,Nanded,Nanded,Cotton,Chatrapathi,288,6/6/2023,Ishwari Transport,4899,820
+251,103,Aryan Krushi Kendra Shegaon,Shegaon,Warora,Chandrapur,Cotton,Chatrapathi,32,6/6/2023,F K Trasnport,62205,330
+252,103,Aryan Krushi Kendra Shegaon,Shegaon,Warora,Chandrapur,Cotton,Sitara,64,6/6/2023,F K Trasnport,62205,330
+253,104,Kastkar Krushi Kendra,pardshinga,KATOL,Nagpur,Cotton,Sitara,32,7/6/2023,F K Trasnport,62204,210
+254,104,Kastkar Krushi Kendra,pardshinga,KATOL,Nagpur,Cotton,Chatrapathi,32,7/6/2023,F K Trasnport,62204,210
+255,105,Adhunik Sheti Kendra Akola,Akola,Akola,Akola,Cotton,Sitara,32,7/6/2023,Local Auto,,
+256,106,KESHAV KRUSHI KENDRA,PUSAD,Pusad,Yavatmal,Cotton,Sitara,96,7/6/2023,Ram Transport,3845,510
+257,106,KESHAV KRUSHI KENDRA,PUSAD,Pusad,Yavatmal,Cotton,Chatrapathi,64,7/6/2023,Ram Transport,3845,510
+258,107,Jay Gurudev Krushi Kendra,Pandharkawda,Yavatmal,Yavatmal,Cotton,Sitara,64,7/6/2023,Ram Transport,3846,410
+259,107,Jay Gurudev Krushi Kendra,Pandharkawda,Yavatmal,Yavatmal,Cotton,Chatrapathi,64,7/6/2023,Ram Transport,3846,410
+260,108,GAYATRINBOYANE WARDHA,WARDHA,Wardha,WARDHA,Cotton,Sitara,64,7/6/2023,Bullet Transport,61317,190
+261,109,Shree gajanan seeds&pesticides,Wardha,Wardha,Wardha,Cotton,Sitara,64,7/6/2023,Bullet Transport,61318,190
+262,110,Thombare Krushi Kendra  Yenboli,Yenboli,Ballarshah,Chandrapur,Cotton,Sitara,32,7/6/2023,F K Trasnport,62203,210
+263,110,Thombare Krushi Kendra  Yenboli,Yenboli,Ballarshah,Chandrapur,Cotton,Chatrapathi,32,7/6/2023,F K Trasnport,62203,210
+264,111,Shivam Krushi Kendra Jivati,jivati,Jivati,Chandrapur,Cotton,Sitara,32,7/6/2023,F K Trasnport,62202,720
+265,111,Shivam Krushi Kendra Jivati,jivati,Jivati,Chandrapur,Cotton,Chatrapathi,64,7/6/2023,F K Trasnport,62202,720
+266,111,Shivam Krushi Kendra Jivati,jivati,Jivati,Chandrapur,Redgram,Vikky Apurva,80,7/6/2023,F K Trasnport,62202,720
+267,112,Pravin Agrotech,Warora,Warora,Chandrapur,Cotton,Sitara,64,7/6/2023,F K Trasnport,62201,530
+268,112,Pravin Agrotech,Warora,Warora,Chandrapur,Cotton,Chatrapathi,96,7/6/2023,F K Trasnport,62201,530
+269,113,Raut krushi seva kendra,barshingi,narkhed,Nagpur,Cotton,Chatrapathi,256,7/6/2023,F K Trasnport,62200,680
+270,114,Satnam Krushi kendra,Saoner,saoner,Nagpur,Cotton,Chatrapathi,320,7/6/2023,F K Trasnport,62199,850
+271,115,BHAGYASHRI KRISHI KENDRA MADHELI,Madheli,warora,Chandrapur,Cotton,Chatrapathi,64,7/6/2023,F K Trasnport,62209,530
+272,115,BHAGYASHRI KRISHI KENDRA MADHELI,Madheli,warora,Chandrapur,Cotton,Sitara,96,7/6/2023,F K Trasnport,62209,530
+273,116,SHIV KRUSHI KENDRA WARORA,WARORA,warora,Chandrapur,Cotton,Chatrapathi,96,7/6/2023,F K Trasnport,62208,530
+274,116,SHIV KRUSHI KENDRA WARORA,WARORA,warora,Chandrapur,Cotton,Sitara,64,7/6/2023,F K Trasnport,62208,530
+275,117,Mauli Agro Center,Maod,Katol,Nagpur,Cotton,Chatrapathi,128,7/6/2023,F K Trasnport,62207,340
+276,118,Kisan Agro Agency,Kondhali,KATOL,Nagpur,Cotton,Chatrapathi,64,7/6/2023,F K Trasnport,62206,170
+277,119,Krushichaya Krishi Kendra Dongarkheda,dongarkheda,Yavatmal,Yavatmal,Cotton,Chatrapathi,64,7/6/2023,Ram Transport,3848,210
+278,120,Anusaya Traders,Shridshahapur,Shridshahapur,HINGOLI,Cotton,Sitara,64,7/6/2023,Trimurti Transport,6672,170
+279,121,Shraddha beej bhandar,mahur,mahur,Nanded,Cotton,Chatrapathi,81,8/6/2023,Ram Transport,4022,340
+280,122,JAY GURUDEO  KRUSHI KENDRA PANDERKHODA,Pandharkawada,Yavatmal,Yavatmal,Cotton,Chatrapathi,96,8/6/2023,Ram Transport,4029,310
+281,123,Pawar krushi seva kendra,loha,loha,Nanded,Cotton,Chatrapathi,96,9/6/2023,,,
+282,124,Krushispandan Agro Services khodamali,khodamali,nandurbar,nandurbar,Cotton,Chatrapathi,128,9/6/2023,Maharaj Transport,302,530
+283,125,Shree Swami Samarth Krushi  Seva Kendra Waghele,Waghele,Nandurbar,Nandurbar,Cotton,Chatrapathi,128,9/6/2023,Maharaj Transport,304,530
+284,125,SAPTSHRUNGI AGRO AGENCY CHALISGAON,CHALISGAON,CHALISGAON,Nandurbar,Redgram,Vikky Apurva,40,23/6/2023,Maharaj Transport,,
+285,126,Deepak Seeds Takli Bhor,Takli Road,Nandurbar,Nandurbar,Cotton,Chatrapathi,64,9/6/2023,Maharaj Transport,303,270
+286,126,Jai Gurudev Krushi Kendra Kalamb,KALAMB,KALAMB,YAVATMAL,Redgram,Vikky Apurva,80,26/6/2023,Bullet Transport,,
+287,127,Shanisawata Krushi Seva Kendra Shanisawata,Shanisawata,Nandurbar,Nandurbar,Cotton,Chatrapathi,64,9/6/2023,Maharaj Transport,301,270
+288,127,SHRI SAIKRUPA KRISHI KENDRA,korpana,Chandrapur,Chandrapur,Jowar,Virat - 3 kg,60,24/10/2023,F K Trasnport,,
+289,128,AGRI BUSINESS CENTRE YAWATMAL,Yavatmal,Y,Y,Redgram,Vikky Apurva,520,11/6/2023,Ram Transport,,
+290,128,SHRI SAI AGRO TRADERS,WANSADI,Chandrapur,Chandrapur,Jowar,Virat - 3 kg,45,24/10/2023,F K Trasnport,,
+291,129,Kasvi Agri Genetics Pvt Ltd,Mahabubnagar,Mahabubnagar,Mahabubnagar,Redgram,Vikky Apurva,2280,28/7/2023,,,
+292,129,Jagannath baba Krishi Kendra Gadchandur,Gadchandur,GADCHANDUR,Chandrapur,Jowar,Virat - 3 kg,45,24/10/2023,F K Trasnport,,
+293,130,Kasvi Agri Genetics Pvt Ltd,Mahabubnagar,Mahabubnagar,Mahabubnagar,Cotton,Sitara,1683,29/8/2023,,,
+294,130,Kasvi Agri Genetics Pvt Ltd,Mahabubnagar,Mahabubnagar,Mahabubnagar,Maize,Arrow - 4 Kg,87,29/8/2023,,,
+295,130,Kasvi Agri Genetics Pvt Ltd,Mahabubnagar,Mahabubnagar,Mahabubnagar,Redgram,Vikky Apurva,1191,29/8/2023,,,
+296,130,Kasvi Agri Genetics Pvt Ltd,Mahabubnagar,Mahabubnagar,Mahabubnagar,Cotton,Chatrapathi,1965,29/8/2023,,,
+297,130,Shivam Krushi Kendra Jivati,jivati,Jivati,Chandrapur,Jowar,Virat - 3 kg,150,24/10/2023,F K Trasnport,,
+298,131,Kasvi Agri Genetics Pvt Ltd,Mahabubnagar,Mahabubnagar,Mahabubnagar,Cotton,Sitara,46,17/9/2023,VRL,1076338173,1251
+299,131,Kasvi Agri Genetics Pvt Ltd,Mahabubnagar,Mahabubnagar,Mahabubnagar,Cotton,Chatrapathi,56,17/9/2023,VRL,1076338173,1251
+300,131,Kasvi Agri Genetics Pvt Ltd,Mahabubnagar,Mahabubnagar,Mahabubnagar,Redgram,Vikky Apurva,101,17/9/2023,VRL,1076338173,1251
+301,131,Amol Krushi Kendra,Mohada,Yavatmal,Yavatmal,Jowar,Virat - 3 kg,30,24/10/2023,Ram Transport,,
+302,132,Kasvi Agri Genetics Pvt Ltd,Mahabubnagar,Mahabubnagar,Mahabubnagar,Cotton,Sitara,34,10/10/2023,VRL,,
+303,132,Kasvi Agri Genetics Pvt Ltd,Mahabubnagar,Mahabubnagar,Mahabubnagar,Cotton,Chatrapathi,4,10/10/2023,VRL,,
+304,132,Kasvi Agri Genetics Pvt Ltd,Mahabubnagar,Mahabubnagar,Mahabubnagar,Redgram,Vikky Apurva,283,10/10/2023,VRL,,
+305,132,Krushichaya Krishi Kendra Dongarkheda,dongarkheda,Yavatmal,Yavatmal,Jowar,Virat - 3 kg,45,24/10/2023,Ram Transport,,
+306,133,Laxmi Krushi Kendra,Pandharkawda,Yavatmal,Yavatmal,Jowar,Virat - 3 kg,30,24/10/2023,Ram Transport,,
+307,133,Kasvi Agri Genetics Pvt Ltd,Mahabubnagar,Mahabubnagar,Mahabubnagar,Cotton,Chatrapathi,86,3/11/2023,VRL,,
+308,133,Kasvi Agri Genetics Pvt Ltd,Mahabubnagar,Mahabubnagar,Mahabubnagar,Redgram,Vikky Apurva,16,3/11/2023,VRL,,
+309,134,Ram Agro Agencies,Darwha,Darwha,Yavatmal,Jowar,Virat - 3 kg,30,24/10/2023,Ram Transport,,
+310,135,Jay Gurudev Krushi Kendra,Pandharkawda,Yavatmal,Yavatmal,Jowar,Virat - 3 kg,30,24/10/2023,Ram Transport,,
+311,136,MUKTAI AGRO AGENCY,WADGAON,Yavatmal,Yavatmal,Jowar,Virat - 3 kg,30,25/10/2023,Ram Transport,,
+312,137,NAVJIVAN KRUSHI KENDRA AKOLA BAZAR,AKOLA BAZAR,Yavatmal,Yavatmal,Jowar,Virat - 3 kg,30,25/10/2023,Ram Transport,,
+313,138,SHRI MAULI KRUSHI KENDRA GHATANJI,GHATANJI,GHATANJI,Yavatmal,Jowar,Virat - 3 kg,75,25/10/2023,Ram Transport,,
+314,139,JAGDAMBA KRUSHI SEWA KENDRA,MANORA,manora,Yavatmal,Jowar,Virat - 3 kg,60,25/10/2023,Ram Transport,,
+315,140,shri sadguru krushi seva kendra arvi,Arvi,Arvi,Wardha,Jowar,Virat - 3 kg,15,25/10/2023,Bullet Transport,,
+316,141,Kisan Krishi Seva Kendra Kandhar,Kandhar,Nanded,Nanded,Jowar,Virat - 3 kg,75,5/11/2023,Trimurti Transport,,
+317,142,Arpit Krushi Kendra Kinwat,Kinwat,kinwat,Yavatmal,Jowar,Virat - 3 kg,45,5/11/2023,Ram Transport,,
+318,143,Shri Ramchnadra Saat Agro Agencies,Vai Bazaar,Mahur,Nanded,Jowar,Virat - 3 kg,45,5/11/2023,Ram Transport,,
+319,144,Shetkari krushi seva kendra,Nanded,Nanded,Nanded,Jowar,Virat - 3 kg,150,5/11/2023,Trimurti Transport,,
+320,145,SHRI MAULI KRUSHI KENDRA GHATANJI,GHATANJI,GHATANJI,Yavatmal,Jowar,Virat - 3 kg,75,6/11/2023,Ram Transport,,
+321,146,Sakshi Fertilizer,Bhavani,Umarkhed,Yavatmal,Jowar,Virat - 3 kg,105,7/11/2023,Ram Transport,,
+322,147,AGRI BUSINESS CENTRE YAWATMAL,Yavatmal,Y,Y,Jowar,Virat - 3 kg,75,23/11/2023,Ram Transport,,
+323,148,Jagadamba Agro Agency Bhokar,Bhokar,Bhokar,Nanded,Jowar,Virat - 3 kg,45,23/11/2023,Ram Transport,,
+324,149,Monali krushi seva kendra,Deoli,Deoli,Wardha,Jowar,Virat - 3 kg,15,26/11/2023,Bullet Transport,,
+325,150,Mahi Agro Care Karanji,Karanji,Karanji,yawatmal,Jowar,Virat - 3 kg,15,3/12/2023,Ram Transport,,
+326,152,Sunanda Frtilizer,Pusad,Yavatmal,Yavatmal,Jowar,Virat - 3 kg,150,13/12/2023,Ram Transport,,
+327,153,Krushichaya Krishi Kendra Dongarkheda,dongarkheda,Yavatmal,Yavatmal,Jowar,Virat - 3 kg,30,17/12/2023,Ram Transport,,
+328,154,KESHAV KRUSHI KENDRA,PUSAD,Pusad,Yavatmal,Jowar,Virat - 3 kg,30,18/12/2023,Ishwari Transport,,
+329,155,Kasvi Agri Genetics Pvt Ltd,Mahabubnagar,Mahabubnagar,Mahabubnagar,Jowar,Karishma-3 Kg,153,3/4/2023,VRL,1069648617,3300
+330,155,Krushichaya Krishi Kendra Dongarkheda,dongarkheda,Yavatmal,Yavatmal,Jowar,Virat - 3 kg,30,2/1/2024,Ram Transport,,
+331,156,Shri Ramchnadra Saat Agro Agencies,Vai Bazaar,Mahur,Nanded,Jowar,Virat - 3 kg,30,2/1/2024,Ram Transport,,
+332,157,KESHAV KRUSHI KENDRA,PUSAD,Pusad,Yavatmal,Jowar,Virat - 3 kg,45,9/1/2024,Ram Transport,,
+333,157,Ankur Krushi Kendra Khamgaon,khamgaon,KHAMGAON,Buldhana,Jowar,Virat - 3 kg,150,16/1/2024,Bullet Transport,,
+334,158,Devkrupa Agro Agency Pusad,pusad,pusad,Yavatmal,Jowar,Virat - 3 kg,45,9/1/2024,Ram Transport,,
+335,158,Kasvi Agri Genetics Pvt Ltd,Mahabubnagar,Mahabubnagar,Mahabubnagar,Jowar,Virat - 3 kg,75,25/3/2024,,,
+336,159,Shetkari krushi seva kendra,Nanded,Nanded,Nanded,Jowar,Virat - 3 kg,150,9/1/2024,Trimurti Transport,,
+337,160,Kisan Agro Agency,Kondhali,KATOL,Nagpur,Jowar,Virat - 3 kg,30,9/1/2024,Ram Transport,,
+338,161,Sunanda Frtilizer,Pusad,Yavatmal,Yavatmal,Jowar,Virat - 3 kg,75,12/1/2024,Ram Transport,,
+339,162,KESHAV KRUSHI KENDRA,PUSAD,Pusad,Yavatmal,Jowar,Virat - 3 kg,150,14/1/2024,Ram Transport,,
+340,163,Krushichaya Krishi Kendra Dongarkheda,dongarkheda,Yavatmal,Yavatmal,Jowar,Virat - 3 kg,30,14/1/2024,Ram Transport,,
+341,164,Laxmi Krushi Kendra,Pandharkawda,Yavatmal,Yavatmal,Jowar,Virat - 3 kg,30,15/1/2024,Ram Transport,,
+342,165,AGRI BUSINESS CENTRE YAWATMAL,Yavatmal,Y,Y,Jowar,Virat - 3 kg,60,16/1/2024,Ram Transport,,
+343,166,Ram Agro Agencies,Darwha,Darwha,Yavatmal,Jowar,Virat - 3 kg,30,16/1/2024,Ram Transport,,
+344,173,Ramnath Krushi Kendra Chikhali,Chikhali,Darwha,Yavatmal,Jowar,Virat - 3 kg,45,22/1/2024,Ram Transport,,
+345,174,Jalaram Traders,Yavatmal,Yavatmal,Yavatmal,Jowar,Virat - 3 kg,225,22/1/2024,Ram Transport,,

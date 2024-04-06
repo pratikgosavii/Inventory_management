@@ -275,6 +275,9 @@ def list_inward(request):
 
         data = inward.objects.filter().order_by("DC_number")
 
+    total_bags = data.aggregate(Sum('bags'))['bags__sum']
+    
+
     inward_filter_data = inward_filter()
 
     company_data = company.objects.all()
@@ -292,6 +295,7 @@ def list_inward(request):
     context = {
         'data': data,
         'company_data' : company_data,
+        'total_bags' : total_bags,
         'filter_inward' : inward_filter_data,
         'year' : year
     }
@@ -401,6 +405,7 @@ def list_outward(request):
 
         data = data.filter(agent__name__icontains=agent_name)
 
+    total_bags = data.aggregate(Sum('bags'))['bags__sum']
     
 
     outward_filter_data = outward_filter()
@@ -424,6 +429,7 @@ def list_outward(request):
     context = {
         'data': data,
         'filter_outward' : outward_filter_data,
+        'total_bags' : total_bags,
         'company_data' : company_data,
         'year' : year
 
@@ -700,6 +706,9 @@ def list_return(request):
 
 
 
+    total_bags = data.aggregate(Sum('bags'))['bags__sum']
+
+
     page = request.GET.get('page', 1)
     paginator = Paginator(data, 50)
 
@@ -718,6 +727,7 @@ def list_return(request):
     context = {
         'data': data,
         'company_data': company_data,
+        'total_bags' : total_bags,
         'filter_return_supply' : supply_return_filter_data,
         'year' : year
 
@@ -865,6 +875,7 @@ def report_inward(request):
     filterd_data = inward_filter(request.GET, data)
     filtered_data = filterd_data.qs
 
+    total_bags = filtered_data.aggregate(Sum('bags'))['bags__sum']
 
     
     filtered_data = list(filtered_data.values_list('DC_number', 'agent__name', 'agent__place', 'agent__taluka', 'agent__district', 'company_goods__name', 'goods_company__goods_company_name', 'bags', 'DC_date', 'transport__name', 'LR_number', 'freight'))
@@ -929,6 +940,7 @@ def report_inward(request):
 
     context = {
         'data': vals_list,
+        'total_bags': total_bags,
         'link' : link
 
 
@@ -951,6 +963,9 @@ def report_outward(request):
     outward_data = outward.objects.all().order_by("DC_number")
     outward_filterd_data = outward_filter(request.GET, outward_data)
     outward_filterd_data = outward_filterd_data.qs
+
+    total_bags = outward_filterd_data.aggregate(Sum('bags'))['bags__sum']
+
 
     outward_filterd_data = list(outward_filterd_data.values_list('DC_number', 'agent__name', 'agent__place', 'agent__taluka', 'agent__district', 'company_goods__name', 'goods_company__goods_company_name', 'bags', 'DC_date', 'transport__name', 'LR_number', 'freight'))
     # print(out)
@@ -1012,6 +1027,7 @@ def report_outward(request):
 
     context = {
         'data': vals_list,
+        'total_bags': total_bags,
         'link' : link
 
 
@@ -1031,6 +1047,9 @@ def report_supply_return(request):
 
     filterd_data = supply_return_filter(request.GET, data)
     data = filterd_data.qs
+
+    total_bags = data.aggregate(Sum('bags'))['bags__sum']
+    
 
     vals = []
 
@@ -1095,6 +1114,7 @@ def report_supply_return(request):
 
     context = {
         'data': vals_list,
+        'total_bags': total_bags,
         'link' : link,
 
     }
