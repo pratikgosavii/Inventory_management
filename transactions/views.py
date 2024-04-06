@@ -468,11 +468,9 @@ def list_stock(request):
         })
 
     # Apply filters
-    stock_filter = StockFilter(request.GET, queryset=stock_data)
 
     context = {
-        'data': stock_filter.qs,
-        'stock_filter': stock_filter,
+        'data': stock_data,
     }
 
 
