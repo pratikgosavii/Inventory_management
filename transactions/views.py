@@ -558,10 +558,47 @@ def delete_outward(request, outward_id):
         return HttpResponseRedirect(reverse('list_outward_delete'))
 
 
+
+
+from django.db.models import Sum, F, ExpressionWrapper, IntegerField
+from django.http import JsonResponse
+import pandas as pd
+
+
 @login_required(login_url='login')
 def list_stock(request):
 
-    data = stock.objects.all()
+    
+    stock_data = []
+
+    # Get unique combinations of company, company_goods, and goods_company
+    combinations = stock.objects.values('company', 'company_goods', 'goods_company').distinct()
+
+    for combination in combinations:
+        # Get aggregate inward, outward, and supply_return data for the combination
+        inward_stock_total = inward.objects.filter(company=combination['company'], company_goods=combination['company_goods'], goods_company=combination['goods_company']).aggregate(total=Sum('bags'))['total'] or 0
+        outward_stock_total = outward.objects.filter(company=combination['company'], company_goods=combination['company_goods'], goods_company=combination['goods_company']).aggregate(total=Sum('bags'))['total'] or 0
+        supply_return_stock_total = supply_return.objects.filter(company=combination['company'], company_goods=combination['company_goods'], goods_company=combination['goods_company']).aggregate(total=Sum('bags'))['total'] or 0
+
+        # Calculate total stock for the combination
+        total_stock = inward_stock_total + supply_return_stock_total - outward_stock_total
+
+        # Append the calculated data to the stock_data list
+
+        comapny_instance = company.objects.get(id = combination['company'])
+        company_goods_instance = company_goods.objects.get(id = combination['company_goods'])
+        goods_company_instance = goods_company.objects.get(id = combination['goods_company']
+                                               )
+        stock_data.append({
+            'Company': comapny_instance,
+            'Goods': company_goods_instance,
+            'Company2': goods_company_instance,
+            'Stock': total_stock
+        })
+
+    print(stock_data)
+
+    data = stock_data
 
     stock_filter_data = stock_filter()
 

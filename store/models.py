@@ -29,8 +29,7 @@ class company_goods(models.Model):
     def __str__(self):
         return self.name
 
-    class Meta:
-        unique_together = ('company', 'name',)
+    
 
 
 
@@ -40,8 +39,7 @@ class goods_company(models.Model):
     company_goods = models.ForeignKey(company_goods , on_delete=models.CASCADE, related_name='sds')
     goods_company_name = models.CharField(max_length=121, unique=False)
 
-    class Meta:
-        unique_together = ('company_name', 'company_goods', 'goods_company_name',)
+    
 
 
     def __str__(self):
@@ -61,8 +59,7 @@ class agent(models.Model):
 
 
 
-    class Meta:
-        unique_together = ('company', 'name')
+    
         
 
 
