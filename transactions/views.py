@@ -436,18 +436,21 @@ from itertools import chain
 @login_required(login_url='login')
 def list_stock(request):
 
-    # Get all distinct combinations from inward, outward, and supply_return models
     inward_combinations = inward.objects.values('company', 'company_goods', 'goods_company').distinct()
     outward_combinations = outward.objects.values('company', 'company_goods', 'goods_company').distinct()
     supply_return_combinations = supply_return.objects.values('company', 'company_goods', 'goods_company').distinct()
-    
+
     # Merge all combinations into a single list
     all_combinations = list(chain(inward_combinations, outward_combinations, supply_return_combinations))
 
-    stock_data = []
+    # Create a dictionary to store stock data for each unique combination
+    stock_dict = {}
 
     for combination in all_combinations:
-        # Get aggregate inward, outward, and supply_return data for the combination
+        # Create a unique identifier for the combination
+        combination_key = (combination['company'], combination['company_goods'], combination['goods_company'])
+
+        # Get inward, outward, and supply_return data for the combination
         inward_stock_total = inward.objects.filter(company=combination['company'], company_goods=combination['company_goods'], goods_company=combination['goods_company']).aggregate(total=Sum('bags'))['total'] or 0
         outward_stock_total = outward.objects.filter(company=combination['company'], company_goods=combination['company_goods'], goods_company=combination['goods_company']).aggregate(total=Sum('bags'))['total'] or 0
         supply_return_stock_total = supply_return.objects.filter(company=combination['company'], company_goods=combination['company_goods'], goods_company=combination['goods_company']).aggregate(total=Sum('bags'))['total'] or 0
@@ -455,24 +458,31 @@ def list_stock(request):
         # Calculate total stock for the combination
         total_stock = inward_stock_total + supply_return_stock_total - outward_stock_total
 
-        # Append the calculated data to the stock_data list
-        company_instance = company.objects.get(id=combination['company'])
-        company_goods_instance = company_goods.objects.get(id=combination['company_goods'])
-        goods_company_instance = goods_company.objects.get(id=combination['goods_company'])
+        # Update the stock_dict with the total stock for the combination
+        if combination_key in stock_dict:
+            # If the combination already exists, update the stock
+            stock_dict[combination_key]['Stock'] += total_stock
+        else:
+            # If it's a new combination, add it to the dictionary
+            company_instance = company.objects.get(id=combination['company'])
+            company_goods_instance = company_goods.objects.get(id=combination['company_goods'])
+            goods_company_instance = goods_company.objects.get(id=combination['goods_company'])
 
-        stock_data.append({
-            'Company': company_instance,
-            'Goods': company_goods_instance,
-            'Company2': goods_company_instance,
-            'Stock': total_stock
-        })
+            stock_dict[combination_key] = {
+                'Company': company_instance,
+                'Goods': company_goods_instance,
+                'Company2': goods_company_instance,
+                'Stock': total_stock
+            }
 
-    # Apply filters
+    # Prepare stock_data list with unique combinations and total stock
+    stock_data = list(stock_dict.values())
+
+    # Apply filters if needed
 
     context = {
         'data': stock_data,
     }
-
 
     return render(request, 'transactions/list_stock.html', context)
 
