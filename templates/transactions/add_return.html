@@ -29,7 +29,7 @@
 				<p class="text-center">Your booking has been confirmed. Check your email for detials.</p>
 			</div>
 			<div class="modal-footer">
-				<button class="btn btn-success btn-block" data-dismiss="modal">OK</button>
+				<button class="btn btn-success btn-block" id="okButton" data-dismiss="modal">OK</button>
 			</div>
 		</div>
 	</div>
@@ -196,54 +196,58 @@
 
 
     
-    $("#submitform").submit( function(e) {
-
+    $("#submitform").submit(function(e) {
         e.preventDefault();
-
+    
+        // Disable the submit button to prevent multiple submissions
+        $('#submitform :input[type="submit"]').prop('disabled', true);
+    
         var data = $('form').serialize();
-        console.log(data)
-
-
-        $.ajax({   
-            cache: false,                    // initialize an AJAX request
+    
+        $.ajax({
+            cache: false,
             type: "POST",
             url: "{% url 'add_return' %}",
-            data: data,     // add the country id to the POST parameters
-
-            success: function (data) {   // `data` is from `get_topics_ajax` view function
-                //window.location.href = http + "{% url 'list_inward' %}"
-
-                if (data.status == 'done'){
+            data: data,
+    
+            success: function(data) {
+                if (data.status == 'done') {
+                    $('#myModal').modal({ backdrop: 'static', keyboard: false }); // Prevent modal from closing
                     $('#myModal').modal('show');
-                }
-
-                else if (data.error !== undefined){
-                    var a = JSON.parse(data.error)
-
-                    console.log(a)
-                    document.body.scrollTop = document.documentElement.scrollTop = 0;
-                    $("#message_div").css("display","contents");
-                    var div = document.getElementById('message');
+                } else if (data.error !== undefined) {
+                    var a = JSON.parse(data.error);
+                    var div = $("#message");
+    
+                    // Clear previous error messages
+                    div.empty();
+    
                     for (var name in a) {
                         for (var i in a[name]) {
-                            console.log(name) 
-                            div.innerHTML += `<div class="alert alert-danger alert-dismissible fade show" id="message" role="alert"> 
-                                                <strong>`
-                                                + name + ` ` + 
-                                                `</strong>` + a[name][i].message + 
-                                                `<button type="button" class="close" data-dismiss="alert" aria-label="Close"> 
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button> 
-                                            </div>`;
-                            console.log(a[name][i].message) 
+                            div.append(`<div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                            <strong>` + name + ` </strong>` + a[name][i].message + `
+                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>`);
                         }
                     }
                 }
-            }    
-
+            },
+            complete: function() {
+                // Do not re-enable the submit button here
+            }
         });
-
     });
+    
+    // Event handler for "OK" button in modal
+    $("#okButton").click(function() {
+        // Hide the modal
+        $('#myModal').modal('hide');
+    
+        // Re-enable the submit button after clicking "OK"
+        $('#submitform :input[type="submit"]').prop('disabled', false);
+    });
+
 
 
 
