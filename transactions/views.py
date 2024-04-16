@@ -460,8 +460,7 @@ def list_stock(request):
 
         # Update the stock_dict with the total stock for the combination
         if combination_key in stock_dict:
-            # If the combination already exists, update the stock
-            stock_dict[combination_key]['Stock'] += total_stock
+            pass
         else:
             # If it's a new combination, add it to the dictionary
             company_instance = company.objects.get(id=combination['company'])
