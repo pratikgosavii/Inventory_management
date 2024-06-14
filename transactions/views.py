@@ -92,6 +92,8 @@ def add_inward(request):
 
         forms = inward_Form(request.POST)
 
+        print(request.POST)
+
         if forms.is_valid():
 
           
@@ -672,13 +674,29 @@ def delete_return(request, return_id):
     except:
         return HttpResponseRedirect(reverse('list_return'))
  
-        
 
+
+def remove_timezone(dt):
+    if isinstance(dt, datetime) and dt.tzinfo is not None:
+        return dt.replace(tzinfo=None)
+    return dt
+
+
+
+# Function to handle encoding issues
+def clean_string(s):
+    if isinstance(s, str):
+        return s.encode('ascii', 'ignore').decode('ascii')
+    return s
+
+import openpyxl
 
 @login_required(login_url='login')
 def report_inward(request):
 
     counteer = 1
+
+    print(request.GET)
 
 
     data = inward.objects.all().order_by("DC_number")
@@ -696,8 +714,8 @@ def report_inward(request):
     total_bags = filtered_data.aggregate(Sum('bags'))['bags__sum']
 
     
-    filtered_data = list(filtered_data.values_list('DC_number', 'agent__name', 'agent__place', 'agent__taluka', 'agent__district', 'company_goods__name', 'goods_company__goods_company_name', 'bags', 'DC_date', 'transport__name', 'LR_number', 'freight'))
-
+    filtered_data = list(filtered_data.values_list('DC_number', 'agent__name', 'agent__place', 'agent__taluka', 'agent__district', 'company_goods__name', 'goods_company__goods_company_name', 'bags', 'DC_date__date', 'transport__name', 'LR_number', 'freight', 'id'))
+    print(filtered_data)
     vals1 = []
     vals1.append('Serial')
     vals1.append("DC Number")
@@ -717,6 +735,7 @@ def report_inward(request):
 
 
     for i in filtered_data:
+        
         vals1 = []
         vals1.append(counteer)
         counteer = counteer + 1
@@ -728,10 +747,11 @@ def report_inward(request):
         vals1.append(i[5])
         vals1.append(i[6])
         vals1.append(i[7])
-        vals1.append('%s/%s/%s' % (i[8].day, i[8].month, i[8].year))
+        vals1.append(remove_timezone(i[8]))
         vals1.append(i[9])
         vals1.append(i[10])
         vals1.append(i[11])
+        vals1.append(i[12])
 
         vals.append(vals1)
 
@@ -739,6 +759,7 @@ def report_inward(request):
 
        
 
+        
     time =  str(datetime.now(ist))
     time = time.split('.')
     time = time[0].replace(':', '-')
@@ -754,6 +775,7 @@ def report_inward(request):
 
     vals_list = vals
     vals_list.pop(0)
+
 
 
     context = {
@@ -785,7 +807,7 @@ def report_outward(request):
     total_bags = outward_filterd_data.aggregate(Sum('bags'))['bags__sum']
 
 
-    outward_filterd_data = list(outward_filterd_data.values_list('DC_number', 'agent__name', 'agent__place', 'agent__taluka', 'agent__district', 'company_goods__name', 'goods_company__goods_company_name', 'bags', 'DC_date', 'transport__name', 'LR_number', 'freight'))
+    outward_filterd_data = list(outward_filterd_data.values_list('DC_number', 'agent__name', 'agent__place', 'agent__taluka', 'agent__district', 'company_goods__name', 'goods_company__goods_company_name', 'bags', 'DC_date', 'transport__name', 'LR_number', 'freight', 'id'))
     # print(out)
 
     outward_filterd_data = list(map(list, outward_filterd_data))
@@ -823,24 +845,13 @@ def report_outward(request):
         vals1.append(i[9])
         vals1.append(i[10])
         vals1.append(i[11])
+        vals1.append(i[12])
         vals.append(vals1)
 
    
 
-    time =  str(datetime.now(ist))
-    time = time.split('.')
-    time = time[0].replace(':', '-')
-
-    name = "Report.csv"
-    path = os.path.join(BASE_DIR) + '\static\csv\\' + name
-    with open(path,  'w', newline="") as f:
-        writer = csv.writer(f)
-        writer.writerows(vals)
-
-    link = os.path.join(BASE_DIR) + '\static\csv\\' + name
-
-    vals_list = vals
-    vals_list.pop(0)
+   
+           print(i[8])
 
 
     context = {
@@ -913,21 +924,8 @@ def report_supply_return(request):
         vals.append(vals1)
 
 
-    time =  str(datetime.now(ist))
-    time = time.split('.')
-    time = time[0].replace(':', '-')
-
-
-    name = "Report.csv"
-    path = os.path.join(BASE_DIR) + '\static\csv\\' + name
-    with open(path,  'w', newline="") as f:
-        writer = csv.writer(f)
-        writer.writerows(vals)
-
-    link = os.path.join(BASE_DIR) + '\static\csv\\' + name
-
-    vals_list = vals
-    vals_list.pop(0)
+    
+            print(i[8])
 
 
     context = {
