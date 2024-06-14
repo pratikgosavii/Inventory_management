@@ -851,7 +851,21 @@ def report_outward(request):
    
 
    
-           print(i[8])
+    time =  str(datetime.now(ist))
+    time = time.split('.')
+    time = time[0].replace(':', '-')
+
+    name = "Report.csv"
+    path = os.path.join(BASE_DIR) + '\static\csv\\' + name
+    with open(path,  'w', newline="") as f:
+        writer = csv.writer(f)
+        writer.writerows(vals)
+
+
+    link = os.path.join(BASE_DIR) + '\static\csv\\' + name
+
+    vals_list = vals
+    vals_list.pop(0)
 
 
     context = {
@@ -925,7 +939,21 @@ def report_supply_return(request):
 
 
     
-            print(i[8])
+    time =  str(datetime.now(ist))
+    time = time.split('.')
+    time = time[0].replace(':', '-')
+
+    name = "Report.csv"
+    path = os.path.join(BASE_DIR) + '\static\csv\\' + name
+    with open(path,  'w', newline="") as f:
+        writer = csv.writer(f)
+        writer.writerows(vals)
+
+
+    link = os.path.join(BASE_DIR) + '\static\csv\\' + name
+
+    vals_list = vals
+    vals_list.pop(0)
 
 
     context = {
