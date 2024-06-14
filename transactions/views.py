@@ -689,7 +689,6 @@ def clean_string(s):
         return s.encode('ascii', 'ignore').decode('ascii')
     return s
 
-import openpyxl
 
 @login_required(login_url='login')
 def report_inward(request):
