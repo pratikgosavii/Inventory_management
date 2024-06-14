@@ -806,7 +806,7 @@ def report_outward(request):
     total_bags = outward_filterd_data.aggregate(Sum('bags'))['bags__sum']
 
 
-    outward_filterd_data = list(outward_filterd_data.values_list('DC_number', 'agent__name', 'agent__place', 'agent__taluka', 'agent__district', 'company_goods__name', 'goods_company__goods_company_name', 'bags', 'DC_date', 'transport__name', 'LR_number', 'freight', 'id'))
+    outward_filterd_data = list(outward_filterd_data.values_list('DC_number', 'agent__name', 'agent__place', 'agent__taluka', 'agent__district', 'company_goods__name', 'goods_company__goods_company_name', 'bags', 'DC_date__date', 'transport__name', 'LR_number', 'freight', 'id'))
     # print(out)
 
     outward_filterd_data = list(map(list, outward_filterd_data))
@@ -896,7 +896,7 @@ def report_supply_return(request):
     vals = []
 
 
-    filtered_data = list(data.values_list('DC_number', 'agent__name', 'agent__place', 'agent__taluka', 'agent__district', 'company_goods__name', 'goods_company__goods_company_name', 'bags', 'DC_date', 'transport__name', 'LR_number', 'freight'))
+    filtered_data = list(data.values_list('DC_number', 'agent__name', 'agent__place', 'agent__taluka', 'agent__district', 'company_goods__name', 'goods_company__goods_company_name', 'bags', 'DC_date__date', 'transport__name', 'LR_number', 'freight'))
 
 
     vals1 = []
