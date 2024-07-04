@@ -896,7 +896,7 @@ def report_supply_return(request):
     vals = []
 
 
-    filtered_data = list(data.values_list('DC_number', 'agent__name', 'agent__place', 'agent__taluka', 'agent__district', 'company_goods__name', 'goods_company__goods_company_name', 'bags', 'DC_date__date', 'transport__name', 'LR_number', 'freight'))
+    filtered_data = list(data.values_list('DC_number', 'agent__name', 'agent__place', 'agent__taluka', 'agent__district', 'company_goods__name', 'goods_company__goods_company_name', 'bags', 'DC_date__date', 'transport__name', 'LR_number', 'freight', 'id'))
 
 
     vals1 = []
@@ -934,6 +934,7 @@ def report_supply_return(request):
         vals1.append(i[9])
         vals1.append(i[10])
         vals1.append(i[11])
+        vals1.append(i[12])
         vals.append(vals1)
 
 
