@@ -963,7 +963,7 @@ def report_supply_return(request):
 
     }
 
-    return render(request, 'report/outward_report.html', context)
+    return render(request, 'report/supply_return_report.html', context)
 
 
 @login_required(login_url='login')
