@@ -37,11 +37,9 @@
 
 </div><br>
 
+
 <div style="display:flex;margin-bottom : 20px;">
- 
-    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-      Inward Report
-    </button>
+
 
     <label style="color:black;margin-left: 50px;">  </label>
     
@@ -65,12 +63,27 @@
       
       </select>
     </div>
+    </div>
     
-  <div class="collapse" id="collapseExample">
-    <div class="card card-body">
-      
 
-        <form method="get" action="{% url 'report_inward' %}" style="padding:15px;">
+    
+<p>
+ 
+    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+      Inward Report
+    </button>
+    
+</p>
+
+
+<div style="display:flex;margin-bottom : 20px;">
+
+
+    <div class="collapse" id="collapseExample">
+        <div class="card card-body">
+        
+
+            <form method="get" action="{% url 'report_inward' %}" style="padding:15px;">
 
             {% csrf_token %}
 
@@ -124,6 +137,7 @@
 
         </form>
     </div>
+  </div>
   </div>
   
 
@@ -203,43 +217,32 @@
                     </footer>
 
                           
-  {% if data.has_other_pages %}
-  <nav style="display: flex;margin: 0px 100px;">
-    <ul class="pagination justify-content-center">
-      {% if data.has_previous %}
-        <li class="page-item">
-          <a class="page-link" href="?page={{ data.previous_page_number }}" aria-label="Previous">
-            <span aria-hidden="true">&laquo;</span>
-          </a>
-        </li>
-      {% else %}
-        <li class="page-item disabled">
-            <span class="page-link" aria-hidden="true">&laquo;</span>
-        </li>
-      {% endif %}
-
-      {% for p in data.paginator.page_range %}
-        {% if data.number == p %}
-          <li class="page-item"><a class="page-link" style="color: red;" href="#">{{ p }}</a></li>
-        {% else %}
-          <li class="page-item"><a class="page-link" href="?page={{ p }}">{{ p }}</a></li>
-        {% endif %}
-      {% endfor %}
-
-      {% if data.has_next %}
-        <li class="page-item">
-          <a class="page-link" href="?page={{ data.next_page_number }}" aria-label="Next">
-            <span aria-hidden="true">&raquo;</span>
-          </a>
-        </li>
-      {% else %}
-        <li class="page-item disabled">
-          <span class="page-link" aria-hidden="true">&raquo;</span>
-        </li>
-      {% endif %}
-  </ul>
-  </nav>
-{% endif %}
+                    {% if data.has_other_pages %}
+                    <nav style="">
+                      <ul class="pagination justify-content-center">
+                        {% if data.has_previous %}
+                          <li class="page-item">
+                            <a class="page-link" href="?page={{ data.previous_page_number }}" aria-label="Previous">
+                              <span aria-hidden="true">&laquo;</span>
+                            </a>
+                          </li>
+                        {% else %}
+                          <li class="page-item disabled">
+                              <span class="page-link" aria-hidden="true">&laquo;</span>
+                          </li>
+                        {% endif %}
+                  
+                        {% for p in data.paginator.page_range %}
+                    {% if p >= data.number|add:"-4" and p <= data.number|add:"4" %}
+                      {% if data.number == p %}
+                        <li class="page-item"><a class="page-link" style="color: red;" href="#">{{ p }}</a></li>
+                      {% else %}
+                        <li class="page-item"><a class="page-link" href="?page={{ p }}">{{ p }}</a></li>
+                      {% endif %}
+                    {% endif %}
+                  {% endfor %}
+                  {% endif %}
+                  
 
 
                 </div> <!-- /.table-stats -->

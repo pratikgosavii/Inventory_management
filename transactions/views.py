@@ -3,7 +3,7 @@ from genericpath import samefile
 from django.contrib import messages
 from django.http.response import HttpResponseRedirect
 from django.shortcuts import render
-from django.http import HttpResponse, JsonResponse
+from django.http import FileResponse, HttpResponse, JsonResponse
 import pandas as pd
 
 from store.views import numOfDays
@@ -690,99 +690,80 @@ def clean_string(s):
     return s
 
 
+from openpyxl import Workbook
+from openpyxl.styles import Font, PatternFill, Alignment
+from openpyxl.utils import get_column_letter
+import os
+from django.http import HttpResponse
+from django.utils.timezone import localtime
+from django.conf import settings
+from datetime import datetime
+
 @login_required(login_url='login')
 def report_inward(request):
+    from openpyxl import Workbook
+    from openpyxl.styles import Font, PatternFill
+    import os
 
-    counteer = 1
-
-    print(request.GET)
-
-
-    data = inward.objects.all().order_by("DC_number")
-
-    filterd_data = inward_filter(request.GET, data)
-    filtered_data = filterd_data.qs
-
-
-
+    counter = 1
     vals = []
 
-    filterd_data = inward_filter(request.GET, data)
-    filtered_data = filterd_data.qs
+    data = inward.objects.all().order_by("DC_number")
+    filtered_data = inward_filter(request.GET, data).qs
 
     total_bags = filtered_data.aggregate(Sum('bags'))['bags__sum']
 
-    
-    filtered_data = list(filtered_data.values_list('DC_number', 'agent__name', 'agent__place', 'agent__taluka', 'agent__district', 'company_goods__name', 'goods_company__goods_company_name', 'bags', 'DC_date__date', 'transport__name', 'LR_number', 'freight', 'id'))
-    print(filtered_data)
-    vals1 = []
-    vals1.append('Serial')
-    vals1.append("DC Number")
-    vals1.append("Party Name")
-    vals1.append("Party Place")
-    vals1.append("Party Taluka")
-    vals1.append("Party District")
-    vals1.append("Crop")
-    vals1.append("Variety")
-    vals1.append('Packet')
-    vals1.append('Date')
-    vals1.append('Transport')
-    vals1.append('LR Number')
-    vals1.append('Freight')
+    filtered_data = list(filtered_data.values_list(
+        'DC_number', 'agent__name', 'agent__place', 'agent__taluka',
+        'agent__district', 'company_goods__name', 'goods_company__goods_company_name',
+        'bags', 'DC_date__date', 'transport__name', 'LR_number', 'freight', 'id'
+    ))
 
-    vals.append(vals1)
+    filtered_data = list(map(list, filtered_data))
 
+    # CSV Header
+    headers = ["Serial", "DC Number", "Party Name", "Party Place", "Party Taluka", "Party District",
+               "Crop", "Variety", "Packet", "Date", "Transport", "LR Number", "Freight", "id"]
+    vals.append(headers)
 
+    # CSV Rows
     for i in filtered_data:
-        
-        vals1 = []
-        vals1.append(counteer)
-        counteer = counteer + 1
-        vals1.append(i[0])
-        vals1.append(i[1])
-        vals1.append(i[2])
-        vals1.append(i[3])
-        vals1.append(i[4])
-        vals1.append(i[5])
-        vals1.append(i[6])
-        vals1.append(i[7])
-        vals1.append(remove_timezone(i[8]))
-        vals1.append(i[9])
-        vals1.append(i[10])
-        vals1.append(i[11])
-        vals1.append(i[12])
+        row = [
+            counter, i[0], i[1], i[2], i[3], i[4], i[5], i[6], i[7],
+            '%s/%s/%s' % (i[8].day, i[8].month, i[8].year), i[9], i[10], i[11], i[12]
+        ]
+        vals.append(row)
+        counter += 1
 
-        vals.append(vals1)
+    # Save XLSX
+    wb = Workbook()
+    ws = wb.active
+    ws.title = "Inward Report"
 
+    # Add headers to XLSX
+    ws.append(headers)
+    for cell in ws[1]:
+        cell.font = Font(bold=True)
+        cell.fill = PatternFill(start_color='90EE90', end_color='90EE90', fill_type='solid')
 
+    # Add data rows
+    for i, row in enumerate(filtered_data, start=1):
+        ws.append([
+            i, row[0], row[1], row[2], row[3], row[4], row[5], row[6], row[7],
+            '%s/%s/%s' % (row[8].day, row[8].month, row[8].year), row[9], row[10], row[11], row[12]
+        ])
 
-       
+    xlsx_name = "Report.xlsx"
+    xlsx_path = os.path.join(BASE_DIR, 'static', 'xlsx', xlsx_name)
+    wb.save(xlsx_path)
 
-        
-    time =  str(datetime.now(ist))
-    time = time.split('.')
-    time = time[0].replace(':', '-')
-
-    name = "Report.csv"
-    path = os.path.join(BASE_DIR) + '\static\csv\\' + name
-    with open(path,  'w', newline="") as f:
-        writer = csv.writer(f)
-        writer.writerows(vals)
-
-
-    link = os.path.join(BASE_DIR) + '\static\csv\\' + name
-
-    vals_list = vals
-    vals_list.pop(0)
-
-
+    vals_list = vals.copy()
+    vals_list.pop(0)  # remove headers for display table
 
     context = {
         'data': vals_list,
         'total_bags': total_bags,
-        'link' : link
-
-
+        'link': f"/static/xlsx/{xlsx_name}",
     }
 
     return render(request, 'report/inward_report.html', context)
@@ -791,179 +772,154 @@ def report_inward(request):
 
 @login_required(login_url='login')
 def report_outward(request):
-
-
-    counteer = 1
-
-   
-
+    counter = 1
     vals = []
 
     outward_data = outward.objects.all().order_by("DC_number")
-    outward_filterd_data = outward_filter(request.GET, outward_data)
-    outward_filterd_data = outward_filterd_data.qs
+    outward_filterd_data = outward_filter(request.GET, outward_data).qs
 
     total_bags = outward_filterd_data.aggregate(Sum('bags'))['bags__sum']
 
-
-    outward_filterd_data = list(outward_filterd_data.values_list('DC_number', 'agent__name', 'agent__place', 'agent__taluka', 'agent__district', 'company_goods__name', 'goods_company__goods_company_name', 'bags', 'DC_date__date', 'transport__name', 'LR_number', 'freight', 'id'))
-    # print(out)
+    outward_filterd_data = list(outward_filterd_data.values_list(
+        'DC_number', 'agent__name', 'agent__place', 'agent__taluka', 'agent__district',
+        'company_goods__name', 'goods_company__goods_company_name', 'bags', 'DC_date__date',
+        'transport__name', 'LR_number', 'freight', 'id'
+    ))
 
     outward_filterd_data = list(map(list, outward_filterd_data))
-    
-    vals1 = []
-    vals1.append("Serial")
-    vals1.append("DC Number")
-    vals1.append("Party Name")
-    vals1.append("Party Place")
-    vals1.append("Party Taluka")
-    vals1.append("Party District")
-    vals1.append("Crop")
-    vals1.append("Variety")
-    vals1.append('Packet')
-    vals1.append('Date')
-    vals1.append('Transport')
-    vals1.append('LR Number')
-    vals1.append('Freight')
-    vals.append(vals1)
 
+    # CSV Header
+    headers = ["Serial", "DC Number", "Party Name", "Party Place", "Party Taluka", "Party District",
+               "Crop", "Variety", "Packet", "Date", "Transport", "LR Number", "Freight", "id"]
+    vals.append(headers)
 
+    # CSV Rows
     for i in outward_filterd_data:
-        vals1 = []
-        vals1.append(counteer)
-        counteer = counteer + 1
-        vals1.append(i[0])
-        vals1.append(i[1])
-        vals1.append(i[2])
-        vals1.append(i[3])
-        vals1.append(i[4])
-        vals1.append(i[5])
-        vals1.append(i[6])
-        vals1.append(i[7])
-        vals1.append('%s/%s/%s' % (i[8].day, i[8].month, i[8].year))
-        vals1.append(i[9])
-        vals1.append(i[10])
-        vals1.append(i[11])
-        vals1.append(i[12])
-        vals.append(vals1)
+        row = [
+            counter, i[0], i[1], i[2], i[3], i[4], i[5], i[6], i[7],
+            '%s/%s/%s' % (i[8].day, i[8].month, i[8].year), i[9], i[10], i[11], i[12]
+        ]
+        vals.append(row)
+        counter += 1
 
    
 
-   
-    time =  str(datetime.now(ist))
-    time = time.split('.')
-    time = time[0].replace(':', '-')
+    # Save XLSX
+    from openpyxl import Workbook
+    from openpyxl.styles import Font, PatternFill
 
-    name = "Report.csv"
-    path = os.path.join(BASE_DIR) + '\static\csv\\' + name
-    with open(path,  'w', newline="") as f:
-        writer = csv.writer(f)
-        writer.writerows(vals)
+    wb = Workbook()
+    ws = wb.active
+    ws.title = "Outward Report"
 
+    # Add headers to XLSX
+    ws.append(headers)
+    for cell in ws[1]:
+        cell.font = Font(bold=True)
+        cell.fill = PatternFill(start_color='90EE90', end_color='90EE90', fill_type='solid')
 
-    link = os.path.join(BASE_DIR) + '\static\csv\\' + name
+    # Add data rows
+    for i, row in enumerate(outward_filterd_data, start=1):
+        ws.append([
+            i, row[0], row[1], row[2], row[3], row[4], row[5], row[6], row[7],
+            '%s/%s/%s' % (row[8].day, row[8].month, row[8].year), row[9], row[10], row[11]
+        ])
 
-    vals_list = vals
-    vals_list.pop(0)
+    xlsx_name = "Report.xlsx"
+    xlsx_path = os.path.join(BASE_DIR, 'static', 'xlsx', xlsx_name)
+    wb.save(xlsx_path)
 
+    print(xlsx_path)
+
+    vals_list = vals.copy()
+    vals_list.pop(0)  # remove headers
 
     context = {
         'data': vals_list,
         'total_bags': total_bags,
-        'link' : link
-
-
+        'link': xlsx_path,
     }
 
     return render(request, 'report/outward_report.html', context)
-
 
 
 from django.db.models.functions import Substr
 
 @login_required(login_url='login')
 def report_supply_return(request):
-
     data = supply_return.objects.all()
     data.extra(select={'DC_number':'SUBSTRING("DC_number",m,-)'}).order_by(Substr('DC_number',3))
+
 
     filterd_data = supply_return_filter(request.GET, data)
     data = filterd_data.qs
 
     total_bags = data.aggregate(Sum('bags'))['bags__sum']
-    
+
+    filtered_data = list(data.values_list(
+        'DC_number', 'agent__name', 'agent__place', 'agent__taluka', 'agent__district',
+        'company_goods__name', 'goods_company__goods_company_name', 'bags', 'DC_date__date',
+        'transport__name', 'LR_number', 'freight', 'id'
+    ))
 
     vals = []
-
-
-    filtered_data = list(data.values_list('DC_number', 'agent__name', 'agent__place', 'agent__taluka', 'agent__district', 'company_goods__name', 'goods_company__goods_company_name', 'bags', 'DC_date__date', 'transport__name', 'LR_number', 'freight', 'id'))
-
-
-    vals1 = []
-    vals1.append('Serial')
-    vals1.append("DC Number")
-    vals1.append("Party Name")
-    vals1.append("Party Place")
-    vals1.append("Party Taluka")
-    vals1.append("Party District")
-    vals1.append("Crop")
-    vals1.append("Variety")
-    vals1.append('Packet')
-    vals1.append('Date')
-    vals1.append('Transport')
-    vals1.append('LR Number')
-    vals1.append('Freight')
-    vals.append(vals1)
+    headers = ["Serial", "DC Number", "Party Name", "Party Place", "Party Taluka", "Party District",
+               "Crop", "Variety", "Packet", "Date", "Transport", "LR Number", "Freight", "id"]
+    vals.append(headers)
 
     counteer = 1
-
-    
     for i in filtered_data:
-        vals1 = []
-        vals1.append(counteer)
-        counteer = counteer + 1
-        vals1.append(i[0])
-        vals1.append(i[1])
-        vals1.append(i[2])
-        vals1.append(i[3])
-        vals1.append(i[4])
-        vals1.append(i[5])
-        vals1.append(i[6])
-        vals1.append(i[7])
-        vals1.append('%s/%s/%s' % (i[8].day, i[8].month, i[8].year))
-        vals1.append(i[9])
-        vals1.append(i[10])
-        vals1.append(i[11])
-        vals1.append(i[12])
-        vals.append(vals1)
+        row = [
+            counteer, i[0], i[1], i[2], i[3], i[4], i[5], i[6], i[7],
+            '%s/%s/%s' % (i[8].day, i[8].month, i[8].year), i[9], i[10], i[11], i[12]
+        ]
+        vals.append(row)
+        counteer += 1
 
-
-    
-    time =  str(datetime.now(ist))
-    time = time.split('.')
-    time = time[0].replace(':', '-')
-
-    name = "Report.csv"
-    path = os.path.join(BASE_DIR) + '\static\csv\\' + name
-    with open(path,  'w', newline="") as f:
+    # Save CSV
+    csv_name = "Report.csv"
+    csv_path = os.path.join(BASE_DIR, 'static', 'csv', csv_name)
+    with open(csv_path, 'w', newline="") as f:
         writer = csv.writer(f)
         writer.writerows(vals)
 
+    # Save XLSX
+    from openpyxl import Workbook
+    from openpyxl.styles import Font, PatternFill
 
-    link = os.path.join(BASE_DIR) + '\static\csv\\' + name
+    wb = Workbook()
+    ws = wb.active
+    ws.title = "Supply Return Report"
 
-    vals_list = vals
+    # Add headers
+    ws.append(headers)
+    for cell in ws[1]:
+        cell.font = Font(bold=True)
+        cell.fill = PatternFill(start_color='90EE90', end_color='90EE90', fill_type='solid')
+
+    # Add data rows
+    for i, row in enumerate(filtered_data, start=1):
+        ws.append([
+            i, row[0], row[1], row[2], row[3], row[4], row[5], row[6], row[7],
+            '%s/%s/%s' % (row[8].day, row[8].month, row[8].year), row[9], row[10], row[11]
+        ])
+
+    xlsx_name = "Report.xlsx"
+    xlsx_path = os.path.join(BASE_DIR, 'static', 'xlsx', xlsx_name)
+    wb.save(xlsx_path)
+
+    vals_list = vals.copy()
     vals_list.pop(0)
-
 
     context = {
         'data': vals_list,
         'total_bags': total_bags,
-        'link' : link,
-
+        'link': csv_path,
+        'link_xlsx': xlsx_path,
     }
 
     return render(request, 'report/supply_return_report.html', context)
+
 
 
 @login_required(login_url='login')
@@ -1388,34 +1344,12 @@ def download(request):
     # fill these variables with real values
 
 
-    if request.method == 'POST':
+    file_path = os.path.join(BASE_DIR, 'static', 'xlsx', 'Report.xlsx')
+    if os.path.exists(file_path):
+        return FileResponse(open(file_path, 'rb'), as_attachment=True, filename='Report.xlsx')
+    else:
+        return HttpResponse("File not found", status=404)
 
-        fl_path =  request.POST.get('link')
-
-
-
-        if os.path.exists(fl_path):
-
-            with open(fl_path, 'r' ) as fh:
-                mime_type  = mimetypes.guess_type(fl_path)
-              
-                response = HttpResponse(fh.read(), content_type=mime_type)
-                response['Content-Disposition'] = 'attachment;filename=' + str(fl_path)
-
-                return response
-
-
-
-        else:
-            messages.error(request, 'path does not exist')
-
-
-def _delete_file(path):
-   """ Deletes file from filesystem. """
-   if os.path.isfile(path):
-       os.remove(path)
-
-       return 'abc'
 
 @login_required(login_url='login')
 def delete_dashboard(request):

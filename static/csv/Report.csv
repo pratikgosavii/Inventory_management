@@ -1,368 +1,301 @@
-Serial,DC Number,Party Name,Party Place,Party Taluka,Party District,Crop,Variety,Packet,Date,Transport,LR Number,Freight
-1,MRN-176,Adinath traders-Goregaon,Goregaon,Gondia,Gondia,Paddy,Gitanjali,100,10/7/2023,,,,1246
-2,MRN-176,Adinath traders-Goregaon,Goregaon,Gondia,Gondia,Paddy,Anjali,25,10/7/2023,,,,1247
-3,MRN-176,Adinath traders-Goregaon,Goregaon,Gondia,Gondia,Paddy,super-135,30,10/7/2023,,,,1248
-4,MRN-177,Bhujade Krushi Kendra-Mohadi,Mohadi,Mohadi,Bhandara,Paddy,AMAN,136,17/7/2023,,,,1252
-5,MRN-177,Bhujade Krushi Kendra-Mohadi,Mohadi,Mohadi,Bhandara,Paddy,Devika,20,17/7/2023,,,,1253
-6,MRN-177,Bhujade Krushi Kendra-Mohadi,Mohadi,Mohadi,Bhandara,Paddy,Gitanjali,10,17/7/2023,,,,1254
-7,MRN-177,Bhujade Krushi Kendra-Mohadi,Mohadi,Mohadi,Bhandara,Paddy,Priyanka,4,17/7/2023,,,,1255
-8,MRN-178,Shiv Krupa KSK,Vaijapur,Vaijapur,Aurangbad,Cotton,Super-971,5,18/7/2023,,,,1267
-9,MRN-178,Shiv Krupa KSK,Vaijapur,Vaijapur,Aurangbad,Cotton,Super-965,11,18/7/2023,,,,1268
-10,MRN-178,Shiv Krupa KSK,Vaijapur,Vaijapur,Aurangbad,Maize,Super-777,88,18/7/2023,,,,1269
-11,MRN-179,Ravi Krushi Sewa Kendra Lasur station,lasur station,Gangapur,Aurangabad,Maize,Super-777,7,18/7/2023,,,,1270
-12,MRN-180,Trimurti KSK,Bigibosar,Vaijapur,Aurangabad,Maize,Super-1177,44,18/7/2023,,,,1271
-13,MRN-181,laxmi sales corporation,Gangapur,Gangapur,Aurangabad,Cotton,Super-971,6,18/7/2023,,,,1272
-14,MRN-181,laxmi sales corporation,Gangapur,Gangapur,Aurangabad,Cotton,Super-965,24,18/7/2023,,,,1273
-15,MRN-182,Deshmukh Krushi Kendra-Digori,Digori,Lakhadur,Bhandara,Paddy,Gitanjali,71,20/7/2023,,,,1284
-16,MRN-182,Deshmukh Krushi Kendra-Digori,Digori,Lakhadur,Bhandara,Paddy,Priyanka,15,20/7/2023,,,,1285
-17,MRN-183,Bothra Krushi Kendra,Ralegaon,Ralegaon,Yavatmal,Cotton,Super-971,146,20/7/2023,,,,1302
-18,MRN-184,SHRI SAI KRUSHI SEVA KENDRA NIPANI,NIPANI,Kannad,SAMBHAJI NAGAR,Maize,Super-1177,30,20/7/2023,,,,1303
-19,MRN-184,SHRI SAI KRUSHI SEVA KENDRA NIPANI,NIPANI,Kannad,SAMBHAJI NAGAR,Maize,Super-777,20,20/7/2023,,,,1304
-20,MRN-184,SHRI SAI KRUSHI SEVA KENDRA NIPANI,NIPANI,Kannad,SAMBHAJI NAGAR,Bajra,Super-78,10,20/7/2023,,,,1305
-21,MRN-185,Himanshi Traders,Kandri,Mohadi,Bhandara,Paddy,Gitanjali,344,22/7/2023,,,,1372
-22,MRN-185,Himanshi Traders,Kandri,Mohadi,Bhandara,Paddy,Priyanka,60,22/7/2023,,,,1373
-23,MRN-185,Himanshi Traders,Kandri,Mohadi,Bhandara,Paddy,Devika,62,22/7/2023,,,,1374
-24,MRN-185,Himanshi Traders,Kandri,Mohadi,Bhandara,Paddy,Puja,23,22/7/2023,,,,1375
-25,MRN-186,Mohadi Agro Agencies,Mohadi,Bhandara,Bhandara,Paddy,Gitanjali,60,22/7/2023,,,,1376
-26,MRN-187,Jai Bharat Krushi Kendra-Ganeshpur,Ganeshpur,Bhandara,Bhandara,Paddy,Priyanka,39,22/7/2023,,,,1377
-27,MRN-187,Jai Bharat Krushi Kendra-Ganeshpur,Ganeshpur,Bhandara,Bhandara,Paddy,Gitanjali,20,22/7/2023,,,,1378
-28,MRN-188,Jai Gajanan Krushi Kendra,Lakkad Mandi,Aurangbad,Aurangbad,Cotton,Super-965,61,22/7/2023,,,,1379
-29,MRN-188,Jai Gajanan Krushi Kendra,Lakkad Mandi,Aurangbad,Aurangbad,Maize,Super-777,167,22/7/2023,,,,1380
-30,MRN-188,Jai Gajanan Krushi Kendra,Lakkad Mandi,Aurangbad,Aurangbad,Bajra,Super-78,40,22/7/2023,,,,1381
-31,MRN-189,Sachin Agro Agency-Arjuni Morgaon,Arjuni Morgaon,Arjuni Morgaon,Gondia,Paddy,Gitanjali,30,22/7/2023,,,,1382
-32,MRN-190,Manish Fertilizers,Nawargaon,Sindhewahi,Chandrapur,Paddy,Gitanjali,158,24/7/2023,,,,1419
-33,MRN-191,Kalyani Krishi seva Kendra Gumgaon,Gumgaon,Hingana,Nagpur,Cotton,Super-971,43,24/7/2023,,,,1420
-34,MRN-192,Choudhary Brothers,Nagpur,Nagpur,Nagpur,Cotton,Super-971,518,24/7/2023,,,,1421
-35,MRN-192,Choudhary Brothers,Nagpur,Nagpur,Nagpur,Cotton,Super-965,493,24/7/2023,,,,1422
-36,MRN-193,Laxmi Agro Agency,Nagpur,Nagpur,Nagpur,Cotton,Super-965,64,24/7/2023,,,,1423
-37,MRN-193,Laxmi Agro Agency,Nagpur,Nagpur,Nagpur,Cotton,Super-971,197,24/7/2023,,,,1424
-38,MRN-194,Shri Krushna Krushi Seva Kendra-Mahora,Mahora,Bhokardhan,Jalna,Maize,Super-777,50,24/7/2023,,,,1425
-39,MRN-195,Sai Agro Agencies   Dabhadi,Dabhadi,Dabhadi,Jalana,Bajra,Super-78,13,24/7/2023,,,,1426
-40,MRN-195,Sai Agro Agencies   Dabhadi,Dabhadi,Dabhadi,Jalana,Maize,Super-777,18,24/7/2023,,,,1427
-41,MRN-196,Sagar Krushi Seva Kendra,Vaijapur,Vaijapur,Aurangabad,Cotton,Super-971,13,24/7/2023,,,,1428
-42,MRN-196,Sagar Krushi Seva Kendra,Vaijapur,Vaijapur,Aurangabad,Bajra,Super-78,12,24/7/2023,,,,1429
-43,MRN-197,Gurumauli Krishi Kendra-Dharangaon,Dharangaon,Dharangaon,Jalgaon,Cotton,Super-971,97,24/7/2023,,,,1430
-44,MRN-198,Vijay Krushi Kendra-Nakadogri,Nakadogri,Gondia,Gondia,Paddy,Gitanjali,33,25/7/2023,,,,1458
-45,MRN-198,Vijay Krushi Kendra-Nakadogri,Nakadogri,Gondia,Gondia,Paddy,AMAN,59,25/7/2023,,,,1459
-46,MRN-198,Vijay Krushi Kendra-Nakadogri,Nakadogri,Gondia,Gondia,Paddy,super-135,15,25/7/2023,,,,1460
-47,MRN-199,Vijay Krushi Kendra-Nakadogri,Nakadogri,Gondia,Gondia,Paddy,Puja,32,25/7/2023,,,,1461
-48,MRN-199,Vijay Krushi Kendra-Nakadogri,Nakadogri,Gondia,Gondia,Paddy,Priyanka,2,25/7/2023,,,,1462
-49,MRN-200,Krushi Vaibhav yavatmal,Yavatmal,Yavatmal,Yavatmal,Cotton,Super-971,90,25/7/2023,,,,1463
-50,MRN-200,Krushi Vaibhav yavatmal,Yavatmal,Yavatmal,Yavatmal,Cotton,Super-965,30,25/7/2023,,,,1464
-51,MRN-201,Adinath traders-Goregaon,Goregaon,Gondia,Gondia,Paddy,Gitanjali,86,25/7/2023,,,,1500
-52,MRN-201,Adinath traders-Goregaon,Goregaon,Gondia,Gondia,Paddy,super-135,14,25/7/2023,,,,1501
-53,MRN-201,Adinath traders-Goregaon,Goregaon,Gondia,Gondia,Paddy,Priyanka,25,25/7/2023,,,,1502
-54,MRN-201,Adinath traders-Goregaon,Goregaon,Gondia,Gondia,Paddy,Devika,69,25/7/2023,,,,1503
-55,MRN-201,Adinath traders-Goregaon,Goregaon,Gondia,Gondia,Paddy,Puja,8,25/7/2023,,,,1504
-56,MRN-201,Adinath traders-Goregaon,Goregaon,Gondia,Gondia,Paddy,Anjali,65,25/7/2023,,,,1505
-57,MRN-202,Ritesh Krushi Kendra Mahagaon,Mahagaon,Yavatmal,Yavatmal,Cotton,Super-971,5,25/7/2023,,,,1506
-58,MRN-202,Ritesh Krushi Kendra Mahagaon,Mahagaon,Yavatmal,Yavatmal,Cotton,Super-965,34,25/7/2023,,,,1507
-59,MRN-203,Nitin Marketing Services-Bhabdara,Bhandara,Bhandara,Bhandara,Paddy,Gitanjali,291,25/7/2023,,,,1508
-60,MRN-203,Nitin Marketing Services-Bhabdara,Bhandara,Bhandara,Bhandara,Paddy,Devika,79,25/7/2023,,,,1509
-61,MRN-203,Nitin Marketing Services-Bhabdara,Bhandara,Bhandara,Bhandara,Paddy,Priyanka,42,25/7/2023,,,,1510
-62,MRN-203,Nitin Marketing Services-Bhabdara,Bhandara,Bhandara,Bhandara,Paddy,Puja,21,25/7/2023,,,,1511
-63,MRN-203,Nitin Marketing Services-Bhabdara,Bhandara,Bhandara,Bhandara,Paddy,Anjali,74,25/7/2023,,,,1512
-64,MRN-204,Shital Agro Agencies,Warud,Amravati,Amravati,Cotton,Super-971,20,26/7/2023,,,,1521
-65,MRN-205,Gayatri Agro Agencies,Parola,Parola,Jalgaon,Cotton,Super-971,110,26/7/2023,,,,1536
-66,MRN-206,Shiv Krupa Krushi Seva Kendra Raipur,Raipur,Gangakhed,Aurangabad,Cotton,Super-971,12,26/7/2023,,,,1565
-67,MRN-206,Shiv Krupa Krushi Seva Kendra Raipur,Raipur,Gangakhed,Aurangabad,Bajra,Super-78,15,26/7/2023,,,,1566
-68,MRN-207,Shri Swami Samarth Krushi Seva Kendra,Paithan,Paithan,Aurangabad,Cotton,Super-971,92,26/7/2023,,,,1567
-69,MRN-207,Shri Swami Samarth Krushi Seva Kendra,Paithan,Paithan,Aurangabad,Cotton,Super-965,29,26/7/2023,,,,1568
-70,MRN-208,Sawata Krushi Seva Kendra,Paithan,Paithan,Aurangabad,Cotton,Super-965,16,26/7/2023,,,,1569
-71,MRN-208,Sawata Krushi Seva Kendra,Paithan,Paithan,Aurangabad,Cotton,Super-971,7,26/7/2023,,,,1570
-72,MRN-209,Swaraj Krushi Udyog,Phulambri,Phulambri,Aurangabad,Cotton,Super-971,15,26/7/2023,,,,1571
-73,MRN-209,Swaraj Krushi Udyog,Phulambri,Phulambri,Aurangabad,Cotton,Super-965,1,26/7/2023,,,,1572
-74,MRN-210,Gayatri Agro Agencies,Parola,Parola,Jalgaon,Cotton,Super-971,2,27/7/2023,,,,1596
-75,MRN-211,Ritesh Krushi Kendra Mahagaon,Mahagaon,Yavatmal,Yavatmal,Cotton,Super-965,1,28/7/2023,,,,1641
-76,MRN-212,Samrudhi Krishi Kendra,Nagpur,Nagpur,Nagpur,Cotton,Super-971,146,28/7/2023,,,,1693
-77,MRN-212,Samrudhi Krishi Kendra,Nagpur,Nagpur,Nagpur,Cotton,Super-965,57,28/7/2023,,,,1694
-78,MRN-213,Laxmi Agro Agency,Nagpur,Nagpur,Nagpur,Cotton,Super-971,54,28/7/2023,,,,1695
-79,MRN-214,Choudhary Brothers,Nagpur,Nagpur,Nagpur,Cotton,Super-971,19,28/7/2023,,,,1696
-80,MRN-215,Shree Sai Krushi Kendra- Vadsa,Vadsa,Vadsa,Gadchiroli,Paddy,Gitanjali,146,28/7/2023,,,,1715
-81,MRN-215,Shree Sai Krushi Kendra- Vadsa,Vadsa,Vadsa,Gadchiroli,Paddy,Devika,70,28/7/2023,,,,1716
-82,MRN-215,Shree Sai Krushi Kendra- Vadsa,Vadsa,Vadsa,Gadchiroli,Paddy,Puja,20,28/7/2023,,,,1717
-83,MRN-215,Shree Sai Krushi Kendra- Vadsa,Vadsa,Vadsa,Gadchiroli,Paddy,Priyanka,2,28/7/2023,,,,1718
-84,MRN-215,Shree Sai Krushi Kendra- Vadsa,Vadsa,Vadsa,Gadchiroli,Paddy,Anjali,24,28/7/2023,,,,1719
-85,MRN-216,Lothe Krushi Kendra-Barwah,Barwah,Lakhadur,Bhandara,Paddy,Gitanjali,62,29/7/2023,,,,1735
-86,MRN-216,Lothe Krushi Kendra-Barwah,Barwah,Lakhadur,Bhandara,Paddy,Devika,7,29/7/2023,,,,1736
-87,MRN-216,Lothe Krushi Kendra-Barwah,Barwah,Lakhadur,Bhandara,Paddy,Priyanka,3,29/7/2023,,,,1737
-88,MRN-217,Jay Laxmi Krushi Kendra,Shekapur,Shekapur,Wardha,Cotton,Super-965,9,29/7/2023,,,,1738
-89,MRN-217,Jay Laxmi Krushi Kendra,Shekapur,Shekapur,Wardha,Cotton,Super-971,30,29/7/2023,,,,1739
-90,MRN-218,Shetkari Mitra,Wardha,Wardha,Wardha,Cotton,Super-971,109,29/7/2023,,,,1740
-91,MRN-218,Shetkari Mitra,Wardha,Wardha,Wardha,Cotton,Super-965,6,29/7/2023,,,,1741
-92,MRN-219,Vairagade Agro Agency-Konda/Kosra,Konda/Kosra,Pawni,Bhandara,Paddy,Gitanjali,24,29/7/2023,,,,1747
-93,MRN-219,Vairagade Agro Agency-Konda/Kosra,Konda/Kosra,Pawni,Bhandara,Paddy,Puja,35,29/7/2023,,,,1748
-94,MRN-220,Gurumauli Krushi Seva Kendra-Virli,Virli,Lakhandur,Bhandara,Paddy,Devika,5,31/7/2023,,,,1850
-95,MRN-220,Gurumauli Krushi Seva Kendra-Virli,Virli,Lakhandur,Bhandara,Paddy,Gitanjali,26,31/7/2023,,,,1851
-96,MRN-221,Laxmi Agro Agency,Nagpur,Nagpur,Nagpur,Paddy,Gitanjali,253,31/7/2023,,,,1852
-97,MRN-221,Laxmi Agro Agency,Nagpur,Nagpur,Nagpur,Paddy,Puja,15,31/7/2023,,,,1853
-98,MRN-221,Laxmi Agro Agency,Nagpur,Nagpur,Nagpur,Paddy,Devika,28,31/7/2023,,,,1854
-99,MRN-221,Laxmi Agro Agency,Nagpur,Nagpur,Nagpur,Paddy,Anjali,10,31/7/2023,,,,1855
-100,MRN-222,Koushal Agro Krushi Kendra,Gadchiroli,Gadchiroli,Gadchiroli,Paddy,Gitanjali,73,31/7/2023,,,,1856
-101,MRN-223,Shri Sai Agro Agencies,Yawal,Yawal,Jalgaon,Cotton,Super-971,18,31/7/2023,,,,1857
-102,MRN-224,Bhadgaon Co-Operative Fruit Sale Society,Bhadgaon,Bhadgaon,Jalgaon,Cotton,Super-971,31,31/7/2023,,,,1858
-103,MRN-225,Pravin Hardware&General Stores,Kasoda,Erandol,Jalgaon,Cotton,Super-971,63,31/7/2023,,,,1859
-104,MRN-226,Bhoomi Agro Agencies,Parola,Jalgaon,Jalgaon,Cotton,Super-971,35,31/7/2023,,,,1860
-105,MRN-227,Vikas Agro Agency,Bahadarpur,Parola,Jalgaon,Cotton,Super-971,8,31/7/2023,,,,1861
-106,MRN-228,jain Fertilizers,Phulambri,Phulambri,Aurangabad,Cotton,Super-971,19,1/8/2023,,,,1939
-107,MRN-228,jain Fertilizers,Phulambri,Phulambri,Aurangabad,Maize,Super-777,81,1/8/2023,,,,1940
-108,MRN-228,jain Fertilizers,Phulambri,Phulambri,Aurangabad,Bajra,Super-78,57,1/8/2023,,,,1941
-109,MRN-229,Shetkari Krushi Kendra-Sandak Arjuni,Sandak Arjuni,Gondia,Gondia,Paddy,Priyanka,123,1/8/2023,,,,1942
-110,MRN-229,Shetkari Krushi Kendra-Sandak Arjuni,Sandak Arjuni,Gondia,Gondia,Paddy,Gitanjali,46,1/8/2023,,,,1943
-111,MRN-230,Samrudhi Krishi Kendra,Nagpur,Nagpur,Nagpur,Cotton,Super-971,10,1/8/2023,,,,1944
-112,MRN-231,Laxmi Agro Agency,Nagpur,Nagpur,Nagpur,Cotton,Super-971,23,1/8/2023,,,,1945
-113,MRN-232,Mohit Trading Company,Nagardhan,Ramtek,Nagpur,Cotton,Super-971,64,1/8/2023,,,,1946
-114,MRN-232,Mohit Trading Company,Nagardhan,Ramtek,Nagpur,Paddy,Priyanka,7,1/8/2023,,,,1947
-115,MRN-232,Mohit Trading Company,Nagardhan,Ramtek,Nagpur,Paddy,Gitanjali,339,1/8/2023,,,,1948
-116,MRN-232,Mohit Trading Company,Nagardhan,Ramtek,Nagpur,Paddy,Anjali,44,1/8/2023,,,,1949
-117,MRN-233,Adinath traders-Goregaon,Goregaon,Gondia,Gondia,Paddy,Gitanjali,57,2/8/2023,,,,1969
-118,MRN-233,Adinath traders-Goregaon,Goregaon,Gondia,Gondia,Paddy,Devika,64,2/8/2023,,,,1970
-119,MRN-233,Adinath traders-Goregaon,Goregaon,Gondia,Gondia,Paddy,Puja,21,2/8/2023,,,,1971
-120,MRN-233,Adinath traders-Goregaon,Goregaon,Gondia,Gondia,Paddy,Priyanka,16,2/8/2023,,,,1972
-121,MRN-233,Adinath traders-Goregaon,Goregaon,Gondia,Gondia,Paddy,Anjali,11,2/8/2023,,,,1973
-122,MRN-234,Dipak Krushi Kendra,Bramhapuri,Bramhapuri,Chandrapur,Paddy,Gitanjali,132,2/8/2023,,,,2017
-123,MRN-235,Taori Krishi Kendra,Kelzer,Hinganghat,Wardha,Cotton,Super-971,24,3/8/2023,,,,2058
-124,MRN-235,Taori Krishi Kendra,Kelzer,Hinganghat,Wardha,Cotton,Super-965,5,3/8/2023,,,,2059
-125,MRN-236,Jay Laxmi Krushi Kendra,Shekapur,Shekapur,Wardha,Paddy,Gitanjali,86,3/8/2023,,,,2087
-126,MRN-236,Jay Laxmi Krushi Kendra,Shekapur,Shekapur,Wardha,Paddy,Devika,39,3/8/2023,,,,2088
-127,MRN-236,Jay Laxmi Krushi Kendra,Shekapur,Shekapur,Wardha,Paddy,Puja,7,3/8/2023,,,,2089
-128,MRN-236,Jay Laxmi Krushi Kendra,Shekapur,Shekapur,Wardha,Paddy,Priyanka,6,3/8/2023,,,,2090
-129,MRN-237,Choudhary Brothers,Nagpur,Nagpur,Nagpur,Cotton,Super-965,10,4/8/2023,,,,2133
-130,MRN-238,Omkar Krushi Kendra-Virshee,Virshee,Sakoli,Bhandara,Paddy,Priyanka,60,4/8/2023,,,,2134
-131,MRN-238,Omkar Krushi Kendra-Virshee,Virshee,Sakoli,Bhandara,Paddy,Devika,55,4/8/2023,,,,2135
-132,MRN-238,Omkar Krushi Kendra-Virshee,Virshee,Sakoli,Bhandara,Paddy,Gitanjali,47,4/8/2023,,,,2136
-133,MRN-238,Omkar Krushi Kendra-Virshee,Virshee,Sakoli,Bhandara,Paddy,Anjali,36,4/8/2023,,,,2137
-134,MRN-239,Shri Sai Krushi Kendra Darwha,Darwha,Yavatmal,Yavatmal,Cotton,Super-965,14,7/8/2023,,,,2200
-135,MRN-239,Shri Sai Krushi Kendra Darwha,Darwha,Yavatmal,Yavatmal,Cotton,Super-965,0,8/8/2023,,,,2201
-136,MRN-240,Jay Gurudev Krushi Kendra-Tumsar,Tumsar,Bhandara,Bhandara,Paddy,Gitanjali,219,11/8/2023,,,,2290
-137,MRN-240,Jay Gurudev Krushi Kendra-Tumsar,Tumsar,Bhandara,Bhandara,Paddy,super-135,35,11/8/2023,,,,2291
-138,MRN-241,Krushi Vaibhav yavatmal,Yavatmal,Yavatmal,Yavatmal,Cotton,Super-965,12,11/8/2023,,,,2292
-139,MRN-242,Adarsh Agro services,sakoli,sakoli,Bhandara,Paddy,Priyanka,38,11/8/2023,,,,2293
-140,MRN-242,Adarsh Agro services,sakoli,sakoli,Bhandara,Paddy,Gitanjali,96,11/8/2023,,,,2294
-141,MRN-242,Adarsh Agro services,sakoli,sakoli,Bhandara,Paddy,Devika,52,11/8/2023,,,,2295
-142,MRN-243,Gurumauli Krushi Seva Kendra-Virli,Virli,Lakhandur,Bhandara,Paddy,Puja,45,12/8/2023,,,,2317
-143,MRN-244,Vitthal Krupa Lrushi Seva Kendra,Khultabad,Aurangbad,Aurangabad,Bajra,Super-78,9,14/8/2023,,,,2328
-144,MRN-245,Shree Agro Krushi Udyog-Pimpalgaon,Pimpalgon,Sillod,Aurangabad,Maize,Super-777,10,14/8/2023,,,,2329
-145,MRN-246,Jay Gurudev Krushi Kendra-Tumsar,Tumsar,Bhandara,Bhandara,Paddy,Devika,61,21/8/2023,,,,2375
-146,MRN-246,Jay Gurudev Krushi Kendra-Tumsar,Tumsar,Bhandara,Bhandara,Paddy,Puja,53,21/8/2023,,,,2376
-147,MRN-246,Jay Gurudev Krushi Kendra-Tumsar,Tumsar,Bhandara,Bhandara,Paddy,Priyanka,14,21/8/2023,,,,2377
-148,MRN-246,Jay Gurudev Krushi Kendra-Tumsar,Tumsar,Bhandara,Bhandara,Paddy,super-135,5,21/8/2023,,,,2378
-149,MRN-246,Jay Gurudev Krushi Kendra-Tumsar,Tumsar,Bhandara,Bhandara,Paddy,Anjali,100,21/8/2023,,,,2379
-150,MRN-2,Gayatri Agro Agencies,Parola,Parola,Jalgaon,Maize,Super-777,59,21/12/2023,,,,2459
-151,MRN-2,Gayatri Agro Agencies,Parola,Parola,Jalgaon,Sunflower,Agni,135,21/12/2023,,,,2460
-152,MRN-3,Pravin Hardware&General Stores,Kasoda,Erandol,Jalgaon,Maize,Super-777,92,21/12/2023,,,,2461
-153,MRN-3,Pravin Hardware&General Stores,Kasoda,Erandol,Jalgaon,Sunflower,Agni,63,21/12/2023,,,,2462
-154,MRN-4,Shree Agro Agency,Chopda,Chopda,Jalgaon,Maize,Super-777,31,21/12/2023,,,,2463
-155,MRN-5,Baliraja Agro,Erandol,Jalgaon,Jalgaon,Maize,Super-777,60,21/12/2023,,,,2464
-156,MRN-6,Bhoomi Agro Agencies,Parola,Jalgaon,Jalgaon,Maize,Super-777,10,21/12/2023,,,,2465
-157,MRN-7,Satpuda Sheti Seva Kendra,Shahada,Shahada,Nandurbar,Maize,Super-777,20,25/12/2023,,,,2466
-158,MRN-8,Vikas Agro Agency,Bahadarpur,Parola,Jalgaon,Maize,Super-777,9,2/1/2024,,,,2482
-159,MRN-9,Sudarshan Agro Agencies,Nagardeola,Chopda,Jalgaon,Sunflower,Agni,45,2/1/2024,,,,2483
-160,MRN-10,Bhadgaon Co-Operative Fruit Sale Society,Bhadgaon,Bhadgaon,Jalgaon,Sunflower,Agni,30,2/1/2024,,,,2484
-161,MRN-11,Patil Agro Agency,Amalner,Amalner,Jalgaon,Sunflower,Agni,45,2/1/2024,,,,2485
-162,MRN-13,Vinayaka Seeds Pvt. Ltd.,Sillod,Sillod,Aurangbad,Sunflower,Agni,44,20/1/2024,,,,2510
-163,MRN-15,Gurumauli Krishi Kendra-Dharangaon,Dharangaon,Dharangaon,Jalgaon,Maize,Super-777,22,31/1/2024,,,,2516
-164,MRN-16,Nitin Marketing Services-Bhabdara,Bhandara,Bhandara,Bhandara,Paddy,Devika,66,12/2/2024,,,,2521
-165,MRN-17,jain Fertilizers,Phulambri,Phulambri,Aurangabad,Maize,Super-777,50,14/2/2024,,,,2525
-166,MRN-17,jain Fertilizers,Phulambri,Phulambri,Aurangabad,Bajra,Super-78,90,14/2/2024,,,,2526
-167,MRN-18,Swaraj Krushi Udyog,Phulambri,Phulambri,Aurangabad,Bajra,Super-78,30,14/2/2024,,,,2527
-168,MRN-18,Swaraj Krushi Udyog,Phulambri,Phulambri,Aurangabad,Sunflower,Agni,20,14/2/2024,,,,2528
-169,MRN-18,Swaraj Krushi Udyog,Phulambri,Phulambri,Aurangabad,Maize,Super-777,10,14/2/2024,,,,2529
-170,MRN-19,Nitin Marketing Services-Bhabdara,Bhandara,Bhandara,Bhandara,Paddy,Devika,5,15/2/2024,,,,2530
-171,MRN-20,Shetkari Krushi Kendra-Sandak Arjuni,Sandak Arjuni,Gondia,Gondia,Paddy,Devika,69,16/2/2024,,,,2531
-172,MRN-20,Shetkari Krushi Kendra-Sandak Arjuni,Sandak Arjuni,Gondia,Gondia,Paddy,Puja,16,16/2/2024,,,,2532
-173,MRN-21,Lothe Krushi Kendra-Barwah,Barwah,Lakhadur,Bhandara,Paddy,Devika,34,21/2/2024,,,,2534
-174,MRN-22,Nitin Marketing Services-Bhabdara,Bhandara,Bhandara,Bhandara,Paddy,Puja,3,21/2/2024,,,,2535
-175,MRN-23,Vardhaman Seeds,Nandurbar,Nandurbar,Nandurbar,Maize,Super-777,28,23/2/2024,,,,2542
-176,MRN-24,Mohadi Agro Agencies,Mohadi,Bhandara,Bhandara,Paddy,Devika,28,1/3/2024,,,,2546
-177,MRN-25,Jai Gajanan Krushi Kendra,Lakkad Mandi,Aurangbad,Aurangbad,Bajra,Super-78,47,4/3/2024,,,,2553
-178,MRN-26,jain Fertilizers,Phulambri,Phulambri,Aurangabad,Bajra,Super-78,6,4/3/2024,,,,2554
-179,MRN-28,Adinath traders-Goregaon,Goregaon,Gondia,Gondia,Paddy,Devika,24,29/3/2024,,,,2590
-180,MRN-28,Adinath traders-Goregaon,Goregaon,Gondia,Gondia,Paddy,Puja,12,29/3/2024,,,,2591
-181,51,Kanhaiya Agro Agency Pusad,pusad,pusad,Yavatmal,Bajra,Super-78,23,17/4/2024,,,,2592
-182,58,Sai Agro Agencies Parola,Parola,Parola,Jalgaon,Cotton,Super-965,60,6/7/2024,,,,2752
-183,58,Sai Agro Agencies Parola,Parola,Parola,Jalgaon,Cotton,Super-931,27,6/7/2024,,,,2753
-184,59,Shri Dhanashree Agro Agencies Pachora,pachora,PACHORA,Jalgaon,Cotton,Super-965,7,8/7/2024,,,,2754
-185,59,Shri Dhanashree Agro Agencies Pachora,pachora,PACHORA,Jalgaon,Cotton,Super-931,17,8/7/2024,,,,2755
-186,60,Gayatri Agro Agencies,Parola,Parola,Jalgaon,Cotton,Super-931,14,9/7/2024,,,,2756
-187,60,Gayatri Agro Agencies,Parola,Parola,Jalgaon,Cotton,Super-965,10,9/7/2024,,,,2757
-188,61,Baliraja Agro,Erandol,Jalgaon,Jalgaon,Cotton,Super-971,1,9/7/2024,,,,2758
-189,61,Baliraja Agro,Erandol,Jalgaon,Jalgaon,Cotton,Super-931,8,9/7/2024,,,,2759
-190,62,Sudarshan Agro Agencies,Nagardeola,Chopda,Jalgaon,Cotton,Super-931,5,9/7/2024,,,,2760
-191,63,Shree Agro Agency,Chopda,Chopda,Jalgaon,Cotton,Super-931,8,9/7/2024,,,,2761
-192,63,Shree Agro Agency,Chopda,Chopda,Jalgaon,Cotton,Super-965,18,9/7/2024,,,,2762
-193,64,Vikas Agro Agency,Bahadarpur,Parola,Jalgaon,Cotton,Super-965,35,9/7/2024,,,,2763
-194,65,Bhoomi Agro Agencies,Parola,Jalgaon,Jalgaon,Cotton,Super-971,1,9/7/2024,,,,2764
-195,65,Bhoomi Agro Agencies,Parola,Jalgaon,Jalgaon,Cotton,Super-931,23,9/7/2024,,,,2765
-196,66,Rajlata Krushi Kendra Darwha,Darwha,Yavatmal,Yavatmal,Cotton,Super-931,13,13/7/2024,,,,3097
-197,66,Rajlata Krushi Kendra Darwha,Darwha,Yavatmal,Yavatmal,Cotton,Super-965,30,13/7/2024,,,,3098
-198,67,Jai Gajanan Krushi Kendra Aurangabad,Aurangabad,Aurangabad,Aurangabad,Cotton,Super-965,305,13/7/2024,,,,3099
-199,67,Jai Gajanan Krushi Kendra Aurangabad,Aurangabad,Aurangabad,Aurangabad,Cotton,Super-931,77,13/7/2024,,,,3100
-200,68,Vijay Krushi Kendra-Nakadogri,Nakadogri,Gondia,Gondia,Paddy,Gitanjali,10,15/7/2024,,,,3101
-201,68,Vijay Krushi Kendra-Nakadogri,Nakadogri,Gondia,Gondia,Paddy,AMAN,80,15/7/2024,,,,3102
-202,68,Vijay Krushi Kendra-Nakadogri,Nakadogri,Gondia,Gondia,Paddy,Devika,5,15/7/2024,,,,3103
-203,68,Vijay Krushi Kendra-Nakadogri,Nakadogri,Gondia,Gondia,Paddy,Priyanka,25,15/7/2024,,,,3104
-204,68,Vijay Krushi Kendra-Nakadogri,Nakadogri,Gondia,Gondia,Paddy,Puja,5,15/7/2024,,,,3105
-205,68,Vijay Krushi Kendra-Nakadogri,Nakadogri,Gondia,Gondia,Paddy,super-135,5,15/7/2024,,,,3106
-206,69,Vijay Krushi Kendra-Nakadogri,Nakadogri,Gondia,Gondia,Paddy,Devika,5,15/7/2024,,,,3107
-207,69,Vijay Krushi Kendra-Nakadogri,Nakadogri,Gondia,Gondia,Paddy,AMAN,30,15/7/2024,,,,3108
-208,69,Vijay Krushi Kendra-Nakadogri,Nakadogri,Gondia,Gondia,Paddy,super-135,65,15/7/2024,,,,3109
-209,69,Vijay Krushi Kendra-Nakadogri,Nakadogri,Gondia,Gondia,Paddy,Gitanjali,5,15/7/2024,,,,3110
-210,69,Vijay Krushi Kendra-Nakadogri,Nakadogri,Gondia,Gondia,Paddy,Puja,70,15/7/2024,,,,3111
-211,69,Vijay Krushi Kendra-Nakadogri,Nakadogri,Gondia,Gondia,Paddy,Priyanka,25,15/7/2024,,,,3112
-212,70,Krishi Vaibhav Seeds & Fertilizer,Arni,Arni,Yavatmal,Cotton,Super-971,229,15/7/2024,,,,3113
-213,70,Krishi Vaibhav Seeds & Fertilizer,Arni,Arni,Yavatmal,Cotton,Super-965,193,15/7/2024,,,,3114
-214,70,Krishi Vaibhav Seeds & Fertilizer,Arni,Arni,Yavatmal,Cotton,Super-931,58,15/7/2024,,,,3115
-215,70,Krishi Vaibhav Seeds & Fertilizer,Arni,Arni,Yavatmal,Redgram,AANANDI,118,15/7/2024,,,,3116
-216,70,Krishi Vaibhav Seeds & Fertilizer,Arni,Arni,Yavatmal,Bajra,Super-78,21,15/7/2024,,,,3117
-217,71,Parth  Agro Agencies Digras,Digras,Digras,Yawatmal,Cotton,Super-931,10,15/7/2024,,,,3118
-218,71,Parth  Agro Agencies Digras,Digras,Digras,Yawatmal,Cotton,Super-965,15,15/7/2024,,,,3119
-219,72,Bothra Krushi Kendra,Ralegaon,Ralegaon,Yavatmal,Cotton,Super-931,24,15/7/2024,,,,3120
-220,72,Bothra Krushi Kendra,Ralegaon,Ralegaon,Yavatmal,Cotton,Super-971,4,15/7/2024,,,,3121
-221,73,Laxmi Agro Agency,Nagpur,Nagpur,Nagpur,Paddy,Gitanjali,162,17/7/2024,,,,3813
-222,73,Laxmi Agro Agency,Nagpur,Nagpur,Nagpur,Paddy,Puja,74,17/7/2024,,,,3814
-223,73,Laxmi Agro Agency,Nagpur,Nagpur,Nagpur,Paddy,Devika,99,17/7/2024,,,,3815
-224,74,Himanshi Traders,Kandri,Mohadi,Bhandara,Paddy,Priyanka,56,17/7/2024,,,,3816
-225,74,Himanshi Traders,Kandri,Mohadi,Bhandara,Paddy,Devika,45,17/7/2024,,,,3817
-226,75,Gurumauli Krushi Seva Kendra-Virli,Virli,Lakhandur,Bhandara,Paddy,Gitanjali,33,17/7/2024,,,,3818
-227,75,Gurumauli Krushi Seva Kendra-Virli,Virli,Lakhandur,Bhandara,Paddy,Devika,22,17/7/2024,,,,3819
-228,76,Laxmi Agro Agency,Nagpur,Nagpur,Nagpur,Paddy,Gitanjali,25,18/7/2024,,,,3820
-229,77,Ritesh Krushi Kendra Mahagaon,Mahagaon,Yavatmal,Yavatmal,Cotton,Super-971,266,18/7/2024,,,,3821
-230,77,Ritesh Krushi Kendra Mahagaon,Mahagaon,Yavatmal,Yavatmal,Cotton,Super-965,117,18/7/2024,,,,3822
-231,77,Ritesh Krushi Kendra Mahagaon,Mahagaon,Yavatmal,Yavatmal,Cotton,Super-931,180,18/7/2024,,,,3823
-232,77,Ritesh Krushi Kendra Mahagaon,Mahagaon,Yavatmal,Yavatmal,Redgram,AANANDI,52,18/7/2024,,,,3824
-233,78,Ritesh Krushi Kendra Mahagaon,Mahagaon,Yavatmal,Yavatmal,Cotton,Super-971,4,19/7/2024,,,,3825
-234,79,Jai Gajanan Krushi Kendra Aurangabad,Aurangabad,Aurangabad,Aurangabad,Cotton,Super-965,6,19/7/2024,,,,3826
-235,80,Shri Datt Agro Agency Pusad,Pusad,Pusad,Yawatmal,Cotton,Super-965,74,20/7/2024,,,,3827
-236,81,Laxmi Agro Agency,Nagpur,Nagpur,Nagpur,Cotton,Super-971,29,20/7/2024,,,,3828
-237,82,Ritesh Krushi Kendra Mahagaon,Mahagaon,Yavatmal,Yavatmal,Cotton,Super-965,30,20/7/2024,,,,3829
-238,83,Kanhaiya Agro Agency Pusad,pusad,pusad,Yavatmal,Cotton,Super-931,18,20/7/2024,,,,3830
-239,83,Kanhaiya Agro Agency Pusad,pusad,pusad,Yavatmal,Cotton,Super-971,13,20/7/2024,,,,3831
-240,83,Kanhaiya Agro Agency Pusad,pusad,pusad,Yavatmal,Cotton,Super-965,69,20/7/2024,,,,3832
-241,83,Kanhaiya Agro Agency Pusad,pusad,pusad,Yavatmal,Redgram,AANANDI,10,20/7/2024,,,,3833
-242,84,Krushi Vaibhav yavatmal,Yavatmal,Yavatmal,Yavatmal,Cotton,Super-971,46,20/7/2024,,,,3834
-243,84,Krushi Vaibhav yavatmal,Yavatmal,Yavatmal,Yavatmal,Cotton,Super-965,78,20/7/2024,,,,3835
-244,84,Krushi Vaibhav yavatmal,Yavatmal,Yavatmal,Yavatmal,Cotton,Super-931,16,20/7/2024,,,,3836
-245,84,Krushi Vaibhav yavatmal,Yavatmal,Yavatmal,Yavatmal,Redgram,AANANDI,9,20/7/2024,,,,3837
-246,85,Umesh Krishi Kendra Nandagomukh,Nandagomukh,Savner,Nagpur,Cotton,Super-965,25,20/7/2024,,,,3838
-247,85,Umesh Krishi Kendra Nandagomukh,Nandagomukh,Savner,Nagpur,Cotton,Super-971,30,20/7/2024,,,,3839
-248,86,Kalyani Krishi seva Kendra Gumgaon,Gumgaon,Hingana,Nagpur,Cotton,Super-931,9,20/7/2024,,,,3840
-249,87,Choudhary Brothers,Nagpur,Nagpur,Nagpur,Cotton,Super-971,311,20/7/2024,,,,3841
-250,87,Choudhary Brothers,Nagpur,Nagpur,Nagpur,Cotton,Super-931,325,20/7/2024,,,,3842
-251,87,Choudhary Brothers,Nagpur,Nagpur,Nagpur,Cotton,Super-965,565,20/7/2024,,,,3843
-252,87,Choudhary Brothers,Nagpur,Nagpur,Nagpur,Redgram,AANANDI,34,20/7/2024,,,,3844
-253,88,Samrudhi Krishi Kendra,Nagpur,Nagpur,Nagpur,Cotton,Super-931,80,20/7/2024,,,,3845
-254,88,Samrudhi Krishi Kendra,Nagpur,Nagpur,Nagpur,Cotton,Super-965,173,20/7/2024,,,,3846
-255,88,Samrudhi Krishi Kendra,Nagpur,Nagpur,Nagpur,Cotton,Super-971,106,20/7/2024,,,,3847
-256,89,Laxmi Agro Agency,Nagpur,Nagpur,Nagpur,Cotton,Super-971,87,20/7/2024,,,,3848
-257,89,Laxmi Agro Agency,Nagpur,Nagpur,Nagpur,Cotton,Super-931,49,20/7/2024,,,,3849
-258,90,Bhawani Krishi Kendra,Kalamb,Kalamb,Yavatmal,Cotton,Super-931,7,22/7/2024,,,,3850
-259,91,Gurumauli Krishi Kendra-Dharangaon,Dharangaon,Dharangaon,Jalgaon,Cotton,Super-971,7,22/7/2024,,,,3851
-260,92,Shital Agro Agencies,Warud,Amravati,Amravati,Cotton,Super-965,28,23/7/2024,,,,3852
-261,92,Shital Agro Agencies,Warud,Amravati,Amravati,Cotton,Super-931,30,23/7/2024,,,,3853
-262,92,Shital Agro Agencies,Warud,Amravati,Amravati,Cotton,Super-971,42,23/7/2024,,,,3854
-263,93,Bhoomi Agro Agencies,Parola,Jalgaon,Jalgaon,Paddy,Gitanjali,229,24/7/2024,,,,3855
-264,93,Bhoomi Agro Agencies,Parola,Jalgaon,Jalgaon,Paddy,Priyanka,91,24/7/2024,,,,3856
-265,94,Vijay Krushi Kendra-Nakadogri,Nakadogri,Gondia,Gondia,Paddy,AMAN,56,25/7/2024,,,,3857
-266,94,Vijay Krushi Kendra-Nakadogri,Nakadogri,Gondia,Gondia,Paddy,Puja,60,25/7/2024,,,,3858
-267,94,Vijay Krushi Kendra-Nakadogri,Nakadogri,Gondia,Gondia,Paddy,Priyanka,16,25/7/2024,,,,3859
-268,94,Vijay Krushi Kendra-Nakadogri,Nakadogri,Gondia,Gondia,Paddy,Devika,113,25/7/2024,,,,3860
-269,94,Vijay Krushi Kendra-Nakadogri,Nakadogri,Gondia,Gondia,Paddy,super-135,19,25/7/2024,,,,3861
-270,94,Vijay Krushi Kendra-Nakadogri,Nakadogri,Gondia,Gondia,Paddy,Gitanjali,6,25/7/2024,,,,3862
-271,95,Adinath traders-Goregaon,Goregaon,Gondia,Gondia,Paddy,Devika,190,25/7/2024,,,,3863
-272,95,Adinath traders-Goregaon,Goregaon,Gondia,Gondia,Paddy,Priyanka,30,25/7/2024,,,,3864
-273,95,Adinath traders-Goregaon,Goregaon,Gondia,Gondia,Paddy,Gitanjali,79,25/7/2024,,,,3865
-274,96,Krushi Vaibhav yavatmal,Yavatmal,Yavatmal,Yavatmal,Cotton,Super-971,1,25/7/2024,,,,3866
-275,96,Krushi Vaibhav yavatmal,Yavatmal,Yavatmal,Yavatmal,Redgram,AANANDI,36,25/7/2024,,,,3867
-276,97,Badnore Agro Traders deoli,Deoli,wardha,wardha,Cotton,Super-931,58,26/7/2024,,,,4209
-277,97,Badnore Agro Traders deoli,Deoli,wardha,wardha,Cotton,Super-965,34,26/7/2024,,,,4210
-278,97,Badnore Agro Traders deoli,Deoli,wardha,wardha,Cotton,Super-971,37,26/7/2024,,,,4211
-279,98,Sawata Krushi Seva Kendra,Paithan,Paithan,Aurangabad,Cotton,Super-971,19,26/7/2024,,,,4212
-280,98,Sawata Krushi Seva Kendra,Paithan,Paithan,Aurangabad,Cotton,Super-931,30,26/7/2024,,,,4213
-281,98,Sawata Krushi Seva Kendra,Paithan,Paithan,Aurangabad,Cotton,Super-965,29,26/7/2024,,,,4214
-282,99,Jay Gurudev Krushi Kendra-Tumsar,Tumsar,Bhandara,Bhandara,Paddy,Gitanjali,76,27/7/2024,,,,4215
-283,99,Jay Gurudev Krushi Kendra-Tumsar,Tumsar,Bhandara,Bhandara,Paddy,Devika,48,27/7/2024,,,,4216
-284,100,Mohit Trading Company,Nagardhan,Ramtek,Nagpur,Paddy,Gitanjali,102,27/7/2024,,,,4217
-285,101,Laxmi Agro Agency,Nagpur,Nagpur,Nagpur,Cotton,Super-971,7,27/7/2024,,,,4529
-286,102,Choudhary Brothers,Nagpur,Nagpur,Nagpur,Cotton,Super-971,5,27/7/2024,,,,4530
-287,102,Choudhary Brothers,Nagpur,Nagpur,Nagpur,Cotton,Super-965,10,27/7/2024,,,,4531
-288,103,Taori Krishi Kendra,Kelzer,Hinganghat,Wardha,Green Gram,Super-406 (2kg),23,27/7/2024,,,,4532
-289,104,Taori Krishi Kendra,Kelzer,Hinganghat,Wardha,Cotton,Super-971,126,27/7/2024,,,,4533
-290,104,Taori Krishi Kendra,Kelzer,Hinganghat,Wardha,Cotton,Super-931,5,27/7/2024,,,,4534
-291,104,Taori Krishi Kendra,Kelzer,Hinganghat,Wardha,Cotton,Super-965,26,27/7/2024,,,,4535
-292,104,Taori Krishi Kendra,Kelzer,Hinganghat,Wardha,Redgram,AANANDI,14,27/7/2024,,,,4536
-293,105,Baliraja Agro Agency Konda/Kosra,Konda/Kosra,Pavani,Bhandara,Paddy,Devika,23,29/7/2024,,,,4537
-294,106,Shetkari Krushi Kendra-Sandak Arjuni,Sandak Arjuni,Gondia,Gondia,Paddy,Devika,35,29/7/2024,,,,4538
-295,106,Shetkari Krushi Kendra-Sandak Arjuni,Sandak Arjuni,Gondia,Gondia,Paddy,Priyanka,10,29/7/2024,,,,4539
-296,106,Shetkari Krushi Kendra-Sandak Arjuni,Sandak Arjuni,Gondia,Gondia,Paddy,Gitanjali,35,29/7/2024,,,,4540
-297,107,Jai Bharat Krushi Kendra-Ganeshpur,Ganeshpur,Bhandara,Bhandara,Paddy,Gitanjali,37,29/7/2024,,,,4541
-298,108,Saurabh Krushi Kendra-Lakhani,Lakhani,Bhandara,Bhandara,Paddy,Devika,62,29/7/2024,,,,4542
-299,109,laxmi sales corporation,Gangapur,Gangapur,Aurangabad,Cotton,Super-965,27,29/7/2024,,,,4543
-300,109,laxmi sales corporation,Gangapur,Gangapur,Aurangabad,Cotton,Super-931,29,29/7/2024,,,,4544
-301,109,laxmi sales corporation,Gangapur,Gangapur,Aurangabad,Maize,Super-1177,4,29/7/2024,,,,4545
-302,109,laxmi sales corporation,Gangapur,Gangapur,Aurangabad,Green Gram,Super-406 (2kg),2,29/7/2024,,,,4546
-303,110,Gaurav Krushi Udyog,Vaijapur,Vaijapur,Aurangbad,Cotton,Super-971,42,29/7/2024,,,,4547
-304,110,Gaurav Krushi Udyog,Vaijapur,Vaijapur,Aurangbad,Cotton,Super-931,30,29/7/2024,,,,4548
-305,111,Om Sai Krushi Seva Kendra,Vaijapur,Vaijapur,Aurangabad,Cotton,Super-931,8,29/7/2024,,,,4549
-306,112,Shiv Krupa KSK,Vaijapur,Vaijapur,Aurangbad,Cotton,Super-931,24,29/7/2024,,,,4550
-307,112,Shiv Krupa KSK,Vaijapur,Vaijapur,Aurangbad,Cotton,Super-965,13,29/7/2024,,,,4551
-308,112,Shiv Krupa KSK,Vaijapur,Vaijapur,Aurangbad,Maize,Super-1177,20,29/7/2024,,,,4552
-309,113,jain Fertilizers,Phulambri,Phulambri,Aurangabad,Cotton,Super-931,30,29/7/2024,,,,4553
-310,113,jain Fertilizers,Phulambri,Phulambri,Aurangabad,Cotton,Super-971,23,29/7/2024,,,,4554
-311,113,jain Fertilizers,Phulambri,Phulambri,Aurangabad,Cotton,Super-965,28,29/7/2024,,,,4555
-312,113,jain Fertilizers,Phulambri,Phulambri,Aurangabad,Maize,Super-1177,100,29/7/2024,,,,4556
-313,114,Swaraj Krushi Udyog,Phulambri,Phulambri,Aurangabad,Cotton,Super-965,14,29/7/2024,,,,4557
-314,115,Lothe Krushi Kendra-Barwah,Barwah,Lakhadur,Bhandara,Paddy,Gitanjali,72,29/7/2024,,,,4558
-315,115,Lothe Krushi Kendra-Barwah,Barwah,Lakhadur,Bhandara,Paddy,super-135,21,29/7/2024,,,,4559
-316,115,Lothe Krushi Kendra-Barwah,Barwah,Lakhadur,Bhandara,Paddy,Puja,41,29/7/2024,,,,4560
-317,115,Lothe Krushi Kendra-Barwah,Barwah,Lakhadur,Bhandara,Paddy,Devika,74,29/7/2024,,,,4561
-318,116,Adarsh Agro services,sakoli,sakoli,Bhandara,Paddy,Devika,50,30/7/2024,,,,4809
-319,116,Adarsh Agro services,sakoli,sakoli,Bhandara,Paddy,Puja,38,30/7/2024,,,,4810
-320,116,Adarsh Agro services,sakoli,sakoli,Bhandara,Paddy,Gitanjali,17,30/7/2024,,,,4811
-321,116,Adarsh Agro services,sakoli,sakoli,Bhandara,Paddy,Priyanka,8,30/7/2024,,,,4812
-322,117,Adinath traders-Goregaon,Goregaon,Gondia,Gondia,Paddy,Puja,18,30/7/2024,,,,4813
-323,117,Adinath traders-Goregaon,Goregaon,Gondia,Gondia,Paddy,Priyanka,12,30/7/2024,,,,4814
-324,117,Adinath traders-Goregaon,Goregaon,Gondia,Gondia,Paddy,Devika,4,30/7/2024,,,,4815
-325,117,Adinath traders-Goregaon,Goregaon,Gondia,Gondia,Paddy,Anjali,1,30/7/2024,,,,4816
-326,118,Omkar Krushi Kendra-Virshee,Virshee,Sakoli,Bhandara,Paddy,Gitanjali,51,30/7/2024,,,,4817
-327,118,Omkar Krushi Kendra-Virshee,Virshee,Sakoli,Bhandara,Paddy,Devika,35,30/7/2024,,,,4818
-328,118,Omkar Krushi Kendra-Virshee,Virshee,Sakoli,Bhandara,Paddy,Puja,14,30/7/2024,,,,4819
-329,119,Badnore Agro Traders deoli,Deoli,wardha,wardha,Cotton,Super-965,7,31/7/2024,,,,4820
-330,120,Shetkari Mitra,Wardha,Wardha,Wardha,Cotton,Super-971,378,31/7/2024,,,,4821
-331,120,Shetkari Mitra,Wardha,Wardha,Wardha,Cotton,Super-965,146,31/7/2024,,,,4822
-332,120,Shetkari Mitra,Wardha,Wardha,Wardha,Cotton,Super-931,70,31/7/2024,,,,4823
-333,120,Shetkari Mitra,Wardha,Wardha,Wardha,Redgram,AANANDI,102,31/7/2024,,,,4824
-334,121,Maharashtra Krushi Kendra Tumsar,Tumsar,Nagpur,Nagpur,Paddy,Devika,108,31/7/2024,,,,4825
-335,121,Maharashtra Krushi Kendra Tumsar,Tumsar,Nagpur,Nagpur,Paddy,Priyanka,17,31/7/2024,,,,4826
-336,121,Maharashtra Krushi Kendra Tumsar,Tumsar,Nagpur,Nagpur,Paddy,Puja,82,31/7/2024,,,,4827
-337,121,Maharashtra Krushi Kendra Tumsar,Tumsar,Nagpur,Nagpur,Paddy,Gitanjali,49,31/7/2024,,,,4828
-338,122,Vitthal Krupa Lrushi Seva Kendra,Khultabad,Aurangbad,Aurangabad,Cotton,Super-931,18,31/7/2024,,,,4829
-339,123,Sai Agro Agencies   Dabhadi,Dabhadi,Dabhadi,Jalana,Cotton,Super-931,30,31/7/2024,,,,4830
-340,123,Sai Agro Agencies   Dabhadi,Dabhadi,Dabhadi,Jalana,Maize,Super-1177,20,31/7/2024,,,,4831
-341,124,Nitin Marketing Services-Bhabdara,Bhandara,Bhandara,Bhandara,Paddy,Puja,85,1/8/2024,,,,4832
-342,124,Nitin Marketing Services-Bhabdara,Bhandara,Bhandara,Bhandara,Paddy,Devika,71,1/8/2024,,,,4833
-343,124,Nitin Marketing Services-Bhabdara,Bhandara,Bhandara,Bhandara,Paddy,Priyanka,91,1/8/2024,,,,4834
-344,124,Nitin Marketing Services-Bhabdara,Bhandara,Bhandara,Bhandara,Paddy,Gitanjali,71,1/8/2024,,,,4835
-345,124,Nitin Marketing Services-Bhabdara,Bhandara,Bhandara,Bhandara,Paddy,Anjali,90,1/8/2024,,,,4836
-346,125,Shri vaynktesh Krushi Kendra Wani,wani,Wani,Yavatmal,Cotton,Super-931,5,1/8/2024,,,,4837
-347,125,Shri vaynktesh Krushi Kendra Wani,wani,Wani,Yavatmal,Cotton,Super-965,3,1/8/2024,,,,4838
-348,126,Mangal Trading Com. Amgaon,Amgaon,Gondia,Gondia,Paddy,Devika,57,2/8/2024,,,,4906
-349,126,Mangal Trading Com. Amgaon,Amgaon,Gondia,Gondia,Paddy,Puja,62,2/8/2024,,,,4907
-350,126,Mangal Trading Com. Amgaon,Amgaon,Gondia,Gondia,Paddy,Priyanka,23,2/8/2024,,,,4908
-351,127,Jay Laxmi Krushi Kendra,Shekapur,Shekapur,Wardha,Cotton,Super-931,10,2/8/2024,,,,4909
-352,128,Omkar Krushi Kendra-Virshee,Virshee,Sakoli,Bhandara,Paddy,Puja,5,3/8/2024,,,,4910
-353,128,Omkar Krushi Kendra-Virshee,Virshee,Sakoli,Bhandara,Paddy,Gitanjali,5,3/8/2024,,,,4911
-354,128,Omkar Krushi Kendra-Virshee,Virshee,Sakoli,Bhandara,Paddy,Devika,3,3/8/2024,,,,4912
-355,129,Manish Fertilizers,Nawargaon,Sindhewahi,Chandrapur,Paddy,Gitanjali,5,7/8/2024,,,,4913
-356,130,Shree Sai Krushi Kendra- Vadsa,Vadsa,Vadsa,Gadchiroli,Paddy,Devika,50,8/8/2024,,,,4954
-357,130,Shree Sai Krushi Kendra- Vadsa,Vadsa,Vadsa,Gadchiroli,Paddy,Puja,95,8/8/2024,,,,4955
-358,130,Shree Sai Krushi Kendra- Vadsa,Vadsa,Vadsa,Gadchiroli,Paddy,Gitanjali,109,8/8/2024,,,,4956
-359,131,Taori Krishi Kendra,Kelzer,Hinganghat,Wardha,Cotton,Super-971,23,8/8/2024,,,,4957
-360,131,Taori Krishi Kendra,Kelzer,Hinganghat,Wardha,Cotton,Super-931,2,8/8/2024,,,,4958
-361,132,Jay Laxmi Krushi Kendra,Shekapur,Shekapur,Wardha,Paddy,Priyanka,20,8/8/2024,,,,4959
-362,133,Shree Sai Krushi Kendra- Vadsa,Vadsa,Vadsa,Gadchiroli,Paddy,Devika,10,8/8/2024,,,,5059
-363,133,Shree Sai Krushi Kendra- Vadsa,Vadsa,Vadsa,Gadchiroli,Paddy,Puja,5,8/8/2024,,,,5060
-364,133,Shree Sai Krushi Kendra- Vadsa,Vadsa,Vadsa,Gadchiroli,Paddy,Gitanjali,6,8/8/2024,,,,5061
-365,134,Shree Sai Krushi Kendra- Vadsa,Vadsa,Vadsa,Gadchiroli,Paddy,Devika,40,12/8/2024,,,,5062
-366,135,Dipak Krushi Kendra,Bramhapuri,Bramhapuri,Chandrapur,Paddy,Gitanjali,3,13/8/2024,,,,5085
-367,74,Himanshi Traders,Kandri,Mohadi,Bhandara,Paddy,Gitanjali,244,17/7/2024,,,,5113
+Serial,DC Number,Party Name,Party Place,Party Taluka,Party District,Crop,Variety,Packet,Date,Transport,LR Number,Freight,id
+1,MRN-1224,SAMARTH KRUSHI KENDRA - AMBELOHEL,Ambelohal,Gangapur,Aurangbad,Cotton,Chatrapathi,2496,4/6/2023,,,,1199
+2,MRN-1225,SAMARTH KRUSHI KENDRA - AMBELOHEL,Ambelohal,Gangapur,Aurangbad,Cotton,Chatrapathi,640,8/6/2023,,,,1200
+3,MRN-1225,SAMARTH KRUSHI KENDRA - AMBELOHEL,Ambelohal,Gangapur,Aurangbad,Cotton,Sitara,800,8/6/2023,,,,1201
+4,MRN-108,Shree Ganesh Krushi Kendra,khadakdoh,Yavatmal,YAVATMAL,Cotton,Sitara,32,3/7/2023,,,,1238
+5,MRN-108,Shree Ganesh Krushi Kendra,khadakdoh,Yavatmal,YAVATMAL,Cotton,Chatrapathi,96,3/7/2023,,,,1239
+6,MRN-108,Shree Ganesh Krushi Kendra,khadakdoh,Yavatmal,YAVATMAL,Redgram,Vikky Apurva,317,3/7/2023,,,,1240
+7,MRN-109,SATHONE KRISHI KENDRA KHAMBADA,Khambada,Chandrapur,Chandrapur,Cotton,Chatrapathi,32,15/7/2023,,,,1250
+8,MRN-109,SATHONE KRISHI KENDRA KHAMBADA,Khambada,Chandrapur,Chandrapur,Redgram,Vikky Apurva,22,15/7/2023,,,,1251
+9,MRN-110,Laxmi Krushi Kendra,Pandharkawda,Yavatmal,Yavatmal,Cotton,Chatrapathi,38,17/7/2023,,,,1261
+10,MRN-110,Laxmi Krushi Kendra,Pandharkawda,Yavatmal,Yavatmal,Redgram,Vikky Apurva,24,17/7/2023,,,,1262
+11,MRN-111,Shri gurdeo Agro Agencie,borgaon hatala,arvi,Wardha,Redgram,Vikky Apurva,58,17/7/2023,,,,1263
+12,MRN-112,Monali krushi seva kendra,Deoli,Deoli,Wardha,Cotton,Sitara,52,18/7/2023,,,,1274
+13,MRN-112,Monali krushi seva kendra,Deoli,Deoli,Wardha,Cotton,Chatrapathi,25,18/7/2023,,,,1275
+14,MRN-113,Ram Agro Agencies,Darwha,Darwha,Yavatmal,Cotton,Chatrapathi,32,20/7/2023,,,,1294
+15,MRN-114,Shree Ganesh Krushi Kendra,khadakdoh,Yavatmal,YAVATMAL,Cotton,Sitara,16,21/7/2023,,,,1314
+16,MRN-115,Adhunik Sheti Kendra Akola,Akola,Akola,Akola,Cotton,Sitara,22,21/7/2023,,,,1315
+17,MRN-115,Adhunik Sheti Kendra Akola,Akola,Akola,Akola,Cotton,Chatrapathi,0,21/7/2023,,,,1316
+18,MRN-115,Adhunik Sheti Kendra Akola,Akola,Akola,Akola,Redgram,Vikky Apurva,23,21/7/2023,,,,1317
+19,MRN-115,Adhunik Sheti Kendra Akola,Akola,Akola,Akola,Cotton,Chatrapathi,32,21/7/2023,,,,1318
+20,MRN-116,Jay Gurudev Krushi Kendra,Pandharkawda,Yavatmal,Yavatmal,Cotton,Chatrapathi,37,22/7/2023,,,,1357
+21,MRN-117,SHRI SAIKRUPA KRISHI KENDRA,korpana,Chandrapur,Chandrapur,Cotton,Sitara,92,24/7/2023,,,,1397
+22,MRN-117,SHRI SAIKRUPA KRISHI KENDRA,korpana,Chandrapur,Chandrapur,Cotton,Chatrapathi,115,24/7/2023,,,,1398
+23,MRN-117,SHRI SAIKRUPA KRISHI KENDRA,korpana,Chandrapur,Chandrapur,Redgram,Vikky Apurva,79,24/7/2023,,,,1399
+24,MRN-118,SHRI SAI AGRO TRADERS,WANSADI,Chandrapur,Chandrapur,Cotton,Chatrapathi,27,24/7/2023,,,,1400
+25,MRN-118,SHRI SAI AGRO TRADERS,WANSADI,Chandrapur,Chandrapur,Redgram,Vikky Apurva,22,24/7/2023,,,,1401
+26,MRN-119,Jai Gurudev Krushi Kendra Kalamb,KALAMB,KALAMB,YAVATMAL,Redgram,Vikky Apurva,76,24/7/2023,,,,1402
+27,MRN-120,Kastkar Krushi Kendra,pardshinga,KATOL,Nagpur,Cotton,Sitara,54,25/7/2023,,,,1482
+28,MRN-120,Kastkar Krushi Kendra,pardshinga,KATOL,Nagpur,Cotton,Chatrapathi,10,25/7/2023,,,,1483
+29,MRN-120,Kastkar Krushi Kendra,pardshinga,KATOL,Nagpur,Redgram,Vikky Apurva,23,25/7/2023,,,,1484
+30,MRN-121,shri sadguru krushi seva kendra arvi,Arvi,Arvi,Wardha,Cotton,Sitara,38,25/7/2023,,,,1485
+31,MRN-121,shri sadguru krushi seva kendra arvi,Arvi,Arvi,Wardha,Cotton,Chatrapathi,10,25/7/2023,,,,1486
+32,MRN-122,SHRI VYANKATESH KRISHI KENDRA WANI,WANI,Wani,Yavatmal,Cotton,Sitara,51,25/7/2023,,,,1487
+33,MRN-122,SHRI VYANKATESH KRISHI KENDRA WANI,WANI,Wani,Yavatmal,Cotton,Chatrapathi,79,25/7/2023,,,,1488
+34,MRN-122,SHRI VYANKATESH KRISHI KENDRA WANI,WANI,Wani,Yavatmal,Redgram,Vikky Apurva,120,25/7/2023,,,,1489
+35,MRN-123,MAHALAXMI AGRI AGENCIES BHURKUNDRA,BHURKUNDRA,Rajura,Chandrapur,Redgram,Vikky Apurva,12,26/7/2023,,,,1539
+36,MRN-124,Shri Agro india,Nagpur,Nagpur,Nagpur,Cotton,Sitara,196,27/7/2023,,,,1590
+37,MRN-124,Shri Agro india,Nagpur,Nagpur,Nagpur,Cotton,Chatrapathi,11,27/7/2023,,,,1591
+38,MRN-124,Shri Agro india,Nagpur,Nagpur,Nagpur,Redgram,Vikky Apurva,345,27/7/2023,,,,1592
+39,MRN-125,Rathi Seeds,Pusad,Yavatmal,Yavatmal,Cotton,Chatrapathi,30,27/7/2023,,,,1593
+40,MRN-125,Rathi Seeds,Pusad,Yavatmal,Yavatmal,Cotton,Sitara,48,27/7/2023,,,,1594
+41,MRN-125,Rathi Seeds,Pusad,Yavatmal,Yavatmal,Redgram,Vikky Apurva,92,27/7/2023,,,,1595
+42,MRN-126,SHIV KRUSHI KENDRA WARORA,WARORA,warora,Chandrapur,Cotton,Sitara,32,28/7/2023,,,,1669
+43,MRN-126,SHIV KRUSHI KENDRA WARORA,WARORA,warora,Chandrapur,Cotton,Chatrapathi,139,28/7/2023,,,,1670
+44,MRN-126,SHIV KRUSHI KENDRA WARORA,WARORA,warora,Chandrapur,Redgram,Vikky Apurva,16,28/7/2023,,,,1671
+45,MRN-127,Shubham Krushi Kendra Wandhali,Wandhali,warora,Chandrapur,Cotton,Chatrapathi,37,28/7/2023,,,,1672
+46,MRN-127,Shubham Krushi Kendra Wandhali,Wandhali,warora,Chandrapur,Cotton,Sitara,7,28/7/2023,,,,1673
+47,MRN-127,Shubham Krushi Kendra Wandhali,Wandhali,warora,Chandrapur,Redgram,Vikky Apurva,17,28/7/2023,,,,1674
+48,MRN-128,SHITAL AGRO AGENCIES TEMBHURDA,Tembhurda,warora,Chandrapur,Cotton,Chatrapathi,29,28/7/2023,,,,1675
+49,MRN-128,SHITAL AGRO AGENCIES TEMBHURDA,Tembhurda,warora,Chandrapur,Cotton,Sitara,22,28/7/2023,,,,1676
+50,MRN-128,SHITAL AGRO AGENCIES TEMBHURDA,Tembhurda,warora,Chandrapur,Redgram,Vikky Apurva,40,28/7/2023,,,,1677
+51,MRN-129,Kastkar Krushi Kendra,pardshinga,KATOL,Nagpur,Cotton,Chatrapathi,60,28/7/2023,,,,1678
+52,MRN-130,BHAGWAN AGRO AGENCY,PACHIKHEDA,Nagpur,Nagpur,Cotton,Sitara,103,28/7/2023,,,,1679
+53,MRN-130,BHAGWAN AGRO AGENCY,PACHIKHEDA,Nagpur,Nagpur,Cotton,Chatrapathi,71,28/7/2023,,,,1680
+54,MRN-130,BHAGWAN AGRO AGENCY,PACHIKHEDA,Nagpur,Nagpur,Redgram,Vikky Apurva,136,28/7/2023,,,,1681
+55,MRN-131,ROHIT TRADERS,HINGANGHAT,HINGANGHAT,Wardha,Cotton,Sitara,70,28/7/2023,,,,1682
+56,MRN-131,ROHIT TRADERS,HINGANGHAT,HINGANGHAT,Wardha,Cotton,Chatrapathi,8,28/7/2023,,,,1683
+57,MRN-132,Satnam Krushi kendra,Saoner,saoner,Nagpur,Cotton,Chatrapathi,152,29/7/2023,,,,1805
+58,MRN-132,Satnam Krushi kendra,Saoner,saoner,Nagpur,Cotton,Sitara,62,29/7/2023,,,,1806
+59,MRN-132,Satnam Krushi kendra,Saoner,saoner,Nagpur,Redgram,Vikky Apurva,21,29/7/2023,,,,1807
+60,MRN-133,BHAGYASHREE AGRO TRADERS TEMURDA,TEMURDA,warora,Chandrapur,Cotton,Sitara,31,29/7/2023,,,,1808
+61,MRN-133,BHAGYASHREE AGRO TRADERS TEMURDA,TEMURDA,warora,Chandrapur,Cotton,Chatrapathi,82,29/7/2023,,,,1809
+62,MRN-134,Amol Krushi Kendra,Mohada,Yavatmal,Yavatmal,Cotton,Sitara,22,29/7/2023,,,,1810
+63,MRN-134,Amol Krushi Kendra,Mohada,Yavatmal,Yavatmal,Cotton,Chatrapathi,14,29/7/2023,,,,1811
+64,MRN-134,Amol Krushi Kendra,Mohada,Yavatmal,Yavatmal,Redgram,Vikky Apurva,33,29/7/2023,,,,1812
+65,MRN-138,SHRI MAULI KRUSHI KENDRA GHATANJI,GHATANJI,GHATANJI,Yavatmal,Cotton,Sitara,32,29/7/2023,,,,1813
+66,MRN-138,SHRI MAULI KRUSHI KENDRA GHATANJI,GHATANJI,GHATANJI,Yavatmal,Cotton,Chatrapathi,29,29/7/2023,,,,1814
+67,MRN-138,SHRI MAULI KRUSHI KENDRA GHATANJI,GHATANJI,GHATANJI,Yavatmal,Redgram,Vikky Apurva,74,29/7/2023,,,,1815
+68,MRN-139,Mauli krushi kendra pandharkawda,pandharkawada,Pandharkawda,Yavatmal,Redgram,Vikky Apurva,38,29/7/2023,,,,1816
+69,MRN-140,BHAGYASHREE AGRO TRADERS TEMURDA,TEMURDA,warora,Chandrapur,Cotton,Chatrapathi,126,29/7/2023,,,,1817
+70,MRN-140,BHAGYASHREE AGRO TRADERS TEMURDA,TEMURDA,warora,Chandrapur,Cotton,Sitara,30,29/7/2023,,,,1818
+71,MRN-140,BHAGYASHREE AGRO TRADERS TEMURDA,TEMURDA,warora,Chandrapur,Redgram,Vikky Apurva,65,29/7/2023,,,,1819
+72,MRN-141,JAJU KRISHI KENDRA YAWATMAL,YAWATMAL,YAWATMAL,YAWATMAL,Cotton,Sitara,21,29/7/2023,,,,1820
+73,MRN-142,BADNORE AGRO TRADERS DEVLI,DEVLI,Wardha,Wardha,Cotton,Sitara,30,31/7/2023,,,,1905
+74,MRN-143,Shree gajanan seeds&pesticides,Wardha,Wardha,Wardha,Cotton,Sitara,52,31/7/2023,,,,1906
+75,MRN-143,Shree gajanan seeds&pesticides,Wardha,Wardha,Wardha,Cotton,Chatrapathi,64,31/7/2023,,,,1907
+76,MRN-143,Shree gajanan seeds&pesticides,Wardha,Wardha,Wardha,Redgram,Vikky Apurva,44,31/7/2023,,,,1908
+77,MRN-144,Sunanda Frtilizer,Pusad,Yavatmal,Yavatmal,Cotton,Chatrapathi,26,1/8/2023,,,,1929
+78,MRN-144,Sunanda Frtilizer,Pusad,Yavatmal,Yavatmal,Cotton,Sitara,3,1/8/2023,,,,1930
+79,MRN-144,Sunanda Frtilizer,Pusad,Yavatmal,Yavatmal,Redgram,Vikky Apurva,34,1/8/2023,,,,1931
+80,MRN-145,Kisan Agro Agency,Kondhali,KATOL,Nagpur,Cotton,Sitara,11,2/8/2023,,,,1989
+81,MRN-145,Kisan Agro Agency,Kondhali,KATOL,Nagpur,Cotton,Chatrapathi,33,2/8/2023,,,,1990
+82,MRN-145,Kisan Agro Agency,Kondhali,KATOL,Nagpur,Redgram,Vikky Apurva,9,2/8/2023,,,,1991
+83,MRN-146,AGRI BUSINESS CENTRE YAWATMAL,Yavatmal,Y,Y,Cotton,Sitara,66,3/8/2023,,,,2061
+84,MRN-146,AGRI BUSINESS CENTRE YAWATMAL,Yavatmal,Y,Y,Cotton,Chatrapathi,16,3/8/2023,,,,2062
+85,MRN-146,AGRI BUSINESS CENTRE YAWATMAL,Yavatmal,Y,Y,Redgram,Vikky Apurva,243,3/8/2023,,,,2063
+86,MRN-147,Baliraja krushi kendra,samudrapur,samudrapur,Wardha,Cotton,Sitara,23,3/8/2023,,,,2091
+87,MRN-147,Baliraja krushi kendra,samudrapur,samudrapur,Wardha,Cotton,Chatrapathi,2,3/8/2023,,,,2092
+88,MRN-147,Baliraja krushi kendra,samudrapur,samudrapur,Wardha,Redgram,Vikky Apurva,64,3/8/2023,,,,2093
+89,MRN-148,GAYATRINBOYANE WARDHA,WARDHA,Wardha,WARDHA,Cotton,Chatrapathi,6,3/8/2023,,,,2094
+90,MRN-148,GAYATRINBOYANE WARDHA,WARDHA,Wardha,WARDHA,Cotton,Sitara,23,3/8/2023,,,,2095
+91,MRN-149,Raj Krushi Kendra Kangaon,Kangaon,Hinganghat,Wardha,Cotton,Sitara,12,3/8/2023,,,,2096
+92,MRN-150,Shetkari krushi seva kendra,Nanded,Nanded,Nanded,Cotton,Sitara,7,4/8/2023,,,,2121
+93,MRN-150,Shetkari krushi seva kendra,Nanded,Nanded,Nanded,Cotton,Chatrapathi,74,4/8/2023,,,,2122
+94,MRN-150,Shetkari krushi seva kendra,Nanded,Nanded,Nanded,Redgram,Vikky Apurva,42,4/8/2023,,,,2123
+95,MRN-151,Suyog Agro Agencies,Yavatmal,Yavatmal,Yavatmal,Redgram,Vikky Apurva,22,5/8/2023,,,,2124
+96,MRN-151,Suyog Agro Agencies,Yavatmal,Yavatmal,Yavatmal,Cotton,Sitara,32,5/8/2023,,,,2125
+97,MRN-151,Suyog Agro Agencies,Yavatmal,Yavatmal,Yavatmal,Cotton,Chatrapathi,18,5/8/2023,,,,2126
+98,MRN-152,BANKAR KRUSHI SEWA KENDRA,TALEGAON,DHAMANGAON REL,Amravati,Cotton,Chatrapathi,33,5/8/2023,,,,2161
+99,MRN-153,vighnahart Agro Agencies,Nagpur,Nagpur,Nagpur,Cotton,Sitara,45,7/8/2023,,,,2197
+100,MRN-153,vighnahart Agro Agencies,Nagpur,Nagpur,Nagpur,Cotton,Chatrapathi,17,7/8/2023,,,,2198
+101,MRN-153,vighnahart Agro Agencies,Nagpur,Nagpur,Nagpur,Redgram,Vikky Apurva,35,7/8/2023,,,,2199
+102,MRN-154,Krushichaya Krishi Kendra Dongarkheda,dongarkheda,Yavatmal,Yavatmal,Redgram,Vikky Apurva,43,8/8/2023,,,,2228
+103,MRN-155,Raut krushi seva kendra,barshingi,narkhed,Nagpur,Redgram,Vikky Apurva,93,8/8/2023,,,,2229
+104,MRN-155,Raut krushi seva kendra,barshingi,narkhed,Nagpur,Maize,Arrow - 4 Kg,87,8/8/2023,,,,2230
+105,MRN-156,Shri sainath krushi sewa kendra,sawargaon,Wardha,Wardha,Cotton,Chatrapathi,21,9/8/2023,,,,2231
+106,MRN-156,Shri sainath krushi sewa kendra,sawargaon,Wardha,Wardha,Cotton,Sitara,25,9/8/2023,,,,2232
+107,MRN-156,Shri sainath krushi sewa kendra,sawargaon,Wardha,Wardha,Redgram,Vikky Apurva,44,9/8/2023,,,,2233
+108,MRN-157,Mauli Agro Center,Maod,Katol,Nagpur,Cotton,Sitara,20,9/8/2023,,,,2234
+109,MRN-157,Mauli Agro Center,Maod,Katol,Nagpur,Cotton,Chatrapathi,32,9/8/2023,,,,2235
+110,MRN-158,Chaudhari and sons,Nagpur,Nagpur,Nagpur,Cotton,Chatrapathi,44,9/8/2023,,,,2236
+111,MRN-158,Chaudhari and sons,Nagpur,Nagpur,Nagpur,Cotton,Sitara,92,9/8/2023,,,,2237
+112,MRN-158,Chaudhari and sons,Nagpur,Nagpur,Nagpur,Redgram,Vikky Apurva,58,9/8/2023,,,,2238
+113,MRN-159,Mahi Agro Care Karanji,Karanji,Karanji,yawatmal,Cotton,Sitara,21,9/8/2023,,,,2239
+114,MRN-159,Mahi Agro Care Karanji,Karanji,Karanji,yawatmal,Cotton,Chatrapathi,45,9/8/2023,,,,2240
+115,MRN-159,Mahi Agro Care Karanji,Karanji,Karanji,yawatmal,Redgram,Vikky Apurva,226,9/8/2023,,,,2241
+116,MRN-160,Pravin Agrotech,Warora,Warora,Chandrapur,Cotton,Sitara,41,10/8/2023,,,,2266
+117,MRN-160,Pravin Agrotech,Warora,Warora,Chandrapur,Cotton,Chatrapathi,69,10/8/2023,,,,2267
+118,MRN-161,Aryan Krushi Kendra Shegaon,Shegaon,Warora,Chandrapur,Cotton,Sitara,59,10/8/2023,,,,2268
+119,MRN-161,Aryan Krushi Kendra Shegaon,Shegaon,Warora,Chandrapur,Cotton,Chatrapathi,64,10/8/2023,,,,2269
+120,MRN-161,Aryan Krushi Kendra Shegaon,Shegaon,Warora,Chandrapur,Redgram,Vikky Apurva,40,10/8/2023,,,,2270
+121,MRN-162,pragati krushi kendra kora,kora,Wardha,Wardha,Cotton,Sitara,32,11/8/2023,,,,2302
+122,MRN-162,pragati krushi kendra kora,kora,Wardha,Wardha,Cotton,Chatrapathi,32,11/8/2023,,,,2303
+123,MRN-162,pragati krushi kendra kora,kora,Wardha,Wardha,Redgram,Vikky Apurva,80,11/8/2023,,,,2304
+124,MRN-163,Shree gajanan seeds&pesticides,Wardha,Wardha,Wardha,Cotton,Sitara,4,11/8/2023,,,,2311
+125,MRN-163,Shree gajanan seeds&pesticides,Wardha,Wardha,Wardha,Cotton,Chatrapathi,9,11/8/2023,,,,2312
+126,MRN-164,SHIVKRUPA AGRO AGENCY,CHAMPA,UMRED,NAGPUR,Cotton,Sitara,12,14/8/2023,,,,2330
+127,MRN-164,SHIVKRUPA AGRO AGENCY,CHAMPA,UMRED,NAGPUR,Cotton,Chatrapathi,64,14/8/2023,,,,2331
+128,MRN-164,SHIVKRUPA AGRO AGENCY,CHAMPA,UMRED,NAGPUR,Redgram,Vikky Apurva,3,14/8/2023,,,,2332
+129,MRN-165,Agri shop,babhlgaon,babhulgaon,YAVATMAL,Cotton,Sitara,31,22/8/2023,,,,2380
+130,MRN-166,JAGDAMBA KRUSHI SEWA KENDRA,MANORA,manora,Yavatmal,Cotton,Sitara,1,23/8/2023,,,,2388
+131,MRN-166,JAGDAMBA KRUSHI SEWA KENDRA,MANORA,manora,Yavatmal,Cotton,Chatrapathi,8,23/8/2023,,,,2389
+132,MRN-167,MUKTAI AGRO AGENCY,WADGAON,Yavatmal,Yavatmal,Cotton,Sitara,8,25/8/2023,,,,2390
+133,MRN-168,Patel Krushi Kendra,Digras,Digras,Digras,Cotton,Chatrapathi,15,30/8/2023,,,,2397
+134,MRN-168,Patel Krushi Kendra,Digras,Digras,Digras,Redgram,Vikky Apurva,58,30/8/2023,,,,2398
+135,MRN-169,SHETI VIKAS KENDRA,KUHI,KUHI,Nagpur,Cotton,Chatrapathi,22,4/9/2023,,,,2400
+136,MRN-169,SHETI VIKAS KENDRA,KUHI,KUHI,Nagpur,Cotton,Sitara,11,4/9/2023,,,,2401
+137,MRN-170,Kisan Agro Agency,Kondhali,KATOL,Nagpur,Redgram,Vikky Apurva,80,8/9/2023,,,,2415
+138,107,Shri Agro india,Nagpur,Nagpur,Nagpur,Redgram,Vikky Apurva,800,21/6/2023,,7621,,2416
+139,MRN-171,Thombare Krushi Kendra  Yenboli,Yenboli,Ballarshah,Chandrapur,Cotton,Sitara,35,13/9/2023,,,,2417
+140,MRN-171,Thombare Krushi Kendra  Yenboli,Yenboli,Ballarshah,Chandrapur,Cotton,Chatrapathi,11,13/9/2023,,,,2418
+141,MRN-171,Thombare Krushi Kendra  Yenboli,Yenboli,Ballarshah,Chandrapur,Redgram,Vikky Apurva,40,13/9/2023,,,,2419
+142,MRN-172,NAVJIVAN KRUSHI KENDRA AKOLA BAZAR,AKOLA BAZAR,Yavatmal,Yavatmal,Redgram,Vikky Apurva,61,18/9/2023,,,,2424
+143,MRN-172,NAVJIVAN KRUSHI KENDRA AKOLA BAZAR,AKOLA BAZAR,Yavatmal,Yavatmal,Cotton,Chatrapathi,23,18/9/2023,,,,2425
+144,MRN-173,Shree Ganesh Krushi Kendra,khadakdoh,Yavatmal,YAVATMAL,Cotton,Sitara,18,2/10/2023,,,,2438
+145,MRN-173,Shree Ganesh Krushi Kendra,khadakdoh,Yavatmal,YAVATMAL,Redgram,Vikky Apurva,236,2/10/2023,,,,2439
+146,MRN-174,Pawar krushi seva kendra,loha,loha,Nanded,Cotton,Chatrapathi,4,5/10/2023,,,,2440
+147,MRN-174,Pawar krushi seva kendra,loha,loha,Nanded,Cotton,Sitara,16,5/10/2023,,,,2441
+148,MRN-174,Pawar krushi seva kendra,loha,loha,Nanded,Redgram,Vikky Apurva,47,5/10/2023,,,,2442
+149,MRN-176,KESHAV KRUSHI KENDRA,PUSAD,Pusad,Yavatmal,Cotton,Chatrapathi,86,31/10/2023,,,,2452
+150,MRN-176,KESHAV KRUSHI KENDRA,PUSAD,Pusad,Yavatmal,Redgram,Vikky Apurva,16,31/10/2023,,,,2453
+151,MRN-178,Shetkari krushi seva kendra,Nanded,Nanded,Nanded,Jowar,Virat - 3 kg,36,22/3/2024,,,,2584
+152,MRN-179,AGRI BUSINESS CENTRE YAWATMAL,Yavatmal,Y,Y,Jowar,Virat - 3 kg,5,23/3/2024,,,,2585
+153,MRN-180,JAGDAMBA KRUSHI SEWA KENDRA,MANORA,manora,Yavatmal,Jowar,Virat - 3 kg,34,26/3/2024,,,,2586
+154,201,Arpit Krushi Kendra Kinwat,Kinwat,kinwat,Yavatmal,Jowar,Virat - 3 kg,44,2/5/2024,,,,2593
+155,207,JAGDAMBA KRUSHI SEWA KENDRA,MANORA,manora,Yavatmal,Cotton,Sitara,94,3/7/2024,,,,2747
+156,207,JAGDAMBA KRUSHI SEWA KENDRA,MANORA,manora,Yavatmal,Cotton,Chatrapathi,53,3/7/2024,,,,2748
+157,207,JAGDAMBA KRUSHI SEWA KENDRA,MANORA,manora,Yavatmal,Redgram,Vikky Apurva,48,3/7/2024,,,,2749
+158,208,VIDHATA AGRO AGENCIES-AMALNER,AMALNER,amalner,AMALNER,Cotton,Sitara,25,5/7/2024,,,,2750
+159,208,VIDHATA AGRO AGENCIES-AMALNER,AMALNER,amalner,AMALNER,Cotton,Chatrapathi,15,5/7/2024,,,,2751
+160,209,Shetkari krushi seva kendra,Nanded,Nanded,Nanded,Cotton,Chatrapathi,160,8/7/2024,,,,2946
+161,210,Arpit Krushi Kendra Kinwat,Kinwat,kinwat,Yavatmal,Cotton,Chatrapathi,42,12/7/2024,,,,2947
+162,211,Ram Agro Agencies,Darwha,Darwha,Yavatmal,Redgram,Vikky Apurva,21,12/7/2024,,,,2948
+163,212,Kisan Agro Agency,Kondhali,KATOL,Nagpur,Cotton,Sitara,10,13/7/2024,,,,2949
+164,212,Kisan Agro Agency,Kondhali,KATOL,Nagpur,Redgram,Vikky Apurva,38,13/7/2024,,,,2950
+165,213,BHAGYASHREE AGRO TRADERS TEMURDA,TEMURDA,warora,Chandrapur,Cotton,Sitara,43,13/7/2024,,,,2951
+166,213,BHAGYASHREE AGRO TRADERS TEMURDA,TEMURDA,warora,Chandrapur,Cotton,Chatrapathi,30,13/7/2024,,,,2952
+167,213,BHAGYASHREE AGRO TRADERS TEMURDA,TEMURDA,warora,Chandrapur,Redgram,Vikky Apurva,56,13/7/2024,,,,2953
+168,214,Shri gurdeo Agro Agencie,borgaon hatala,arvi,Wardha,Cotton,Sitara,5,16/7/2024,,,,2954
+169,215,Jay Gurudev Krushi Kendra,Pandharkawda,Yavatmal,Yavatmal,Cotton,Chatrapathi,49,16/7/2024,,,,3868
+170,215,Jay Gurudev Krushi Kendra,Pandharkawda,Yavatmal,Yavatmal,Cotton,Sitara,64,16/7/2024,,,,3869
+171,216,Laxmi Krushi Kendra,Pandharkawda,Yavatmal,Yavatmal,Cotton,Sitara,64,16/7/2024,,,,3870
+172,217,Shree Ganesh Krushi Kendra,khadakdoh,Yavatmal,YAVATMAL,Cotton,Chatrapathi,49,16/7/2024,,,,3871
+173,217,Shree Ganesh Krushi Kendra,khadakdoh,Yavatmal,YAVATMAL,Cotton,Sitara,35,16/7/2024,,,,3872
+174,218,Amol Krushi Kendra,Mohada,Yavatmal,Yavatmal,Cotton,Sitara,64,18/7/2024,,,,3873
+175,219,AKASH AGRO AGENCY-CHANDRAPUR,CHANDRAPUR,Chandrapur,Chandrapur,Cotton,Chatrapathi,168,18/7/2024,,,,3874
+176,219,AKASH AGRO AGENCY-CHANDRAPUR,CHANDRAPUR,Chandrapur,Chandrapur,Cotton,Sitara,13,18/7/2024,,,,3875
+177,219,AKASH AGRO AGENCY-CHANDRAPUR,CHANDRAPUR,Chandrapur,Chandrapur,Redgram,Vikky Apurva,199,18/7/2024,,,,3876
+178,220,AGRI BUSINESS CENTRE YAWATMAL,Yavatmal,Y,Y,Redgram,Vikky Apurva,2381,19/7/2024,,,,3877
+179,221,Sunanda Frtilizer,Pusad,Yavatmal,Yavatmal,Cotton,Chatrapathi,351,19/7/2024,,,,3878
+180,221,Sunanda Frtilizer,Pusad,Yavatmal,Yavatmal,Cotton,Sitara,192,19/7/2024,,,,3879
+181,222,Shri Ramchnadra Saat Agro Agencies,Vai Bazaar,Mahur,Nanded,Cotton,Chatrapathi,11,19/7/2024,,,,3880
+182,223,Jijai krushi seva kendra,boath fata,kinwat,Nanded,Cotton,Chatrapathi,25,19/7/2024,,,,3881
+183,224,SHREE TIRUPATI BALAJI AGENCY-YAVATMAL,Yavatmal,Yavatmal,Yavatmal,Cotton,Chatrapathi,160,19/7/2024,,,,3882
+184,225,AGRI BUSINESS CENTRE YAWATMAL,Yavatmal,Y,Y,Cotton,Chatrapathi,58,20/7/2024,,,,3883
+185,225,AGRI BUSINESS CENTRE YAWATMAL,Yavatmal,Y,Y,Cotton,Sitara,121,20/7/2024,,,,3884
+186,226,SHITAL AGRO AGENCIES TEMBHURDA,Tembhurda,warora,Chandrapur,Cotton,Chatrapathi,32,21/7/2024,,,,3885
+187,226,SHITAL AGRO AGENCIES TEMBHURDA,Tembhurda,warora,Chandrapur,Cotton,Sitara,32,21/7/2024,,,,3886
+188,226,SHITAL AGRO AGENCIES TEMBHURDA,Tembhurda,warora,Chandrapur,Redgram,Vikky Apurva,61,21/7/2024,,,,3887
+189,227,SHIV KRUSHI KENDRA WARORA,WARORA,warora,Chandrapur,Redgram,Vikky Apurva,6,22/7/2024,,,,3888
+190,227,SHIV KRUSHI KENDRA WARORA,WARORA,warora,Chandrapur,Cotton,Chatrapathi,11,22/7/2024,,,,3889
+191,228,Pravin Agrotech,Warora,Warora,Chandrapur,Cotton,Chatrapathi,284,22/7/2024,,,,3890
+192,228,Pravin Agrotech,Warora,Warora,Chandrapur,Cotton,Sitara,87,22/7/2024,,,,3891
+193,228,Pravin Agrotech,Warora,Warora,Chandrapur,Redgram,Vikky Apurva,30,22/7/2024,,,,3892
+194,229,BHAGYASHRI KRISHI KENDRA MADHELI,Madheli,warora,Chandrapur,Redgram,Vikky Apurva,73,22/7/2024,,,,3893
+195,230,JAY SEVALAL KRUSHI KENDRA-GHAMPUR,GHAMPUR,UMARKHED,UMAEKHED,Cotton,Sitara,5,22/7/2024,,,,3894
+196,230,JAY SEVALAL KRUSHI KENDRA-GHAMPUR,GHAMPUR,UMARKHED,UMAEKHED,Cotton,Chatrapathi,14,22/7/2024,,,,3895
+197,231,SHRI VYANKATESH KRISHI KENDRA WANI,WANI,Wani,Yavatmal,Cotton,Chatrapathi,64,22/7/2024,,,,3896
+198,231,SHRI VYANKATESH KRISHI KENDRA WANI,WANI,Wani,Yavatmal,Cotton,Sitara,21,22/7/2024,,,,3897
+199,231,SHRI VYANKATESH KRISHI KENDRA WANI,WANI,Wani,Yavatmal,Redgram,Vikky Apurva,194,22/7/2024,,,,3898
+200,232,JAJU KRISHI KENDRA YAWATMAL,YAWATMAL,YAWATMAL,YAWATMAL,Redgram,Vikky Apurva,1523,23/7/2024,,,,3899
+201,233,vighnahart Agro Agencies,Nagpur,Nagpur,Nagpur,Cotton,Chatrapathi,91,23/7/2024,,,,3900
+202,233,vighnahart Agro Agencies,Nagpur,Nagpur,Nagpur,Cotton,Sitara,66,23/7/2024,,,,3901
+203,234,Shree gajanan seeds&pesticides,Wardha,Wardha,Wardha,Cotton,Sitara,154,24/7/2024,,,,3902
+204,234,Shree gajanan seeds&pesticides,Wardha,Wardha,Wardha,Cotton,Chatrapathi,41,24/7/2024,,,,3903
+205,234,Shree gajanan seeds&pesticides,Wardha,Wardha,Wardha,Redgram,Vikky Apurva,607,24/7/2024,,,,3904
+206,235,vighnahart Agro Agencies,Nagpur,Nagpur,Nagpur,Cotton,Chatrapathi,32,24/7/2024,,,,3905
+207,236,Jagadamba Agro Agency Bhokar,Bhokar,Bhokar,Nanded,Cotton,Sitara,80,24/7/2024,,,,3906
+208,236,Jagadamba Agro Agency Bhokar,Bhokar,Bhokar,Nanded,Cotton,Chatrapathi,20,24/7/2024,,,,3907
+209,237,Satnam Krushi kendra,Saoner,saoner,Nagpur,Cotton,Chatrapathi,270,24/7/2024,,,,3908
+210,238,MUKTAI AGRO AGENCY,WADGAON,Yavatmal,Yavatmal,Cotton,Sitara,32,25/7/2024,,,,3909
+211,238,MUKTAI AGRO AGENCY,WADGAON,Yavatmal,Yavatmal,Cotton,Chatrapathi,32,25/7/2024,,,,3910
+212,238,MUKTAI AGRO AGENCY,WADGAON,Yavatmal,Yavatmal,Redgram,Vikky Apurva,8,25/7/2024,,,,3911
+213,239,GAYATRINBOYANE WARDHA,WARDHA,Wardha,WARDHA,Cotton,Sitara,58,26/7/2024,,,,4518
+214,239,GAYATRINBOYANE WARDHA,WARDHA,Wardha,WARDHA,Redgram,Vikky Apurva,96,26/7/2024,,,,4519
+215,240,BADNORE AGRO TRADERS DEVLI,DEVLI,Wardha,Wardha,Cotton,Sitara,32,26/7/2024,,,,4520
+216,240,BADNORE AGRO TRADERS DEVLI,DEVLI,Wardha,Wardha,Redgram,Vikky Apurva,14,26/7/2024,,,,4521
+217,241,SHRI SAIKRUPA KRISHI KENDRA,korpana,Chandrapur,Chandrapur,Cotton,Sitara,13,26/7/2024,,,,4522
+218,241,SHRI SAIKRUPA KRISHI KENDRA,korpana,Chandrapur,Chandrapur,Cotton,Chatrapathi,3,26/7/2024,,,,4523
+219,241,SHRI SAIKRUPA KRISHI KENDRA,korpana,Chandrapur,Chandrapur,Redgram,Vikky Apurva,140,26/7/2024,,,,4524
+220,242,Shetkari krushi seva kendra,Nanded,Nanded,Nanded,Cotton,Chatrapathi,88,27/7/2024,,,,4525
+221,242,Shetkari krushi seva kendra,Nanded,Nanded,Nanded,Cotton,Sitara,33,27/7/2024,,,,4526
+222,243,SHRI SAI AGRO TRADERS,WANSADI,Chandrapur,Chandrapur,Cotton,Chatrapathi,14,29/7/2024,,,,4527
+223,243,SHRI SAI AGRO TRADERS,WANSADI,Chandrapur,Chandrapur,Redgram,Vikky Apurva,230,29/7/2024,,,,4528
+224,244,SHREE CHINTAMANI KRUSHI KENDRA,SHRASGON,Yavatmal,Yavatmal,Cotton,Sitara,71,31/7/2024,,,,4758
+225,244,SHREE CHINTAMANI KRUSHI KENDRA,SHRASGON,Yavatmal,Yavatmal,Redgram,Vikky Apurva,7,31/7/2024,,,,4759
+226,245,Kisan Krishi Seva Kendra Kandhar,Kandhar,Nanded,Nanded,Cotton,Chatrapathi,64,1/8/2024,,,,4760
+227,246,shri sadguru krushi seva kendra arvi,Arvi,Arvi,Wardha,Cotton,Chatrapathi,32,3/8/2024,,,,4761
+228,246,shri sadguru krushi seva kendra arvi,Arvi,Arvi,Wardha,Cotton,Sitara,31,3/8/2024,,,,4762
+229,247,Patel Krushi Kendra,Digras,Digras,Digras,Cotton,Chatrapathi,19,3/8/2024,,,,4763
+230,247,Patel Krushi Kendra,Digras,Digras,Digras,Redgram,Vikky Apurva,17,3/8/2024,,,,4764
+231,251,Kastkar Krushi Kendra,pardshinga,KATOL,Nagpur,Cotton,Chatrapathi,93,6/8/2024,,,,4765
+232,251,Kastkar Krushi Kendra,pardshinga,KATOL,Nagpur,Redgram,Vikky Apurva,14,6/8/2024,,,,4766
+233,249,Shree gajanan seeds&pesticides,Wardha,Wardha,Wardha,Redgram,Vikky Apurva,14,8/8/2024,,,,5081
+234,250,KESHAV KRUSHI KENDRA,PUSAD,Pusad,Yavatmal,Redgram,Vikky Apurva,241,17/8/2024,,,,5082
+235,250,KESHAV KRUSHI KENDRA,PUSAD,Pusad,Yavatmal,Cotton,Chatrapathi,106,17/8/2024,,,,5083
+236,250,KESHAV KRUSHI KENDRA,PUSAD,Pusad,Yavatmal,Cotton,Sitara,98,17/8/2024,,,,5084
+237,252,Agri shop,babhlgaon,babhulgaon,YAVATMAL,Cotton,Sitara,25,20/8/2024,,,,5097
+238,252,Agri shop,babhlgaon,babhulgaon,YAVATMAL,Cotton,Chatrapathi,22,20/8/2024,,,,5098
+239,252,Agri shop,babhlgaon,babhulgaon,YAVATMAL,Redgram,Vikky Apurva,50,20/8/2024,,,,5099
+240,253,Satnam Krushi kendra,Saoner,saoner,Nagpur,Redgram,Vikky Apurva,68,20/8/2024,,,,5100
+241,254,Shree gajanan seeds&pesticides,Wardha,Wardha,Wardha,Redgram,Vikky Apurva,40,21/8/2024,,,,5101
+242,255,SHIVKRUPA AGRO AGENCY,CHAMPA,UMRED,NAGPUR,Cotton,Chatrapathi,72,30/8/2024,,,,5122
+243,256,BANKAR KRUSHI SEWA KENDRA,TALEGAON,DHAMANGAON REL,Amravati,Cotton,Chatrapathi,20,31/8/2024,,,,5123
+244,257,Sunanda Frtilizer,Pusad,Yavatmal,Yavatmal,Cotton,Chatrapathi,24,13/9/2024,,,,5126
+245,257,Sunanda Frtilizer,Pusad,Yavatmal,Yavatmal,Cotton,Sitara,28,13/9/2024,,,,5127
+246,257,Sunanda Frtilizer,Pusad,Yavatmal,Yavatmal,Jowar,Jhansi-3 Kg,65,13/9/2024,,,,5128
+247,258,Anusaya Traders,Shridshahapur,Shridshahapur,HINGOLI,Cotton,Chatrapathi,20,26/9/2024,,,,5135
+248,258,Anusaya Traders,Shridshahapur,Shridshahapur,HINGOLI,Redgram,Vikky Apurva,29,26/9/2024,,,,5136
+249,259,PRAYAG KRUSHI SEWA KENDRA-WASHIM,WASHIM,WASHIM,WASHIM,Jowar,Virat - 3 kg,20,27/11/2024,,,,5148
+250,259,PRAYAG KRUSHI SEWA KENDRA-WASHIM,WASHIM,WASHIM,WASHIM,Redgram,Vikky Apurva,20,27/11/2024,,,,5149
+251,262,Jaju Agro Sales Jalgaon,Jalgaon,Jalgaon,Jalgaon,Maize,Arrow - 4 Kg,189,6/1/2025,,,,5173
+252,262,Jaju Agro Sales Jalgaon,Jalgaon,Jalgaon,Jalgaon,Jowar,Virat - 3 kg,130,6/1/2025,,,,5174
+253,263,SHREE TIRUPATI BALAJI AGENCY-YAVATMAL,Yavatmal,Yavatmal,Yavatmal,Jowar,Virat - 3 kg,60,23/1/2025,,,,5206
+254,263,SHREE TIRUPATI BALAJI AGENCY-YAVATMAL,Yavatmal,Yavatmal,Yavatmal,Jowar,Jhansi-3 Kg,45,23/1/2025,,,,5207
+255,264,JAGDAMBA KRUSHI SEWA KENDRA,MANORA,manora,Yavatmal,Jowar,Virat - 3 kg,26,28/1/2025,,,,5221
+256,265,Jaju Agro Sales Jalgaon,Jalgaon,Jalgaon,Jalgaon,Maize,Arrow - 4 Kg,10,4/2/2025,,,,5258
+257,265,Jaju Agro Sales Jalgaon,Jalgaon,Jalgaon,Jalgaon,Jowar,Virat - 3 kg,91,4/2/2025,,,,5259
+258,266,Kisan Agro Agency,Kondhali,KATOL,Nagpur,Jowar,Virat - 3 kg,30,10/2/2025,,,,5272
+259,267,Shri Siddhivinayak Agro Traders Ghorad,Ghorad,Seloo,Wardha,Jowar,Virat - 3 kg,26,11/2/2025,,,,5275
+260,268,Krushi Seva Kendra Allipur,Allipur,Hinghnghat,Wardha,Jowar,Virat - 3 kg,13,11/2/2025,,,,5276
+261,269,Ajit Krushi Seva Kendra Arvi (Choti),Arvi (choti),Hinghnghat,Wardha,Jowar,Virat - 3 kg,13,11/2/2025,,,,5277
+262,270,Sunanda Frtilizer,Pusad,Yavatmal,Yavatmal,Jowar,Virat - 3 kg,94,17/2/2025,,,,5307
+263,271,AKASH AGRO AGENCY-CHANDRAPUR,CHANDRAPUR,Chandrapur,Chandrapur,Maize,Arrow - 4 Kg,44,22/2/2025,,,,5333
+264,272,Suyog Krushi Seva Kendra Akot,Akot,AKOT,akola,Jowar,Virat - 3 kg,12,22/2/2025,,,,5334
+265,273,SHRI MAULI KRUSHI KENDRA GHATANJI,GHATANJI,GHATANJI,Yavatmal,Jowar,Virat - 3 kg,60,24/2/2025,,,,5341
+266,274,Shubham Krushi Kendra Sangrampur,Sangrampur,SANGRAMPUR,Buldhana,Jowar,Virat - 3 kg,2,25/2/2025,,,,5342
+267,275,Arpit Krushi Kendra Kinwat,Kinwat,kinwat,Yavatmal,Jowar,Virat - 3 kg,43,27/2/2025,,,,5349
+268,276,Shri Gajanan Agro Khamgaon,khamgaon,KHAMGAON,Buldhana,Jowar,Virat - 3 kg,17,27/2/2025,,,,5357
+269,279,Nandini Krushi Seva Kendra Shivani,Shivani,kinwat,Nanded,Jowar,Virat - 3 kg,65,5/3/2025,,,,5383
+270,279,Nandini Krushi Seva Kendra Shivani,Shivani,kinwat,Nanded,Jowar,Jhansi-3 Kg,75,5/3/2025,,,,5384
+271,279,Nandini Krushi Seva Kendra Shivani,Shivani,kinwat,Nanded,Maize,Arrow - 4 Kg,15,5/3/2025,,,,5385
+272,280,AGRI BUSINESS CENTRE YAWATMAL,Yavatmal,Y,Y,Jowar,Virat - 3 kg,616,5/3/2025,,,,5386
+273,280,AGRI BUSINESS CENTRE YAWATMAL,Yavatmal,Y,Y,Jowar,Jhansi-3 Kg,71,5/3/2025,,,,5387
+274,281,krushipandhari krushi udyog,Gunj,MAHAGAON,YAVATMAL,Jowar,Virat - 3 kg,9,5/3/2025,,,,5390
+275,282,KESHAV KRUSHI KENDRA,PUSAD,Pusad,Yavatmal,Jowar,Virat - 3 kg,142,7/3/2025,,,,5394
+276,282,KESHAV KRUSHI KENDRA,PUSAD,Pusad,Yavatmal,Jowar,Jhansi-3 Kg,112,7/3/2025,,,,5395
+277,283,JAY GURUDEO  KRUSHI KENDRA PANDERKHODA,Pandharkawada,Yavatmal,Yavatmal,Jowar,Virat - 3 kg,15,7/3/2025,,,,5396
+278,284,Shri Agro india,Nagpur,Nagpur,Nagpur,Jowar,Virat - 3 kg,75,7/3/2025,,,,5399
+279,285,Jagadamba Agro Agency Bhokar,Bhokar,Bhokar,Nanded,Jowar,Virat - 3 kg,38,10/3/2025,,,,5403
+280,285,Jagadamba Agro Agency Bhokar,Bhokar,Bhokar,Nanded,Jowar,Jhansi-3 Kg,31,10/3/2025,,,,5404
+281,285,Jagadamba Agro Agency Bhokar,Bhokar,Bhokar,Nanded,Maize,Arrow - 4 Kg,20,10/3/2025,,,,5405
+282,286,Shetkari krushi seva kendra,Nanded,Nanded,Nanded,Jowar,Virat - 3 kg,141,10/3/2025,,,,5406
+283,287,JAJU KRISHI KENDRA YAWATMAL,YAWATMAL,YAWATMAL,YAWATMAL,Jowar,Virat - 3 kg,210,15/3/2025,,,,5430
+284,288,Nitin Agro Service,Borakhedi,Buldhana,Bhuldhana,Jowar,Virat - 3 kg,6,15/3/2025,,,,5431
+285,289,Mangal Agro Centre,Malkapur,malkapur,Buldhana,Jowar,Virat - 3 kg,45,15/3/2025,,,,5432
+286,289,Mangal Agro Centre,Malkapur,malkapur,Buldhana,Maize,Arrow - 4 Kg,1,15/3/2025,,,,5433
+287,290,GAYATRINBOYANE WARDHA,WARDHA,Wardha,WARDHA,Jowar,Virat - 3 kg,10,18/3/2025,,,,5446
+288,291,Ajit Krushi Seva Kendra Arvi (Choti),Arvi (choti),Hinghnghat,Wardha,Jowar,Virat - 3 kg,11,18/3/2025,,,,5447
+289,292,Monali krushi seva kendra,Deoli,Deoli,Wardha,Jowar,Virat - 3 kg,10,18/3/2025,,,,5448
+290,293,Sakshi Fertilizer,Bhavani,Umarkhed,Yavatmal,Jowar,Virat - 3 kg,34,18/3/2025,,,,5449
+291,293,Sakshi Fertilizer,Bhavani,Umarkhed,Yavatmal,Jowar,Jhansi-3 Kg,15,18/3/2025,,,,5450
+292,294,Shetkari krushi seva kendra,Nanded,Nanded,Nanded,Jowar,Virat - 3 kg,28,22/3/2025,,,,5451
+293,277,Laxmi Krushi Kendra,Pandharkawda,Yavatmal,Yavatmal,Jowar,Virat - 3 kg,18,1/3/2025,,,,5502
+294,278,Hanumant Krushi Seva Kendra Hiwarkhed,Hiwarkhed,TELHARA,Akola,Jowar,Virat - 3 kg,9,1/3/2025,,,,5503
+295,278,Hanumant Krushi Seva Kendra Hiwarkhed,Hiwarkhed,TELHARA,Akola,Maize,Arrow - 4 Kg,18,1/3/2025,,,,5504
+296,295,Jai Gurudev Krushi Kendra Kalamb,KALAMB,KALAMB,YAVATMAL,Jowar,Virat - 3 kg,11,3/4/2025,,,,5506
+297,295,Jai Gurudev Krushi Kendra Kalamb,KALAMB,KALAMB,YAVATMAL,Jowar,Jhansi-3 Kg,3,3/4/2025,,,,5507
+298,296,SHREE TIRUPATI BALAJI AGENCY-YAVATMAL,Yavatmal,Yavatmal,Yavatmal,Jowar,Virat - 3 kg,13,3/4/2025,,,,5508
+299,297,Krushichaya Krishi Kendra Dongarkheda,dongarkheda,Yavatmal,Yavatmal,Jowar,Virat - 3 kg,24,3/4/2025,,,,5509
+300,298,Praful Agro Agencies Warud,Warud,Warud,Amravati,Jowar,Virat - 3 kg,33,7/4/2025,,,,5510
