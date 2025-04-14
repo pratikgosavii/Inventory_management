@@ -438,51 +438,64 @@ from itertools import chain
 @login_required(login_url='login')
 def list_stock(request):
 
+    # Get selected year from GET or session
+    selected_year = request.GET.get('year')
+    if selected_year:
+        request.session['selected_year'] = selected_year
+    else:
+        selected_year = request.session.get('selected_year', datetime.now().year)
+
+    selected_year = int(selected_year)
+
+    # Set date range: 1st April selected_year to 31st March (selected_year + 1)
+    from_date = datetime(selected_year, 4, 1)
+    to_date = datetime(selected_year + 1, 3, 31, 23, 59, 59)
+
     inward_combinations = inward.objects.values('company', 'company_goods', 'goods_company').distinct()
     outward_combinations = outward.objects.values('company', 'company_goods', 'goods_company').distinct()
     supply_return_combinations = supply_return.objects.values('company', 'company_goods', 'goods_company').distinct()
 
-    # Merge all combinations into a single list
     all_combinations = list(chain(inward_combinations, outward_combinations, supply_return_combinations))
 
-    # Create a dictionary to store stock data for each unique combination
     stock_dict = {}
 
     for combination in all_combinations:
-        # Create a unique identifier for the combination
-        combination_key = (combination['company'], combination['company_goods'], combination['goods_company'])
+        key = (combination['company'], combination['company_goods'], combination['goods_company'])
 
-        # Get inward, outward, and supply_return data for the combination
-        inward_stock_total = inward.objects.filter(company=combination['company'], company_goods=combination['company_goods'], goods_company=combination['goods_company']).aggregate(total=Sum('bags'))['total'] or 0
-        outward_stock_total = outward.objects.filter(company=combination['company'], company_goods=combination['company_goods'], goods_company=combination['goods_company']).aggregate(total=Sum('bags'))['total'] or 0
-        supply_return_stock_total = supply_return.objects.filter(company=combination['company'], company_goods=combination['company_goods'], goods_company=combination['goods_company']).aggregate(total=Sum('bags'))['total'] or 0
+        inward_total = inward.objects.filter(
+            company=combination['company'],
+            company_goods=combination['company_goods'],
+            goods_company=combination['goods_company'],
+            DC_date__range=(from_date, to_date)
+        ).aggregate(total=Sum('bags'))['total'] or 0
 
-        # Calculate total stock for the combination
-        total_stock = inward_stock_total + supply_return_stock_total - outward_stock_total
+        outward_total = outward.objects.filter(
+            company=combination['company'],
+            company_goods=combination['company_goods'],
+            goods_company=combination['goods_company'],
+            DC_date__range=(from_date, to_date)
+        ).aggregate(total=Sum('bags'))['total'] or 0
 
-        # Update the stock_dict with the total stock for the combination
-        if combination_key in stock_dict:
-            pass
-        else:
-            # If it's a new combination, add it to the dictionary
-            company_instance = company.objects.get(id=combination['company'])
-            company_goods_instance = company_goods.objects.get(id=combination['company_goods'])
-            goods_company_instance = goods_company.objects.get(id=combination['goods_company'])
+        return_total = supply_return.objects.filter(
+            company=combination['company'],
+            company_goods=combination['company_goods'],
+            goods_company=combination['goods_company'],
+            DC_date__range=(from_date, to_date)
+        ).aggregate(total=Sum('bags'))['total'] or 0
 
-            stock_dict[combination_key] = {
-                'Company': company_instance,
-                'Goods': company_goods_instance,
-                'Company2': goods_company_instance,
+        total_stock = inward_total + return_total - outward_total
+
+        if key not in stock_dict:
+            stock_dict[key] = {
+                'Company': company.objects.get(id=combination['company']),
+                'Goods': company_goods.objects.get(id=combination['company_goods']),
+                'Company2': goods_company.objects.get(id=combination['goods_company']),
                 'Stock': total_stock
             }
 
-    # Prepare stock_data list with unique combinations and total stock
-    stock_data = list(stock_dict.values())
-
-    # Apply filters if needed
-
     context = {
-        'data': stock_data,
+        'data': list(stock_dict.values()),
+        'selected_year': selected_year,
     }
 
     return render(request, 'transactions/list_stock.html', context)
