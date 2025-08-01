@@ -30,20 +30,65 @@
 {% endblock breadcrumbs %}
 
 {% block content %}
+
 <div style="justify-content: center;display: flex;align-items: center;">
    <a href="{% url 'add_outward' %}" > <button id="payment-button" style="background-color: green; border: green; padding: 10px;border-radius: 12px;" type="button" class="btn-info ">
-         <span id="payment-button-amount">Add Company  +</span>
+         <span id="payment-button-amount">Add Outward  +</span>
      </button>  </a>
    
 </div><br>
 
-
-<p>
+<div style="display:flex;margin-bottom : 20px;">
     
-    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-      Outward Report
-    </button>
-  </p>
+   
+
+    
+    <label style="color:black;margin-left: 50px;">  </label>
+    
+    <select class="form-control" style="width:20%;" id="year">
+        
+        {% if year %}
+
+            <option>{{ year }}</option>
+
+        {% else %}
+
+            <option>-------------</option>
+
+        {% endif %}
+      
+        <option value="2022">2022</option>
+        <option value="2023">2023</option>
+        <option value="2024">2024</option>
+        <option value="2025">2025</option>
+        <option value="2026">2026</option>
+      
+      </select>
+
+        <form method="get" style="display: flex;position: absolute;right: 0;">
+            
+            <input type="text"  placeholder="Agent name" name="agent_name" id="agent_name" class="form-control" style="width:300px"> <button class="btn btn-info" style="margin-left:10px;">Submit</button>
+        
+        </form>
+
+
+    </div>
+    
+
+
+    <p>
+
+        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+            Outward Report
+          </button>
+
+        </p>
+
+
+    <div style="display:flex;margin-bottom : 20px;">
+
+
+
   <div class="collapse" id="collapseExample">
     <div class="card card-body">
       
@@ -53,17 +98,60 @@
             {% csrf_token %}
 
             <div class="form-group">
-
-                {{ filter_outward.form }}
-            
-            </div> <br>
-            
+                <div class="form-group">
+                    <div class="form-group">
+                        <label for="name" class="control-label mb-1">Company Name</label>
+                        <select name="company" class="form-control" id="company">
+                            <option value="" selected="">---------</option>
+    
+                            {% for i in company_data %}
+    
+                                <option value="{{ i.id }}">{{ i.company_name }}</option>
+    
+                            {% endfor %}
+    
+                        </select>
+                    </div>
+                    
+                    <label for="inputStatus">Name of Party</label>
+                    <select id="agent" class="form-control-sm custom-select" name="agent">
+    
+                   
+    
+                    </select>
+                    <label for="inputStatus">Crop</label>
+                    <select id="company_goods" class="form-control-sm custom-select" name="company_goods">
+    
+                   
+    
+                    </select>
+    
+                    <label for="inputStatus">Variety</label>
+                        <select id="goods_company" class="form-control-sm custom-select" name="goods_company">
+        
+                    
+        
+                    </select>
+                    <div class="form-group">
+                        <label for="name" class="control-label mb-1">Start Date</label>
+                        {{ filter_outward.form.DC_date_start__date }}
+                    </div>
+        
+                    <div class="form-group">
+                        <label for="name" class="control-label mb-1">End Date</label>
+                        {{ filter_outward.form.DC_date_end__date }}
+                    </div>
+    
+                </div> <br>
+            </div>
             <button class="btn btn-primary" type="submit" > Search </button>
 
         </form>
     </div>
   </div>
-  
+  </div>
+
+    
 
 
 <div class="row">

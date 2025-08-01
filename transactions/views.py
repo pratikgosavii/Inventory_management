@@ -178,15 +178,7 @@ def update_inward(request, inward_id ):
 def delete_inward(request, inward_id):
 
     try:
-        con = inward.objects.filter(id = inward_id).first()
-
-        test = stock.objects.get(company = con.company, company_goods = con.company_goods, goods_company = con.goods_company)
-        test.total_bag = test.total_bag - con.bags
-        test.save()
-        con.delete()
-
-       
-
+        inward.objects.filter(id = inward_id).delete()
 
         return HttpResponseRedirect(reverse('list_inward_delete'))
 
@@ -413,12 +405,7 @@ def update_outward(request, outward_id):
 def delete_outward(request, outward_id):
 
     try:
-        con = outward.objects.get(id = outward_id)
-
-        test = stock.objects.get(company = con.company, company_goods = con.company_goods, goods_company = con.goods_company)
-        test.total_bag = test.total_bag + con.bags
-        test.save()
-        con.delete()
+        outward.objects.get(id = outward_id).delete()
 
         return HttpResponseRedirect(reverse('list_outward_delete'))
 
@@ -673,19 +660,13 @@ def update_return(request, return_id):
 def delete_return(request, return_id):
 
     try:
-        con = supply_return.objects.get(id = return_id)
-        test = stock.objects.get(company = con.company, company_goods = con.company_goods, goods_company = con.goods_company)
-      
-        test.total_bag = test.total_bag - con.bags
-        test.save()
-    
-
-
-        return HttpResponseRedirect(reverse('list_return'))
+        supply_return.objects.get(id = return_id).delete()
+        
+        return HttpResponseRedirect(reverse('list_return_delete'))
 
 
     except:
-        return HttpResponseRedirect(reverse('list_return'))
+        return HttpResponseRedirect(reverse('list_return_delete'))
  
 
 
@@ -1375,13 +1356,42 @@ def delete_dashboard(request):
 
 def list_inward_delete(request):
 
-    data = inward.objects.all()
+    year = request.GET.get('year')
+
+    if year:
+
+        date1 = year + '-04-01'
+        date2 = str(int(year) + 1) + '-03-31'
+
+        data = inward.objects.filter(DC_date__range=[date1, date2]).order_by("DC_number")
+    
+    else:
+
+        data = inward.objects.filter().order_by("DC_number")
+
+    total_bags = data.aggregate(Sum('bags'))['bags__sum']
+    
 
     inward_filter_data = inward_filter()
 
+    company_data = company.objects.all()
+
+    page = request.GET.get('page', 1)
+    paginator = Paginator(data, 50)
+
+    try:
+        data = paginator.page(page)
+    except PageNotAnInteger:
+        data = paginator.page(1)
+    except EmptyPage:
+        data = paginator.page(paginator.num_pages)
+
     context = {
         'data': data,
-        'filter_inward' : inward_filter_data
+        'company_data' : company_data,
+        'total_bags' : total_bags,
+        'filter_inward' : inward_filter_data,
+        'year' : year
     }
 
     return render(request, 'delete/list_inward_delete.html', context)
@@ -1389,29 +1399,117 @@ def list_inward_delete(request):
 
 def list_outward_delete(request):
 
-    data = outward.objects.all()
+    
+    year = request.GET.get('year')
+
+    if year:
+
+        date1 =year + '-04-01'
+        date2 = str(int(year) + 1) + '-03-31'
+
+        data = outward.objects.filter(DC_date__range=[date1, date2]).order_by("DC_number")
+    
+    else:
+
+        data = outward.objects.filter().order_by('DC_number')
+
+
+    agent_name = request.GET.get('agent_name')
+
+    if agent_name:
+
+        data = data.filter(agent__name__icontains=agent_name)
+
+    total_bags = data.aggregate(Sum('bags'))['bags__sum']
+    
 
     outward_filter_data = outward_filter()
+
+    company_data = company.objects.all()
+
+
+
+    page = request.GET.get('page', 1)
+    paginator = Paginator(data, 50)
+
+    try:
+        data = paginator.page(page)
+    except PageNotAnInteger:
+        data = paginator.page(1)
+    except EmptyPage:
+        data = paginator.page(paginator.num_pages)
 
 
 
     context = {
         'data': data,
-        'filter_outward' : outward_filter_data
+        'filter_outward' : outward_filter_data,
+        'total_bags' : total_bags,
+        'company_data' : company_data,
+        'year' : year
+
     }
 
     return render(request, 'delete/list_outward_delete.html', context)
 
 def list_return_delete(request):
 
-    data = supply_return.objects.all().order_by(Substr('DC_number',3))
+   
+    year = request.GET.get('year')
+
+    if year:
+
+        date1 = year + '-04-01'
+        date2 = str(int(year) + 1) + '-03-31'
+
+        data = inward.objects.filter(DC_date__range=[date1, date2])
+        data.extra(select={'DC_number':'SUBSTRING("DC_number",m,-)'}).order_by(Substr('DC_number',3))
+    
+    else:
+
+        data = supply_return.objects.all()
+        data.extra(select={'DC_number':'SUBSTRING("DC_number",m,-)'}).order_by(Substr('DC_number',3))
+
+    supply_return_filter_data = supply_return_filter()
 
     # inward_filter_data = inward_filter()
 
+    agent_name = request.GET.get('agent_name')
+
+    if agent_name:
+
+        data = data.filter(agent__name__icontains=agent_name)
+
+
+
+    total_bags = data.aggregate(Sum('bags'))['bags__sum']
+
+
+    page = request.GET.get('page', 1)
+    paginator = Paginator(data, 50)
+
+    
+    try:
+        data = paginator.page(page)
+    except PageNotAnInteger:
+        data = paginator.page(1)
+    except EmptyPage:
+        data = paginator.page(paginator.num_pages)
+
+
+
+    company_data = company.objects.all()
+
     context = {
         'data': data,
-        # 'filter_inward' : inward_filter_data
+        'company_data': company_data,
+        'total_bags' : total_bags,
+        'filter_return_supply' : supply_return_filter_data,
+        'year' : year
+
     }
+
+
 
     return render(request, 'delete/list_return_delete.html', context)
 
