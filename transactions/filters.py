@@ -49,9 +49,15 @@ class inward_filter(django_filters.FilterSet):
     ))
 
     # ✅ DC Number Filter (Exact match)
-    DC_number = NumberFilter(field_name="DC_number", lookup_expr='exact', widget=forms.NumberInput(
-        attrs={'class': 'form-control', 'placeholder': 'Enter DC Number'}
-    ))
+    DC_number = django_filters.NumberFilter(
+    field_name='DC_number',
+    lookup_expr='exact',
+    widget=forms.NumberInput(attrs={
+        'class': 'form-control',
+        'placeholder': 'Enter DC Number'
+        })
+    )
+
 
     class Meta:
         model = inward
@@ -69,9 +75,15 @@ class outward_filter(django_filters.FilterSet):
             })
     )
 
-    DC_number = NumberFilter(field_name="DC_number", lookup_expr='exact', widget=forms.NumberInput(
-        attrs={'class': 'form-control', 'placeholder': 'Enter DC Number'}
-    ))
+    DC_number = django_filters.NumberFilter(
+        field_name='DC_number',
+        lookup_expr='exact',
+        widget=forms.NumberInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'Enter DC Number'
+        })
+    )
+
 
     company_goods = django_filters.ModelChoiceFilter( 
         queryset=company_goods.objects.all(),
@@ -126,9 +138,15 @@ class supply_return_filter(django_filters.FilterSet):
         queryset=company_goods.objects.all(),
         widget=forms.Select(attrs={'class': 'form-control', 'id' : 'company_goods'}))
 
-    DC_number = NumberFilter(field_name="DC_number", lookup_expr='exact', widget=forms.NumberInput(
-        attrs={'class': 'form-control', 'placeholder': 'Enter DC Number'}
-    ))
+    DC_number = django_filters.NumberFilter(
+        field_name='DC_number',
+        lookup_expr='exact',
+        widget=forms.NumberInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'Enter DC Number'
+        })
+    )
+
 
     goods_company = django_filters.ModelChoiceFilter( 
         queryset=goods_company.objects.all(),
