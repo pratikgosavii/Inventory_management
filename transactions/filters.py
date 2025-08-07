@@ -5,54 +5,58 @@ from django import forms
 
 from .models import *
 
-class inward_filter(django_filters.FilterSet):
+from django_filters import DateFilter, NumberFilter
 
+
+class inward_filter(django_filters.FilterSet):
     company = django_filters.ModelChoiceFilter(
         queryset=company.objects.all(),
-        widget=forms.Select(
-            attrs={
-                'class' : 'form-control',
-                'id' : 'company'
-            })
+        widget=forms.Select(attrs={
+            'class': 'form-control',
+            'id': 'company'
+        })
     )
 
-    company_goods = django_filters.ModelChoiceFilter( 
+    company_goods = django_filters.ModelChoiceFilter(
         queryset=company_goods.objects.all(),
-                
-        widget=forms.Select(attrs={'class': 'form-control', 'id' : 'company_goods'}))
+        widget=forms.Select(attrs={
+            'class': 'form-control',
+            'id': 'company_goods'
+        })
+    )
 
-    goods_company = django_filters.ModelChoiceFilter( 
+    goods_company = django_filters.ModelChoiceFilter(
         queryset=goods_company.objects.all(),
-        widget=forms.Select(attrs={'class': 'form-control', 'id' : 'goods_company'}))
+        widget=forms.Select(attrs={
+            'class': 'form-control',
+            'id': 'goods_company'
+        })
+    )
 
     agent = django_filters.ModelChoiceFilter(
         queryset=agent.objects.all(),
-        widget=forms.Select(
-            attrs={
-                'class' : 'form-control'
-            })
+        widget=forms.Select(attrs={
+            'class': 'form-control'
+        })
     )
 
-
+    # Date range filters
     DC_date_start__date = DateFilter(field_name="DC_date", lookup_expr='gte', widget=forms.DateInput(
-            attrs={
-                'id': 'datepicker1212',
-                'type': 'date',
-                'class' : 'form-control'
-            }
-        ))
+        attrs={'id': 'datepicker1212', 'type': 'date', 'class': 'form-control'}
+    ))
     DC_date_end__date = DateFilter(field_name="DC_date", lookup_expr='lte', widget=forms.DateInput(
-            attrs={
-                'id': 'datepicker1',
-                'type': 'date',
-                'class' : 'form-control'
-            }
-        ))
+        attrs={'id': 'datepicker1', 'type': 'date', 'class': 'form-control'}
+    ))
+
+    # ✅ DC Number Filter (Exact match)
+    DC_number = NumberFilter(field_name="DC_number", lookup_expr='exact', widget=forms.NumberInput(
+        attrs={'class': 'form-control', 'placeholder': 'Enter DC Number'}
+    ))
 
     class Meta:
         model = inward
         fields = '__all__'
-        exclude = ['bags', 'DC_number', 'DC_date']
+        exclude = ['bags', 'DC_date']  # Removed DC_number from exclusion list
 
 class outward_filter(django_filters.FilterSet):
 
@@ -64,6 +68,10 @@ class outward_filter(django_filters.FilterSet):
                 'id' : 'company'
             })
     )
+
+    DC_number = NumberFilter(field_name="DC_number", lookup_expr='exact', widget=forms.NumberInput(
+        attrs={'class': 'form-control', 'placeholder': 'Enter DC Number'}
+    ))
 
     company_goods = django_filters.ModelChoiceFilter( 
         queryset=company_goods.objects.all(),
@@ -100,7 +108,7 @@ class outward_filter(django_filters.FilterSet):
     class Meta:
         model = outward
         fields = '__all__'
-        exclude = ['bags', 'DC_number', 'DC_date']
+        exclude = ['bags', 'DC_date']
        
 
 class supply_return_filter(django_filters.FilterSet):
@@ -117,6 +125,10 @@ class supply_return_filter(django_filters.FilterSet):
     company_goods = django_filters.ModelChoiceFilter( 
         queryset=company_goods.objects.all(),
         widget=forms.Select(attrs={'class': 'form-control', 'id' : 'company_goods'}))
+
+    DC_number = NumberFilter(field_name="DC_number", lookup_expr='exact', widget=forms.NumberInput(
+        attrs={'class': 'form-control', 'placeholder': 'Enter DC Number'}
+    ))
 
     goods_company = django_filters.ModelChoiceFilter( 
         queryset=goods_company.objects.all(),
@@ -149,7 +161,7 @@ class supply_return_filter(django_filters.FilterSet):
     class Meta:
         model = supply_return
         fields = '__all__'
-        exclude = ['bags', 'DC_number', 'DC_date']
+        exclude = ['bags', 'DC_date']
        
 
 class stock_filter(django_filters.FilterSet):
