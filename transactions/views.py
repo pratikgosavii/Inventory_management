@@ -177,15 +177,15 @@ def update_inward(request, inward_id ):
 @login_required(login_url='login')
 def delete_inward(request, inward_id):
 
+    referer = request.META.get('HTTP_REFERER', reverse('list_inward_delete'))
+
     try:
         inward.objects.filter(id = inward_id).delete()
 
-        return HttpResponseRedirect(reverse('list_inward_delete'))
-
-
     except:
-        return HttpResponseRedirect(reverse('list_inward_delete'))
+        pass
 
+    return redirect(referer)
 
 
 
@@ -404,14 +404,15 @@ def update_outward(request, outward_id):
 @login_required(login_url='login')
 def delete_outward(request, outward_id):
 
+    referer = request.META.get('HTTP_REFERER', reverse('list_outward_delete'))
+
     try:
         outward.objects.get(id = outward_id).delete()
-
-        return HttpResponseRedirect(reverse('list_outward_delete'))
-
-
+       
     except:
-        return HttpResponseRedirect(reverse('list_outward_delete'))
+       pass
+
+    return redirect(referer)
 
 
 
@@ -658,15 +659,14 @@ def update_return(request, return_id):
 
 @login_required(login_url='login')
 def delete_return(request, return_id):
+    referer = request.META.get('HTTP_REFERER', reverse('list_return_delete'))
 
     try:
-        supply_return.objects.get(id = return_id).delete()
-        
-        return HttpResponseRedirect(reverse('list_return_delete'))
-
-
+        supply_return.objects.get(id=return_id).delete()
     except:
-        return HttpResponseRedirect(reverse('list_return_delete'))
+        pass  # Optionally log the error
+
+    return redirect(referer)
  
 
 
@@ -857,7 +857,7 @@ def report_supply_return(request):
     ))
 
     vals = []
-    headers = ["Serial", "DC Number", "Party Name", "Party Place", "Party Taluka", "Party District",
+    headers = ["Serial", "MRN Number", "Party Name", "Party Place", "Party Taluka", "Party District",
                "Crop", "Variety", "Packet", "Date", "Transport", "LR Number", "Freight", "id"]
     vals.append(headers)
 
@@ -1470,15 +1470,15 @@ def list_return_delete(request):
         data = supply_return.objects.all()
         data.extra(select={'DC_number':'SUBSTRING("DC_number",m,-)'}).order_by(Substr('DC_number',3))
 
-    supply_return_filter_data = supply_return_filter()
-
+    supply_return_filter_data = supply_return_filter(request.GET, data)
+    data = supply_return_filter_data.qs
     # inward_filter_data = inward_filter()
 
     agent_name = request.GET.get('agent_name')
 
     if agent_name:
 
-        data = data.filter(agent__name__icontains=agent_name)
+        data = supply_return_filter_data.qs.filter(agent__name__icontains=agent_name)
 
 
 
