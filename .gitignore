@@ -131,3 +131,10 @@ dmypy.json
 # Editor
 .vscode/
 .backup
+
+
+
+
+# Ignore report files
+static/csv/Report.csv
+static/xlsx/Report.xlsx
